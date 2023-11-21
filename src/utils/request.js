@@ -9,11 +9,11 @@ import {saveAs} from 'file-saver'
 import InsufficientStockAlert from "@/utils/wms";
 
 let downloadLoadingInstance;
-// 是否显示重新登录
+// 显示重新Login
 export let isRelogin = {show: false};
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
-// 创建axios实例
+// Createaxios实例
 const service = axios.create({
   // axios中请求配置有baseURL选项，表示请求URL公共部分
   baseURL: process.env.VUE_APP_BASE_API,
@@ -23,12 +23,12 @@ const service = axios.create({
 
 // request拦截器
 service.interceptors.request.use(config => {
-  // 是否需要设置 token
+  // 需要设置 token
   const isToken = (config.headers || {}).isToken === false
-  // 是否需要防止数据重复提交
+  // 需要防止Data重复提交
   const isRepeatSubmit = (config.headers || {}).repeatSubmit === false
   if (getToken() && !isToken) {
-    config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
+    config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行Modify
   }
   // get请求映射params参数
   if (config.method === 'get' && config.params) {
@@ -47,12 +47,12 @@ service.interceptors.request.use(config => {
     if (sessionObj === undefined || sessionObj === null || sessionObj === '') {
       cache.session.setJSON('sessionObj', requestObj)
     } else {
-      const s_url = sessionObj.url;                  // 请求地址
-      const s_data = sessionObj.data;                // 请求数据
-      const s_time = sessionObj.time;                // 请求时间
-      const interval = 1000;                         // 间隔时间(ms)，小于此时间视为重复提交
+      const s_url = sessionObj.url;                  // 请求Address
+      const s_data = sessionObj.data;                // 请求Data
+      const s_time = sessionObj.time;                // 请求 Time
+      const interval = 1000;                         // 间隔 Time(ms)，小于此 Time视重复提交
       if (s_data === requestObj.data && requestObj.time - s_time < interval && s_url === requestObj.url) {
-        const message = '数据正在处理，请勿重复提交';
+        const message = 'Data is being processed,please do not resubmit';
         console.warn(`[${s_url}]: ` + message)
         return Promise.reject(new Error(message))
       } else {
@@ -68,20 +68,20 @@ service.interceptors.request.use(config => {
 
 // 响应拦截器
 service.interceptors.response.use(res => {
-    // 未设置状态码则默认成功状态
+    // 未设置Status码则默认 SuccessfulStatus
     const code = res.data.code || 200;
     // 获取错误信息
     const msg = errorCode[code] || res.data.msg || errorCode['default']
-    // 二进制数据则直接返回
+    // 二进制Data则直接返回
     if (res.request.responseType === 'blob' || res.request.responseType === 'arraybuffer') {
       return res.data
     }
     if (code === 401) {
       if (!isRelogin.show) {
         isRelogin.show = true;
-        MessageBox.confirm('登录状态已过期，您可以继续留在该页面，或者重新登录', '系统提示', {
-            confirmButtonText: '重新登录',
-            cancelButtonText: '取消',
+        MessageBox.confirm('Session timeout，Please relogin。', 'Info', {
+            confirmButtonText: 'Relogin',
+            cancelButtonText: 'Cancel',
             type: 'warning'
           }
         ).then(() => {
@@ -93,7 +93,7 @@ service.interceptors.response.use(res => {
           isRelogin.show = false;
         });
       }
-      return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
+      return Promise.reject('Session timeout，Please relogin。')
     } else if (code === 500) {
       Message({
         message: msg,
@@ -101,13 +101,13 @@ service.interceptors.response.use(res => {
       })
       return Promise.reject(new Error(msg))
     } else if (code === 398) {
-      // 库存不足
+      // InventoryNo 足
       InsufficientStockAlert(res.data)
       return Promise.reject('error')
     } else if (code === 399) {
       // throw new ServiceException("xx", HttpStatus.CONFIRMATION);
-      // 需要用户确认的错误
-      MessageBox.alert(msg, '提示', {
+      // 需要User OK的错误
+      MessageBox.alert(msg, 'Info', {
         dangerouslyUseHTMLString: true
       }).then(r => {
       });
@@ -126,11 +126,11 @@ service.interceptors.response.use(res => {
     console.log('err' + error)
     let {message} = error;
     if (message == "Network Error") {
-      message = "后端接口连接异常";
+      message = "Network Error";
     } else if (message.includes("timeout")) {
-      message = "系统接口请求超时";
+      message = "API Timeout";
     } else if (message.includes("Request failed with status code")) {
-      message = "系统接口" + message.substr(message.length - 3) + "异常";
+      message = "API " + message.substr(message.length - 3) + " Exception";
     }
     Message({
       message: message,
@@ -144,7 +144,7 @@ service.interceptors.response.use(res => {
 // 通用下载方法
 export function download(url, params, filename) {
   downloadLoadingInstance = Loading.service({
-    text: "正在下载数据，请稍候",
+    text: "Loading...",
     spinner: "el-icon-loading",
     background: "rgba(0, 0, 0, 0.7)",
   })
@@ -168,7 +168,7 @@ export function download(url, params, filename) {
     downloadLoadingInstance.close();
   }).catch((r) => {
     console.error(r)
-    Message.error('下载文件出现错误，请联系管理员！')
+    Message.error('Download error！')
     downloadLoadingInstance.close();
   })
 }

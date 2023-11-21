@@ -26,7 +26,7 @@ export function checkPermi(value) {
 }
 
 /**
- * 角色权限校验
+ * Role权限校验
  * @param {Array} value 校验值
  * @returns {Boolean}
  */

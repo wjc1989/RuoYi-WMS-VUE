@@ -2,7 +2,7 @@
 	<el-form size="small">
 		<el-form-item>
 			<el-radio :label="1" v-model='radioValue'>
-				不填，允许的通配符[, - * /]
+				No 填，允许的通配符[, - * /]
 			</el-radio>
 		</el-form-item>
 
@@ -57,7 +57,7 @@ export default {
 	name: 'crontab-year',
 	props: ['check', 'month', 'cron'],
 	methods: {
-		// 单选按钮值变化时
+		// 选Button值变化时
 		radioChange() {
 			switch (this.radioValue) {
 				case 1:

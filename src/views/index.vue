@@ -1,15 +1,13 @@
 <template>
   <div class="home-wrapper">
     <el-card style="margin: 20px 20px; font-size: 14px">
-      <div slot="header"><span>工作台</span></div>
+      <div slot="header"><span>Workstation</span></div>
       <div class="first">
         <img alt="" :src="avatar" style="width: 50px; height: 50px; float:left; margin-right:10px;border-radius:50%" />
         <p style="font-size:16px;margin-bottom:8px">{{ name }}，{{ hello }}</p>
-        <p style="font-size:12px;color:rgb(185, 181, 189);width: 300px;">今天是：{{ nowTime }}</p>
+        <p style="font-size:12px;color:rgb(185, 181, 189);width: 300px;">Today is：{{ nowTime }}</p>
       </div>
-      <div style="font-size:20px;line-height: 50px;background: linear-gradient(to right, red, blue);-webkit-background-clip: text;color: transparent;">
-          心中若有帕拉梅拉，仓库就不会邋里邋遢！库存管不好，赚钱两头少！
-      </div>
+
     </el-card>
     <el-row class="pl20 pr20" :gutter="10">
       <el-col :span="12">
@@ -23,7 +21,7 @@
                   </div>
                   <div class="card-panel-description">
                     <div class="card-panel-text">
-                      仓库
+                      Warehouse
                     </div>
                     <count-to :start-val="0" :end-val="warehouseList.length" :duration="3000" class="card-panel-num" />
                   </div>
@@ -36,7 +34,7 @@
                   </div>
                   <div class="card-panel-description">
                     <div class="card-panel-text">
-                      供应商
+                      Supplier
                     </div>
                     <count-to :start-val="0" :end-val="supplierList.length" :duration="2600" class="card-panel-num" />
                   </div>
@@ -49,7 +47,7 @@
                   </div>
                   <div class="card-panel-description">
                     <div class="card-panel-text">
-                      承运商
+                      Carrier
                     </div>
                     <count-to :start-val="0" :end-val="carrierList.length" :duration="2600" class="card-panel-num" />
                   </div>
@@ -62,7 +60,7 @@
                   </div>
                   <div class="card-panel-description">
                     <div class="card-panel-text">
-                      客户
+                      Customer
                     </div>
                     <count-to :start-val="0" :end-val="customerList.length" :duration="3000" class="card-panel-num" />
                   </div>
@@ -75,7 +73,7 @@
                   </div>
                   <div class="card-panel-description">
                     <div class="card-panel-text">
-                      预警
+                      Warn
                     </div>
                     <count-to :start-val="0" :end-val="totalWarn" :duration="3200" class="card-panel-num" />
                   </div>
@@ -88,7 +86,7 @@
                   </div>
                   <div class="card-panel-description">
                     <div class="card-panel-text">
-                      过期
+                      Expiry
                     </div>
                     <count-to :start-val="0" :end-val="totalExpiry" :duration="3200" class="card-panel-num" />
                   </div>
@@ -98,21 +96,21 @@
           </div>
         </el-card>
         <el-card shadow="always" style="padding-bottom: 20px; font-size: 14px;margin-top: 20px;margin-bottom: 20px;">
-          <div slot="header" ref="warn"><span>预警</span></div>
+          <div slot="header" ref="warn"><span>Warn</span></div>
           <WmsTable v-loading="loading" :data="warnList">
-            <el-table-column align="left" label="编号" prop="id" width="72"></el-table-column>
-            <el-table-column align="left" label="物料" prop="itemName">
+            <el-table-column align="left" label="No." prop="id" width="72"></el-table-column>
+            <el-table-column align="left" label="Item" prop="itemName">
               <template v-slot="{ row }"><span style="color:red">{{ row.itemName }}</span></template>
             </el-table-column>
-            <el-table-column align="left" label="编码" prop="itemNo"></el-table-column>
-            <el-table-column align="left" label="仓库/库区">
+            <el-table-column align="left" label="No." prop="itemNo"></el-table-column>
+            <el-table-column align="left" label="Warehouse">
               <template v-slot="{ row }"><span v-if="row.warehouseName">{{ row.warehouseName }}</span><span
                   v-if="row.areaName">/{{ row.areaName }}</span></template>
             </el-table-column>
-            <el-table-column align="left" label="当前库存">
+            <el-table-column align="left" label="Count">
               <template v-slot="{ row }"><span style="color:red;font-weight: bold;">{{ row.quantity }}</span></template>
             </el-table-column>
-            <el-table-column align="left" label="安全库存" prop="saftyQuantity"></el-table-column>
+            <el-table-column align="left" label="Safty Count" prop="saftyQuantity"></el-table-column>
           </WmsTable>
 
           <pagination v-show="totalWarn > 0" :total="totalWarn" :page.sync="queryWarnParams.pageNum"
@@ -120,58 +118,29 @@
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-card style="padding-bottom: 20px; font-size: 14px">
-          <div slot="header"><span>发展历程</span></div>
-          <el-timeline>
-            <el-timeline-item placement="top" timestamp="2018年">
-              <el-card>
-                <h4>参与京东服务市场商品分析应用开发，参与京东服务市场会员积分应用开发</h4>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item placement="top" timestamp="2019年">
-              <el-card>
-                <h4>参与京东服务市场商品搬家应用开发，参与京东服务市场商品搬家应用开发，参与拼多多服务市场订单应用开发</h4>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item placement="top" timestamp="2020年">
-              <el-card>
-                <h4>所参与开发的拼多多订单应用排名服务市场类目第一，开始快手服务市场订单应用开发</h4>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item placement="top" timestamp="2021年">
-              <el-card>
-                <h4>日处理拼多多订单200万条，开始美团、饿了么应用市场应用开发</h4>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item placement="top" timestamp="2022年">
-              <el-card>
-                <h4>累计服务10万+电商平台店铺、5万+外卖店铺。开始抖音、淘宝服务市场订单应用开发，开源ruoyi-wms</h4>
-              </el-card>
-            </el-timeline-item>
-          </el-timeline>
-        </el-card>
+
         <el-card style="padding-bottom: 20px; font-size: 14px;margin-top: 20px;">
-          <div slot="header" ref="expiry"><span>过期物料</span></div>
+          <div slot="header" ref="expiry"><span>Expiry Item</span></div>
           <WmsTable v-loading="loading" :data="expiryList">
-            <el-table-column label="编号" align="center" prop="itemNo" v-if="columns[0].visible" />
-            <el-table-column label="名称" align="center" prop="itemName" v-if="columns[1].visible">
+            <el-table-column label="No." align="center" prop="itemNo" v-if="columns[0].visible" />
+            <el-table-column label="Item" align="center" prop="itemName" v-if="columns[1].visible">
               <template slot-scope="scope">
                 <span style="color:red;">{{ scope.row.itemName }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="分类" align="center" prop="itemTypeName" v-if="columns[2].visible" />
-            <el-table-column label="单位类别" align="center" prop="unit" v-if="columns[3].visible" />
-            <el-table-column label="所属仓库" align="center" prop="warehouseName" v-if="columns[6].visible" />
-            <el-table-column label="所属库区" align="center" prop="areaName" v-if="columns[5].visible" />
-            <el-table-column label="所属货架" align="center" prop="rackName" v-if="columns[4].visible" />
-            <el-table-column label="安全库存" align="center" prop="quantity" v-if="columns[7].visible" />
-            <el-table-column label="有效期" align="center" prop="expiryDate" width="180" v-if="columns[8].visible">
+            <el-table-column label="Type" align="center" prop="itemTypeName" v-if="columns[2].visible" />
+            <el-table-column label="Unit" align="center" prop="unit" v-if="columns[3].visible" />
+            <el-table-column label="Warehouse" align="center" prop="warehouseName" v-if="columns[6].visible" />
+            <el-table-column label="Area" align="center" prop="areaName" v-if="columns[5].visible" />
+            <el-table-column label="Rack Name" align="center" prop="rackName" v-if="columns[4].visible" />
+            <el-table-column label="Safty Count" align="center" prop="quantity" v-if="columns[7].visible" />
+            <el-table-column label="Expiry Date" align="center" prop="expiryDate" width="180" v-if="columns[8].visible">
               <template slot-scope="scope">
                 <span style="color:red;font-weight: bold;">{{ parseTime(scope.row.expiryDate, "{yyyy}-{mm}-{dd}")
                 }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="备注" align="center" prop="remark" v-if="columns[9].visible" />
+            <el-table-column label="Remark" align="center" prop="remark" v-if="columns[9].visible" />
           </WmsTable>
           <pagination v-show="totalExpiry > 0" :total="totalExpiry" :page.sync="queryExpiryParams.pageNum"
             :limit.sync="queryExpiryParams.pageSize" @pagination="getExpiryList" :autoScroll="ifScroll" />
@@ -197,7 +166,7 @@ export default {
     return {
       tableData: [{
         date: '1',
-        name: '应急',
+        name: '',
         address: '20'
       }],
       nowTime: '',
@@ -212,20 +181,20 @@ export default {
         pageNum: 1,
         pageSize: 10
       },
-      //预警条数
+      //Warn条数
       totalWarn: 0,
       totalExpiry: 0,
       columns: [
-        { key: 1, label: "编号", visible: true },
-        { key: 2, label: "名称", visible: true },
-        { key: 3, label: "分类", visible: true },
-        { key: 4, label: "单位类别", visible: true },
-        { key: 5, label: "所属货架", visible: false },
-        { key: 6, label: "所属库区", visible: true },
-        { key: 7, label: "所属仓库", visible: true },
-        { key: 8, label: "安全库存", visible: true },
-        { key: 9, label: "有效期", visible: true },
-        { key: 11, label: "备注", visible: false },
+        { key: 1, label: "No.", visible: true },
+        { key: 2, label: "Item", visible: true },
+        { key: 3, label: "Type", visible: true },
+        { key: 4, label: "Unit", visible: true },
+        { key: 5, label: "Rack Name", visible: false },
+        { key: 6, label: "Area", visible: true },
+        { key: 7, label: "Warehouse", visible: true },
+        { key: 8, label: "Safty Quantity", visible: true },
+        { key: 9, label: "Expiry Date", visible: true },
+        { key: 11, label: "Remark", visible: false },
       ],
       ifScroll: false
     }
@@ -301,15 +270,15 @@ export default {
           ? '0' + new Date(timeStamp).getSeconds()
           : new Date(timeStamp).getSeconds()
       let week = new Date(timeStamp).getDay()
-      let weeks = ['日', '一', '二', '三', '四', '五', '六']
-      let getWeek = '星期' + weeks[week]
+      let weeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      let getWeek = '' + weeks[week]
       this.nowTime =
         year +
-        '年' +
+        '-' +
         month +
-        '月' +
+        '-' +
         date +
-        '日' +
+        '-' +
         ' ' +
 
         getWeek
@@ -321,11 +290,11 @@ export default {
     helloTimes() {
       let hh = new Date().getHours()
       if (0 < hh && hh < 12) {
-        this.hello = '上午好'
+        this.hello = 'Good Morning'
       } else if (hh < 18) {
-        this.hello = '下午好'
+        this.hello = 'Good Afternoon'
       } else {
-        this.hello = '晚上好'
+        this.hello = 'Good Night'
       }
     },
     handleGo(path) {

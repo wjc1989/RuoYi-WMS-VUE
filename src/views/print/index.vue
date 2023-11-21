@@ -14,7 +14,7 @@ export default {
     return {
       tempValue: {
         "default": "true",
-        "title": "出库单示例",
+        "title": "Outbound 示例",
         "type": 1,
         "width": 770,
         "height": 500,
@@ -29,8 +29,8 @@ export default {
           "height": 25,
           "left": 0,
           "top": 10,
-          "title": "出库单号",
-          "value": "{ 出库单号 } ",
+          "title": "Outbound No.",
+          "value": "{ Outbound No. } ",
           "defaultValue": "CK-1234567890",
           "name": "stockoutCode",
           "style": {
@@ -54,7 +54,7 @@ export default {
           "left": 15,
           "top": 40,
           "title": "自定义文本",
-          "value": "客户/供应商：",
+          "value": "客户/Supplier：",
           "defaultValue": "自定义文本",
           "name": "",
           "style": {
@@ -102,7 +102,7 @@ export default {
           "left": 15,
           "top": 60,
           "title": "自定义文本",
-          "value": "发货类型：",
+          "value": "OutboundType：",
           "defaultValue": "自定义文本",
           "name": "",
           "style": {
@@ -126,7 +126,7 @@ export default {
           "left": 375,
           "top": 60,
           "title": "自定义文本",
-          "value": "日期：",
+          "value": "Date：",
           "defaultValue": "自定义文本",
           "name": "",
           "style": {
@@ -149,8 +149,8 @@ export default {
           "height": 20,
           "left": 95,
           "top": 40,
-          "title": "客户/供应商",
-          "value": "{ 客户/供应商 } ",
+          "title": "客户/Supplier",
+          "value": "{ 客户/Supplier } ",
           "defaultValue": "中国苹果",
           "name": "unitName",
           "style": {
@@ -197,9 +197,9 @@ export default {
           "height": 20,
           "left": 80,
           "top": 60,
-          "title": "出库类型",
-          "value": "{ 出库类型 } ",
-          "defaultValue": "销售出库",
+          "title": "Outbound Type",
+          "value": "{ Outbound Type } ",
+          "defaultValue": "销售Outbound ",
           "name": "stockoutType",
           "style": {
             "zIndex": 0,
@@ -221,8 +221,8 @@ export default {
           "height": 20,
           "left": 410,
           "top": 60,
-          "title": "制单时间",
-          "value": "{ 制单时间 } ",
+          "title": "制 Time",
+          "value": "{ 制 Time } ",
           "defaultValue": "2020-08-27 12: 00: 00",
           "name": "created",
           "style": {
@@ -245,7 +245,7 @@ export default {
           "height": 275,
           "left": 15,
           "top": 85,
-          "title": "出库商品明细",
+          "title": "Outbound 商品明细",
           "value": "{ details } ",
           "defaultValue": [{
             "productName": "苹果ipone11pro",
@@ -264,54 +264,54 @@ export default {
           }],
           "tabelHtml": "",
           "columnsAttr": [{
-            "title": "产品名称",
-            "value": "{ 产品名称 } ",
+            "title": "产品Item",
+            "value": "{ 产品Item } ",
             "name": "productName"
           }, {
-            "title": "sku名称",
-            "value": "{ sku名称 } ",
+            "title": "skuItem",
+            "value": "{ skuItem } ",
             "name": "skuName"
           }, {
-            "title": "规格型号",
-            "value": "{ 规格型号 } ",
+            "title": "规格型No.",
+            "value": "{ 规格型No. } ",
             "name": "specModel"
           }, {
-            "title": "数量",
-            "value": "{ 数量 } ",
+            "title": "Count",
+            "value": "{ Count } ",
             "name": "quantity"
           }, {
-            "title": "单价",
-            "value": "{ 单价 } ",
+            "title": "价",
+            "value": "{ 价 } ",
             "name": "price"
           }, {
-            "title": "产品序列号",
-            "value": "产品序列号明细：<br>{产品序列号}",
+            "title": "产品序列No.",
+            "value": "产品序列No.明细：<br>{产品序列No.}",
             "name": "snCode",
             "trSet": {
-              "title": "产品序列号明细:",
+              "title": "产品序列No.明细:",
               "col": 5,
               "margin": "50px"
             }
           }],
           "columns": [{
-            "title": "产品名称",
-            "value": "{产品名称}",
+            "title": "产品Item",
+            "value": "{产品Item}",
             "name": "productName"
           }, {
-            "title": "sku名称",
-            "value": "{sku名称}",
+            "title": "skuItem",
+            "value": "{skuItem}",
             "name": "skuName"
           }, {
-            "title": "规格型号",
-            "value": "{规格型号}",
+            "title": "规格型No.",
+            "value": "{规格型No.}",
             "name": "specModel"
           }, {
-            "title": "数量",
-            "value": "{数量}",
+            "title": "Count",
+            "value": "{Count}",
             "name": "quantity"
           }, {
-            "title": "单价",
-            "value": "{单价}",
+            "title": "价",
+            "value": "{价}",
             "name": "price"
           }],
           "selectCol": ["productName", "skuName", "specModel", "quantity", "price"],
@@ -336,7 +336,7 @@ export default {
           "left": 15,
           "top": 370,
           "title": "自定义文本",
-          "value": "发货仓库：",
+          "value": "OutboundWarehouse：",
           "defaultValue": "自定义文本",
           "name": "",
           "style": {
@@ -360,7 +360,7 @@ export default {
           "left": 495,
           "top": 370,
           "title": "自定义文本",
-          "value": "合计金额：",
+          "value": "Total Amount：",
           "defaultValue": "自定义文本",
           "name": "",
           "style": {
@@ -384,7 +384,7 @@ export default {
           "left": 15,
           "top": 390,
           "title": "自定义文本",
-          "value": "联系人：",
+          "value": "Contacts：",
           "defaultValue": "自定义文本",
           "name": "",
           "style": {
@@ -432,7 +432,7 @@ export default {
           "left": 15,
           "top": 410,
           "title": "自定义文本",
-          "value": "地址：",
+          "value": "Address：",
           "defaultValue": "自定义文本",
           "name": "",
           "style": {
@@ -456,7 +456,7 @@ export default {
           "left": 15,
           "top": 430,
           "title": "自定义文本",
-          "value": "备注：",
+          "value": "Remark：",
           "defaultValue": "自定义文本",
           "name": "",
           "style": {
@@ -527,9 +527,9 @@ export default {
           "height": 20,
           "left": 75,
           "top": 370,
-          "title": "出库仓库",
-          "value": "{出库仓库}",
-          "defaultValue": "北京仓库",
+          "title": "Outbound Warehouse",
+          "value": "{Outbound Warehouse}",
+          "defaultValue": "北京Warehouse",
           "name": "warehouseName",
           "style": {
             "zIndex": 0,
@@ -551,8 +551,8 @@ export default {
           "height": 20,
           "left": 555,
           "top": 370,
-          "title": "合计金额",
-          "value": "{合计金额}",
+          "title": "Total Amount",
+          "value": "{Total Amount}",
           "defaultValue": "123.00",
           "name": "totalPrice",
           "style": {
@@ -623,8 +623,8 @@ export default {
           "height": 20,
           "left": 50,
           "top": 410,
-          "title": "收货地址(销售)",
-          "value": "{收货地址}",
+          "title": "收货Address(销售)",
+          "value": "{收货Address}",
           "defaultValue": "四川成都",
           "name": "address",
           "style": {
@@ -649,7 +649,7 @@ export default {
           "top": 430,
           "title": "摘要",
           "value": "{摘要}",
-          "defaultValue": "北京采购入库成都摘要",
+          "defaultValue": "北京采购Inbound成都摘要",
           "name": "remark",
           "style": {
             "zIndex": 0,
@@ -671,8 +671,8 @@ export default {
           "height": 20,
           "left": 50,
           "top": 450,
-          "title": "制单人",
-          "value": "{制单人}",
+          "title": "制人",
+          "value": "{制人}",
           "defaultValue": "jz002",
           "name": "createUserName",
           "style": {
@@ -700,24 +700,24 @@ export default {
         {
           type: 'braid-txt',
           isEdit: 0,
-          title: '公司名称',
-          value: '{公司名称}',
+          title: '公司Item',
+          value: '{公司Item}',
           defaultValue: '某某公司',
           name: 'companyName'
         },
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '出库单号',
-          value: '{出库单号}',
+          title: 'Outbound No.',
+          value: '{Outbound No.}',
           defaultValue: 'CK-1234567890',
           name: 'stockoutCode'
         },
         {
           type: 'bar-code',
           isEdit: 1,
-          title: '单号条码',
-          value: '{单号}',
+          title: 'No.条码',
+          value: '{No.}',
           defaultValue: 'CK-1234567890',
           name: 'stockoutCode',
           lodopStyle: { QRCodeVersion: '1', QRCodeErrorLevel: 'L' },
@@ -725,8 +725,8 @@ export default {
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '客户/供应商',
-          value: '{客户/供应商}',
+          title: '客户/Supplier',
+          value: '{客户/Supplier}',
           defaultValue: '中国苹果',
           name: 'unitName'
         },
@@ -741,40 +741,40 @@ export default {
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '出库类型',
-          value: '{出库类型}',
-          defaultValue: '销售出库',
+          title: 'Outbound Type',
+          value: '{Outbound Type}',
+          defaultValue: '销售Outbound ',
           name: 'stockoutType'
         },
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '出库仓库',
-          value: '{出库仓库}',
-          defaultValue: '北京仓库',
+          title: 'Outbound Warehouse',
+          value: '{Outbound Warehouse}',
+          defaultValue: '北京Warehouse',
           name: 'warehouseName'
         },
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '出库时间',
-          value: '{出库时间}',
+          title: 'Outbound  Time',
+          value: '{Outbound  Time}',
           defaultValue: '2020-08-27 12:00:00',
           name: 'businessDate'
         },
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '制单人',
-          value: '{制单人}',
+          title: '制人',
+          value: '{制人}',
           defaultValue: 'jz002',
           name: 'createUserName'
         },
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '制单时间',
-          value: '{制单时间}',
+          title: '制 Time',
+          value: '{制 Time}',
           defaultValue: '2020-08-27 12:00:00',
           name: 'created'
         },
@@ -797,16 +797,16 @@ export default {
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '收货地址(销售)',
-          value: '{收货地址}',
+          title: '收货Address(销售)',
+          value: '{收货Address}',
           defaultValue: '四川成都',
           name: 'address'
         },
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '合计金额',
-          value: '{合计金额}',
+          title: 'Total Amount',
+          value: '{Total Amount}',
           defaultValue: '123.00',
           name: 'totalPrice'
         },
@@ -815,7 +815,7 @@ export default {
           isEdit: 1,
           title: '摘要',
           value: '{摘要}',
-          defaultValue: '北京采购入库成都摘要',
+          defaultValue: '北京采购Inbound成都摘要',
           name: 'remark'
         },
         {
@@ -829,7 +829,7 @@ export default {
         {
           type: 'braid-table',
           isEdit: 0,
-          title: '出库商品明细',
+          title: 'Outbound 商品明细',
           name: 'details',
           value: '{details}',
           style: {},
@@ -855,36 +855,36 @@ export default {
           tabelHtml: '',
           columnsAttr: [
             {
-              title: '产品名称',
-              value: '{产品名称}',
+              title: '产品Item',
+              value: '{产品Item}',
               name: 'productName',
             },
             {
-              title: 'sku名称',
-              value: '{sku名称}',
+              title: 'skuItem',
+              value: '{skuItem}',
               name: 'skuName',
             },
             {
-              title: '规格型号',
-              value: '{规格型号}',
+              title: '规格型No.',
+              value: '{规格型No.}',
               name: 'specModel'
             },
             {
-              title: '数量',
-              value: '{数量}',
+              title: 'Count',
+              value: '{Count}',
               name: 'quantity'
             },
             {
-              title: '单价',
-              value: '{单价}',
+              title: '价',
+              value: '{价}',
               name: 'price'
             },
             {
-              title: '产品序列号',
-              value: '产品序列号明细：<br>{产品序列号}',
+              title: '产品序列No.',
+              value: '产品序列No.明细：<br>{产品序列No.}',
               name: 'snCode',
               trSet: {
-                title: '产品序列号明细:',
+                title: '产品序列No.明细:',
                 col: 5,
                 margin: '50px'
               },

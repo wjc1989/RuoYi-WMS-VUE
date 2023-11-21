@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询库存移动列表
+// SearchInventory移动列表
 export function listWmsInventoryMovement(query, pageReq) {
   return request({
     url: '/wms/inventoryMovement/list',
@@ -10,7 +10,7 @@ export function listWmsInventoryMovement(query, pageReq) {
   })
 }
 
-// 查询库存移动详细
+// SearchInventory移动详细
 export function getWmsInventoryMovement(id) {
   return request({
     url: '/wms/inventoryMovement/' + id,
@@ -26,7 +26,7 @@ export function addOrUpdateWmsInventoryMovement(data) {
   })
 }
 
-// 新增库存移动
+// AddInventory移动
 export function addWmsInventoryMovement(data) {
   return request({
     url: '/wms/inventoryMovement',
@@ -35,7 +35,7 @@ export function addWmsInventoryMovement(data) {
   })
 }
 
-// 修改库存移动
+// ModifyInventory移动
 export function updateWmsInventoryMovement(data) {
   return request({
     url: '/wms/inventoryMovement',
@@ -44,7 +44,7 @@ export function updateWmsInventoryMovement(data) {
   })
 }
 
-// 删除库存移动
+// DeleteInventory移动
 export function delWmsInventoryMovement(id) {
   return request({
     url: '/wms/inventoryMovement/' + id,
@@ -52,7 +52,7 @@ export function delWmsInventoryMovement(id) {
   })
 }
 
-// 导出库存移动
+// ExportInventory移动
 export function exportWmsInventoryMovement(query) {
   return request({
     url: '/wms/inventoryMovement/export',

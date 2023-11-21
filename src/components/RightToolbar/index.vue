@@ -1,10 +1,10 @@
 <template>
   <div class="top-right-btn">
     <el-row>
-      <el-tooltip class="item" effect="dark" :content="showSearch ? '隐藏搜索' : '显示搜索'" placement="top">
+      <el-tooltip class="item" effect="dark" :content="showSearch ? '隐藏Search' : '显示Search'" placement="top">
         <el-button size="mini" circle icon="el-icon-search" @click="toggleSearch()" />
       </el-tooltip>
-      <el-tooltip class="item" effect="dark" content="刷新" placement="top">
+      <el-tooltip class="item" effect="dark" content="Refresh" placement="top">
         <el-button size="mini" circle icon="el-icon-refresh" @click="refresh()" />
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="显隐列" placement="top" v-if="columns">
@@ -26,11 +26,11 @@ export default {
   name: "RightToolbar",
   data() {
     return {
-      // 显隐数据
+      // 显隐Data
       value: [],
       // 弹出层标题
       title: "显示/隐藏",
-      // 是否显示弹出层
+      // 显示弹出层
       open: false,
     };
   },
@@ -52,11 +52,11 @@ export default {
     }
   },
   methods: {
-    // 搜索
+    // Search
     toggleSearch() {
       this.$emit("update:showSearch", !this.showSearch);
     },
-    // 刷新
+    // Refresh
     refresh() {
       this.$emit("queryTable");
     },

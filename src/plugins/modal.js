@@ -3,7 +3,7 @@ import { Message, MessageBox, Notification, Loading } from 'element-ui'
 let loadingInstance;
 
 export default {
-  // 消息提示
+  // 消息Info
   msg(content) {
     Message.info(content)
   },
@@ -11,31 +11,31 @@ export default {
   msgError(content) {
     Message.error(content)
   },
-  // 成功消息
+  //  Successful消息
   msgSuccess(content) {
     Message.success(content)
   },
-  // 警告消息
+  // Warning消息
   msgWarning(content) {
     Message.warning(content)
   },
-  // 弹出提示
+  // 弹出Info
   alert(content) {
-    MessageBox.alert(content, "系统提示")
+    MessageBox.alert(content, "Info")
   },
-  // 错误提示
+  // 错误Info
   alertError(content) {
-    MessageBox.alert(content, "系统提示", { type: 'error' })
+    MessageBox.alert(content, "Info", { type: 'error' })
   },
-  // 成功提示
+  //  SuccessfulInfo
   alertSuccess(content) {
-    MessageBox.alert(content, "系统提示", { type: 'success' })
+    MessageBox.alert(content, "Info", { type: 'success' })
   },
-  // 警告提示
+  // WarningInfo
   alertWarning(content) {
-    MessageBox.alert(content, "系统提示", { type: 'warning' })
+    MessageBox.alert(content, "Info", { type: 'warning' })
   },
-  // 通知提示
+  // 通知Info
   notify(content) {
     Notification.info(content)
   },
@@ -43,27 +43,27 @@ export default {
   notifyError(content) {
     Notification.error(content);
   },
-  // 成功通知
+  //  Successful通知
   notifySuccess(content) {
     Notification.success(content)
   },
-  // 警告通知
+  // Warning通知
   notifyWarning(content) {
     Notification.warning(content)
   },
-  // 确认窗体
+  // OK窗体
   confirm(content) {
-    return MessageBox.confirm(content, "系统提示", {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
+    return MessageBox.confirm(content, "Info", {
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
       type: "warning",
     })
   },
-  // 提交内容
+  // 提交Content
   prompt(content) {
-    return MessageBox.prompt(content, "系统提示", {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
+    return MessageBox.prompt(content, "Info", {
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
       type: "warning",
     })
   },
@@ -76,7 +76,7 @@ export default {
       background: "rgba(0, 0, 0, 0.7)",
     })
   },
-  // 关闭遮罩层
+  // Close遮罩层
   closeLoading() {
     loadingInstance.close();
   }

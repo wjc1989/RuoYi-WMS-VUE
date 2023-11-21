@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询仓库列表
+// SearchWarehouse列表
 export function listWmsWarehouse(query, pageReq) {
   return request({
     url: '/wms/warehouse/list',
@@ -10,7 +10,7 @@ export function listWmsWarehouse(query, pageReq) {
   })
 }
 
-// 查询仓库详细
+// SearchWarehouse详细
 export function getWmsWarehouse(id) {
   return request({
     url: '/wms/warehouse/' + id,
@@ -18,7 +18,7 @@ export function getWmsWarehouse(id) {
   })
 }
 
-// 新增仓库
+// AddWarehouse
 export function addWmsWarehouse(data) {
   return request({
     url: '/wms/warehouse',
@@ -27,7 +27,7 @@ export function addWmsWarehouse(data) {
   })
 }
 
-// 修改仓库
+// ModifyWarehouse
 export function updateWmsWarehouse(data) {
   return request({
     url: '/wms/warehouse',
@@ -36,7 +36,7 @@ export function updateWmsWarehouse(data) {
   })
 }
 
-// 删除仓库
+// DeleteWarehouse
 export function delWmsWarehouse(id) {
   return request({
     url: '/wms/warehouse/' + id,
@@ -44,7 +44,7 @@ export function delWmsWarehouse(id) {
   })
 }
 
-// 导出仓库
+// ExportWarehouse
 export function exportWmsWarehouse(query) {
   return request({
     url: '/wms/warehouse/export',

@@ -9,7 +9,7 @@
           <div class="setting-drawer-block-checbox-item" @click="handleTheme('theme-dark')">
             <img src="@/assets/images/dark.svg" alt="dark">
             <div v-if="sideTheme === 'theme-dark'" class="setting-drawer-block-checbox-selectIcon" style="display: block;">
-              <i aria-label="图标: check" class="anticon anticon-check">
+              <i aria-label="Icon: check" class="anticon anticon-check">
                 <svg viewBox="64 64 896 896" data-icon="check" width="1em" height="1em" :fill="theme" aria-hidden="true"
                      focusable="false" class="">
                   <path
@@ -21,7 +21,7 @@
           <div class="setting-drawer-block-checbox-item" @click="handleTheme('theme-light')">
             <img src="@/assets/images/light.svg" alt="light">
             <div v-if="sideTheme === 'theme-light'" class="setting-drawer-block-checbox-selectIcon" style="display: block;">
-              <i aria-label="图标: check" class="anticon anticon-check">
+              <i aria-label="Icon: check" class="anticon anticon-check">
                 <svg viewBox="64 64 896 896" data-icon="check" width="1em" height="1em" :fill="theme" aria-hidden="true"
                      focusable="false" class="">
                   <path
@@ -41,7 +41,7 @@
       <el-divider/>
 
       <h3 class="drawer-title">系统布局配置</h3>
-      
+
       <div class="drawer-item">
         <span>开启 TopNav</span>
         <el-switch v-model="topNav" class="drawer-switch" />
@@ -69,8 +69,8 @@
 
       <el-divider/>
 
-      <el-button size="small" type="primary" plain icon="el-icon-document-add" @click="saveSetting">保存配置</el-button>
-      <el-button size="small" plain icon="el-icon-refresh" @click="resetSetting">重置配置</el-button>
+      <el-button size="small" type="primary" plain icon="el-icon-document-add" @click="saveSetting">Add配置</el-button>
+      <el-button size="small" plain icon="el-icon-refresh" @click="resetSetting">Reset配置</el-button>
     </div>
   </div>
 </template>
@@ -163,7 +163,7 @@ export default {
       this.sideTheme = val;
     },
     saveSetting() {
-      this.$modal.loading("正在保存到本地，请稍候...");
+      this.$modal.loading("正在Add到本地，请稍候...");
       this.$cache.local.set(
         "layout-setting",
         `{
@@ -179,7 +179,7 @@ export default {
       setTimeout(this.$modal.closeLoading(), 1000)
     },
     resetSetting() {
-      this.$modal.loading("正在清除设置缓存并刷新，请稍候...");
+      this.$modal.loading("正在清除设置Cache并Refresh，请稍候...");
       this.$cache.local.remove("layout-setting")
       setTimeout("window.location.reload()", 1000)
     }

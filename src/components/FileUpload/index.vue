@@ -14,13 +14,13 @@
       class="upload-file-uploader"
       ref="upload"
     >
-      <!-- 上传按钮 -->
+      <!-- 上传Button -->
       <el-button size="mini" type="primary">选取文件</el-button>
-      <!-- 上传提示 -->
+      <!-- 上传Info -->
       <div class="el-upload__tip" slot="tip" v-if="showTip">
         请上传
-        <template v-if="fileSize"> 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
-        <template v-if="fileType"> 格式为 <b style="color: #f56c6c">{{ fileType.join("/") }}</b> </template>
+        <template v-if="fileSize"> 大小No 超过 <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
+        <template v-if="fileType"> 格式 <b style="color: #f56c6c">{{ fileType.join("/") }}</b> </template>
         的文件
       </div>
     </el-upload>
@@ -32,7 +32,7 @@
           <span class="el-icon-document"> {{ getFileName(file.name) }} </span>
         </el-link>
         <div class="ele-upload-list__item-content-action">
-          <el-link :underline="false" @click="handleDelete(index)" type="danger">删除</el-link>
+          <el-link :underline="false" @click="handleDelete(index)" type="danger">Delete</el-link>
         </div>
       </li>
     </transition-group>
@@ -47,7 +47,7 @@ export default {
   props: {
     // 值
     value: [String, Object, Array],
-    // 数量限制
+    // Count限制
     limit: {
       type: Number,
       default: 5,
@@ -57,12 +57,12 @@ export default {
       type: Number,
       default: 5,
     },
-    // 文件类型, 例如['png', 'jpg', 'jpeg']
+    // 文件Type, 例如['png', 'jpg', 'jpeg']
     fileType: {
       type: Array,
       default: () => ["doc", "xls", "ppt", "txt", "pdf"],
     },
-    // 是否显示提示
+    // 显示Info
     isShowTip: {
       type: Boolean,
       default: true
@@ -73,7 +73,7 @@ export default {
       number: 0,
       uploadList: [],
       baseUrl: process.env.VUE_APP_BASE_API,
-      uploadFileUrl: process.env.VUE_APP_BASE_API + "/common/upload", // 上传的图片服务器地址
+      uploadFileUrl: process.env.VUE_APP_BASE_API + "/common/upload", // 上传的图片服务器Address
       headers: {
         Authorization: "Bearer " + getToken(),
       },
@@ -85,9 +85,9 @@ export default {
       handler(val) {
         if (val) {
           let temp = 1;
-          // 首先将值转为数组
+          // 首先将值转数组
           const list = Array.isArray(val) ? val : this.value.split(',');
-          // 然后将数组转为对象数组
+          // 然后将数组转对象数组
           this.fileList = list.map(item => {
             if (typeof item === "string") {
               item = { name: item, url: item };
@@ -105,7 +105,7 @@ export default {
     }
   },
   computed: {
-    // 是否显示提示
+    // 显示Info
     showTip() {
       return this.isShowTip && (this.fileType || this.fileSize);
     },
@@ -113,7 +113,7 @@ export default {
   methods: {
     // 上传前校检格式和大小
     handleBeforeUpload(file) {
-      // 校检文件类型
+      // 校检文件Type
       if (this.fileType) {
         let fileExtension = "";
         if (file.name.lastIndexOf(".") > -1) {
@@ -125,7 +125,7 @@ export default {
           return false;
         });
         if (!isTypeOk) {
-          this.$modal.msgError(`文件格式不正确, 请上传${this.fileType.join("/")}格式文件!`);
+          this.$modal.msgError(`文件格式No 正确, 请上传${this.fileType.join("/")}格式文件!`);
           return false;
         }
       }
@@ -133,7 +133,7 @@ export default {
       if (this.fileSize) {
         const isLt = file.size / 1024 / 1024 < this.fileSize;
         if (!isLt) {
-          this.$modal.msgError(`上传文件大小不能超过 ${this.fileSize} MB!`);
+          this.$modal.msgError(`上传文件大小No 能超过 ${this.fileSize} MB!`);
           return false;
         }
       }
@@ -143,14 +143,14 @@ export default {
     },
     // 文件个数超出
     handleExceed() {
-      this.$modal.msgError(`上传文件数量不能超过 ${this.limit} 个!`);
+      this.$modal.msgError(`上传文件CountNo 能超过 ${this.limit} 个!`);
     },
     // 上传失败
     handleUploadError(err) {
       this.$modal.msgError("上传图片失败，请重试");
       this.$modal.closeLoading()
     },
-    // 上传成功回调
+    // 上传 Successful回调
     handleUploadSuccess(res) {
       this.uploadList.push({ name: res.fileName, url: res.fileName });
       if (this.uploadList.length === this.number) {
@@ -161,12 +161,12 @@ export default {
         this.$modal.closeLoading();
       }
     },
-    // 删除文件
+    // Delete文件
     handleDelete(index) {
       this.fileList.splice(index, 1);
       this.$emit("input", this.listToString(this.fileList));
     },
-    // 获取文件名称
+    // 获取文件Item
     getFileName(name) {
       if (name.lastIndexOf("/") > -1) {
         return name.slice(name.lastIndexOf("/") + 1);

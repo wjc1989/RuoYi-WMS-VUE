@@ -23,7 +23,7 @@
             >
               <el-input
                 v-model="formData.label"
-                placeholder="请输入选项名"
+                placeholder="Please Input 选项名"
                 clearable
               />
             </el-form-item>
@@ -35,7 +35,7 @@
             >
               <el-input
                 v-model="formData.value"
-                placeholder="请输入选项值"
+                placeholder="Please Input 选项值"
                 clearable
               >
                 <el-select
@@ -61,10 +61,10 @@
           type="primary"
           @click="handleConfirm"
         >
-          确定
+          OK
         </el-button>
         <el-button @click="close">
-          取消
+          Cancel
         </el-button>
       </div>
     </el-dialog>
@@ -88,14 +88,14 @@ export default {
         label: [
           {
             required: true,
-            message: '请输入选项名',
+            message: 'Please Input 选项名',
             trigger: 'blur'
           }
         ],
         value: [
           {
             required: true,
-            message: '请输入选项值',
+            message: 'Please Input 选项值',
             trigger: 'blur'
           }
         ]

@@ -1,6 +1,6 @@
 export const STOCK_OUT_TEMPLATE = {
   "default": "true",
-  "title": "出库单",
+  "title": "Outbound ",
   "type": 1,
   "width": 770,
   "height": 500,
@@ -15,8 +15,8 @@ export const STOCK_OUT_TEMPLATE = {
     "height": 25,
     "left": 0,
     "top": 10,
-    "title": "出库单号",
-    "value": "{ 出库单号 } ",
+    "title": "Outbound No.",
+    "value": "{ Outbound No. } ",
     "defaultValue": "CK-1234567890",
     "name": "shipmentOrderNo",
     "style": {
@@ -64,7 +64,7 @@ export const STOCK_OUT_TEMPLATE = {
     "left": 375,
     "top": 40,
     "title": "自定义文本",
-    "value": "订单号：",
+    "value": "No.：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -88,7 +88,7 @@ export const STOCK_OUT_TEMPLATE = {
     "left": 15,
     "top": 67,
     "title": "自定义文本",
-    "value": "出库类型：",
+    "value": "Outbound Type：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -112,7 +112,7 @@ export const STOCK_OUT_TEMPLATE = {
     "left": 387,
     "top": 67,
     "title": "自定义文本",
-    "value": "日期：",
+    "value": "Date：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -159,8 +159,8 @@ export const STOCK_OUT_TEMPLATE = {
     "height": 20,
     "left": 425,
     "top": 40,
-    "title": "订单号",
-    "value": "{ 订单号 } ",
+    "title": "No.",
+    "value": "{ No. } ",
     "defaultValue": "zj001",
     "name": "orderNo",
     "style": {
@@ -183,9 +183,9 @@ export const STOCK_OUT_TEMPLATE = {
     "height": 20,
     "left": 80,
     "top": 67,
-    "title": "出库类型",
-    "value": "{ 出库类型 } ",
-    "defaultValue": "销售出库",
+    "title": "Outbound Type",
+    "value": "{ Outbound Type } ",
+    "defaultValue": "销售Outbound ",
     "name": "shipmentType",
     "style": {
       "zIndex": 0,
@@ -207,8 +207,8 @@ export const STOCK_OUT_TEMPLATE = {
     "height": 20,
     "left": 425,
     "top": 67,
-    "title": "下单时间",
-    "value": "{ 下单时间 } ",
+    "title": "下 Time",
+    "value": "{ 下 Time } ",
     "defaultValue": "2020-08-27 12: 00: 00",
     "name": "createTime",
     "style": {
@@ -231,49 +231,49 @@ export const STOCK_OUT_TEMPLATE = {
     "height": 275,
     "left": 15,
     "top": 110,
-    "title": "出库商品明细",
+    "title": "Outbound 商品明细",
     "value": "{ details } ",
     "tabelHtml": "",
     "columnsAttr": [{
-      "title": "物料名",
-      "value": "{ 物料名 } ",
+      "title": "Goods Name",
+      "value": "{ Goods Name } ",
       "name": "itemName"
     }, {
-      "title": "物料编号",
-      "value": "{ 物料编号 } ",
+      "title": "Goods No.",
+      "value": "{ Goods No. } ",
       "name": "itemNo"
     }, {
-      "title": "物料类型",
-      "value": "{ 物料类型 } ",
+      "title": "Type",
+      "value": "{ ItemType } ",
       "name": "itemType"
     }, {
-      "title": "数量",
-      "value": "{ 数量 } ",
+      "title": "Count",
+      "value": "{ Count } ",
       "name": "planQuantity"
     }, {
-      "title": "仓库/库区",
-      "value": "{ 仓库/库区 } ",
+      "title": "Warehouse",
+      "value": "{ Warehouse } ",
       "name": "place"
     }],
     "columns": [{
-      "title": "物料名",
-      "value": "{物料名}",
+      "title": "Goods Name",
+      "value": "{Goods Name}",
       "name": "itemName"
     }, {
-      "title": "物料编号",
-      "value": "{物料编号}",
+      "title": "Goods No.",
+      "value": "{Goods No.}",
       "name": "itemNo"
     }, {
-      "title": "物料类型",
-      "value": "{物料类型}",
+      "title": "ItemType",
+      "value": "{ItemType}",
       "name": "itemType"
     }, {
-      "title": "数量",
-      "value": "{数量}",
+      "title": "Count",
+      "value": "{Count}",
       "name": "planQuantity"
     }, {
-      "title": "仓库/库区",
-      "value": "{仓库/库区}",
+      "title": "Warehouse",
+      "value": "{Warehouse}",
       "name": "place"
     }],
     "selectCol": ["itemName", "itemNo", "itemType", "planQuantity", "place"],
@@ -298,7 +298,7 @@ export const STOCK_OUT_TEMPLATE = {
     "left": 435,
     "top": 382,
     "title": "自定义文本",
-    "value": "合计数量：",
+    "value": "Total Count：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -322,7 +322,7 @@ export const STOCK_OUT_TEMPLATE = {
     "left": 15,
     "top": 430,
     "title": "自定义文本",
-    "value": "备注：",
+    "value": "Remark：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -345,8 +345,8 @@ export const STOCK_OUT_TEMPLATE = {
     "height": 20,
     "left": 492,
     "top": 382,
-    "title": "合计数量",
-    "value": "{合计数量}",
+    "title": "Total Count",
+    "value": "{Total Count}",
     "defaultValue": "123.00",
     "name": "totalCount",
     "style": {
@@ -369,9 +369,9 @@ export const STOCK_OUT_TEMPLATE = {
     "height": 20,
     "left": 50,
     "top": 430,
-    "title": "备注",
-    "value": "{备注}",
-    "defaultValue": "北京采购入库成都摘要",
+    "title": "Remark",
+    "value": "{Remark}",
+    "defaultValue": "北京采购Inbound成都摘要",
     "name": "remark",
     "style": {
       "zIndex": 0,
@@ -390,7 +390,7 @@ export const STOCK_OUT_TEMPLATE = {
 
 export const STOCK_IN_TEMPLATE = {
   "default": "true",
-  "title": "入库单",
+  "title": "Inbound",
   "type": 1,
   "width": 770,
   "height": 500,
@@ -405,8 +405,8 @@ export const STOCK_IN_TEMPLATE = {
     "height": 25,
     "left": 0,
     "top": 10,
-    "title": "入库单号",
-    "value": "{ 入库单号 } ",
+    "title": "Inbound No.",
+    "value": "{ Inbound No. } ",
     "defaultValue": "CK-1234567890",
     "name": "receiptOrderNo",
     "style": {
@@ -430,7 +430,7 @@ export const STOCK_IN_TEMPLATE = {
     "left": 27,
     "top": 40,
     "title": "自定义文本",
-    "value": "供应商：",
+    "value": "Supplier：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -454,7 +454,7 @@ export const STOCK_IN_TEMPLATE = {
     "left": 375,
     "top": 40,
     "title": "自定义文本",
-    "value": "订单号：",
+    "value": "No.：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -478,7 +478,7 @@ export const STOCK_IN_TEMPLATE = {
     "left": 15,
     "top": 67,
     "title": "自定义文本",
-    "value": "入库类型：",
+    "value": "Type：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -502,7 +502,7 @@ export const STOCK_IN_TEMPLATE = {
     "left": 387,
     "top": 67,
     "title": "自定义文本",
-    "value": "日期：",
+    "value": "Date：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -525,8 +525,8 @@ export const STOCK_IN_TEMPLATE = {
     "height": 20,
     "left": 80,
     "top": 40,
-    "title": "供应商",
-    "value": "{ 供应商 } ",
+    "title": "Supplier",
+    "value": "{ Supplier } ",
     "defaultValue": "中国苹果",
     "name": "supplierName",
     "style": {
@@ -549,8 +549,8 @@ export const STOCK_IN_TEMPLATE = {
     "height": 20,
     "left": 425,
     "top": 40,
-    "title": "订单号",
-    "value": "{ 订单号 } ",
+    "title": "No.",
+    "value": "{ No. } ",
     "defaultValue": "zj001",
     "name": "orderNo",
     "style": {
@@ -573,9 +573,9 @@ export const STOCK_IN_TEMPLATE = {
     "height": 20,
     "left": 80,
     "top": 67,
-    "title": "入库类型",
-    "value": "{ 入库类型 } ",
-    "defaultValue": "销售出库",
+    "title": "Type",
+    "value": "{ Type } ",
+    "defaultValue": "销售Outbound ",
     "name": "receiptType",
     "style": {
       "zIndex": 0,
@@ -597,8 +597,8 @@ export const STOCK_IN_TEMPLATE = {
     "height": 20,
     "left": 425,
     "top": 67,
-    "title": "下单时间",
-    "value": "{ 下单时间 } ",
+    "title": "下 Time",
+    "value": "{ 下 Time } ",
     "defaultValue": "2020-08-27 12: 00: 00",
     "name": "createTime",
     "style": {
@@ -621,49 +621,49 @@ export const STOCK_IN_TEMPLATE = {
     "height": 275,
     "left": 15,
     "top": 110,
-    "title": "入库商品明细",
+    "title": "Inbound商品明细",
     "value": "{ details } ",
     "tabelHtml": "",
     "columnsAttr": [{
-      "title": "物料名",
-      "value": "{ 物料名 } ",
+      "title": "Goods Name",
+      "value": "{ Goods Name } ",
       "name": "itemName"
     }, {
-      "title": "物料编号",
-      "value": "{ 物料编号 } ",
+      "title": "Goods No.",
+      "value": "{ Goods No. } ",
       "name": "itemNo"
     }, {
-      "title": "物料类型",
-      "value": "{ 物料类型 } ",
+      "title": "ItemType",
+      "value": "{ ItemType } ",
       "name": "itemType"
     }, {
-      "title": "数量",
-      "value": "{ 数量 } ",
+      "title": "Count",
+      "value": "{ Count } ",
       "name": "planQuantity"
     }, {
-      "title": "仓库/库区",
-      "value": "{ 仓库/库区 } ",
+      "title": "Warehouse",
+      "value": "{ Warehouse } ",
       "name": "place"
     }],
     "columns": [{
-      "title": "物料名",
-      "value": "{物料名}",
+      "title": "Goods Name",
+      "value": "{Goods Name}",
       "name": "itemName"
     }, {
-      "title": "物料编号",
-      "value": "{物料编号}",
+      "title": "Goods No.",
+      "value": "{Goods No.}",
       "name": "itemNo"
     }, {
-      "title": "物料类型",
-      "value": "{物料类型}",
+      "title": "ItemType",
+      "value": "{ItemType}",
       "name": "itemType"
     }, {
-      "title": "数量",
-      "value": "{数量}",
+      "title": "Count",
+      "value": "{Count}",
       "name": "planQuantity"
     }, {
-      "title": "仓库/库区",
-      "value": "{仓库/库区}",
+      "title": "Warehouse",
+      "value": "{Warehouse}",
       "name": "place"
     }],
     "selectCol": ["itemName", "itemNo", "itemType", "planQuantity", "place"],
@@ -688,7 +688,7 @@ export const STOCK_IN_TEMPLATE = {
     "left": 435,
     "top": 382,
     "title": "自定义文本",
-    "value": "合计数量：",
+    "value": "Total Count：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -712,7 +712,7 @@ export const STOCK_IN_TEMPLATE = {
     "left": 15,
     "top": 430,
     "title": "自定义文本",
-    "value": "备注：",
+    "value": "Remark：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -735,8 +735,8 @@ export const STOCK_IN_TEMPLATE = {
     "height": 20,
     "left": 492,
     "top": 382,
-    "title": "合计数量",
-    "value": "{合计数量}",
+    "title": "Total Count",
+    "value": "{Total Count}",
     "defaultValue": "123.00",
     "name": "totalCount",
     "style": {
@@ -759,9 +759,9 @@ export const STOCK_IN_TEMPLATE = {
     "height": 20,
     "left": 50,
     "top": 430,
-    "title": "备注",
-    "value": "{备注}",
-    "defaultValue": "北京采购入库成都摘要",
+    "title": "Remark",
+    "value": "{Remark}",
+    "defaultValue": "北京采购Inbound成都摘要",
     "name": "remark",
     "style": {
       "zIndex": 0,

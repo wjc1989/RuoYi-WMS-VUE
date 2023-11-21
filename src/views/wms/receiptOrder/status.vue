@@ -2,67 +2,67 @@
   <div class="receipt-order-status-wrapper app-container" v-loading="loading">
     <div class="receipt-order-content">
       <el-form label-width="108px" :model="form" ref="form" :rules="rules">
-        <el-form-item label="入库单号" prop="receiptOrderNo">{{ form.receiptOrderNo }}</el-form-item>
-        <el-form-item label="入库状态" prop="receiptOrderNo">{{ receiptStatusMap.get(form.receiptOrderStatus + '') }}
+        <el-form-item label="Inbound No." prop="receiptOrderNo">{{ form.receiptOrderNo }}</el-form-item>
+        <el-form-item label="InboundStatus" prop="receiptOrderNo">{{ receiptStatusMap.get(form.receiptOrderStatus + '') }}
         </el-form-item>
-        <el-form-item label="入库类型" prop="receiptOrderType">
+        <el-form-item label="Type" prop="receiptOrderType">
           {{ selectDictLabel(dict.type.wms_receipt_type, form.receiptOrderType) }}
         </el-form-item>
-        <el-form-item label="供应商" prop="supplierId">{{ supplierMap.get(form.supplierId) }}</el-form-item>
-        <el-form-item label="订单号" prop="orderNo">{{ form.orderNo }}</el-form-item>
-        <el-form-item label="备注" prop="remark">{{ form.remark }}</el-form-item>
+        <el-form-item label="Supplier" prop="supplierId">{{ supplierMap.get(form.supplierId) }}</el-form-item>
+        <el-form-item label="No." prop="orderNo">{{ form.orderNo }}</el-form-item>
+        <el-form-item label="Remark" prop="remark">{{ form.remark }}</el-form-item>
       </el-form>
       <el-divider></el-divider>
       <el-row class="mb8 mt10" :gutter="10">
         <el-col :span="1.5">
-          <div class="flex-one large-tip bolder-font">物料明细</div>
+          <div class="flex-one large-tip bolder-font">Goods Detail</div>
         </el-col>
         <el-col :span="1.5">
           <el-button size="small" type="success" plain="plain" icon="el-icon-delete-location"
                      @click="onBatchSetInventory">
-            批量设置仓库/库区
+            Set Warehouse
           </el-button>
         </el-col>
         <el-col :span="1.5">
           <el-button v-if="mergeDetailStatusArray.length === 1" type="primary" plain="plain" size="small"
-                     @click="batch">批量设置出库状态
+                     @click="batch">Set Outbound Status
           </el-button>
         </el-col>
 
       </el-row>
 
-      <el-dialog title="请选择入库状态" :visible.sync="open" width="50%" append-to-body="append-to-body">
+      <el-dialog title="Please select InboundStatus" :visible.sync="open" width="50%" append-to-body="append-to-body">
         <DictRadio v-model="dialogStatus" :radioData="dialogStatusRange"></DictRadio>
         <div class="dialog-footer" slot="footer">
-          <el-button type="primary" @click="dialogConfirm">确 定</el-button>
-          <el-button @click="cancelDialog">取 消</el-button>
+          <el-button type="primary" @click="dialogConfirm">OK</el-button>
+          <el-button @click="cancelDialog">Cancel</el-button>
         </div>
       </el-dialog>
       <div class="table">
         <el-form ref="form" :model="form" :show-message="false">
           <WmsTable :data="form.details" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55" align="center"></el-table-column>
-            <el-table-column label="物料名" align="center" prop="prod.itemName"></el-table-column>
-            <el-table-column label="物料编号" align="center" prop="prod.itemNo"></el-table-column>
-            <el-table-column label="物料类型" align="center" prop="prod.itemType" class="mb20"></el-table-column>
-            <el-table-column label="计划数量" align="center" prop="planQuantity" class="mb20"></el-table-column>
-            <el-table-column label="实际数量" align="center" width="150">
+            <el-table-column label="Goods Name" align="center" prop="prod.itemName"></el-table-column>
+            <el-table-column label="Goods No." align="center" prop="prod.itemNo"></el-table-column>
+            <el-table-column label="ItemType" align="center" prop="prod.itemType" class="mb20"></el-table-column>
+            <el-table-column label="Plan Count" align="center" prop="planQuantity" class="mb20"></el-table-column>
+            <el-table-column label="Real Count" align="center" width="150">
               <template slot-scope="scope" class="mb20">
                 <el-input-number v-model="scope.row.realQuantity" :min="1" :max="2147483647" size="small"
                                  :disabled="scope.row.finish"></el-input-number>
               </template>
             </el-table-column>
-            <el-table-column label="仓库/库区" align="center" width="200">
+            <el-table-column label="Warehouse" align="center" width="200">
               <template slot-scope="scope">
                 <el-form-item :prop=" 'details.' + scope.$index + '.place' "
-                              :rules="[{ required: true, message: '请选择仓库/库区', trigger: 'change' }]"
+                              :rules="[{ required: true, message: 'Please select Warehouse', trigger: 'change' }]"
                               style="margin-bottom: 0!important;">
                   <WmsWarehouseCascader v-model="scope.row.place" size="small"
                                         :disabled="scope.row.finish"></WmsWarehouseCascader>
                 </el-form-item>
               </template>
             </el-table-column>
-            <el-table-column label="入库状态" width="150">
+            <el-table-column label="InboundStatus" width="150">
               <template slot-scope="{ row }">
                 <DictSelect v-model="row.receiptOrderStatus" :options="row.range" size="small"
                             @change="setReceiptOrderStatus" :disabled="row.finish"></DictSelect>
@@ -73,8 +73,8 @@
         <el-empty v-if="!form.details || form.details.length === 0" :image-size="48"></el-empty>
       </div>
       <div class="tc mt16">
-        <el-button @click="cancel">取消</el-button>
-        <el-button @click="submitForm" type="primary" :disabled="finish">保存</el-button>
+        <el-button @click="cancel">Cancel</el-button>
+        <el-button @click="submitForm" type="primary" :disabled="finish">Add</el-button>
       </div>
     </div>
     <BatchWarehouseDialog
@@ -119,7 +119,7 @@ export default {
   },
   data() {
     return {
-      // 批量设置仓库/库区
+      // Set Warehouse
       batchDialogVisible: false,
       batchForm: {
         place: []
@@ -128,12 +128,12 @@ export default {
       // 遮罩层
       loading: true,
       ids: [],
-      // 表单参数
+      // 表参数
       form: {
         details: []
       },
       sourceDetails: [],
-      // 表单校验
+      // 表校验
       rules: {},
       dialogStatus: null,
       // 非多个禁用
@@ -150,21 +150,21 @@ export default {
     }
   },
   methods: {
-    /** 批量设置仓库/库区 */
+    /** Set Warehouse */
     onBatchSetInventory() {
       const {details} = this.form
       if (!details || details.length === 0) {
-        this.$modal.msgError('请先添加物料')
+        this.$modal.msgError('Please Add Item')
         return
       }
       // 未选中
       if (!this.ids.length) {
-        this.$modal.msgError('请先选择物料')
+        this.$modal.msgError('Please Select Item')
         return
       }
       this.batchDialogVisible = true
     },
-    /** 批量设置仓库/库区 完成事件 */
+    /** Set Warehouse 完成事件 */
     onBatchDialogFinished() {
       this.batchDialogVisible = false
       const [warehouseId, areaId, rackId] = this.batchForm.place || []
@@ -177,7 +177,7 @@ export default {
     },
     dialogConfirm() {
       if (!this.dialogStatus) {
-        this.$modal.alert('请选择入库状态')
+        this.$modal.alert('Please select InboundStatus')
         return
       }
       this.form.details.forEach(detail => {
@@ -192,28 +192,28 @@ export default {
       this.open = false
       this.dialogStatus = null
     },
-    // 多选框选中数据
+    // 多选框选中Data
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.id)
       this.multiple = !selection.length
     },
     batch() {
       if (this.multiple) {
-        this.$modal.alert('请先选择物料')
+        this.$modal.alert('Please Select Item')
       } else {
         this.open = true
       }
     },
     cancel() {
-      this.$tab.closeOpenPage({path: '/wms/receiptOrder'})
+      this.$tab.closeOpenPage({path: '/receiptOrder'})
     },
-    /** 提交按钮 */
+    /** 提交Button */
     submitForm() {
       this.$refs['form'].validate((valid, msg) => {
         if (!valid) {
           this.$notify({
-            title: '警告',
-            message: "请完善表单信息",
+            title: 'Warning',
+            message: "请完善表信息",
             type: 'warning'
           });
           return
@@ -242,7 +242,7 @@ export default {
         })
         const req = {...this.form, details}
         addOrUpdateWmsReceiptOrder(req).then(response => {
-          this.$modal.msgSuccess(this.form.id ? '修改成功' : '新增成功')
+          this.$modal.msgSuccess(this.form.id ? 'Modify Successful' : 'Add Successful')
           this.cancel()
         })
       })

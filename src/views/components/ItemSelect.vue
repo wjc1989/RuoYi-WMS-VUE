@@ -2,26 +2,26 @@
   <div class="prod-sku-select-wrapper">
     <div class="search">
       <el-form inline="inline" label-width="64">
-        <el-form-item label="商品类型">
+        <el-form-item label="Goods Type">
           <div class="w200">
             <treeselect
               v-model="query.itemType"
               :options="deptOptions"
               :show-count="true"
               clearable
-              placeholder="请选择分类"
+              placeholder="Please select Type"
             />
           </div>
         </el-form-item>
-        <el-form-item label="快速筛选">
+        <el-form-item label="Search">
           <el-input
             class="w200"
             v-model="query.search"
             clearable
-            placeholder="编号、名称、ID"
+            placeholder="No.、Item、ID"
           ></el-input>
         </el-form-item>
-        <el-button type="primary" @click="clickQuery">查询</el-button>
+        <el-button type="primary" @click="clickQuery">Search</el-button>
       </el-form>
     </div>
     <div class="center">
@@ -37,8 +37,8 @@
                   :disabled="editableList.length === 0"
                 ></el-checkbox>
               </th>
-              <th>物料名称</th>
-              <th>物料编号</th>
+              <th>Goods Name</th>
+              <th>Goods No.</th>
             </tr>
 
             <tr v-for="p in list" :key="p.id">
@@ -84,7 +84,7 @@ export default {
   props: ['data'],
   data() {
     return {
-      //物料类别
+      //Item类别
       deptOptions: [],
       query: {
         itemType: null,

@@ -4,7 +4,7 @@
       <el-col :span="8">
         <el-card style="height: calc(100vh - 125px)">
           <div slot="header">
-            <span>缓存列表</span>
+            <span>Cache列表</span>
             <el-button
               style="float: right; padding: 3px 0"
               type="text"
@@ -21,13 +21,13 @@
             style="width: 100%"
           >
             <el-table-column
-              label="序号"
+              label="No."
               width="60"
               type="index"
             ></el-table-column>
 
             <el-table-column
-              label="缓存名称"
+              label="CacheItem"
               align="center"
               prop="cacheName"
               :show-overflow-tooltip="true"
@@ -35,13 +35,13 @@
             ></el-table-column>
 
             <el-table-column
-              label="备注"
+              label="Remark"
               align="center"
               prop="remark"
               :show-overflow-tooltip="true"
             />
             <el-table-column
-              label="操作"
+              label="Operate"
               width="60"
               align="center"
               class-name="small-padding fixed-width"
@@ -79,19 +79,19 @@
             style="width: 100%"
           >
             <el-table-column
-              label="序号"
+              label="No."
               width="60"
               type="index"
             ></el-table-column>
             <el-table-column
-              label="缓存键名"
+              label="Cache键名"
               align="center"
               :show-overflow-tooltip="true"
               :formatter="keyFormatter"
             >
             </el-table-column>
             <el-table-column
-              label="操作"
+              label="Operate"
               width="60"
               align="center"
               class-name="small-padding fixed-width"
@@ -112,29 +112,29 @@
       <el-col :span="8">
         <el-card :bordered="false" style="height: calc(100vh - 125px)">
           <div slot="header">
-            <span>缓存内容</span>
+            <span>CacheContent</span>
             <el-button
               style="float: right; padding: 3px 0"
               type="text"
               icon="el-icon-refresh-right"
               @click="handleClearCacheAll()"
-              >清理全部</el-button
+              >清理All</el-button
             >
           </div>
           <el-form :model="cacheForm">
             <el-row :gutter="32">
               <el-col :offset="1" :span="22">
-                <el-form-item label="缓存名称:" prop="cacheName">
+                <el-form-item label="CacheItem:" prop="cacheName">
                   <el-input v-model="cacheForm.cacheName" :readOnly="true" />
                 </el-form-item>
               </el-col>
               <el-col :offset="1" :span="22">
-                <el-form-item label="缓存键名:" prop="cacheKey">
+                <el-form-item label="Cache键名:" prop="cacheKey">
                   <el-input v-model="cacheForm.cacheKey" :readOnly="true" />
                 </el-form-item>
               </el-col>
               <el-col :offset="1" :span="22">
-                <el-form-item label="缓存内容:" prop="cacheValue">
+                <el-form-item label="CacheContent:" prop="cacheValue">
                   <el-input
                     v-model="cacheForm.cacheValue"
                     type="textarea"
@@ -171,7 +171,7 @@ export default {
     this.getCacheNames();
   },
   methods: {
-    /** 查询缓存名称列表 */
+    /** SearchCacheItem列表 */
     getCacheNames() {
       this.loading = true;
       listCacheName().then(response => {
@@ -179,19 +179,19 @@ export default {
         this.loading = false;
       });
     },
-    /** 刷新缓存名称列表 */
+    /** RefreshCacheItem列表 */
     refreshCacheNames() {
       this.getCacheNames();
-      this.$modal.msgSuccess("刷新缓存列表成功");
+      this.$modal.msgSuccess("RefreshCache列表 Successful");
     },
-    /** 清理指定名称缓存 */
+    /** 清理指定ItemCache */
     handleClearCacheName(row) {
       clearCacheName(row.cacheName).then(response => {
-        this.$modal.msgSuccess("清理缓存名称[" + this.nowCacheName + "]成功");
+        this.$modal.msgSuccess("清理CacheItem[" + this.nowCacheName + "] Successful");
         this.getCacheKeys();
       });
     },
-    /** 查询缓存键名列表 */
+    /** SearchCache键名列表 */
     getCacheKeys(row) {
       const cacheName = row !== undefined ? row.cacheName : this.nowCacheName;
       if (cacheName === "") {
@@ -204,15 +204,15 @@ export default {
         this.nowCacheName = cacheName;
       });
     },
-    /** 刷新缓存键名列表 */
+    /** RefreshCache键名列表 */
     refreshCacheKeys() {
       this.getCacheKeys();
-      this.$modal.msgSuccess("刷新键名列表成功");
+      this.$modal.msgSuccess("Refresh键名列表 Successful");
     },
-    /** 清理指定键名缓存 */
+    /** 清理指定键名Cache */
     handleClearCacheKey(cacheKey) {
       clearCacheKey(cacheKey).then(response => {
-        this.$modal.msgSuccess("清理缓存键名[" + cacheKey + "]成功");
+        this.$modal.msgSuccess("清理Cache键名[" + cacheKey + "] Successful");
         this.getCacheKeys();
       });
     },
@@ -224,16 +224,16 @@ export default {
     keyFormatter(cacheKey) {
       return cacheKey.replace(this.nowCacheName, "");
     },
-    /** 查询缓存内容详细 */
+    /** SearchCacheContent详细 */
     handleCacheValue(cacheKey) {
       getCacheValue(this.nowCacheName, cacheKey).then(response => {
         this.cacheForm = response.data;
       });
     },
-    /** 清理全部缓存 */
+    /** 清理AllCache */
     handleClearCacheAll() {
       clearCacheAll().then(response => {
-        this.$modal.msgSuccess("清理全部缓存成功");
+        this.$modal.msgSuccess("清理AllCache Successful");
       });
     }
   },

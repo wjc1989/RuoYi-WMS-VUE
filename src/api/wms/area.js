@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询库区列表
+// SearchArea列表
 export function listWmsArea(query, pageReq) {
     return request({
         url: '/wms/area/list',
@@ -10,7 +10,7 @@ export function listWmsArea(query, pageReq) {
     })
 }
 
-// 查询库区详细
+// SearchArea详细
 export function getWmsArea(id) {
     return request({
         url: '/wms/area/' + id,
@@ -18,7 +18,7 @@ export function getWmsArea(id) {
     })
 }
 
-// 新增库区
+// AddArea
 export function addWmsArea(data) {
     return request({
         url: '/wms/area',
@@ -27,7 +27,7 @@ export function addWmsArea(data) {
     })
 }
 
-// 修改库区
+// ModifyArea
 export function updateWmsArea(data) {
     return request({
         url: '/wms/area',
@@ -36,7 +36,7 @@ export function updateWmsArea(data) {
     })
 }
 
-// 删除库区
+// DeleteArea
 export function delWmsArea(id) {
     return request({
         url: '/wms/area/' + id,
@@ -44,7 +44,7 @@ export function delWmsArea(id) {
     })
 }
 
-// 导出库区
+// ExportArea
 export function exportWmsArea(query) {
     return request({
         url: '/wms/area/export',

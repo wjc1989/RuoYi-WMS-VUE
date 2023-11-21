@@ -1,8 +1,8 @@
 /**
- * @classdesc 字典数据
- * @property {String} label 标签
- * @property {*} value 标签
- * @property {Object} raw 原始数据
+ * @classdesc DictData
+ * @property {String} label  Label
+ * @property {*} value  Label
+ * @property {Object} raw 原始Data
  */
 export default class DictData {
   constructor(label, value, raw) {

@@ -3,17 +3,17 @@
     <div class="title">{{ row.shipmentOrderNo }}</div>
     <div class="summary">
       <div class="col1">客戶: {{ row.customerName }}</div>
-      <div class="col1">订单号: {{ row.orderNo }}</div>
-      <div class="col1">出库类型: {{ row.shipmentType }}</div>
-      <div class="col1">日期: {{ row.createTime }}</div>
+      <div class="col1">No.: {{ row.orderNo }}</div>
+      <div class="col1">Outbound Type: {{ row.shipmentType }}</div>
+      <div class="col1">Date: {{ row.createTime }}</div>
     </div>
     <table class="common-table">
       <tr>
-        <th>物料名</th>
-        <th>物料编号</th>
-        <th>物料类型</th>
-        <th>数量</th>
-        <th>仓库/库区</th>
+        <th>Goods Name</th>
+        <th>Goods No.</th>
+        <th>ItemType</th>
+        <th>Count</th>
+        <th>Warehouse</th>
       </tr>
       <tr v-for="it in row.details">
         <td>{{ it.itemName || '' }}</td>
@@ -23,7 +23,7 @@
         <td>{{ it.place }}</td>
       </tr>
       <tr>
-        <td>合计</td>
+        <td>Total </td>
         <td></td>
         <td></td>
         <td>{{ row.totalCount }}</td>
@@ -31,7 +31,7 @@
       </tr>
     </table>
     <div class="foot">
-      <div class="col2">备注: {{ row.remark }}</div>
+      <div class="col2">Remark: {{ row.remark }}</div>
     </div>
   </div>
 </template>

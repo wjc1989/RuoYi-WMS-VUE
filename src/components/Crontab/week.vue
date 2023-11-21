@@ -8,13 +8,13 @@
 
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="2">
-				不指定
+				No 指定
 			</el-radio>
 		</el-form-item>
 
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="3">
-				周期从星期
+				周期从
 				<el-select clearable v-model="cycle01">
 					<el-option
 						v-for="(item,index) of weekList"
@@ -40,7 +40,7 @@
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="4">
 				第
-				<el-input-number v-model='average01' :min="1" :max="4" /> 周的星期
+				<el-input-number v-model='average01' :min="1" :max="4" /> 周的
 				<el-select clearable v-model="average02">
 					<el-option v-for="(item,index) of weekList" :key="index" :label="item.value" :value="item.key">{{item.value}}</el-option>
 				</el-select>
@@ -49,7 +49,7 @@
 
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="5">
-				本月最后一个星期
+				本月最后一个
 				<el-select clearable v-model="weekday">
 					<el-option v-for="(item,index) of weekList" :key="index" :label="item.value" :value="item.key">{{item.value}}</el-option>
 				</el-select>
@@ -82,31 +82,31 @@ export default {
 			weekList: [
 				{
 					key: 2,
-					value: '星期一'
+					value: '一'
 				},
 				{
 					key: 3,
-					value: '星期二'
+					value: '二'
 				},
 				{
 					key: 4,
-					value: '星期三'
+					value: '三'
 				},
 				{
 					key: 5,
-					value: '星期四'
+					value: '四'
 				},
 				{
 					key: 6,
-					value: '星期五'
+					value: '五'
 				},
 				{
 					key: 7,
-					value: '星期六'
+					value: '六'
 				},
 				{
 					key: 1,
-					value: '星期日'
+					value: '日'
 				}
 			],
 			checkNum: this.$options.propsData.check
@@ -115,7 +115,7 @@ export default {
 	name: 'crontab-week',
 	props: ['check', 'cron'],
 	methods: {
-		// 单选按钮值变化时
+		// 选Button值变化时
 		radioChange() {
 			if (this.radioValue !== 2 && this.cron.day !== '?') {
 				this.$emit('update', 'day', '?', 'week');

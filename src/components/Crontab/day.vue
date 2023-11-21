@@ -8,7 +8,7 @@
 
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="2">
-				不指定
+				No 指定
 			</el-radio>
 		</el-form-item>
 
@@ -23,7 +23,7 @@
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="4">
 				从
-				<el-input-number v-model='average01' :min="1" :max="30" /> 号开始，每
+				<el-input-number v-model='average01' :min="1" :max="30" /> No.开始，每
 				<el-input-number v-model='average02' :min="1" :max="31 - average01 || 1" /> 日执行一次
 			</el-radio>
 		</el-form-item>
@@ -31,7 +31,7 @@
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="5">
 				每月
-				<el-input-number v-model='workday' :min="1" :max="31" /> 号最近的那个工作日
+				<el-input-number v-model='workday' :min="1" :max="31" /> No.最近的那个工作日
 			</el-radio>
 		</el-form-item>
 
@@ -69,7 +69,7 @@ export default {
 	name: 'crontab-day',
 	props: ['check', 'cron'],
 	methods: {
-		// 单选按钮值变化时
+		// 选Button值变化时
 		radioChange() {
 			('day rachange');
 			if (this.radioValue !== 2 && this.cron.week !== '?') {

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询发货记录列表
+// SearchOutbound记录列表
 export function listWmsDelivery(query, pageReq) {
   return request({
     url: '/wms/delivery/list',
@@ -10,7 +10,7 @@ export function listWmsDelivery(query, pageReq) {
   })
 }
 
-// 查询发货记录详细
+// SearchOutbound记录详细
 export function getWmsDelivery(id) {
   return request({
     url: '/wms/delivery/' + id,
@@ -18,7 +18,7 @@ export function getWmsDelivery(id) {
   })
 }
 
-// 新增发货记录
+// AddOutbound记录
 export function addWmsDelivery(data) {
   return request({
     url: '/wms/delivery',
@@ -27,7 +27,7 @@ export function addWmsDelivery(data) {
   })
 }
 
-// 修改发货记录
+// ModifyOutbound记录
 export function updateWmsDelivery(data) {
   return request({
     url: '/wms/delivery',
@@ -36,7 +36,7 @@ export function updateWmsDelivery(data) {
   })
 }
 
-// 删除发货记录
+// DeleteOutbound记录
 export function delWmsDelivery(id) {
   return request({
     url: '/wms/delivery/' + id,
@@ -44,7 +44,7 @@ export function delWmsDelivery(id) {
   })
 }
 
-// 导出发货记录
+// ExportOutbound记录
 export function exportWmsDelivery(query) {
   return request({
     url: '/wms/delivery/export',

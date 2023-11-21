@@ -1,28 +1,28 @@
 /**
- * @file 出库单类型和状态的常量
- * @description 出库单类型和状态的常量
+ * @file Outbound Type和Status的常量
+ * @description Outbound Type和Status的常量
  * @createdBy Zhang Cheng
  * @createdAt 2023/08/10
  */
 export const ShipmentOrderConstant = {
-  // 字典 wms_shipment_type
+  // Dict wms_shipment_type
   Type: {
-    // 销售订单
+    // 销售订
     SALE: 11,
-    // 外包订单
+    // 外包订
     OUTSOURCING: 12,
-    // 转运订单
+    // 转运订
     TRANSFER: 13,
-    // 部门订单
+    // Department订
     DEPT: 14
   },
-  // 字典 wms_shipment_status
+  // Dict wms_shipment_status
   Status: {
-    // 未出库
+    // 未Outbound
     NOT_IN: 11,
-    // 部分出库
+    // 部分Outbound
     PART_IN: 12,
-    // 全部出库
+    // AllOutbound
     ALL_IN: 13,
     // 作废
     DROP: 14

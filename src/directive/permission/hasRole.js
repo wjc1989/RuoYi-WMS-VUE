@@ -1,8 +1,8 @@
  /**
- * v-hasRole 角色权限处理
+ * v-hasRole Role权限处理
  * Copyright (c) 2019 ruoyi
  */
- 
+
 import store from '@/store'
 
 export default {
@@ -22,7 +22,7 @@ export default {
         el.parentNode && el.parentNode.removeChild(el)
       }
     } else {
-      throw new Error(`请设置角色权限标签值"`)
+      throw new Error(`请设置Role权限 Label值"`)
     }
   }
 }

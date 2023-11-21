@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
     <el-tabs v-model="activeName" >
-      <el-tab-pane label="订单管理" name="first"></el-tab-pane>
-      <el-tab-pane label="批量入库" name="second"></el-tab-pane>
+      <el-tab-pane label="Receipt Order" name="first"></el-tab-pane>
+      <el-tab-pane label="Batch Inbound" name="second"></el-tab-pane>
     </el-tabs>
     <Dashboard v-if="activeName === 'first'" @switchTab="activeName = 'second'"></Dashboard>
     <wave v-if="activeName === 'second'" ></wave>

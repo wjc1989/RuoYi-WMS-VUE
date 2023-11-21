@@ -5,7 +5,7 @@
  * Copyright (c) 2019 ruoyi
  */
 
-// 日期格式化
+// Date格式化
 export function parseTime(time, pattern) {
   if (arguments.length === 0 || !time) {
     return null
@@ -37,7 +37,7 @@ export function parseTime(time, pattern) {
   const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
     let value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
+    if (key === 'a') { return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][value] }
     if (result.length > 0 && value < 10) {
       value = '0' + value
     }
@@ -46,14 +46,14 @@ export function parseTime(time, pattern) {
   return time_str
 }
 
-// 表单重置
+// 表Reset
 export function resetForm(refName) {
   if (this.$refs[refName]) {
     this.$refs[refName].resetFields();
   }
 }
 
-// 添加日期范围
+// AddDate范围
 export function addDateRange(params, dateRange, propName) {
   let search = params;
   search.params = typeof (search.params) === 'object' && search.params !== null && !Array.isArray(search.params) ? search.params : {};
@@ -68,7 +68,7 @@ export function addDateRange(params, dateRange, propName) {
   return search;
 }
 
-// 回显数据字典
+// 回显DataDict
 export function selectDictLabel(datas, value) {
   if (value === undefined) {
     return "";
@@ -86,7 +86,7 @@ export function selectDictLabel(datas, value) {
   return actions.join('');
 }
 
-// 回显数据字典（字符串数组）
+// 回显DataDict（字符串数组）
 export function selectDictLabels(datas, value, separator) {
   if (value === undefined) {
     return "";
@@ -123,7 +123,7 @@ export function sprintf(str) {
   return flag ? str : '';
 }
 
-// 转换字符串，undefined,null等转化为""
+// 转换字符串，undefined,null等转化""
 export function parseStrEmpty(str) {
   if (!str || str == "undefined" || str == "null") {
     return "";
@@ -131,7 +131,7 @@ export function parseStrEmpty(str) {
   return str;
 }
 
-// 数据合并
+// Data合并
 export function mergeRecursive(source, target) {
   for (var p in target) {
     try {
@@ -148,8 +148,8 @@ export function mergeRecursive(source, target) {
 };
 
 /**
- * 构造树型结构数据
- * @param {*} data 数据源
+ * 构造树型结构Data
+ * @param {*} data Data源
  * @param {*} id id字段 默认 'id'
  * @param {*} parentId 父节点字段 默认 'parentId'
  * @param {*} children 孩子节点字段 默认 'children'
@@ -224,7 +224,7 @@ export function tansParams(params) {
   return result
 }
 
-// 验证是否为blob格式
+// 验证blob格式
 export async function blobValidate(data) {
   try {
     const text = await data.text();

@@ -1,4 +1,4 @@
-// 打印类属性、方法定义
+// Print类属性、方法定义
 /* eslint-disable */
 const Print = function (dom, options, pageSize) {
 
@@ -137,7 +137,7 @@ Print.prototype = {
 };
 const MyPlugin = {}
 MyPlugin.install = function (Vue, options) {
-  // 4. 添加实例方法
+  // 4. Add实例方法
   Vue.prototype.$print = Print
 }
 export default MyPlugin

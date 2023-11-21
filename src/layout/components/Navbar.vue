@@ -11,11 +11,11 @@
 
         <!-- <search id="header-search" class="right-menu-item" />
 
-        <el-tooltip content="源码地址" effect="dark" placement="bottom">
+        <el-tooltip content="源码Address" effect="dark" placement="bottom">
           <ruo-yi-git id="ruoyi-git" class="right-menu-item hover-effect" />
         </el-tooltip>
 
-        <el-tooltip content="文档地址" effect="dark" placement="bottom">
+        <el-tooltip content="文档Address" effect="dark" placement="bottom">
           <ruo-yi-doc id="ruoyi-doc" class="right-menu-item hover-effect" />
         </el-tooltip>
 
@@ -40,7 +40,7 @@
             <span>布局设置</span>
           </el-dropdown-item> -->
           <el-dropdown-item divided @click.native="logout">
-            <span>退出登录</span>
+            <span>退出Login</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -98,9 +98,9 @@ export default {
       this.$store.dispatch('app/toggleSideBar')
     },
     async logout() {
-      this.$confirm('确定注销并退出系统吗？', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('OK注销并退出系统吗？', 'Info', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.$store.dispatch('LogOut').then(() => {

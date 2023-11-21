@@ -34,7 +34,7 @@ export default {
     dictList() {
       if (this.showAll === "all") {
         let list = this.radioData;
-        list.splice(0, 0, {label: "全部", value: null})
+        list.splice(0, 0, {label: "All", value: null})
         return list
       } else {
         return this.radioData

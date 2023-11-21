@@ -1,5 +1,5 @@
 <template>
-  <el-select placeholder="请选择承运商" clearable v-model=" carrier">
+  <el-select placeholder="Please select  Carrier" clearable v-model=" carrier">
     <el-option
       v-for="customer in carrierList"
       :key="customer.id"

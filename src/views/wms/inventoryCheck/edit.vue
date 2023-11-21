@@ -2,17 +2,17 @@
   <div class="receipt-order-edit-wrapper app-container">
     <div class="receipt-order-content">
       <el-form label-width="108px" :model="form" ref="form" :rules="rules">
-        <el-form-item label="盘点单" prop="inventoryCheckNo">
-          <el-input class="w200" v-model="form.inventoryCheckNo" placeholder="盘点单" disabled="disabled"></el-input>
+        <el-form-item label="Count" prop="inventoryCheckNo">
+          <el-input class="w200" v-model="form.inventoryCheckNo" placeholder="Count" disabled="disabled"></el-input>
         </el-form-item>
-        <el-form-item label="盘点仓库" prop="supplierId">
+        <el-form-item label="CountWarehouse" prop="supplierId">
           <wms-warehouse-cascader v-model="form.place" size="small"></wms-warehouse-cascader>
         </el-form-item>
-        <el-form-item label="盈亏数" prop="inventoryCheckTotal">
+        <el-form-item label="+-" prop="inventoryCheckTotal">
           <el-input-number v-model="inventoryCheckTotal" :precision="2" disabled></el-input-number>
         </el-form-item>
-        <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" placeholder="备注...100个字符以内" rows="3" maxlength="100" type="textarea"
+        <el-form-item label="Remark" prop="remark">
+          <el-input v-model="form.remark" placeholder="Remark...100个字符以内" rows="3" maxlength="100" type="textarea"
             show-word-limit="show-word-limit"></el-input>
         </el-form-item>
         <el-form-item label="附件" prop="attachment">
@@ -21,21 +21,21 @@
       </el-form>
       <el-divider></el-divider>
       <div class="flex-center mb8">
-        <div class="flex-one large-tip bolder-font">物料明细</div>
+        <div class="flex-one large-tip bolder-font">Goods Detail</div>
         <div class="ops">
-          <el-button type="primary" plain="plain" size="small" @click="showAddItem">添加物料</el-button>
+          <el-button type="primary" plain="plain" size="small" @click="showAddItem">Add Item</el-button>
         </div>
       </div>
       <div class="table">
         <table class="common-table">
           <tr>
-            <th>物料编号</th>
-            <th>物料名</th>
-            <th>仓库/库区</th>
-            <th>账面库存</th>
-            <th>实际库存</th>
+            <th>Goods No.</th>
+            <th>Goods Name</th>
+            <th>Warehouse</th>
+            <th>账面Inventory</th>
+            <th>实际Inventory</th>
             <th>变化量</th>
-            <th>操作</th>
+            <th>Operate</th>
           </tr>
           <tr v-for="(it, index) in form.details">
             <td align="center">{{ it.prod.itemNo }}</td>
@@ -47,26 +47,26 @@
               {{ it.quantity }}
             </td>
             <td align="center">
-              <el-input-number v-model="it.checkQuantity" :precision="2" :min="0" label="请输入实际库存"></el-input-number>
+              <el-input-number v-model="it.checkQuantity" :precision="2" :min="0" label="Please Input Inventory"></el-input-number>
             </td>
             <td align="center">
               {{ it.checkQuantity - it.quantity }}
             </td>
             <td align="center">
               <a class="blue" @click="showRemarkItem(it)">说明</a>&nbsp;
-              <a class="red" @click="form.details.splice(index, 1)">删除</a>
+              <a class="red" @click="form.details.splice(index, 1)">Delete</a>
             </td>
           </tr>
         </table>
         <!-- <el-empty v-if="!form.details || form.details.length === 0" :image-size="48"></el-empty> -->
       </div>
       <div class="tc mt16" >
-        <el-button type="primary" plain="plain" size="small" @click="showAddItem">添加物料</el-button>
+        <el-button type="primary" plain="plain" size="small" @click="showAddItem">Add Item</el-button>
       </div>
       <div class="tc mt16">
-        <el-button @click="cancel">取消</el-button>
+        <el-button @click="cancel">Cancel</el-button>
         <el-button @click="submitForm(11)" type="primary">暂存</el-button>
-        <el-button @click="submitFinishForm" type="success">盘库结束</el-button>
+        <el-button @click="submitFinishForm" type="success">Count End</el-button>
       </div>
     </div>
     <el-dialog :visible="modalObj.show" :title="modalObj.title" :width="modalObj.width" @close="modalObj.cancel">
@@ -74,8 +74,8 @@
         <item-select ref="item-select"  :data="this.form.details"></item-select>
       </template>
       <span slot="footer">
-        <el-button v-if="modalObj.cancel" @click="modalObj.cancel">取消</el-button>
-        <el-button v-if="modalObj.ok" type="primary" @click="modalObj.ok">确认</el-button>
+        <el-button v-if="modalObj.cancel" @click="modalObj.cancel">Cancel</el-button>
+        <el-button v-if="modalObj.ok" type="primary" @click="modalObj.ok">OK</el-button>
       </span>
     </el-dialog>
     <el-dialog :visible="remarkModalObj.show" :title="remarkModalObj.title" :width="remarkModalObj.width" @close="remarkModalObj.cancel">
@@ -84,8 +84,8 @@
             show-word-limit="show-word-limit"></el-input>
       </template>
       <template v-slot:footer>
-        <el-button v-if="remarkModalObj.cancel" @click="remarkModalObj.cancel">取消</el-button>
-        <el-button v-if="remarkModalObj.ok" type="primary" @click="remarkModalObj.ok">确认</el-button>
+        <el-button v-if="remarkModalObj.cancel" @click="remarkModalObj.cancel">Cancel</el-button>
+        <el-button v-if="remarkModalObj.ok" type="primary" @click="remarkModalObj.ok">OK</el-button>
       </template>
     </el-dialog>
   </div>
@@ -105,11 +105,11 @@ export default {
   data() {
     return {
       types: ['png', 'jpg', 'jpeg'],
-      // 表单参数
+      // 表参数
       form: {
         details: []
       },
-      // 表单校验
+      // 表校验
       rules: {},
       modalObj: {
         show: false,
@@ -122,7 +122,7 @@ export default {
         cancel: () => {
         }
       },
-      //添加说明对话框
+      //Add说明对话框
       remarkModalObj: {
         show: false,
         title: '',
@@ -160,20 +160,20 @@ export default {
     }
   },
   methods: {
-    /** 取消按钮 */
+    /** CancelButton */
     cancel() {
       this.$tab.closeOpenPage({ path: '/inventoryCheck' })
     },
-    /** 提交按钮 */
+    /** 提交Button */
     submitFinishForm() {
-      //盘库结束22
+      //Count End22
       this.submitForm(22)
     },
     submitForm(inventoryCheckStatus = 11) {
       if (inventoryCheckStatus === 22 && this.form.details.length === 0) {
-        //未添加物料
+        //未AddItem
         Message({
-          message: "您还未开始盘库！",
+          message: "您还未开始Count ！",
           type: 'error'
         })
         return false;
@@ -211,12 +211,12 @@ export default {
 
 
         addOrUpdateWmsInventoryCheck(req).then(response => {
-          this.$modal.msgSuccess(this.form.id ? '修改成功' : '新增成功')
+          this.$modal.msgSuccess(this.form.id ? 'Modify Successful' : 'Add Successful')
           this.cancel();
         })
       })
     },
-    /** 加载 盘点单详情 */
+    /** 加载 Count详情 */
     loadDetail(id) {
       getWmsInventoryCheck(id).then(response => {
         const { details, items } = response
@@ -231,7 +231,7 @@ export default {
         }
       })
     },
-    // 表单重置
+    // 表Reset
     reset() {
       this.form = {
         id: null,
@@ -250,14 +250,14 @@ export default {
       }
       this.resetForm('form')
     },
-    /** 物料选择框 */
+    /** ItemSelect 框 */
     confirmSelectItem() {
       const value = this.$refs['item-select'].getRightList()
 
-      // 当前选中物料ids
+      // 当前选中Itemids
       this.prodIds = value.map(it => it.id)
 
-      // 当前盘点仓库
+      // 当前CountWarehouse
       const { place } = this.form
 
 
@@ -267,7 +267,7 @@ export default {
       this.form.rackId = rackId
 
       let hasInventoryIds = new Set()
-      //获取该仓库下物料ids的库存
+      //获取该Warehouse下Itemids的Inventory
       const query = { warehouseId, areaId, rackId }
       listWmsInventory(query, null).then(response => {
         const { content, totalElements } = response
@@ -280,7 +280,7 @@ export default {
         })
 
 
-        //无库存
+        //无Inventory
         this.form.details = value.filter(it => {
           return !hasInventoryIds.has(it.id)
         }).map(it => {
@@ -307,7 +307,7 @@ export default {
           }
         })
 
-        //有库存
+        //有Inventory
         this.form.details.push(...
           wmsInventoryMap.map(it => {
             let place = [it.warehouseId]
@@ -351,7 +351,7 @@ export default {
       const cancel = () => this.closeModal()
       this.modalObj = {
         show: true,
-        title: '添加物料',
+        title: 'Add Item',
         width: '50%',
         component: 'add-item',
         model: {},
@@ -364,7 +364,7 @@ export default {
       const cancel = () => this.closeModal()
       this.remarkModalObj = {
         show: true,
-        title: '添加说明',
+        title: 'Add说明',
         width: '40%',
         component: 'remark-item',
         content:it.remark,

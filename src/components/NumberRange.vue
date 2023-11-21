@@ -1,8 +1,8 @@
 <template>
   <div class="number-range-wrapper">
-    <el-input class="start" :value="value1[0]" @input="changeVal(0, $event)" placeholder="起始值"></el-input>
+    <el-input class="start" :value="value1[0]" @input="changeVal(0, $event)" placeholder="Start"></el-input>
     <div class="c-line"><span>-</span></div>
-    <el-input class="end" :value="value1[1]" @input="changeVal(1, $event)" placeholder="结束值"></el-input>
+    <el-input class="end" :value="value1[1]" @input="changeVal(1, $event)" placeholder="End"></el-input>
   </div>
 </template>
 

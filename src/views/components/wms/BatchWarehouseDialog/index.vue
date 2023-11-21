@@ -1,13 +1,13 @@
 <template>
-  <el-dialog :visible="visible" width="500px" title="批量设置仓库" @close="handleCancel">
+  <el-dialog :visible="visible" width="500px" title="Set Warehouse" @close="handleCancel">
     <el-form :model="form" ref="form">
-      <el-form-item label="仓库/库区" prop="place" :rules="rules">
+      <el-form-item label="Warehouse" prop="place" :rules="rules">
         <WmsWarehouseCascader v-model="form.place" size="small"></WmsWarehouseCascader>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="handleCancel">取 消</el-button>
-      <el-button type="primary" @click="handleConfirm">确 定</el-button>
+      <el-button @click="handleCancel">Cancel</el-button>
+      <el-button type="primary" @click="handleConfirm">OK</el-button>
     </div>
   </el-dialog>
 </template>
@@ -27,7 +27,7 @@ export default {
     rules: {
       type: Array,
       default: () => [
-        {required: true, message: '请选择 仓库/库区', trigger: 'blur'}
+        {required: true, message: 'Please select  Warehouse', trigger: 'blur'}
       ]
     }
   },

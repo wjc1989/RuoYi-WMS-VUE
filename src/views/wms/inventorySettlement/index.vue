@@ -9,16 +9,16 @@
       size="medium"
       class="ry_form"
     >
-      <el-form-item label="结算单号" prop="inventorySettlementNo">
+      <el-form-item label="结算No." prop="inventorySettlementNo">
         <el-input
           v-model="queryParams.inventorySettlementNo"
-          placeholder="请输入结算单号"
+          placeholder="Please Input 结算No."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="结算状态" prop="inventorySettlementStatus">
+      <el-form-item label="结算Status" prop="inventorySettlementStatus">
         <DictRadio
           v-model="queryParams.inventorySettlementStatus"
           @change="handleQuery"
@@ -27,7 +27,7 @@
           :showAll="'all'"
         />
       </el-form-item>
-      <!--      <el-form-item label="结算类型" prop="settlementType">
+      <!--      <el-form-item label="结算Type" prop="settlementType">
               <DictRadio
                 v-model="queryParams.settlementType"
                 @change="handleQuery"
@@ -43,11 +43,11 @@
           icon="el-icon-search"
           size="mini"
           @click="handleQuery"
-        >搜索
+        >Search
         </el-button
         >
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery"
-        >重置
+        >Reset
         </el-button
         >
       </el-form-item>
@@ -62,7 +62,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:wmsInventorySettlement:add']"
-        >新增结算单
+        >Add结算
         </el-button
         >
       </el-col>
@@ -75,7 +75,7 @@
           :loading="exportLoading"
           @click="handleExport"
           v-hasPermi="['wms:wmsInventorySettlement:export']"
-        >导出
+        >Export
         </el-button
         >
       </el-col>
@@ -93,7 +93,7 @@
     >
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column
-        label="结算单号"
+        label="结算No."
         align="center"
         prop="inventorySettlementNo"
         v-if="columns[3].visible"
@@ -108,25 +108,25 @@
         </template>
 
       </el-table-column>
-      <el-table-column label="结算状态" align="center" prop="inventorySettlementStatus" v-if="columns[0].visible">
+      <el-table-column label="结算Status" align="center" prop="inventorySettlementStatus" v-if="columns[0].visible">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.wms_settlement_status" :value="scope.row.inventorySettlementStatus"/>
         </template>
       </el-table-column>
       <!--      <el-table-column
-              label="结算类型"
+              label="结算Type"
               align="center"
               prop="settlementType"
               v-if="columns[1].visible"
             />-->
       <el-table-column
-        label="备注"
+        label="Remark"
         align="center"
         prop="remark"
         v-if="columns[2].visible"
       />
       <el-table-column
-        label="操作"
+        label="Operate"
         align="center"
         class-name="small-padding fixed-width"
       >
@@ -155,7 +155,7 @@
             v-if="11 === scope.row.inventorySettlementStatus"
             @click="handleDelete(scope.row)"
             v-hasPermi="['wms:wmsInventorySettlement:remove']"
-          >删除
+          >Delete
           </el-button>
         </template>
       </el-table-column>
@@ -187,21 +187,21 @@ export default {
     return {
       // 遮罩层
       loading: true,
-      // 导出遮罩层
+      // Export遮罩层
       exportLoading: false,
       // 选中数组
       ids: [],
-      // 非单个禁用
+      // 非个禁用
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示搜索条件
+      // 显示Search
       showSearch: true,
       // 总条数
       total: 0,
-      // 库存结算单表格数据
+      // Inventory结算表格Data
       wmsInventorySettlementList: [],
-      // 查询参数
+      // Search参数
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -209,13 +209,13 @@ export default {
         settlementType: null,
         inventorySettlementNo: null,
       },
-      // 表单参数
+      // 表参数
       form: {},
       columns: [
-        {key: 9, label: "结算单号", visible: true},
-        {key: 1, label: "结算状态", visible: true},
-        {key: 2, label: "结算类型", visible: true},
-        {key: 4, label: "备注", visible: true},
+        {key: 9, label: "结算No.", visible: true},
+        {key: 1, label: "结算Status", visible: true},
+        {key: 2, label: "结算Type", visible: true},
+        {key: 4, label: "Remark", visible: true},
       ],
     };
   },
@@ -237,7 +237,7 @@ export default {
       }
       return ''
     },
-    /** 查询库存结算单列表 */
+    /** SearchInventory结算列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -254,7 +254,7 @@ export default {
         this.loading = false;
       });
     },
-    // 表单重置
+    // 表Reset
     reset() {
       this.form = {
         id: null,
@@ -269,57 +269,57 @@ export default {
       };
       this.resetForm("form");
     },
-    /** 搜索按钮操作 */
+    /** SearchButtonOperate */
     handleQuery() {
       this.queryParams.pageNum = 1;
       this.getList();
     },
-    /** 重置按钮操作 */
+    /** ResetButtonOperate */
     resetQuery() {
       this.resetForm("queryForm");
       this.handleQuery();
     },
-    // 多选框选中数据
+    // 多选框选中Data
     handleSelectionChange(selection) {
       this.ids = selection.map((item) => item.id);
       this.single = selection.length !== 1;
       this.multiple = !selection.length;
     },
-    /** 查看按钮操作 */
+    /** 查看ButtonOperate */
     handleView(row) {
       const id = row.id || this.ids
       this.$router.push({path: 'inventorySettlement/status', query: {id}})
     },
-    /** 新增按钮操作 */
+    /** AddButtonOperate */
     handleAdd() {
       const settlementType = this.queryParams.settlementType
       this.$router.push({path: "inventorySettlement/edit", query: {settlementType}});
     },
-    /** 修改按钮操作 */
+    /** ModifyButtonOperate */
     handleUpdate(row) {
       const id = row.id || this.ids
       this.$router.push({path: 'inventorySettlement/edit', query: {id}})
     },
-    /** 删除按钮操作 */
+    /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
       this.$modal
-        .confirm('是否确认删除库存结算单编号为"' + ids + '"的数据项？')
+        .confirm(' Do you want delete Inventory结算No."' + ids + '"？')
         .then(function () {
           return delWmsInventorySettlement(ids);
         })
         .then(() => {
           this.getList();
-          this.$modal.msgSuccess("删除成功");
+          this.$modal.msgSuccess("Delete Successful");
         })
         .catch(() => {
         });
     },
-    /** 导出按钮操作 */
+    /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
       this.$modal
-        .confirm("是否确认导出所有库存结算单数据项？")
+        .confirm("Export AllInventory结算？")
         .then(() => {
           this.exportLoading = true;
           return exportWmsInventorySettlement(queryParams);

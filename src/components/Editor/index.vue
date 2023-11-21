@@ -27,7 +27,7 @@ import { getToken } from "@/utils/auth";
 export default {
   name: "Editor",
   props: {
-    /* 编辑器的内容 */
+    /* 编辑器的Content */
     value: {
       type: String,
       default: "",
@@ -52,7 +52,7 @@ export default {
       type: Number,
       default: 5,
     },
-    /* 类型（base64格式、url格式） */
+    /* Type（base64格式、url格式） */
     type: {
       type: String,
       default: "url",
@@ -60,7 +60,7 @@ export default {
   },
   data() {
     return {
-      uploadUrl: process.env.VUE_APP_BASE_API + "/common/upload", // 上传的图片服务器地址
+      uploadUrl: process.env.VUE_APP_BASE_API + "/common/upload", // 上传的图片服务器Address
       headers: {
         Authorization: "Bearer " + getToken()
       },
@@ -73,7 +73,7 @@ export default {
         modules: {
           // 工具栏配置
           toolbar: [
-            ["bold", "italic", "underline", "strike"],       // 加粗 斜体 下划线 删除线
+            ["bold", "italic", "underline", "strike"],       // 加粗 斜体 下划线 Delete线
             ["blockquote", "code-block"],                    // 引用  代码块
             [{ list: "ordered" }, { list: "bullet" }],       // 有序、无序列表
             [{ indent: "-1" }, { indent: "+1" }],            // 缩进
@@ -85,7 +85,7 @@ export default {
             ["link", "image", "video"]                       // 链接、图片、视频
           ],
         },
-        placeholder: "请输入内容",
+        placeholder: "Please Input Content",
         readOnly: this.readOnly,
       },
     };
@@ -125,7 +125,7 @@ export default {
     init() {
       const editor = this.$refs.editor;
       this.Quill = new Quill(editor, this.options);
-      // 如果设置了上传地址则自定义图片上传事件
+      // 如果设置了上传Address则自定义图片上传事件
       if (this.type == 'url') {
         let toolbar = this.Quill.getModule("toolbar");
         toolbar.addHandler("image", (value) => {
@@ -162,7 +162,7 @@ export default {
       if (this.fileSize) {
         const isLt = file.size / 1024 / 1024 < this.fileSize;
         if (!isLt) {
-          this.$message.error(`上传文件大小不能超过 ${this.fileSize} MB!`);
+          this.$message.error(`上传文件大小No 能超过 ${this.fileSize} MB!`);
           return false;
         }
       }
@@ -171,11 +171,11 @@ export default {
     handleUploadSuccess(res, file) {
       // 获取富文本组件实例
       let quill = this.Quill;
-      // 如果上传成功
+      // 如果上传 Successful
       if (res.code == 200) {
         // 获取光标所在位置
         let length = quill.getSelection().index;
-        // 插入图片  res.url为服务器返回的图片地址
+        // 插入图片  res.url服务器返回的图片Address
         quill.insertEmbed(length, "image", process.env.VUE_APP_BASE_API + res.fileName);
         // 调整光标到最后
         quill.setSelection(length + 1);
@@ -199,16 +199,16 @@ export default {
   display: none;
 }
 .ql-snow .ql-tooltip[data-mode="link"]::before {
-  content: "请输入链接地址:";
+  content: "Please Input 链接Address:";
 }
 .ql-snow .ql-tooltip.ql-editing a.ql-action::after {
   border-right: 0px;
-  content: "保存";
+  content: "Add";
   padding-right: 0px;
 }
 
 .ql-snow .ql-tooltip[data-mode="video"]::before {
-  content: "请输入视频地址:";
+  content: "Please Input 视频Address:";
 }
 
 .ql-snow .ql-picker.ql-size .ql-picker-label::before,

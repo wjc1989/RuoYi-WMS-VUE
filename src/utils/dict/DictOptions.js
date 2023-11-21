@@ -5,13 +5,13 @@ export const options = {
   metas: {
     '*': {
       /**
-       * 字典请求，方法签名为function(dictMeta: DictMeta): Promise
+       * Dict请求，方法签名function(dictMeta: DictMeta): Promise
        */
       request: (dictMeta) => {
         return Promise.resolve([])
       },
       /**
-       * 字典响应数据转换器，方法签名为function(response: Object, dictMeta: DictMeta): DictData
+       * Dict响应Data转换器，方法签名function(response: Object, dictMeta: DictMeta): DictData
        */
       responseConverter,
       labelField: 'label',
@@ -19,7 +19,7 @@ export const options = {
     },
   },
   /**
-   * 默认标签字段
+   * 默认 Label字段
    */
   DEFAULT_LABEL_FIELDS: ['label', 'name', 'title'],
   /**
@@ -29,9 +29,9 @@ export const options = {
 }
 
 /**
- * 映射字典
- * @param {Object} response 字典数据
- * @param {DictMeta} dictMeta 字典元数据
+ * 映射Dict
+ * @param {Object} response DictData
+ * @param {DictMeta} dictMeta Dict元Data
  * @returns {DictData}
  */
 function responseConverter(response, dictMeta) {

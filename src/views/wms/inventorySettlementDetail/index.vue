@@ -2,98 +2,98 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
              class="ry_form">
-      <el-form-item label="结算单id" prop="settlementId">
+      <el-form-item label="结算id" prop="settlementId">
         <el-input
           v-model="queryParams.settlementId"
-          placeholder="请输入结算单id"
+          placeholder="Please Input 结算id"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="结算类型,1:月结，2:年结" prop="settlementType">
-        <el-select v-model="queryParams.settlementType" placeholder="请选择结算类型,1:月结，2:年结" clearable
+      <el-form-item label="结算Type,1:月结，2:年结" prop="settlementType">
+        <el-select v-model="queryParams.settlementType" placeholder="Please select 结算Type,1:月结，2:年结" clearable
                    size="small">
-          <el-option label="请选择字典生成" value=""/>
+          <el-option label="Please select Dict生成" value=""/>
         </el-select>
       </el-form-item>
-      <el-form-item label="物料id" prop="itemId">
+      <el-form-item label="Itemid" prop="itemId">
         <el-input
           v-model="queryParams.itemId"
-          placeholder="请输入物料id"
+          placeholder="Please Input Itemid"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="编号" prop="itemNo">
+      <el-form-item label="No." prop="itemNo">
         <el-input
           v-model="queryParams.itemNo"
-          placeholder="请输入编号"
+          placeholder="Please Input No."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="名称" prop="itemName">
+      <el-form-item label="Item" prop="itemName">
         <el-input
           v-model="queryParams.itemName"
-          placeholder="请输入名称"
+          placeholder="Please Input Item"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="仓库id" prop="warehouseId">
+      <el-form-item label="Warehouseid" prop="warehouseId">
         <el-input
           v-model="queryParams.warehouseId"
-          placeholder="请输入仓库id"
+          placeholder="Please Input Warehouseid"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="仓库编号" prop="warehouseNo">
+      <el-form-item label="WarehouseNo." prop="warehouseNo">
         <el-input
           v-model="queryParams.warehouseNo"
-          placeholder="请输入仓库编号"
+          placeholder="Please Input WarehouseNo."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <template v-if="showMoreCondition">
-        <el-form-item label="仓库名称" prop="warehouseName">
+        <el-form-item label="WarehouseItem" prop="warehouseName">
           <el-input
             v-model="queryParams.warehouseName"
-            placeholder="请输入仓库名称"
+            placeholder="Please Input WarehouseItem"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="库区id" prop="areaId">
+        <el-form-item label="Areaid" prop="areaId">
           <el-input
             v-model="queryParams.areaId"
-            placeholder="请输入库区id"
+            placeholder="Please Input Areaid"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="库区编号" prop="areaNo">
+        <el-form-item label="AreaNo." prop="areaNo">
           <el-input
             v-model="queryParams.areaNo"
-            placeholder="请输入库区编号"
+            placeholder="Please Input AreaNo."
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="库区名称" prop="areaName">
+        <el-form-item label="AreaItem" prop="areaName">
           <el-input
             v-model="queryParams.areaName"
-            placeholder="请输入库区名称"
+            placeholder="Please Input AreaItem"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
@@ -102,34 +102,34 @@
         <el-form-item label="上期结存" prop="previousBalance">
           <el-input
             v-model="queryParams.previousBalance"
-            placeholder="请输入上期结存"
+            placeholder="Please Input 上期结存"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="本期入库" prop="currentEnter">
+        <el-form-item label="本期Inbound" prop="currentEnter">
           <el-input
             v-model="queryParams.currentEnter"
-            placeholder="请输入本期入库"
+            placeholder="Please Input 本期Inbound"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="本期出库" prop="currentOut">
+        <el-form-item label="本期Outbound " prop="currentOut">
           <el-input
             v-model="queryParams.currentOut"
-            placeholder="请输入本期出库"
+            placeholder="Please Input 本期Outbound "
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="本期盘点" prop="currentCheck">
+        <el-form-item label="本期Count" prop="currentCheck">
           <el-input
             v-model="queryParams.currentCheck"
-            placeholder="请输入本期盘点"
+            placeholder="Please Input 本期Count"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
@@ -138,7 +138,7 @@
         <el-form-item label="本期结存" prop="currentBalance">
           <el-input
             v-model="queryParams.currentBalance"
-            placeholder="请输入本期结存"
+            placeholder="Please Input 本期结存"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
@@ -146,10 +146,10 @@
         </el-form-item>
       </template>
       <el-form-item class="flex_one tr">
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">Search</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">Reset</el-button>
         <el-button :icon="showMoreCondition ? 'el-icon-arrow-up' : 'el-icon-arrow-down'" size="mini"
-                   @click="showMoreCondition = !showMoreCondition">{{ showMoreCondition ? '收起条件' : '展开条件' }}
+                   @click="showMoreCondition = !showMoreCondition">{{ showMoreCondition ? 'Collapse' : 'Expand' }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -163,7 +163,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:wmsInventorySettlementDetail:add']"
-        >新增
+        >Add
         </el-button>
       </el-col>
       <el-col :span="1.5">
@@ -175,7 +175,7 @@
           :disabled="single"
           @click="handleUpdate"
           v-hasPermi="['wms:wmsInventorySettlementDetail:edit']"
-        >修改
+        >Modify
         </el-button>
       </el-col>
       <el-col :span="1.5">
@@ -187,7 +187,7 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['wms:wmsInventorySettlementDetail:remove']"
-        >删除
+        >Delete
         </el-button>
       </el-col>
       <el-col :span="1.5">
@@ -199,7 +199,7 @@
           :loading="exportLoading"
           @click="handleExport"
           v-hasPermi="['wms:wmsInventorySettlementDetail:export']"
-        >导出
+        >Export
         </el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>
@@ -207,24 +207,24 @@
 
     <WmsTable v-loading="loading" :data="wmsInventorySettlementDetailList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="结算单id" align="center" prop="settlementId" v-if="columns[0].visible"/>
-      <el-table-column label="结算类型,1:月结，2:年结" align="center" prop="settlementType" v-if="columns[1].visible"/>
-      <el-table-column label="物料id" align="center" prop="itemId" v-if="columns[2].visible"/>
-      <el-table-column label="编号" align="center" prop="itemNo" v-if="columns[3].visible"/>
-      <el-table-column label="名称" align="center" prop="itemName" v-if="columns[4].visible"/>
-      <el-table-column label="仓库id" align="center" prop="warehouseId" v-if="columns[5].visible"/>
-      <el-table-column label="仓库编号" align="center" prop="warehouseNo" v-if="columns[6].visible"/>
-      <el-table-column label="仓库名称" align="center" prop="warehouseName" v-if="columns[7].visible"/>
-      <el-table-column label="库区id" align="center" prop="areaId" v-if="columns[8].visible"/>
-      <el-table-column label="库区编号" align="center" prop="areaNo" v-if="columns[9].visible"/>
-      <el-table-column label="库区名称" align="center" prop="areaName" v-if="columns[10].visible"/>
+      <el-table-column label="结算id" align="center" prop="settlementId" v-if="columns[0].visible"/>
+      <el-table-column label="结算Type,1:月结，2:年结" align="center" prop="settlementType" v-if="columns[1].visible"/>
+      <el-table-column label="Itemid" align="center" prop="itemId" v-if="columns[2].visible"/>
+      <el-table-column label="No." align="center" prop="itemNo" v-if="columns[3].visible"/>
+      <el-table-column label="Item" align="center" prop="itemName" v-if="columns[4].visible"/>
+      <el-table-column label="Warehouseid" align="center" prop="warehouseId" v-if="columns[5].visible"/>
+      <el-table-column label="WarehouseNo." align="center" prop="warehouseNo" v-if="columns[6].visible"/>
+      <el-table-column label="WarehouseItem" align="center" prop="warehouseName" v-if="columns[7].visible"/>
+      <el-table-column label="Areaid" align="center" prop="areaId" v-if="columns[8].visible"/>
+      <el-table-column label="AreaNo." align="center" prop="areaNo" v-if="columns[9].visible"/>
+      <el-table-column label="AreaItem" align="center" prop="areaName" v-if="columns[10].visible"/>
       <el-table-column label="上期结存" align="center" prop="previousBalance" v-if="columns[11].visible"/>
-      <el-table-column label="本期入库" align="center" prop="currentEnter" v-if="columns[12].visible"/>
-      <el-table-column label="本期出库" align="center" prop="currentOut" v-if="columns[13].visible"/>
-      <el-table-column label="本期盘点" align="center" prop="currentCheck" v-if="columns[14].visible"/>
+      <el-table-column label="本期Inbound" align="center" prop="currentEnter" v-if="columns[12].visible"/>
+      <el-table-column label="本期Outbound " align="center" prop="currentOut" v-if="columns[13].visible"/>
+      <el-table-column label="本期Count" align="center" prop="currentCheck" v-if="columns[14].visible"/>
       <el-table-column label="本期结存" align="center" prop="currentBalance" v-if="columns[15].visible"/>
-      <el-table-column label="备注" align="center" prop="remark" v-if="columns[16].visible"/>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[16].visible"/>
+      <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -232,7 +232,7 @@
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['wms:wmsInventorySettlementDetail:edit']"
-          >修改
+          >Modify
           </el-button>
           <el-button
             size="mini"
@@ -240,7 +240,7 @@
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['wms:wmsInventorySettlementDetail:remove']"
-          >删除
+          >Delete
           </el-button>
         </template>
       </el-table-column>
@@ -254,66 +254,66 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改库存结算明细对话框 -->
+    <!-- Add或ModifyInventory结算明细对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
-        <el-form-item label="结算单id" prop="settlementId">
-          <el-input v-model="form.settlementId" placeholder="请输入结算单id"/>
+        <el-form-item label="结算id" prop="settlementId">
+          <el-input v-model="form.settlementId" placeholder="Please Input 结算id"/>
         </el-form-item>
-        <el-form-item label="结算类型,1:月结，2:年结" prop="settlementType">
-          <el-select v-model="form.settlementType" placeholder="请选择结算类型,1:月结，2:年结">
-            <el-option label="请选择字典生成" value=""/>
+        <el-form-item label="结算Type,1:月结，2:年结" prop="settlementType">
+          <el-select v-model="form.settlementType" placeholder="Please select 结算Type,1:月结，2:年结">
+            <el-option label="Please select Dict生成" value=""/>
           </el-select>
         </el-form-item>
-        <el-form-item label="物料id" prop="itemId">
-          <el-input v-model="form.itemId" placeholder="请输入物料id"/>
+        <el-form-item label="Itemid" prop="itemId">
+          <el-input v-model="form.itemId" placeholder="Please Input Itemid"/>
         </el-form-item>
-        <el-form-item label="编号" prop="itemNo">
-          <el-input v-model="form.itemNo" placeholder="请输入编号"/>
+        <el-form-item label="No." prop="itemNo">
+          <el-input v-model="form.itemNo" placeholder="Please Input No."/>
         </el-form-item>
-        <el-form-item label="名称" prop="itemName">
-          <el-input v-model="form.itemName" placeholder="请输入名称"/>
+        <el-form-item label="Item" prop="itemName">
+          <el-input v-model="form.itemName" placeholder="Please Input Item"/>
         </el-form-item>
-        <el-form-item label="仓库id" prop="warehouseId">
-          <el-input v-model="form.warehouseId" placeholder="请输入仓库id"/>
+        <el-form-item label="Warehouseid" prop="warehouseId">
+          <el-input v-model="form.warehouseId" placeholder="Please Input Warehouseid"/>
         </el-form-item>
-        <el-form-item label="仓库编号" prop="warehouseNo">
-          <el-input v-model="form.warehouseNo" placeholder="请输入仓库编号"/>
+        <el-form-item label="WarehouseNo." prop="warehouseNo">
+          <el-input v-model="form.warehouseNo" placeholder="Please Input WarehouseNo."/>
         </el-form-item>
-        <el-form-item label="仓库名称" prop="warehouseName">
-          <el-input v-model="form.warehouseName" placeholder="请输入仓库名称"/>
+        <el-form-item label="WarehouseItem" prop="warehouseName">
+          <el-input v-model="form.warehouseName" placeholder="Please Input WarehouseItem"/>
         </el-form-item>
-        <el-form-item label="库区id" prop="areaId">
-          <el-input v-model="form.areaId" placeholder="请输入库区id"/>
+        <el-form-item label="Areaid" prop="areaId">
+          <el-input v-model="form.areaId" placeholder="Please Input Areaid"/>
         </el-form-item>
-        <el-form-item label="库区编号" prop="areaNo">
-          <el-input v-model="form.areaNo" placeholder="请输入库区编号"/>
+        <el-form-item label="AreaNo." prop="areaNo">
+          <el-input v-model="form.areaNo" placeholder="Please Input AreaNo."/>
         </el-form-item>
-        <el-form-item label="库区名称" prop="areaName">
-          <el-input v-model="form.areaName" placeholder="请输入库区名称"/>
+        <el-form-item label="AreaItem" prop="areaName">
+          <el-input v-model="form.areaName" placeholder="Please Input AreaItem"/>
         </el-form-item>
         <el-form-item label="上期结存" prop="previousBalance">
-          <el-input v-model="form.previousBalance" placeholder="请输入上期结存"/>
+          <el-input v-model="form.previousBalance" placeholder="Please Input 上期结存"/>
         </el-form-item>
-        <el-form-item label="本期入库" prop="currentEnter">
-          <el-input v-model="form.currentEnter" placeholder="请输入本期入库"/>
+        <el-form-item label="本期Inbound" prop="currentEnter">
+          <el-input v-model="form.currentEnter" placeholder="Please Input 本期Inbound"/>
         </el-form-item>
-        <el-form-item label="本期出库" prop="currentOut">
-          <el-input v-model="form.currentOut" placeholder="请输入本期出库"/>
+        <el-form-item label="本期Outbound " prop="currentOut">
+          <el-input v-model="form.currentOut" placeholder="Please Input 本期Outbound "/>
         </el-form-item>
-        <el-form-item label="本期盘点" prop="currentCheck">
-          <el-input v-model="form.currentCheck" placeholder="请输入本期盘点"/>
+        <el-form-item label="本期Count" prop="currentCheck">
+          <el-input v-model="form.currentCheck" placeholder="Please Input 本期Count"/>
         </el-form-item>
         <el-form-item label="本期结存" prop="currentBalance">
-          <el-input v-model="form.currentBalance" placeholder="请输入本期结存"/>
+          <el-input v-model="form.currentBalance" placeholder="Please Input 本期结存"/>
         </el-form-item>
-        <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" placeholder="请输入备注"/>
+        <el-form-item label="Remark" prop="remark">
+          <el-input v-model="form.remark" placeholder="Please Input Remark"/>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
+        <el-button type="primary" @click="submitForm">OK</el-button>
+        <el-button @click="cancel">Cancel</el-button>
       </div>
     </el-dialog>
   </div>
@@ -335,25 +335,25 @@ export default {
     return {
       // 遮罩层
       loading: true,
-      // 导出遮罩层
+      // Export遮罩层
       exportLoading: false,
       // 选中数组
       ids: [],
-      // 非单个禁用
+      // 非个禁用
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示搜索条件
+      // 显示Search
       showSearch: true,
       // 总条数
       total: 0,
-      // 库存结算明细表格数据
+      // Inventory结算明细表格Data
       wmsInventorySettlementDetailList: [],
       // 弹出层标题
       title: "",
-      // 是否显示弹出层
+      // 显示弹出层
       open: false,
-      // 查询参数
+      // Search参数
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -374,59 +374,59 @@ export default {
         currentCheck: null,
         currentBalance: null,
       },
-      // 表单参数
+      // 表参数
       form: {},
-      // 表单校验
+      // 表校验
       rules: {
         settlementId: [
-          {required: true, message: "结算单id不能为空", trigger: "blur"}
+          {required: true, message: "结算id is required", trigger: "blur"}
         ],
         itemId: [
-          {required: true, message: "物料id不能为空", trigger: "blur"}
+          {required: true, message: "Itemid is required", trigger: "blur"}
         ],
         itemNo: [
-          {required: true, message: "编号不能为空", trigger: "blur"}
+          {required: true, message: "No. is required", trigger: "blur"}
         ],
         itemName: [
-          {required: true, message: "名称不能为空", trigger: "blur"}
+          {required: true, message: "Item is required", trigger: "blur"}
         ],
         warehouseId: [
-          {required: true, message: "仓库id不能为空", trigger: "blur"}
+          {required: true, message: "Warehouseid is required", trigger: "blur"}
         ],
         warehouseNo: [
-          {required: true, message: "仓库编号不能为空", trigger: "blur"}
+          {required: true, message: "WarehouseNo. is required", trigger: "blur"}
         ],
         warehouseName: [
-          {required: true, message: "仓库名称不能为空", trigger: "blur"}
+          {required: true, message: "WarehouseItem is required", trigger: "blur"}
         ],
         areaId: [
-          {required: true, message: "库区id不能为空", trigger: "blur"}
+          {required: true, message: "Areaid is required", trigger: "blur"}
         ],
         areaNo: [
-          {required: true, message: "库区编号不能为空", trigger: "blur"}
+          {required: true, message: "AreaNo. is required", trigger: "blur"}
         ],
         areaName: [
-          {required: true, message: "库区名称不能为空", trigger: "blur"}
+          {required: true, message: "AreaItem is required", trigger: "blur"}
         ],
       },
       columns: [
-        {key: 1, label: "结算单id", visible: true},
-        {key: 2, label: "结算类型,1:月结，2:年结", visible: true},
-        {key: 3, label: "物料id", visible: true},
-        {key: 4, label: "编号", visible: true},
-        {key: 5, label: "名称", visible: true},
-        {key: 6, label: "仓库id", visible: true},
-        {key: 7, label: "仓库编号", visible: true},
-        {key: 8, label: "仓库名称", visible: true},
-        {key: 9, label: "库区id", visible: true},
-        {key: 10, label: "库区编号", visible: false},
-        {key: 11, label: "库区名称", visible: false},
+        {key: 1, label: "结算id", visible: true},
+        {key: 2, label: "结算Type,1:月结，2:年结", visible: true},
+        {key: 3, label: "Itemid", visible: true},
+        {key: 4, label: "No.", visible: true},
+        {key: 5, label: "Item", visible: true},
+        {key: 6, label: "Warehouseid", visible: true},
+        {key: 7, label: "WarehouseNo.", visible: true},
+        {key: 8, label: "WarehouseItem", visible: true},
+        {key: 9, label: "Areaid", visible: true},
+        {key: 10, label: "AreaNo.", visible: false},
+        {key: 11, label: "AreaItem", visible: false},
         {key: 12, label: "上期结存", visible: false},
-        {key: 13, label: "本期入库", visible: false},
-        {key: 14, label: "本期出库", visible: false},
-        {key: 15, label: "本期盘点", visible: false},
+        {key: 13, label: "本期Inbound", visible: false},
+        {key: 14, label: "本期Outbound ", visible: false},
+        {key: 15, label: "本期Count", visible: false},
         {key: 16, label: "本期结存", visible: false},
-        {key: 18, label: "备注", visible: false},
+        {key: 18, label: "Remark", visible: false},
       ],
       showMoreCondition: false
     };
@@ -435,7 +435,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询库存结算明细列表 */
+    /** SearchInventory结算明细列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -448,12 +448,12 @@ export default {
         this.loading = false;
       });
     },
-    // 取消按钮
+    // CancelButton
     cancel() {
       this.open = false;
       this.reset();
     },
-    // 表单重置
+    // 表Reset
     reset() {
       this.form = {
         id: null,
@@ -481,51 +481,51 @@ export default {
       };
       this.resetForm("form");
     },
-    /** 搜索按钮操作 */
+    /** SearchButtonOperate */
     handleQuery() {
       this.queryParams.pageNum = 1;
       this.getList();
     },
-    /** 重置按钮操作 */
+    /** ResetButtonOperate */
     resetQuery() {
       this.resetForm("queryForm");
       this.handleQuery();
     },
-    // 多选框选中数据
+    // 多选框选中Data
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.id)
       this.single = selection.length !== 1
       this.multiple = !selection.length
     },
-    /** 新增按钮操作 */
+    /** AddButtonOperate */
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加库存结算明细";
+      this.title = "AddInventory结算明细";
     },
-    /** 修改按钮操作 */
+    /** ModifyButtonOperate */
     handleUpdate(row) {
       this.reset();
       const id = row.id || this.ids
       getWmsInventorySettlementDetail(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "修改库存结算明细";
+        this.title = "ModifyInventory结算明细";
       });
     },
-    /** 提交按钮 */
+    /** 提交Button */
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.id != null) {
             updateWmsInventorySettlementDetail(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
+              this.$modal.msgSuccess("Modify Successful");
               this.open = false;
               this.getList();
             });
           } else {
             addWmsInventorySettlementDetail(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
+              this.$modal.msgSuccess("Add Successful");
               this.open = false;
               this.getList();
             });
@@ -533,21 +533,21 @@ export default {
         }
       });
     },
-    /** 删除按钮操作 */
+    /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除库存结算明细编号为"' + ids + '"的数据项？').then(function () {
+      this.$modal.confirm(' Do you want delete Inventory结算明细No."' + ids + '"？').then(function () {
         return delWmsInventorySettlementDetail(ids);
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("删除成功");
+        this.$modal.msgSuccess("Delete Successful");
       }).catch(() => {
       });
     },
-    /** 导出按钮操作 */
+    /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('是否确认导出所有库存结算明细数据项？').then(() => {
+      this.$modal.confirm('Export AllInventory结算明细？').then(() => {
         this.exportLoading = true;
         return exportWmsInventorySettlementDetail(queryParams);
       }).then(response => {

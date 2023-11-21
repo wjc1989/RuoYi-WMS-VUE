@@ -11,9 +11,9 @@
       >
     </template>
 
-    <!-- 顶部菜单超出数量折叠 -->
+    <!-- 顶部Menu 超出CountCollapse -->
     <el-submenu :style="{'--theme': theme}" index="more" v-if="topMenus.length > visibleNumber">
-      <template slot="title">更多菜单</template>
+      <template slot="title">MoreMenu </template>
       <template v-for="(item, index) in topMenus">
         <el-menu-item
           :index="item.path"
@@ -30,7 +30,7 @@
 <script>
 import { constantRoutes } from "@/router";
 
-// 隐藏侧边栏路由
+// 隐藏侧边栏Router
 const hideList = ['/index', '/user/profile'];
 
 export default {
@@ -38,7 +38,7 @@ export default {
     return {
       // 顶部栏初始数
       visibleNumber: 5,
-      // 当前激活菜单的 index
+      // 当前激活Menu 的 index
       currentIndex: undefined
     };
   },
@@ -46,12 +46,12 @@ export default {
     theme() {
       return this.$store.state.settings.theme;
     },
-    // 顶部显示菜单
+    // 顶部显示Menu
     topMenus() {
       let topMenus = [];
       this.routers.map((menu) => {
         if (menu.hidden !== true) {
-          // 兼容顶部栏一级菜单内部跳转
+          // 兼容顶部栏一级Menu 内部跳转
           if (menu.path === "/") {
               topMenus.push(menu.children[0]);
           } else {
@@ -61,11 +61,11 @@ export default {
       });
       return topMenus;
     },
-    // 所有的路由信息
+    // 所有的Router信息
     routers() {
       return this.$store.state.permission.topbarRouters;
     },
-    // 设置子路由
+    // 设置子Router
     childrenMenus() {
       var childrenMenus = [];
       this.routers.map((router) => {
@@ -85,7 +85,7 @@ export default {
       });
       return constantRoutes.concat(childrenMenus);
     },
-    // 默认激活的菜单
+    // 默认激活的Menu
     activeMenu() {
       const path = this.$route.path;
       let activePath = path;
@@ -116,7 +116,7 @@ export default {
       const width = document.body.getBoundingClientRect().width / 3;
       this.visibleNumber = parseInt(width / 85);
     },
-    // 菜单选择事件
+    // Menu Select 事件
     handleSelect(key, keyPath) {
       this.currentIndex = key;
       const route = this.routers.find(item => item.path === key);
@@ -124,16 +124,16 @@ export default {
         // http(s):// 路径新窗口打开
         window.open(key, "_blank");
       } else if (!route || !route.children) {
-        // 没有子路由路径内部打开
+        // 没有子Router路径内部打开
         this.$router.push({ path: key });
         this.$store.dispatch('app/toggleSideBarHide', true);
       } else {
-        // 显示左侧联动菜单
+        // 显示左侧联动Menu
         this.activeRoutes(key);
         this.$store.dispatch('app/toggleSideBarHide', false);
       }
     },
-    // 当前激活的路由
+    // 当前激活的Router
     activeRoutes(key) {
       var routes = [];
       if (this.childrenMenus && this.childrenMenus.length > 0) {

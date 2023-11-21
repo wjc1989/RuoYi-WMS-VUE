@@ -2,21 +2,21 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
              class="ry_form">
-      <el-form-item label="移库状态" prop="status">
+      <el-form-item label="移库Status" prop="status">
         <DictRadio v-model="queryParams.status" @change="handleQuery" size="small"
                    :radioData="dict.type.wms_movement_status" :showAll="'all'"/>
       </el-form-item>
-      <el-form-item label="编号" prop="inventoryMovementNo">
+      <el-form-item label="No." prop="inventoryMovementNo">
         <el-input
           v-model="queryParams.inventoryMovementNo"
-          placeholder="请输入编号"
+          placeholder="Please Input No."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item class="flex_one tr">
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
+        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">Search</el-button>
       </el-form-item>
     </el-form>
 
@@ -29,7 +29,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:inventoryMovement:add']"
-        >创建移库单
+        >Create移库
         </el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>
@@ -37,33 +37,33 @@
 
     <WmsTable v-loading="loading" :data="wmsInventoryMovementList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="编号" align="center" prop="inventoryMovementNo" v-if="columns[0].visible"/>
-      <el-table-column label="状态" align="center" prop="status" v-if="columns[1].visible">
+      <el-table-column label="No." align="center" prop="inventoryMovementNo" v-if="columns[0].visible"/>
+      <el-table-column label="Status" align="center" prop="status" v-if="columns[1].visible">
         <template slot-scope="scope">
           <el-tag size="medium" effect="plain" :type="getStatusTag(scope.row)">
             {{ getStatus(scope.row) }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="下单时间" align="center" prop="createTime" width="180" v-if="columns[2].visible">
+      <el-table-column label="下 Time" align="center" prop="createTime" width="180" v-if="columns[2].visible">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime, '') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="备注" align="center" prop="remark" v-if="columns[3].visible">
+      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[3].visible">
         <template v-slot="{ row }">
           <el-popover placement="left" width="300" trigger="hover" :content="row.remark" popper-class="popperOptions">
             <p class="showOverTooltip" slot="reference">{{ row.remark }}</p>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column label="物料" align="center" prop="remark" v-if="columns[4].visible">
+      <el-table-column label="Item" align="center" prop="remark" v-if="columns[4].visible">
         <template slot-scope="scope">
-          <p>物料品种数量：{{ scope.row.detailCount }}</p>
-          <p>物料总数量：{{ scope.row.itemCount }}</p>
+          <p>Item品种Count：{{ scope.row.detailCount }}</p>
+          <p>Item总Count：{{ scope.row.itemCount }}</p>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+      <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template v-slot="{ row }">
           <el-button
             v-if="21 === row.status"
@@ -72,7 +72,7 @@
             icon="el-icon-edit"
             @click.stop="handleUpdate(row)"
             v-hasPermi="['wms:inventoryMovement:edit']"
-          >修改
+          >Modify
           </el-button>
           <el-button
             size="mini"
@@ -80,7 +80,7 @@
             icon="el-icon-delete"
             @click.stop="handleDelete(row)"
             v-hasPermi="['wms:inventoryMovement:remove']"
-          >删除
+          >Delete
           </el-button>
           <el-button
             v-if="row.detailCount"
@@ -128,41 +128,41 @@ export default {
     return {
       // 遮罩层
       loading: true,
-      // 导出遮罩层
+      // Export遮罩层
       exportLoading: false,
       // 选中数组
       ids: [],
-      // 非单个禁用
+      // 非个禁用
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示搜索条件
+      // 显示Search
       showSearch: true,
       // 总条数
       total: 0,
-      // 库存移动表格数据
+      // Inventory移动表格Data
       wmsInventoryMovementList: [],
       // 弹出层标题
       title: "",
-      // 是否显示弹出层
+      // 显示弹出层
       open: false,
-      // 查询参数
+      // Search参数
       queryParams: {
         pageNum: 1,
         pageSize: 10,
         inventoryMovementNo: null,
         status: null
       },
-      // 表单参数
+      // 表参数
       form: {},
-      // 表单校验
+      // 表校验
       rules: {},
       columns: [
-        {key: 1, label: "编号", visible: true},
-        {key: 2, label: "状态", visible: true},
-        {key: 3, label: "下单时间", visible: true},
-        {key: 4, label: "备注", visible: true},
-        {key: 5, label: "物料", visible: true},
+        {key: 1, label: "No.", visible: true},
+        {key: 2, label: "Status", visible: true},
+        {key: 3, label: "下 Time", visible: true},
+        {key: 4, label: "Remark", visible: true},
+        {key: 5, label: "Item", visible: true},
       ],
     };
   },
@@ -185,7 +185,7 @@ export default {
     getStatus(row) {
       return this.statusMap.get(row.status + "")
     },
-    /** 查询库存移动列表 */
+    /** SearchInventory移动列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -198,27 +198,27 @@ export default {
         this.loading = false;
       });
     },
-    /** 搜索按钮操作 */
+    /** SearchButtonOperate */
     handleQuery() {
       this.queryParams.pageNum = 1;
       this.getList();
     },
-    /** 重置按钮操作 */
+    /** ResetButtonOperate */
     resetQuery() {
       this.resetForm("queryForm");
       this.handleQuery();
     },
-    // 多选框选中数据
+    // 多选框选中Data
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.id)
       this.single = selection.length !== 1
       this.multiple = !selection.length
     },
-    /** 新增按钮操作 */
+    /** AddButtonOperate */
     handleAdd() {
       this.$router.push({path: "/wms/inventoryMovement/edit"});
     },
-    /** 修改按钮操作 */
+    /** ModifyButtonOperate */
     handleUpdate(row) {
       const id = row.id || this.ids
       this.$router.push({path: "/wms/inventoryMovement/edit", query: {id}});
@@ -227,22 +227,22 @@ export default {
       const id = row.id || this.ids
       this.$router.push({path: "/wms/inventoryMovement/status", query: {id}});
     },
-    /** 删除按钮操作 */
+    /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
       const inventoryMovementNo = row.inventoryMovementNo
-      this.$modal.confirm('是否确认删除库存移动编号为"' + inventoryMovementNo + '"的数据项？').then(function () {
+      this.$modal.confirm(' Do you want delete Inventory移动No."' + inventoryMovementNo + '"？').then(function () {
         return delWmsInventoryMovement(ids);
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("删除成功");
+        this.$modal.msgSuccess("Delete Successful");
       }).catch(() => {
       });
     },
-    /** 导出按钮操作 */
+    /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('是否确认导出所有库存移动数据项？').then(() => {
+      this.$modal.confirm('Export AllInventory移动？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryMovement(queryParams);
       }).then(response => {

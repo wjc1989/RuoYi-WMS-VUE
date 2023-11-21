@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询供应商列表
+// SearchSupplier列表
 export function listWmsSupplier(query, pageReq) {
   return request({
     url: '/wms/supplier/list',
@@ -10,7 +10,7 @@ export function listWmsSupplier(query, pageReq) {
   })
 }
 
-// 查询供应商详细
+// SearchSupplier详细
 export function getWmsSupplier(id) {
   return request({
     url: '/wms/supplier/' + id,
@@ -18,7 +18,7 @@ export function getWmsSupplier(id) {
   })
 }
 
-// 新增供应商
+// AddSupplier
 export function addWmsSupplier(data) {
   return request({
     url: '/wms/supplier',
@@ -27,7 +27,7 @@ export function addWmsSupplier(data) {
   })
 }
 
-// 修改供应商
+// ModifySupplier
 export function updateWmsSupplier(data) {
   return request({
     url: '/wms/supplier',
@@ -36,7 +36,7 @@ export function updateWmsSupplier(data) {
   })
 }
 
-// 删除供应商
+// DeleteSupplier
 export function delWmsSupplier(id) {
   return request({
     url: '/wms/supplier/' + id,
@@ -44,7 +44,7 @@ export function delWmsSupplier(id) {
   })
 }
 
-// 导出供应商
+// ExportSupplier
 export function exportWmsSupplier(query) {
   return request({
     url: '/wms/supplier/export',
