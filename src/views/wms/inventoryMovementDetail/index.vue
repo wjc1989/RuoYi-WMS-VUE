@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium" class="ry_form">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium" class="ry_form">
       <el-form-item label="Inventory移动Id" prop="inventoryMovementId">
         <el-input
           v-model="queryParams.inventoryMovementId"
@@ -125,7 +125,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyInventory移动详情对话框 -->
+    <!-- Add或ModifyInventory移动 Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="Inventory移动Id" prop="inventoryMovementId">
@@ -169,17 +169,17 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // Inventory移动详情表格Data
+      // Inventory移动 Detail表格Data
       wmsInventoryMovementDetailList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -188,7 +188,7 @@ export default {
         planQuantity: null,
         realQuantity: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -206,7 +206,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** SearchInventory移动详情列表 */
+    /** SearchInventory移动 Detail列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -260,7 +260,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddInventory移动详情";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -269,7 +269,7 @@ export default {
       getWmsInventoryMovementDetail(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyInventory移动详情";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -295,7 +295,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete Inventory移动详情No."' + ids + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete Inventory移动 DetailNo."' + ids + '"？').then(function() {
         return delWmsInventoryMovementDetail(ids);
       }).then(() => {
         this.getList();
@@ -305,7 +305,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllInventory移动详情？').then(() => {
+      this.$modal.confirm('Export AllInventory移动 Detail？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryMovementDetail(queryParams);
       }).then(response => {

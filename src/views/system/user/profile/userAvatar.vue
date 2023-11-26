@@ -66,9 +66,9 @@ export default {
   },
   data() {
     return {
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // 显示cropper
+      // Showcropper
       visible: false,
       // 弹出层标题
       title: "Modify头像",
@@ -110,7 +110,7 @@ export default {
     // 上传预处理
     beforeUpload(file) {
       if (file.type.indexOf("image/") == -1) {
-        this.$modal.msgError("文件格式错误，请上传图片Type,如：JPG，PNG后缀的文件。");
+        this.$modal.msgError("文件格式错误，请上传图片Type,e.g.：JPG，PNG后缀的文件。");
       } else {
         const reader = new FileReader();
         reader.readAsDataURL(file);

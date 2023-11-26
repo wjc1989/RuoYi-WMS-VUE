@@ -5,7 +5,7 @@
       ref="queryForm"
       :inline="true"
       v-show="showSearch"
-      label-width="100px"
+      label-width="120px"
       size="medium"
       class="ry_form"
     >
@@ -184,7 +184,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或Modify货架对话框 -->
+    <!-- Add或Modify Shelves对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form
         ref="form"
@@ -246,17 +246,17 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 货架表格Data
+      //  Shelves表格Data
       wmsRackList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -265,7 +265,7 @@ export default {
         areaId: null,
         warehouseId: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -301,7 +301,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** Search货架列表 */
+    /** Search Shelves列表 */
     getList() {
       this.loading = true;
       const { pageNum, pageSize } = this.queryParams;
@@ -366,7 +366,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "Add货架";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     async handleUpdate(row) {
@@ -376,7 +376,7 @@ export default {
         response.place = [response.warehouseId,response.areaId];
         this.form = response;
         this.open = true;
-        this.title = "Modify货架";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -410,7 +410,7 @@ export default {
     handleDelete(row) {
       const ids = row.id || this.ids;
       this.$modal
-        .confirm(' Do you want delete 货架No."' + ids + '"？')
+        .confirm(' Do you want delete  ShelvesNo."' + ids + '"？')
         .then(function () {
           return delWmsRack(ids);
         })
@@ -425,7 +425,7 @@ export default {
     handleExport() {
       const queryParams = this.queryParams;
       this.$modal
-        .confirm("Export All货架？")
+        .confirm("Export All Shelves？")
         .then(() => {
           this.exportLoading = true;
           return exportWmsRack(queryParams);

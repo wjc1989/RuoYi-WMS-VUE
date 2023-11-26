@@ -1,6 +1,6 @@
 <template>
   <div class="app-container" v-if="show">
-    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="100px" :model="queryParams" ref="queryForm"
+    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="120px" :model="queryParams" ref="queryForm"
              size="medium">
       <el-form-item label="Type" prop="panelType">
         <DictRadio v-model="queryParams.panelType" :radioData="dict.type.wms_inventory_panel_type" size="small"
@@ -67,13 +67,13 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
       // Inventory表格Data
       wmsInventoryList: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         itemId: null,
         place: null,
@@ -84,7 +84,7 @@ export default {
         page: 1,
         size: 10
       },
-      // 表参数
+      // 表Params
       form: {},
       columns: [],
       panelType: 5
@@ -129,7 +129,7 @@ export default {
           // 10 Area需要考虑Area空
           content.forEach(item => {
             if (!item.warehouseName) {
-              item.warehouseName = "暂未分配Warehouse"
+              item.warehouseName = "暂未 DistributeWarehouse"
             }
             if (item.areaName) {
               item.warehouseName = item.warehouseName + '/' + item.areaName
@@ -139,10 +139,10 @@ export default {
           // Area
           content.forEach(item => {
             if (!item.warehouseName) {
-              item.warehouseName = "暂未分配Warehouse"
+              item.warehouseName = "暂未 DistributeWarehouse"
             }
             if (!item.areaName) {
-              item.areaName = "暂未分配Area"
+              item.areaName = "暂未 DistributeArea"
             }
           })
 

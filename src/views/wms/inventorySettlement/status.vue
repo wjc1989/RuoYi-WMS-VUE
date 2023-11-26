@@ -25,7 +25,7 @@
         <el-form-item label="Remark" prop="remark">
           <el-input
             v-model="form.remark"
-            placeholder="Remark...100个字符以内"
+            placeholder="Remark...Maximum 100 characters"
             rows="3"
             maxlength="100"
             type="textarea"
@@ -119,7 +119,7 @@ export default {
         }]
       },
       types: ["png", "jpg", "jpeg"],
-      // 表参数
+      // 表Params
       form: {
         details: [],
       },
@@ -203,7 +203,7 @@ export default {
         });
       });
     },
-    /** 加载 Count详情 */
+    /** 加载 Count Detail */
     loadDetail(id) {
       getWmsInventorySettlement(id).then((response) => {
         const {details, items, inventorySettlementStartTime, inventorySettlementEndTime} = response;

@@ -204,7 +204,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -212,14 +212,14 @@ export default {
       tableList: [],
       // Date范围
       dateRange: "",
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
         tableName: undefined,
         tableComment: undefined
       },
-      // 预览参数
+      // 预览Params
       preview: {
         open: false,
         title: "代码预览",
@@ -297,7 +297,7 @@ export default {
         this.preview.activeName = "domain.java";
       });
     },
-    /** 高亮显示 */
+    /** 高亮Show */
     highlightedCode(code, key) {
       const vmName = key.substring(key.lastIndexOf("/") + 1, key.indexOf(".vm"));
       var language = vmName.substring(vmName.indexOf(".") + 1, vmName.length);

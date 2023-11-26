@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium" class="ry_form">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium" class="ry_form">
       <el-form-item label="Outbound " prop="shipmentOrderId">
         <el-input
           v-model="queryParams.shipmentOrderId"
@@ -37,10 +37,10 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="货架" prop="rackId">
+      <el-form-item label=" Shelves" prop="rackId">
         <el-input
           v-model="queryParams.rackId"
-          placeholder="Please Input 货架"
+          placeholder="Please Input  Shelves"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -105,7 +105,7 @@
       <el-table-column label="Item" align="center" prop="itemId" v-if="columns[1].visible"/>
       <el-table-column label="Plan Count" align="center" prop="planQuantity" v-if="columns[2].visible"/>
       <el-table-column label="Real Count" align="center" prop="realQuantity" v-if="columns[3].visible"/>
-      <el-table-column label="货架" align="center" prop="rackId" v-if="columns[4].visible"/>
+      <el-table-column label=" Shelves" align="center" prop="rackId" v-if="columns[4].visible"/>
       <el-table-column label="Remark" align="center" prop="remark" v-if="columns[5].visible"/>
       <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -135,7 +135,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyOutbound 详情对话框 -->
+    <!-- Add或ModifyOutbound  Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="Outbound " prop="shipmentOrderId">
@@ -150,8 +150,8 @@
         <el-form-item label="Real Count" prop="realQuantity">
           <el-input v-model="form.realQuantity" placeholder="Please Input Real Count" />
         </el-form-item>
-        <el-form-item label="货架" prop="rackId">
-          <el-input v-model="form.rackId" placeholder="Please Input 货架" />
+        <el-form-item label=" Shelves" prop="rackId">
+          <el-input v-model="form.rackId" placeholder="Please Input  Shelves" />
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Please Input Remark" />
@@ -182,17 +182,17 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // Outbound 详情表格Data
+      // Outbound  Detail表格Data
       wmsShipmentOrderDetailList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -202,7 +202,7 @@ export default {
         realQuantity: null,
         rackId: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -212,7 +212,7 @@ export default {
             { key: 2, label: "Item", visible:  true  },
             { key: 3, label: "Plan Count", visible:  true  },
             { key: 4, label: "Real Count", visible:  true  },
-            { key: 5, label: "货架", visible:  true  },
+            { key: 5, label: " Shelves", visible:  true  },
                 { key: 7, label: "Remark", visible:  true  },
                          ],
     };
@@ -221,7 +221,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** SearchOutbound 详情列表 */
+    /** SearchOutbound  Detail列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -276,7 +276,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddOutbound 详情";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -285,7 +285,7 @@ export default {
       getWmsShipmentOrderDetail(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyOutbound 详情";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -311,7 +311,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete Outbound 详情No."' + ids + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete Outbound  DetailNo."' + ids + '"？').then(function() {
         return delWmsShipmentOrderDetail(ids);
       }).then(() => {
         this.getList();
@@ -321,7 +321,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllOutbound 详情？').then(() => {
+      this.$modal.confirm('Export AllOutbound  Detail？').then(() => {
         this.exportLoading = true;
         return exportWmsShipmentOrderDetail(queryParams);
       }).then(response => {

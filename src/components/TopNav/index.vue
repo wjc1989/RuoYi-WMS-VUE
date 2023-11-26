@@ -30,7 +30,7 @@
 <script>
 import { constantRoutes } from "@/router";
 
-// 隐藏侧边栏Router
+// Hide侧边栏Router
 const hideList = ['/index', '/user/profile'];
 
 export default {
@@ -46,7 +46,7 @@ export default {
     theme() {
       return this.$store.state.settings.theme;
     },
-    // 顶部显示Menu
+    // 顶部ShowMenu
     topMenus() {
       let topMenus = [];
       this.routers.map((menu) => {
@@ -111,7 +111,7 @@ export default {
     this.setVisibleNumber();
   },
   methods: {
-    // 根据宽度计算设置显示栏数
+    // 根据宽度计算设置Show栏数
     setVisibleNumber() {
       const width = document.body.getBoundingClientRect().width / 3;
       this.visibleNumber = parseInt(width / 85);
@@ -128,7 +128,7 @@ export default {
         this.$router.push({ path: key });
         this.$store.dispatch('app/toggleSideBarHide', true);
       } else {
-        // 显示左侧联动Menu
+        // Show左侧联动Menu
         this.activeRoutes(key);
         this.$store.dispatch('app/toggleSideBarHide', false);
       }

@@ -26,7 +26,7 @@ export function listWmsItemTypeNoPage(query, pageReq) {
   })
 }
 
-// SearchItemType表详细
+// SearchItemType表Detail
 export function getWmsItemType(itemTypeId) {
   return request({
     url: '/wms/itemType/' + itemTypeId,

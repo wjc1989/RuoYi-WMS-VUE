@@ -1,24 +1,24 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="公告标题" prop="noticeTitle">
+      <el-form-item label="Title" prop="noticeTitle">
         <el-input
           v-model="queryParams.noticeTitle"
-          placeholder="Please Input 公告标题"
+          placeholder="Please Input Title"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="Operate人员" prop="createBy">
+      <el-form-item label="Operater" prop="createBy">
         <el-input
           v-model="queryParams.createBy"
-          placeholder="Please Input Operate人员"
+          placeholder="Please Input Operater"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item label="Type" prop="noticeType">
-        <el-select v-model="queryParams.noticeType" placeholder="公告Type" clearable>
+        <el-select v-model="queryParams.noticeType" placeholder="Type" clearable>
           <el-option
             v-for="dict in dict.type.sys_notice_type"
             :key="dict.value"
@@ -73,12 +73,12 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="No." align="center" prop="noticeId" width="100" />
       <el-table-column
-        label="公告标题"
+        label="Title"
         align="center"
         prop="noticeTitle"
         :show-overflow-tooltip="true"
       />
-      <el-table-column label="公告Type" align="center" prop="noticeType" width="100">
+      <el-table-column label="Type" align="center" prop="noticeType" width="100">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_notice_type" :value="scope.row.noticeType"/>
         </template>
@@ -88,7 +88,7 @@
           <dict-tag :options="dict.type.sys_notice_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="Create者" align="center" prop="createBy" width="100" />
+      <el-table-column label="Creater" align="center" prop="createBy" width="100" />
       <el-table-column label="Create Time" align="center" prop="createTime" width="100">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime, '{y}-{m}-{d}') }}</span>
@@ -122,18 +122,18 @@
       @pagination="getList"
     />
 
-    <!-- Add或Modify公告对话框 -->
+    <!-- Add或ModifyNotice对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="780px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
           <el-col :span="12">
-            <el-form-item label="公告标题" prop="noticeTitle">
-              <el-input v-model="form.noticeTitle" placeholder="Please Input 公告标题" />
+            <el-form-item label="Title" prop="noticeTitle">
+              <el-input v-model="form.noticeTitle" placeholder="Please Input Title" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="公告Type" prop="noticeType">
-              <el-select v-model="form.noticeType" placeholder="Please select 公告Type">
+            <el-form-item label="Type" prop="noticeType">
+              <el-select v-model="form.noticeType" placeholder="Please select Type">
                 <el-option
                   v-for="dict in dict.type.sys_notice_type"
                   :key="dict.value"
@@ -185,17 +185,17 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 公告表格Data
+      // Notice表格Data
       noticeList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -203,15 +203,15 @@ export default {
         createBy: undefined,
         status: undefined
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
         noticeTitle: [
-          { required: true, message: "公告标题 is required", trigger: "blur" }
+          { required: true, message: "Title is required", trigger: "blur" }
         ],
         noticeType: [
-          { required: true, message: "公告Type is required", trigger: "change" }
+          { required: true, message: "Type is required", trigger: "change" }
         ]
       }
     };
@@ -220,7 +220,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** Search公告列表 */
+    /** SearchNotice列表 */
     getList() {
       this.loading = true;
       listNotice(this.queryParams).then(response => {
@@ -265,7 +265,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "Add公告";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -274,7 +274,7 @@ export default {
       getNotice(noticeId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "Modify公告";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -300,7 +300,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const noticeIds = row.noticeId || this.ids
-      this.$modal.confirm(' Do you want delete 公告No."' + noticeIds + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete NoticeNo."' + noticeIds + '"？').then(function() {
         return delNotice(noticeIds);
       }).then(() => {
         this.getList();

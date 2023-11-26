@@ -1,24 +1,24 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="PostNo." prop="postCode">
+      <el-form-item label="No." prop="postCode">
         <el-input
           v-model="queryParams.postCode"
-          placeholder="Please Input PostNo."
+          placeholder="Please Input No."
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="PostItem" prop="postName">
+      <el-form-item label="Name" prop="postName">
         <el-input
           v-model="queryParams.postName"
-          placeholder="Please Input PostItem"
+          placeholder="Please Input Name"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item label="Status" prop="status">
-        <el-select v-model="queryParams.status" placeholder="PostStatus" clearable>
+        <el-select v-model="queryParams.status" placeholder="Status" clearable>
           <el-option
             v-for="dict in dict.type.sys_normal_disable"
             :key="dict.value"
@@ -81,10 +81,10 @@
 
     <el-table v-loading="loading" :data="postList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="PostNo." align="center" prop="postId" />
-      <el-table-column label="PostNo." align="center" prop="postCode" />
-      <el-table-column label="PostItem" align="center" prop="postName" />
-      <el-table-column label="PostSort" align="center" prop="postSort" />
+      <el-table-column label="ID" align="center" prop="postId" />
+      <el-table-column label="No." align="center" prop="postCode" />
+      <el-table-column label="Name" align="center" prop="postName" />
+      <el-table-column label="Sort" align="center" prop="postSort" />
       <el-table-column label="Status" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
@@ -124,18 +124,18 @@
     />
 
     <!-- Add或ModifyPost对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="PostItem" prop="postName">
-          <el-input v-model="form.postName" placeholder="Please Input PostItem" />
+    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
+        <el-form-item label="Name" prop="postName">
+          <el-input v-model="form.postName" placeholder="Please Input Name" />
         </el-form-item>
-        <el-form-item label="PostNo." prop="postCode">
+        <el-form-item label="No." prop="postCode">
           <el-input v-model="form.postCode" placeholder="Please Input No.Item" />
         </el-form-item>
-        <el-form-item label="Postsort" prop="postSort">
+        <el-form-item label="Sort" prop="postSort">
           <el-input-number v-model="form.postSort" controls-position="right" :min="0" />
         </el-form-item>
-        <el-form-item label="PostStatus" prop="status">
+        <el-form-item label="Status" prop="status">
           <el-radio-group v-model="form.status">
             <el-radio
               v-for="dict in dict.type.sys_normal_disable"
@@ -172,7 +172,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -180,9 +180,9 @@ export default {
       postList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -190,18 +190,18 @@ export default {
         postName: undefined,
         status: undefined
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
         postName: [
-          { required: true, message: "PostItem is required", trigger: "blur" }
+          { required: true, message: "Name is required", trigger: "blur" }
         ],
         postCode: [
-          { required: true, message: "PostNo. is required", trigger: "blur" }
+          { required: true, message: "No. is required", trigger: "blur" }
         ],
         postSort: [
-          { required: true, message: "Postsort is required", trigger: "blur" }
+          { required: true, message: "Sort is required", trigger: "blur" }
         ]
       }
     };
@@ -256,7 +256,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddPost";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -265,7 +265,7 @@ export default {
       getPost(postId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "ModifyPost";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -291,7 +291,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const postIds = row.postId || this.ids;
-      this.$modal.confirm(' Do you want delete PostNo."' + postIds + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete No."' + postIds + '"？').then(function() {
         return delPost(postIds);
       }).then(() => {
         this.getList();

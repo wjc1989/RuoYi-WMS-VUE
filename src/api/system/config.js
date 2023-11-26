@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// Search参数列表
+// SearchParams列表
 export function listConfig(query) {
   return request({
     url: '/system/config/list',
@@ -9,7 +9,7 @@ export function listConfig(query) {
   })
 }
 
-// Search参数详细
+// SearchParamsDetail
 export function getConfig(configId) {
   return request({
     url: '/system/config/' + configId,
@@ -17,7 +17,7 @@ export function getConfig(configId) {
   })
 }
 
-// 根据参数键名Search参数值
+// 根据KeySearchParams值
 export function getConfigKey(configKey) {
   return request({
     url: '/system/config/configKey/' + configKey,
@@ -25,7 +25,7 @@ export function getConfigKey(configKey) {
   })
 }
 
-// Add参数配置
+// AddParams配置
 export function addConfig(data) {
   return request({
     url: '/system/config',
@@ -34,7 +34,7 @@ export function addConfig(data) {
   })
 }
 
-// Modify参数配置
+// ModifyParams配置
 export function updateConfig(data) {
   return request({
     url: '/system/config',
@@ -43,7 +43,7 @@ export function updateConfig(data) {
   })
 }
 
-// Delete参数配置
+// DeleteParams配置
 export function delConfig(configId) {
   return request({
     url: '/system/config/' + configId,
@@ -51,7 +51,7 @@ export function delConfig(configId) {
   })
 }
 
-// Refresh参数Cache
+// RefreshParamsCache
 export function refreshCache() {
   return request({
     url: '/system/config/refreshCache',

@@ -5,7 +5,7 @@
       ref="queryForm"
       :inline="true"
       v-show="showSearch"
-      label-width="100px"
+      label-width="120px"
       size="medium"
       class="ry_form"
     >
@@ -195,13 +195,13 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
       // Inventory结算表格Data
       wmsInventorySettlementList: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -209,7 +209,7 @@ export default {
         settlementType: null,
         inventorySettlementNo: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       columns: [
         {key: 9, label: "结算No.", visible: true},

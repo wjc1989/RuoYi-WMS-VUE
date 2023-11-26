@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium" class="ry_form">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium" class="ry_form">
       <el-form-item label="InventoryCount" prop="inventoryCheckId">
         <el-input
           v-model="queryParams.inventoryCheckId"
@@ -55,10 +55,10 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="货架" prop="rackId">
+      <el-form-item label=" Shelves" prop="rackId">
         <el-input
           v-model="queryParams.rackId"
-          placeholder="Please Input 货架"
+          placeholder="Please Input  Shelves"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -155,7 +155,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyInventoryCount据详情对话框 -->
+    <!-- Add或ModifyInventoryCount据 Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="InventoryCount" prop="inventoryCheckId">
@@ -176,8 +176,8 @@
         <el-form-item label="Area" prop="areaId">
           <el-input v-model="form.areaId" placeholder="Please Input Area" />
         </el-form-item>
-        <el-form-item label="货架" prop="rackId">
-          <el-input v-model="form.rackId" placeholder="Please Input 货架" />
+        <el-form-item label=" Shelves" prop="rackId">
+          <el-input v-model="form.rackId" placeholder="Please Input  Shelves" />
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Please Input Remark" />
@@ -208,17 +208,17 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // InventoryCount据详情表格Data
+      // InventoryCount据 Detail表格Data
       wmsInventoryCheckDetailList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -230,7 +230,7 @@ export default {
         areaId: null,
         rackId: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -242,7 +242,7 @@ export default {
             { key: 4, label: "CountCount", visible:  true  },
             { key: 5, label: "Warehouse", visible:  true  },
             { key: 6, label: "Area", visible:  true  },
-            { key: 7, label: "货架", visible:  true  },
+            { key: 7, label: " Shelves", visible:  true  },
                 { key: 9, label: "Remark", visible:  true  },
                          ],
     };
@@ -251,7 +251,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** SearchInventoryCount据详情列表 */
+    /** SearchInventoryCount据 Detail列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -308,7 +308,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddInventoryCount据详情";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -317,7 +317,7 @@ export default {
       getWmsInventoryCheckDetail(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyInventoryCount据详情";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -343,7 +343,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete InventoryCount据详情No."' + ids + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete InventoryCount据 DetailNo."' + ids + '"？').then(function() {
         return delWmsInventoryCheckDetail(ids);
       }).then(() => {
         this.getList();
@@ -353,7 +353,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllInventoryCount据详情？').then(() => {
+      this.$modal.confirm('Export AllInventoryCount据 Detail？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryCheckDetail(queryParams);
       }).then(response => {

@@ -10,7 +10,7 @@ export function listWmsCustomerTransaction(query, pageReq) {
   })
 }
 
-// Search客户账户流水详细
+// Search客户账户流水Detail
 export function getWmsCustomerTransaction(id) {
   return request({
     url: '/wms/customerTransaction/' + id,

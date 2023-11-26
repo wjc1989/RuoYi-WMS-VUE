@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// SearchCache详细
+// SearchCacheDetail
 export function getCache() {
   return request({
     url: '/monitor/cache',

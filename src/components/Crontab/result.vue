@@ -23,14 +23,14 @@ export default {
 	},
 	name: 'crontab-result',
 	methods: {
-		// 表达式值变化时，开始去计算结果
+		// 表达式值Change时，开始去计算结果
 		expressionChange() {
 
-			// 计算开始-隐藏结果
+			// 计算开始-Hide结果
 			this.isShow = false;
 			// 获取规则数组[0秒、1分、2时、3日、4月、5、6年]
 			let ruleArr = this.$options.propsData.ex.split(' ');
-			// 用于记录进入循环的次数
+			// 用于 Record进入循环的次数
 			let nums = 0;
 			// 用于暂时存符No. Time规则结果的数组
 			let resultArr = [];
@@ -89,23 +89,23 @@ export default {
 				nMonth = MDate[MIdx]
 				resetDay();
 			}
-			// 如果当前年份No 数组中当前值
+			// e.g.果当前年份No 数组中当前值
 			if (nYear !== YDate[YIdx]) {
 				resetMonth();
 			}
-			// 如果当前月份No 数组中当前值
+			// e.g.果当前月份No 数组中当前值
 			if (nMonth !== MDate[MIdx]) {
 				resetDay();
 			}
-			// 如果当前“日”No 数组中当前值
+			// e.g.果当前“日”No 数组中当前值
 			if (nDay !== DDate[DIdx]) {
 				resetHour();
 			}
-			// 如果当前“时”No 数组中当前值
+			// e.g.果当前“时”No 数组中当前值
 			if (nHour !== hDate[hIdx]) {
 				resetMin();
 			}
-			// 如果当前“分”No 数组中当前值
+			// e.g.果当前“分”No 数组中当前值
 			if (nMin !== mDate[mIdx]) {
 				resetSecond();
 			}
@@ -113,7 +113,7 @@ export default {
 			// 循环年份数组
 			goYear: for (let Yi = YIdx; Yi < YDate.length; Yi++) {
 				let YY = YDate[Yi];
-				// 如果到达最大值时
+				// e.g.果到达最大值时
 				if (nMonth > MDate[MDate.length - 1]) {
 					resetMonth();
 					continue;
@@ -123,7 +123,7 @@ export default {
 					// 赋值、方便后面运算
 					let MM = MDate[Mi];
 					MM = MM < 10 ? '0' + MM : MM;
-					// 如果到达最大值时
+					// e.g.果到达最大值时
 					if (nDay > DDate[DDate.length - 1]) {
 						resetDay();
 						if (Mi == MDate.length - 1) {
@@ -138,7 +138,7 @@ export default {
 						let DD = DDate[Di];
 						let thisDD = DD < 10 ? '0' + DD : DD;
 
-						// 如果到达最大值时
+						// e.g.果到达最大值时
 						if (nHour > hDate[hDate.length - 1]) {
 							resetHour();
 							if (Di == DDate.length - 1) {
@@ -157,9 +157,9 @@ export default {
 							resetDay();
 							continue goMonth;
 						}
-						// 如果Date规则中有值时
+						// e.g.果Date规则中有值时
 						if (this.dayRule == 'lastDay') {
-							// 如果No Yes合法Date则需要将前将Date调到合法Date即月末最后一天
+							// e.g.果No Yes合法Date则需要将前将Date调到合法Date即月末最后一天
 
 							if (this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
 								while (DD > 0 && this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
@@ -169,7 +169,7 @@ export default {
 								}
 							}
 						} else if (this.dayRule == 'workDay') {
-							// 校验并调整如果Yes2月30No.这种Date传进来时需调整至正常月底
+							// 校验并调整e.g.果Yes2月30No.这种Date传进来时需调整至正常月底
 							if (this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
 								while (DD > 0 && this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
 									DD--;
@@ -196,12 +196,12 @@ export default {
 								}
 							}
 						} else if (this.dayRule == 'weekDay') {
-							// 如果指定了Yes几
+							// e.g.果指定了Yes几
 							// 获取当前DateYes属于几
 							let thisWeek = this.formatDate(new Date(YY + '-' + MM + '-' + DD + ' 00:00:00'), 'week');
 							// 校验当前在池（dayRuleSup）中
 							if (this.dayRuleSup.indexOf(thisWeek) < 0) {
-								// 如果到达最大值时
+								// e.g.果到达最大值时
 								if (Di == DDate.length - 1) {
 									resetDay();
 									if (Mi == MDate.length - 1) {
@@ -213,7 +213,7 @@ export default {
 								continue;
 							}
 						} else if (this.dayRule == 'assWeek') {
-							// 如果指定了Yes第几周的几
+							// e.g.果指定了Yes第几周的几
 							// 获取每月1No.Yes属于几
 							let thisWeek = this.formatDate(new Date(YY + '-' + MM + '-' + DD + ' 00:00:00'), 'week');
 							if (this.dayRuleSup[1] >= thisWeek) {
@@ -222,8 +222,8 @@ export default {
 								DD = this.dayRuleSup[0] * 7 + this.dayRuleSup[1] - thisWeek + 1;
 							}
 						} else if (this.dayRule == 'lastWeek') {
-							// 如果指定了每月最后一个几
-							// 校验并调整如果Yes2月30No.这种Date传进来时需调整至正常月底
+							// e.g.果指定了每月最后一个几
+							// 校验并调整e.g.果Yes2月30No.这种Date传进来时需调整至正常月底
 							if (this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
 								while (DD > 0 && this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
 									DD--;
@@ -246,7 +246,7 @@ export default {
 						goHour: for (let hi = hIdx; hi < hDate.length; hi++) {
 							let hh = hDate[hi] < 10 ? '0' + hDate[hi] : hDate[hi]
 
-							// 如果到达最大值时
+							// e.g.果到达最大值时
 							if (nMin > mDate[mDate.length - 1]) {
 								resetMin();
 								if (hi == hDate.length - 1) {
@@ -267,7 +267,7 @@ export default {
 							goMin: for (let mi = mIdx; mi < mDate.length; mi++) {
 								let mm = mDate[mi] < 10 ? '0' + mDate[mi] : mDate[mi];
 
-								// 如果到达最大值时
+								// e.g.果到达最大值时
 								if (nSecond > sDate[sDate.length - 1]) {
 									resetSecond();
 									if (mi == mDate.length - 1) {
@@ -296,9 +296,9 @@ export default {
 										resultArr.push(YY + '-' + MM + '-' + DD + ' ' + hh + ':' + mm + ':' + ss)
 										nums++;
 									}
-									// 如果条数满了就退出循环
+									// e.g.果条数满了就退出循环
 									if (nums == 5) break goYear;
-									// 如果到达最大值时
+									// e.g.果到达最大值时
 									if (si == sDate.length - 1) {
 										resetSecond();
 										if (mi == mDate.length - 1) {
@@ -334,7 +334,7 @@ export default {
 					this.resultList.push('最近100年内只有上面' + resultArr.length + '条结果！')
 				}
 			}
-			// 计算完成-显示结果
+			// 计算完成-Show结果
 			this.isShow = true;
 
 
@@ -520,7 +520,7 @@ export default {
 				return 1;
 			}
 		},
-		// 格式化Date格式如：2017-9-19 18:04:33
+		// 格式化Date格式e.g.：2017-9-19 18:04:33
 		formatDate(value, type) {
 			// 计算Date相关值
 			let time = typeof value == 'number' ? new Date(value) : value;
@@ -531,7 +531,7 @@ export default {
 			let m = time.getMinutes();
 			let s = time.getSeconds();
 			let week = time.getDay();
-			// 如果传递了type的话
+			// e.g.果传递了type的话
 			if (type == undefined) {
 				return Y + '-' + (M < 10 ? '0' + M : M) + '-' + (D < 10 ? '0' + D : D) + ' ' + (h < 10 ? '0' + h : h) + ':' + (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
 			} else if (type == 'week') {

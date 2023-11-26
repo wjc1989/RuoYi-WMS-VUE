@@ -40,7 +40,7 @@ export const STOCK_OUT_TEMPLATE = {
     "left": 39,
     "top": 40,
     "title": "自定义文本",
-    "value": "客户：",
+    "value": "Custom：",
     "defaultValue": "自定义文本",
     "name": "",
     "style": {
@@ -135,8 +135,8 @@ export const STOCK_OUT_TEMPLATE = {
     "height": 20,
     "left": 81,
     "top": 40,
-    "title": "客户",
-    "value": "{ 客户 } ",
+    "title": "Custom",
+    "value": "{ Custom } ",
     "defaultValue": "中国苹果",
     "name": "customerName",
     "style": {

@@ -10,7 +10,7 @@ export function listWmsShipmentOrder(query, pageReq) {
   })
 }
 
-// SearchOutbound 详细
+// SearchOutbound Detail
 export function getWmsShipmentOrder(id) {
   return request({
     url: '/wms/shipmentOrder/' + id,
@@ -61,7 +61,7 @@ export function exportWmsShipmentOrder(query) {
   })
 }
 
-// 个订分配Warehouse
+// 个订 DistributeWarehouse
 export function allocatedInventory(params) {
   return request({
     url: '/wms/shipmentOrder/allocated',

@@ -1,6 +1,6 @@
 <template>
 
-  <el-dialog :visible.sync="dialogVisible" title="Inventory一览" width="600px" @close="handleDialogClose">
+  <el-dialog :visible.sync="dialogVisible" title="Inventory一览" width="800px" @close="handleDialogClose">
     <div ref="reportHTML" v-html="msg" class="web-con"></div>
     <el-table :data="wmsInventoryList" v-loading="loading">
       <el-table-column width="100" property="itemName" label="Goods Name"></el-table-column>
@@ -73,7 +73,7 @@ export default {
 
         content.forEach(item => {
           if (!item.warehouseName) {
-            item.warehouseName = "暂未分配Warehouse"
+            item.warehouseName = "暂未 DistributeWarehouse"
           }
           if (item.areaName) {
             if (item.areaName) {
@@ -94,7 +94,7 @@ export default {
     handleDialogConfirm() {
       // 处理对话框OKButton的逻辑
       // 可以在这里获取选中的值并进行相应的处理
-      // 例如，将选中的值赋给输入框的绑定值
+      // 例e.g.，将选中的值赋给输入框的绑定值
       this.selectedValue = this.selections;
       this.dialogVisible = false; // Close对话框
     }

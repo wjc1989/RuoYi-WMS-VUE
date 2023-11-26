@@ -1,19 +1,19 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="系统模块" prop="title">
+      <el-form-item label="Module" prop="title">
         <el-input
           v-model="queryParams.title"
-          placeholder="Please Input 系统模块"
+          placeholder="Please Input Module"
           clearable
           style="width: 240px;"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="Operate人员" prop="operName">
+      <el-form-item label="Operater" prop="operName">
         <el-input
           v-model="queryParams.operName"
-          placeholder="Please Input Operate人员"
+          placeholder="Please Input Operater"
           clearable
           style="width: 240px;"
           @keyup.enter.native="handleQuery"
@@ -22,7 +22,7 @@
       <el-form-item label="Type" prop="businessType">
         <el-select
           v-model="queryParams.businessType"
-          placeholder="OperateType"
+          placeholder="Type"
           clearable
           style="width: 240px"
         >
@@ -37,7 +37,7 @@
       <el-form-item label="Status" prop="status">
         <el-select
           v-model="queryParams.status"
-          placeholder="OperateStatus"
+          placeholder="Status"
           clearable
           style="width: 240px"
         >
@@ -49,7 +49,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="Operate Time">
+      <el-form-item label="Date">
         <el-date-picker
           v-model="dateRange"
           style="width: 240px"
@@ -104,22 +104,22 @@
     <el-table ref="tables" v-loading="loading" :data="list" @selection-change="handleSelectionChange" :default-sort="defaultSort" @sort-change="handleSortChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="LogsNo." align="center" prop="operId" />
-      <el-table-column label="系统模块" align="center" prop="title" />
-      <el-table-column label="OperateType" align="center" prop="businessType">
+      <el-table-column label="Module" align="center" prop="title" />
+      <el-table-column label="Type" align="center" prop="businessType">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_oper_type" :value="scope.row.businessType"/>
         </template>
       </el-table-column>
-      <el-table-column label="请求方式" align="center" prop="requestMethod" />
-      <el-table-column label="Operate人员" align="center" prop="operName" width="100" :show-overflow-tooltip="true" sortable="custom" :sort-orders="['descending', 'ascending']" />
-      <el-table-column label="OperateAddress" align="center" prop="operIp" width="130" :show-overflow-tooltip="true" />
-      <el-table-column label="Operate地点" align="center" prop="operLocation" :show-overflow-tooltip="true" />
-      <el-table-column label="OperateStatus" align="center" prop="status">
+      <el-table-column label="Request" align="center" prop="requestMethod" />
+      <el-table-column label="Operater" align="center" prop="operName" width="100" :show-overflow-tooltip="true" sortable="custom" :sort-orders="['descending', 'ascending']" />
+      <el-table-column label="IP" align="center" prop="operIp" width="130" :show-overflow-tooltip="true" />
+      <el-table-column label="Location" align="center" prop="operLocation" :show-overflow-tooltip="true" />
+      <el-table-column label="Status" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_common_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="OperateDate" align="center" prop="operTime" sortable="custom" :sort-orders="['descending', 'ascending']" width="180">
+      <el-table-column label="Date" align="center" prop="operTime" sortable="custom" :sort-orders="['descending', 'ascending']" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.operTime) }}</span>
         </template>
@@ -132,7 +132,7 @@
             icon="el-icon-view"
             @click="handleView(scope.row,scope.index)"
             v-hasPermi="['monitor:operlog:query']"
-          >详细</el-button>
+          >Detail</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -145,37 +145,37 @@
       @pagination="getList"
     />
 
-    <!-- OperateLogs详细 -->
-    <el-dialog title="OperateLogs详细" :visible.sync="open" width="700px" append-to-body>
-      <el-form ref="form" :model="form" label-width="100px" size="mini">
+    <!-- OperateLogsDetail -->
+    <el-dialog title="OperateLogsDetail" :visible.sync="open" width="700px" append-to-body>
+      <el-form ref="form" :model="form" label-width="120px" size="mini">
         <el-row>
           <el-col :span="12">
-            <el-form-item label="Operate模块：">{{ form.title }} / {{ typeFormat(form) }}</el-form-item>
+            <el-form-item label="Module：">{{ form.title }} / {{ typeFormat(form) }}</el-form-item>
             <el-form-item
-              label="Login信息："
+              label="Login Info："
             >{{ form.operName }} / {{ form.operIp }} / {{ form.operLocation }}</el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="请求Address：">{{ form.operUrl }}</el-form-item>
-            <el-form-item label="请求方式：">{{ form.requestMethod }}</el-form-item>
+            <el-form-item label="Request：">{{ form.operUrl }}</el-form-item>
+            <el-form-item label="Request：">{{ form.requestMethod }}</el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="Operate方法：">{{ form.method }}</el-form-item>
+            <el-form-item label="Function：">{{ form.method }}</el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="请求参数：">{{ form.operParam }}</el-form-item>
+            <el-form-item label="Params：">{{ form.operParam }}</el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="返回参数：">{{ form.jsonResult }}</el-form-item>
+            <el-form-item label="Response">{{ form.jsonResult }}</el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="OperateStatus：">
+            <el-form-item label="Status：">
               <div v-if="form.status === 0">正常</div>
               <div v-else-if="form.status === 1">失败</div>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="Operate Time：">{{ parseTime(form.operTime) }}</el-form-item>
+            <el-form-item label="Date：">{{ parseTime(form.operTime) }}</el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label=" Exception信息：" v-if="form.status === 1">{{ form.errorMsg }}</el-form-item>
@@ -183,7 +183,7 @@
         </el-row>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="open = false">关 闭</el-button>
+        <el-button @click="open = false">Close</el-button>
       </div>
     </el-dialog>
   </div>
@@ -203,21 +203,21 @@ export default {
       ids: [],
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
       // 表格Data
       list: [],
-      // 显示弹出层
+      // Show弹出层
       open: false,
       // Date范围
       dateRange: [],
       // 默认Sort
       defaultSort: {prop: 'operTime', order: 'descending'},
-      // 表参数
+      // 表Params
       form: {},
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -269,7 +269,7 @@ export default {
       this.queryParams.isAsc = column.order;
       this.getList();
     },
-    /** 详细ButtonOperate */
+    /** DetailButtonOperate */
     handleView(row) {
       this.open = true;
       this.form = row;

@@ -15,7 +15,7 @@
         <el-form-item prop="packageName">
           <span slot="label">
             生成包路径
-            <el-tooltip content="生成在哪个java包下，例如 com.ruoyi.system" placement="top">
+            <el-tooltip content="生成在哪个java包下，例e.g. com.ruoyi.system" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
@@ -27,7 +27,7 @@
         <el-form-item prop="moduleName">
           <span slot="label">
             生成模块名
-            <el-tooltip content="可理解子系统名，例如 system" placement="top">
+            <el-tooltip content="可理解子系统名，例e.g. system" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
@@ -39,7 +39,7 @@
         <el-form-item prop="businessName">
           <span slot="label">
             生成业务名
-            <el-tooltip content="可理解功能英文名，例如 user" placement="top">
+            <el-tooltip content="可理解功能英文名，例e.g. user" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
@@ -51,7 +51,7 @@
         <el-form-item prop="functionName">
           <span slot="label">
             生 Successful能名
-            <el-tooltip content="用作类描述，例如 User " placement="top">
+            <el-tooltip content="用作类描述，例e.g. User " placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
@@ -62,8 +62,8 @@
       <el-col :span="12">
         <el-form-item>
           <span slot="label">
-            Parent
-            <el-tooltip content="分配到指定Menu 下，例如 系统管理" placement="top">
+            Higher
+            <el-tooltip content=" Distribute到指定Menu 下，例e.g. 系统管理" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
@@ -120,7 +120,7 @@
         <el-form-item>
           <span slot="label">
             树No.字段
-            <el-tooltip content="树显示的No.字段名， 如：dept_id" placement="top">
+            <el-tooltip content="树Show的No.字段名， e.g.：dept_id" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
@@ -138,7 +138,7 @@
         <el-form-item>
           <span slot="label">
             树父No.字段
-            <el-tooltip content="树显示的父No.字段名， 如：parent_Id" placement="top">
+            <el-tooltip content="树Show的父No.字段名， e.g.：parent_Id" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
@@ -156,7 +156,7 @@
         <el-form-item>
           <span slot="label">
             树Item字段
-            <el-tooltip content="树节点的显示Item字段名， 如：dept_name" placement="top">
+            <el-tooltip content="树节点的ShowItem字段名， e.g.：dept_name" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
@@ -177,7 +177,7 @@
         <el-form-item>
           <span slot="label">
             关联子表的表名
-            <el-tooltip content="关联子表的表名， 如：sys_user" placement="top">
+            <el-tooltip content="关联子表的表名， e.g.：sys_user" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
@@ -195,7 +195,7 @@
         <el-form-item>
           <span slot="label">
             子表关联的外键名
-            <el-tooltip content="子表关联的外键名， 如：user_id" placement="top">
+            <el-tooltip content="子表关联的外键名， e.g.：user_id" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>

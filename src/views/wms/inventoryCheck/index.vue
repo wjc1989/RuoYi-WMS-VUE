@@ -1,6 +1,6 @@
 <template>
   <div class="app-container" v-if="show">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
              class="ry_form">
       <el-form-item label="InventoryCountNo." prop="inventoryCheckNo">
         <el-input
@@ -40,7 +40,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:inventoryCheck:add']"
-        >AddCount
+        >New
         </el-button>
       </el-col>
 
@@ -65,7 +65,7 @@
                        v-if="columns[0].visible"/>
       <!--      <el-table-column label="InventoryCountType" align="center" prop="inventoryCheckType" v-if="columns[1].visible"/>-->
 
-      <el-table-column label="+-" align="center" prop="inventoryCheckTotal" v-if="columns[3].visible"/>
+      <el-table-column label="Change" align="center" prop="inventoryCheckTotal" v-if="columns[3].visible"/>
       <!--      <el-table-column label="审核Status" align="center" prop="checkStatus" v-if="columns[4].visible"/>
             <el-table-column label="审核人" align="center" prop="checkUserId" v-if="columns[5].visible"/>
             <el-table-column label="审核 Time" align="center" prop="checkTime" width="180" v-if="columns[6].visible">
@@ -161,15 +161,15 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
       // InventoryCount据表格Data
       wmsInventoryCheckList: [],
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -185,7 +185,7 @@ export default {
         rackId: null,
         attachment: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {},
@@ -193,13 +193,13 @@ export default {
         {key: 1, label: "InventoryCountNo.，系统自动生成", visible: true},
         {key: 2, label: "InventoryCountType", visible: true},
         {key: 3, label: "InventoryCountStatus", visible: true},
-        {key: 4, label: "+-", visible: true},
+        {key: 4, label: "Change", visible: true},
         {key: 5, label: "审核Status", visible: true},
         {key: 6, label: "审核人", visible: true},
         {key: 7, label: "审核 Time", visible: true},
         {key: 8, label: "Warehouse", visible: true},
         {key: 9, label: "Area", visible: true},
-        {key: 10, label: "货架", visible: false},
+        {key: 10, label: " Shelves", visible: false},
         {key: 11, label: "附件文件", visible: false},
         {key: 12, label: "Remark", visible: false},
       ],

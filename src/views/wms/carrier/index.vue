@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium" class="ry_form">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium" class="ry_form">
       <el-form-item label="No." prop="carrierNo">
         <el-input
           v-model.trim="queryParams.carrierNo"
@@ -10,10 +10,10 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="Item" prop="carrierName">
+      <el-form-item label="Name" prop="carrierName">
         <el-input
           v-model.trim="queryParams.carrierName"
-          placeholder="Please Input Item"
+          placeholder="Please Input Name"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -125,13 +125,13 @@
     <WmsTable v-loading="loading" :data="wmsCarrierList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="No." align="center" prop="carrierNo" v-if="columns[0].visible"/>
-      <el-table-column label="Item" align="center" prop="carrierName" v-if="columns[1].visible"/>
+      <el-table-column label="Name" align="center" prop="carrierName" v-if="columns[1].visible"/>
       <el-table-column label="Address" align="center" prop="address" v-if="columns[2].visible"/>
       <el-table-column label="Phone" align="center" prop="mobile" v-if="columns[3].visible"/>
-       <el-table-column label="Contacts" align="center" prop="contact" v-if="columns[5].visible"/>
-      <el-table-column label="Leave" align="center" prop="level" v-if="columns[6].visible"/>
-      <el-table-column label="Email" align="center" prop="email" v-if="columns[7].visible"/>
-      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[8].visible"/>
+       <el-table-column label="Contacts" align="center" prop="contact" v-if="columns[4].visible"/>
+      <el-table-column label="Leave" align="center" prop="level" v-if="columns[5].visible"/>
+      <el-table-column label="Email" align="center" prop="email" v-if="columns[6].visible"/>
+      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[7].visible"/>
       <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -166,8 +166,8 @@
         <el-form-item label="No." prop="carrierNo">
           <el-input v-model="form.carrierNo" placeholder="Please Input No." />
         </el-form-item>
-        <el-form-item label="Item" prop="carrierName">
-          <el-input v-model="form.carrierName" placeholder="Please Input Item" />
+        <el-form-item label="Name" prop="carrierName">
+          <el-input v-model="form.carrierName" placeholder="Please Input Name" />
         </el-form-item>
         <el-form-item label="Address" prop="address">
           <el-input v-model="form.address" placeholder="Please Input Address" />
@@ -223,7 +223,7 @@ export default {
             single: true,
             // 非多个禁用
             multiple: true,
-            // 显示Search
+            // ShowSearch
             showSearch: true,
             // 总条数
             total: 0,
@@ -231,9 +231,9 @@ export default {
             wmsCarrierList: [],
             // 弹出层标题
             title: "",
-            // 显示弹出层
+            // Show弹出层
             open: false,
-            // Search参数
+            // SearchParams
             queryParams: {
                 pageNum: 1,
                 pageSize: 10,
@@ -246,7 +246,7 @@ export default {
                 level: null,
                 email: null,
             },
-            // 表参数
+            // 表Params
             form: {},
             // 表校验
             rules: {
@@ -254,12 +254,12 @@ export default {
                     { required: true, message: "No. is required", trigger: "blur" }
                 ],
                 carrierName: [
-                    { required: true, message: "Item is required", trigger: "blur" }
+                    { required: true, message: "Name is required", trigger: "blur" }
                 ],
             },
             columns: [
                 { key: 1, label: "No.", visible: true },
-                { key: 2, label: "Item", visible: true },
+                { key: 2, label: "Name", visible: true },
                 { key: 3, label: "Address", visible: true },
                 { key: 4, label: "Phone", visible: true },
                  { key: 6, label: "Contacts", visible: true },
@@ -332,7 +332,7 @@ export default {
         handleAdd() {
             this.reset();
             this.open = true;
-            this.title = "Add Carrier";
+            this.title = "New";
         },
         /** ModifyButtonOperate */
         handleUpdate(row) {
@@ -341,7 +341,7 @@ export default {
             getWmsCarrier(id).then(response => {
                 this.form = response;
                 this.open = true;
-                this.title = "Modify Carrier";
+                this.title = "Modify";
             });
         },
         /** 提交Button */

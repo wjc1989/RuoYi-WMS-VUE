@@ -5,16 +5,16 @@
         <el-form-item label="Count" prop="inventoryCheckNo">
           <el-input class="w200" v-model="form.inventoryCheckNo" placeholder="Count" disabled="disabled"></el-input>
         </el-form-item>
-        <el-form-item label="CountWarehouse" prop="supplierId">
+        <el-form-item label="Warehouse" prop="supplierId">
           <wms-warehouse-cascader disabled v-model="form.place" size="small"></wms-warehouse-cascader>
         </el-form-item>
-        <el-form-item label="+-" prop="inventoryCheckTotal">
+        <el-form-item label="Change" prop="inventoryCheckTotal">
           <el-input-number v-model="inventoryCheckTotal" :precision="2" disabled></el-input-number>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           {{ form.remark }}
         </el-form-item>
-        <el-form-item label="附件" prop="attachment">
+        <el-form-item label="Attachment" prop="attachment">
           <file-upload v-model="form.attachment" :file-type="types"></file-upload>
         </el-form-item>
 
@@ -30,10 +30,10 @@
             <th>Goods No.</th>
             <th>Goods Name</th>
             <th>Warehouse</th>
-            <th>账面Inventory</th>
-            <th>实际Inventory</th>
-            <th>变化量</th>
-            <th>说明</th>
+            <th>Expected Inventory</th>
+            <th>Real Inventory</th>
+            <th>Change</th>
+            <th>Remark</th>
           </tr>
           <tr v-for="(it, index) in form.details">
             <td align="center">{{ it.prod.itemNo }}</td>
@@ -46,7 +46,7 @@
             </td>
             <td align="center">
               <el-input-number v-model="it.checkQuantity" :precision="2" :min="0" disabled
-                label="Please Input 实际Inventory"></el-input-number>
+                label="Please Input Real Inventory"></el-input-number>
             </td>
             <td align="center">
               {{ it.checkQuantity - it.quantity }}
@@ -81,7 +81,7 @@ export default {
   data() {
     return {
       types: ['png', 'jpg', 'jpeg'],
-      // 表参数
+      // 表Params
       form: {
         details: []
       },
@@ -118,7 +118,7 @@ export default {
     cancel() {
       this.$tab.closeOpenPage({ path: '/inventoryCheck' })
     },
-    /** 加载 Count详情 */
+    /** 加载 Count Detail */
     loadDetail(id) {
       getWmsInventoryCheck(id).then(response => {
         const { details, items } = response

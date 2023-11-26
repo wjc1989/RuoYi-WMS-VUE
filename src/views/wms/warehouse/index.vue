@@ -156,7 +156,7 @@
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -166,10 +166,10 @@
       wmsAreaList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       openWarehouse: false,
       openArea: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         warehouseNo: null,
         warehouseName: null,
@@ -181,7 +181,7 @@
         pageNum: 1,
         pageSize: 10
       },
-      // 表参数
+      // 表Params
       form: {},
       warehouseForm: {},
       areaForm: {},
@@ -220,7 +220,7 @@
       selectedWarehouseId: null,
       // 右侧横向tab默认选中
       activeName: 'first',
-      // SearchArea参数
+      // SearchAreaParams
       queryAreaParam: null,
       queryWarehouseParam: null
     };
@@ -330,14 +330,14 @@
     handleAddWarehouse() {
       this.resetWarehouseForm();
       this.openWarehouse = true;
-      this.title = "AddWarehouse";
+      this.title = "New";
     },
     /** AddAreaButtonOperate */
     handleAddArea() {
       this.resetAreaForm();
       this.areaForm.warehouseId = this.selectedWarehouseId;
       this.openArea = true;
-      this.title = "AddArea";
+      this.title = "New";
     },
     /** ModifyAreaButtonOperate */
     handleUpdateArea(row) {
@@ -346,7 +346,7 @@
       getWmsArea(id).then((response) => {
         this.areaForm = response;
         this.openArea = true;
-        this.title = "ModifyArea";
+        this.title = "Modify";
       });
     },
     /** ModifyWarehouseButtonOperate */
@@ -356,7 +356,7 @@
       getWmsWarehouse(id).then((response) => {
         this.warehouseForm = response;
         this.openWarehouse = true;
-        this.title = "ModifyWarehouse";
+        this.title = "Modify";
       });
     },
     /** 提交Button（AddWarehouse） */

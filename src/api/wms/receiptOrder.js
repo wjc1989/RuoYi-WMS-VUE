@@ -10,7 +10,7 @@ export function listWmsReceiptOrder(query, pageReq) {
   })
 }
 
-// SearchInbound详细
+// SearchInboundDetail
 export function getWmsReceiptOrder(id) {
   return request({
     url: '/wms/receiptOrder/' + id,

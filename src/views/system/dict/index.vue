@@ -157,8 +157,8 @@
       @pagination="getList"
     />
 
-    <!-- Add或Modify参数配置对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
+    <!-- Add或ModifyParams配置对话框 -->
+    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="110px">
         <el-form-item label="Type Name" prop="dictName">
           <el-input v-model="form.dictName" placeholder="Please Input Type Name" />
@@ -203,7 +203,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -211,11 +211,11 @@ export default {
       typeList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
       // Date范围
       dateRange: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -223,7 +223,7 @@ export default {
         dictType: undefined,
         status: undefined
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -281,7 +281,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "Add Dict Type";
+      this.title = "New";
     },
     // 多选框选中Data
     handleSelectionChange(selection) {
@@ -296,7 +296,7 @@ export default {
       getType(dictId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "ModifyDictType";
+        this.title = "Modify";
       });
     },
     /** 提交Button */

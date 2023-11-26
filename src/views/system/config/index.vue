@@ -1,26 +1,26 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="参数Item" prop="configName">
+    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="120px">
+      <el-form-item label="Name" prop="configName">
         <el-input
           v-model="queryParams.configName"
-          placeholder="Please Input 参数Item"
+          placeholder="Please Input Name"
           clearable
           style="width: 240px"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="参数键名" prop="configKey">
+      <el-form-item label="Key" prop="configKey">
         <el-input
           v-model="queryParams.configKey"
-          placeholder="Please Input 参数键名"
+          placeholder="Please Input Key"
           clearable
           style="width: 240px"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="系统内置" prop="configType">
-        <el-select v-model="queryParams.configType" placeholder="系统内置" clearable>
+      <el-form-item label="System" prop="configType">
+        <el-select v-model="queryParams.configType" placeholder="System" clearable>
           <el-option
             v-for="dict in dict.type.sys_yes_no"
             :key="dict.value"
@@ -104,11 +104,11 @@
 
     <el-table v-loading="loading" :data="configList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="参数主键" align="center" prop="configId" />
-      <el-table-column label="参数Item" align="center" prop="configName" :show-overflow-tooltip="true" />
-      <el-table-column label="参数键名" align="center" prop="configKey" :show-overflow-tooltip="true" />
-      <el-table-column label="参数键值" align="center" prop="configValue" />
-      <el-table-column label="系统内置" align="center" prop="configType">
+      <el-table-column label="ID" align="center" prop="configId" />
+      <el-table-column label="Name" align="center" prop="configName" :show-overflow-tooltip="true" />
+      <el-table-column label="Key" align="center" prop="configKey" :show-overflow-tooltip="true" />
+      <el-table-column label="Value" align="center" prop="configValue" />
+      <el-table-column label="System" align="center" prop="configType">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_yes_no" :value="scope.row.configType"/>
         </template>
@@ -147,19 +147,19 @@
       @pagination="getList"
     />
 
-    <!-- Add或Modify参数配置对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="参数Item" prop="configName">
-          <el-input v-model="form.configName" placeholder="Please Input 参数Item" />
+    <!-- Add或ModifyParams配置对话框 -->
+    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
+        <el-form-item label="Name" prop="configName">
+          <el-input v-model="form.configName" placeholder="Please Input Name" />
         </el-form-item>
-        <el-form-item label="参数键名" prop="configKey">
-          <el-input v-model="form.configKey" placeholder="Please Input 参数键名" />
+        <el-form-item label="Key" prop="configKey">
+          <el-input v-model="form.configKey" placeholder="Please Input Key" />
         </el-form-item>
-        <el-form-item label="参数键值" prop="configValue">
-          <el-input v-model="form.configValue" placeholder="Please Input 参数键值" />
+        <el-form-item label="Value" prop="configValue">
+          <el-input v-model="form.configValue" placeholder="Please Input Value" />
         </el-form-item>
-        <el-form-item label="系统内置" prop="configType">
+        <el-form-item label="System" prop="configType">
           <el-radio-group v-model="form.configType">
             <el-radio
               v-for="dict in dict.type.sys_yes_no"
@@ -196,19 +196,19 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 参数表格Data
+      // Params表格Data
       configList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
       // Date范围
       dateRange: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -216,18 +216,18 @@ export default {
         configKey: undefined,
         configType: undefined
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
         configName: [
-          { required: true, message: "参数Item is required", trigger: "blur" }
+          { required: true, message: "Name is required", trigger: "blur" }
         ],
         configKey: [
-          { required: true, message: "参数键名 is required", trigger: "blur" }
+          { required: true, message: "Key is required", trigger: "blur" }
         ],
         configValue: [
-          { required: true, message: "参数键值 is required", trigger: "blur" }
+          { required: true, message: "Value is required", trigger: "blur" }
         ]
       }
     };
@@ -236,7 +236,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** Search参数列表 */
+    /** SearchParams列表 */
     getList() {
       this.loading = true;
       listConfig(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
@@ -278,7 +278,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "Add参数";
+      this.title = "New";
     },
     // 多选框选中Data
     handleSelectionChange(selection) {
@@ -293,7 +293,7 @@ export default {
       getConfig(configId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "Modify参数";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -319,7 +319,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const configIds = row.configId || this.ids;
-      this.$modal.confirm(' Do you want delete 参数No."' + configIds + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete ParamsNo."' + configIds + '"？').then(function() {
           return delConfig(configIds);
         }).then(() => {
           this.getList();

@@ -9,7 +9,7 @@ export function listType(query) {
   })
 }
 
-// SearchDictType详细
+// SearchDictTypeDetail
 export function getType(dictId) {
   return request({
     url: '/system/dict/type/' + dictId,

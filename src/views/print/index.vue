@@ -54,7 +54,7 @@ export default {
           "left": 15,
           "top": 40,
           "title": "自定义文本",
-          "value": "客户/Supplier：",
+          "value": "Custom/Supplier：",
           "defaultValue": "自定义文本",
           "name": "",
           "style": {
@@ -149,8 +149,8 @@ export default {
           "height": 20,
           "left": 95,
           "top": 40,
-          "title": "客户/Supplier",
-          "value": "{ 客户/Supplier } ",
+          "title": "Custom/Supplier",
+          "value": "{ Custom/Supplier } ",
           "defaultValue": "中国苹果",
           "name": "unitName",
           "style": {
@@ -725,8 +725,8 @@ export default {
         {
           type: 'braid-txt',
           isEdit: 1,
-          title: '客户/Supplier',
-          value: '{客户/Supplier}',
+          title: 'Custom/Supplier',
+          value: '{Custom/Supplier}',
           defaultValue: '中国苹果',
           name: 'unitName'
         },

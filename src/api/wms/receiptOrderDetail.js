@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// SearchInbound详情列表
+// SearchInbound Detail列表
 export function listWmsReceiptOrderDetail(query, pageReq) {
   return request({
     url: '/wms/receiptOrderDetail/list',
@@ -10,7 +10,7 @@ export function listWmsReceiptOrderDetail(query, pageReq) {
   })
 }
 
-// SearchInbound详情详细
+// SearchInbound DetailDetail
 export function getWmsReceiptOrderDetail(id) {
   return request({
     url: '/wms/receiptOrderDetail/' + id,
@@ -18,7 +18,7 @@ export function getWmsReceiptOrderDetail(id) {
   })
 }
 
-// AddInbound详情
+// AddInbound Detail
 export function addWmsReceiptOrderDetail(data) {
   return request({
     url: '/wms/receiptOrderDetail',
@@ -27,7 +27,7 @@ export function addWmsReceiptOrderDetail(data) {
   })
 }
 
-// ModifyInbound详情
+// ModifyInbound Detail
 export function updateWmsReceiptOrderDetail(data) {
   return request({
     url: '/wms/receiptOrderDetail',
@@ -36,7 +36,7 @@ export function updateWmsReceiptOrderDetail(data) {
   })
 }
 
-// DeleteInbound详情
+// DeleteInbound Detail
 export function delWmsReceiptOrderDetail(id) {
   return request({
     url: '/wms/receiptOrderDetail/' + id,
@@ -44,7 +44,7 @@ export function delWmsReceiptOrderDetail(id) {
   })
 }
 
-// ExportInbound详情
+// ExportInbound Detail
 export function exportWmsReceiptOrderDetail(query) {
   return request({
     url: '/wms/receiptOrderDetail/export',

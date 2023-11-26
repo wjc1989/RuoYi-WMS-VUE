@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// SearchOutbound 详情列表
+// SearchOutbound  Detail列表
 export function listWmsShipmentOrderDetail(query, pageReq) {
   return request({
     url: '/wms/shipmentOrderDetail/list',
@@ -10,7 +10,7 @@ export function listWmsShipmentOrderDetail(query, pageReq) {
   })
 }
 
-// SearchOutbound 详情详细
+// SearchOutbound  DetailDetail
 export function getWmsShipmentOrderDetail(id) {
   return request({
     url: '/wms/shipmentOrderDetail/' + id,
@@ -18,7 +18,7 @@ export function getWmsShipmentOrderDetail(id) {
   })
 }
 
-// AddOutbound 详情
+// AddOutbound  Detail
 export function addWmsShipmentOrderDetail(data) {
   return request({
     url: '/wms/shipmentOrderDetail',
@@ -27,7 +27,7 @@ export function addWmsShipmentOrderDetail(data) {
   })
 }
 
-// ModifyOutbound 详情
+// ModifyOutbound  Detail
 export function updateWmsShipmentOrderDetail(data) {
   return request({
     url: '/wms/shipmentOrderDetail',
@@ -36,7 +36,7 @@ export function updateWmsShipmentOrderDetail(data) {
   })
 }
 
-// DeleteOutbound 详情
+// DeleteOutbound  Detail
 export function delWmsShipmentOrderDetail(id) {
   return request({
     url: '/wms/shipmentOrderDetail/' + id,
@@ -44,7 +44,7 @@ export function delWmsShipmentOrderDetail(id) {
   })
 }
 
-// ExportOutbound 详情
+// ExportOutbound  Detail
 export function exportWmsShipmentOrderDetail(query) {
   return request({
     url: '/wms/shipmentOrderDetail/export',

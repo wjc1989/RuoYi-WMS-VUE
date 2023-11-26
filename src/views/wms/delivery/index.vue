@@ -1,11 +1,11 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
              class="ry_form">
-      <el-form-item label="Outbound 主表Id" prop="shipmentOrderId">
+      <el-form-item label="Outbound No." prop="shipmentOrderId">
         <el-input
           v-model.trim="queryParams.shipmentOrderId"
-          placeholder="Please Input Outbound 主表Id"
+          placeholder="Please Input Outbound No."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -16,20 +16,20 @@
         <WmsCarrierSelect v-model="queryParams.carrierId"></WmsCarrierSelect>
 
       </el-form-item>
-      <el-form-item label="OutboundDate" prop="deliveryDate">
+      <el-form-item label="Outbound Date" prop="deliveryDate">
         <el-date-picker
           clearable
           size="small"
           v-model="queryParams.deliveryDate"
           type="datetime"
           value-format="yyyy-MM-ddTHH:mm:ss"
-          placeholder="Select OutboundDate">
+          placeholder="Select Outbound Date">
         </el-date-picker>
       </el-form-item>
-      <el-form-item label="快递No." prop="trackingNo">
+      <el-form-item label="Tracking No." prop="trackingNo">
         <el-input
           v-model.trim="queryParams.trackingNo"
-          placeholder="Please Input 快递No."
+          placeholder="Please Input Tracking No."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -56,12 +56,12 @@
       </el-table-column>
       <el-table-column label=" Carrier" align="center" prop="carrierId" :formatter="getCarrier"
                        v-if="columns[1].visible"/>
-      <el-table-column label="OutboundDate" align="center" prop="deliveryDate" width="180" v-if="columns[2].visible">
+      <el-table-column label="Outbound Date" align="center" prop="deliveryDate" width="180" v-if="columns[2].visible">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.deliveryDate, '') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="快递No." align="center" prop="trackingNo" v-if="columns[3].visible">
+      <el-table-column label="Tracking No." align="center" prop="trackingNo" v-if="columns[3].visible">
         <!--        https://www.kuaidi100.com/chaxun?com=[]&nu=[]-->
         <template slot-scope="scope">
           <a
@@ -83,26 +83,26 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyOutbound记录对话框 -->
+    <!-- Add或ModifyOutbound Record对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
-        <el-form-item label="Outbound 主表Id" prop="shipmentOrderId">
-          <el-input v-model="form.shipmentOrderId" placeholder="Please Input Outbound 主表Id"/>
+        <el-form-item label="Outbound No." prop="shipmentOrderId">
+          <el-input v-model="form.shipmentOrderId" placeholder="Please Input Outbound No."/>
         </el-form-item>
         <el-form-item label=" CarrierId" prop="carrierId">
           <el-input v-model="form.carrierId" placeholder="Please Input  CarrierId"/>
         </el-form-item>
-        <el-form-item label="OutboundDate" prop="deliveryDate">
+        <el-form-item label="Outbound Date" prop="deliveryDate">
           <el-date-picker clearable size="small"
                           v-model="form.deliveryDate"
                           type="datetime"
                           value-format="yyyy-MM-ddTHH:mm:ss"
-                          placeholder="Select OutboundDate">
+                          placeholder="Select Outbound Date">
           </el-date-picker>
         </el-form-item>
         1
-        <el-form-item label="快递No." prop="trackingNo">
-          <el-input v-model="form.trackingNo" placeholder="Please Input 快递No."/>
+        <el-form-item label="Tracking No." prop="trackingNo">
+          <el-input v-model="form.trackingNo" placeholder="Please Input Tracking No."/>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Please Input Remark"/>
@@ -144,17 +144,17 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // Outbound记录表格Data
+      // Outbound Record表格Data
       wmsDeliveryList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -163,15 +163,15 @@ export default {
         deliveryDate: null,
         trackingNo: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {},
       columns: [
-        {key: 1, label: "Outbound 主表Id", visible: true},
+        {key: 1, label: "Outbound No.", visible: true},
         {key: 2, label: " CarrierId", visible: true},
-        {key: 3, label: "OutboundDate", visible: true},
-        {key: 4, label: "快递No.", visible: true},
+        {key: 3, label: "Outbound Date", visible: true},
+        {key: 4, label: "Tracking No.", visible: true},
         {key: 5, label: "Remark", visible: true},
       ],
     };
@@ -190,7 +190,7 @@ export default {
     getCarrier(row, column) {
       return this.carrierMap.get(row.carrierId)
     },
-    /** SearchOutbound记录列表 */
+    /** SearchOutbound Record列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -244,7 +244,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddOutbound记录";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -253,7 +253,7 @@ export default {
       getWmsDelivery(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyOutbound记录";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -279,7 +279,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete Outbound记录No."' + ids + '"？').then(function () {
+      this.$modal.confirm(' Do you want delete Outbound RecordNo."' + ids + '"？').then(function () {
         return delWmsDelivery(ids);
       }).then(() => {
         this.getList();
@@ -290,7 +290,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllOutbound记录？').then(() => {
+      this.$modal.confirm('Export AllOutbound Record？').then(() => {
         this.exportLoading = true;
         return exportWmsDelivery(queryParams);
       }).then(response => {

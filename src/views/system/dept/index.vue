@@ -10,7 +10,7 @@
         />
       </el-form-item>
       <el-form-item label="Status" prop="status">
-        <el-select v-model="queryParams.status" placeholder="DepartmentStatus" clearable>
+        <el-select v-model="queryParams.status" placeholder="Status" clearable>
           <el-option
             v-for="dict in dict.type.sys_normal_disable"
             :key="dict.value"
@@ -97,12 +97,12 @@
     </el-table>
 
     <!-- Add或ModifyDepartment对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+    <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
           <el-col :span="24" v-if="form.parentId !== 0">
-            <el-form-item label="上级Department" prop="parentId">
-              <treeselect v-model="form.parentId" :options="deptOptions" :normalizer="normalizer" placeholder="Select 上级Department" />
+            <el-form-item label="Higher" prop="parentId">
+              <treeselect v-model="form.parentId" :options="deptOptions" :normalizer="normalizer" placeholder="Select Higher" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -120,13 +120,13 @@
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="负责人" prop="leader">
-              <el-input v-model="form.leader" placeholder="Please Input 负责人" maxlength="20" />
+            <el-form-item label="Leader" prop="leader">
+              <el-input v-model="form.leader" placeholder="Please Input Leader" maxlength="20" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="联系电话" prop="phone">
-              <el-input v-model="form.phone" placeholder="Please Input 联系电话" maxlength="11" />
+            <el-form-item label="Phone" prop="phone">
+              <el-input v-model="form.phone" placeholder="Please Input Phone" maxlength="11" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -137,7 +137,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="DepartmentStatus">
+            <el-form-item label="Status">
               <el-radio-group v-model="form.status">
                 <el-radio
                   v-for="dict in dict.type.sys_normal_disable"
@@ -170,7 +170,7 @@ export default {
     return {
       // 遮罩层
       loading: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 表格树Data
       deptList: [],
@@ -178,23 +178,23 @@ export default {
       deptOptions: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
       // Expand，默认AllExpand
       isExpandAll: true,
       // 重新渲染表格Status
       refreshTable: true,
-      // Search参数
+      // SearchParams
       queryParams: {
         deptName: undefined,
         status: undefined
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
         parentId: [
-          { required: true, message: "上级Department is required", trigger: "blur" }
+          { required: true, message: "Higher is required", trigger: "blur" }
         ],
         deptName: [
           { required: true, message: "Department is required", trigger: "blur" }
@@ -277,7 +277,7 @@ export default {
         this.form.parentId = row.deptId;
       }
       this.open = true;
-      this.title = "AddDepartment";
+      this.title = "New";
       listDept().then(response => {
         this.deptOptions = this.handleTree(response.data, "deptId");
       });
@@ -296,7 +296,7 @@ export default {
       getDept(row.deptId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "ModifyDepartment";
+        this.title = "Modify";
       });
       listDeptExcludeChild(row.deptId).then(response => {
         this.deptOptions = this.handleTree(response.data, "deptId");

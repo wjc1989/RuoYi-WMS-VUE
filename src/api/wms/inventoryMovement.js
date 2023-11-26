@@ -10,7 +10,7 @@ export function listWmsInventoryMovement(query, pageReq) {
   })
 }
 
-// SearchInventory移动详细
+// SearchInventory移动Detail
 export function getWmsInventoryMovement(id) {
   return request({
     url: '/wms/inventoryMovement/' + id,

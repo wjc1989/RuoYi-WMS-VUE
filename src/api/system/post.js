@@ -9,7 +9,7 @@ export function listPost(query) {
   })
 }
 
-// SearchPost详细
+// SearchPostDetail
 export function getPost(postId) {
   return request({
     url: '/system/post/' + postId,

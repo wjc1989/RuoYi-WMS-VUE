@@ -10,7 +10,7 @@ export function listWave(query, pageReq) {
   })
 }
 
-// SearchWave 详细
+// SearchWave Detail
 export function getWave(id) {
   return request({
     url: '/wms/wave/shipment/' + id,
@@ -53,7 +53,7 @@ export function exportWave(query) {
   })
 }
 
-// Wave 分配Warehouse
+// Wave  DistributeWarehouse
 export function waveAllocatedInventory(params) {
   return request({
     url: '/wms/wave/shipment/allocated/',
@@ -69,7 +69,7 @@ export function confirmWave(data) {
     data: data
   })
 }
-// CancelWave 作业
+// CancelWave Task
 export function cancelAllocatedInventory(id) {
   return request({
     url: '/wms/wave/shipment/cancelAllocatedInventory/'+ id ,
@@ -102,7 +102,7 @@ export function delWaveForReceipt(id) {
   })
 }
 
-// Wave 分配Warehouse
+// Wave  DistributeWarehouse
 export function waveAllocatedInventoryForReceipt(params) {
   return request({
     url: '/wms/wave/receipt/allocated/',
@@ -118,7 +118,7 @@ export function confirmWaveForReceipt(data) {
     data: data
   })
 }
-// CancelWave 作业
+// CancelWave Task
 export function cancelAllocatedInventoryForReceipt(id) {
   return request({
     url: '/wms/wave/receipt/cancelAllocatedInventory/'+ id ,

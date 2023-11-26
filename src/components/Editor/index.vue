@@ -125,7 +125,7 @@ export default {
     init() {
       const editor = this.$refs.editor;
       this.Quill = new Quill(editor, this.options);
-      // 如果设置了上传Address则自定义图片上传事件
+      // e.g.果设置了上传Address则自定义图片上传事件
       if (this.type == 'url') {
         let toolbar = this.Quill.getModule("toolbar");
         toolbar.addHandler("image", (value) => {
@@ -171,7 +171,7 @@ export default {
     handleUploadSuccess(res, file) {
       // 获取富文本组件实例
       let quill = this.Quill;
-      // 如果上传 Successful
+      // e.g.果上传 Successful
       if (res.code == 200) {
         // 获取光标所在位置
         let length = quill.getSelection().index;

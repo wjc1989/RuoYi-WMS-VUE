@@ -25,7 +25,7 @@
         <el-form-item label="Remark" prop="remark">
           <el-input
             v-model="form.remark"
-            placeholder="Remark...100个字符以内"
+            placeholder="Remark...Maximum 100 characters"
             rows="3"
             maxlength="100"
             type="textarea"
@@ -98,7 +98,7 @@
       </div>
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
-        <el-button @click="submitForm(11)" type="primary">暂存</el-button>
+        <el-button @click="submitForm(11)" type="primary">Save</el-button>
         <el-button @click="submitFinishForm" type="success">结算完成</el-button>
       </div>
     </div>
@@ -145,7 +145,7 @@ export default {
         }]
       },
       types: ["png", "jpg", "jpeg"],
-      // 表参数
+      // 表Params
       form: {
         details: [],
       },
@@ -232,7 +232,7 @@ export default {
         });
       });
     },
-    /** 加载 Count详情 */
+    /** 加载 Count Detail */
     loadDetail(id) {
       getWmsInventorySettlement(id).then((response) => {
         const {details, items, inventorySettlementStartTime, inventorySettlementEndTime} = response;

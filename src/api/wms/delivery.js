@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// SearchOutbound记录列表
+// SearchOutbound Record列表
 export function listWmsDelivery(query, pageReq) {
   return request({
     url: '/wms/delivery/list',
@@ -10,7 +10,7 @@ export function listWmsDelivery(query, pageReq) {
   })
 }
 
-// SearchOutbound记录详细
+// SearchOutbound RecordDetail
 export function getWmsDelivery(id) {
   return request({
     url: '/wms/delivery/' + id,
@@ -18,7 +18,7 @@ export function getWmsDelivery(id) {
   })
 }
 
-// AddOutbound记录
+// AddOutbound Record
 export function addWmsDelivery(data) {
   return request({
     url: '/wms/delivery',
@@ -27,7 +27,7 @@ export function addWmsDelivery(data) {
   })
 }
 
-// ModifyOutbound记录
+// ModifyOutbound Record
 export function updateWmsDelivery(data) {
   return request({
     url: '/wms/delivery',
@@ -36,7 +36,7 @@ export function updateWmsDelivery(data) {
   })
 }
 
-// DeleteOutbound记录
+// DeleteOutbound Record
 export function delWmsDelivery(id) {
   return request({
     url: '/wms/delivery/' + id,
@@ -44,7 +44,7 @@ export function delWmsDelivery(id) {
   })
 }
 
-// ExportOutbound记录
+// ExportOutbound Record
 export function exportWmsDelivery(query) {
   return request({
     url: '/wms/delivery/export',

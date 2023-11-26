@@ -23,7 +23,7 @@
           <el-input v-model="form.orderNo" placeholder="Please Input No."></el-input>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
-          <el-input v-model="form.remark" placeholder="Remark...100个字符以内" rows="3" maxlength="100" type="textarea"
+          <el-input v-model="form.remark" placeholder="Remark...Maximum 100 characters" rows="3" maxlength="100" type="textarea"
                     show-word-limit="show-word-limit"></el-input>
         </el-form-item>
       </el-form>
@@ -51,7 +51,7 @@
           <el-table-column type="selection" width="55" align="center"></el-table-column>
           <el-table-column label="Goods Name" align="center" prop="prod.itemName"></el-table-column>
           <el-table-column label="Goods No." align="center" prop="prod.itemNo"></el-table-column>
-          <el-table-column label="Goods Type" align="center" prop="prod.itemTypeName"></el-table-column>
+          <el-table-column label="Category" align="center" prop="prod.itemTypeName"></el-table-column>
           <el-table-column label="Count" align="center" prop="planQuantity" width="150">
             <template slot-scope="scope">
               <el-input-number v-model="scope.row.planQuantity" placeholder="Count" :min="1" size="small"
@@ -122,7 +122,7 @@ export default {
       batchForm: {
         place: []
       },
-      // 表参数
+      // 表Params
       form: {
         details: [],
         payableAmount: 0.00,

@@ -227,7 +227,7 @@ export function debounce(func, wait, immediate) {
       timeout = setTimeout(later, wait - last)
     } else {
       timeout = null
-      // 如果设定immediate===true，因开始边界已经调用过了此处无需调用
+      // e.g.果设定immediate===true，因开始边界已经调用过了此处无需调用
       if (!immediate) {
         result = func.apply(context, args)
         if (!timeout) context = args = null
@@ -239,7 +239,7 @@ export function debounce(func, wait, immediate) {
     context = this
     timestamp = +new Date()
     const callNow = immediate && !timeout
-    // 如果延时No 存在，重新设定延时
+    // e.g.果延时No 存在，重新设定延时
     if (!timeout) timeout = setTimeout(later, wait)
     if (callNow) {
       result = func.apply(context, args)

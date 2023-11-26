@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
       class="ry_form">
       <el-form-item label="交易No." prop="transactionCode">
         <el-input v-model.trim="queryParams.transactionCode" placeholder="Please Input 交易No." clearable size="small"
@@ -119,7 +119,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -127,9 +127,9 @@ export default {
       wmsCustomerTransactionList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -141,7 +141,7 @@ export default {
         currentBalance: null,
         shipmentOrderId: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -152,7 +152,7 @@ export default {
           { required: true, message: "User No. is required", trigger: "blur" }
         ],
         transactionType: [
-          { required: true, message: "交易Type  1：结款  2：应付  is required", trigger: "change" }
+          { required: true, message: "交易Type  1：Paid  2：Payment  is required", trigger: "change" }
         ],
         transactionAmount: [
           { required: true, message: "交易Amount is required", trigger: "blur" }
@@ -282,7 +282,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "Add客户账户流水";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -291,7 +291,7 @@ export default {
       getWmsCustomerTransaction(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "Modify客户账户流水";
+        this.title = "Modify";
       });
     },
     /** 提交Button */

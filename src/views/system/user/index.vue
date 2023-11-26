@@ -137,7 +137,7 @@
 
         <el-table v-loading="loading" :data="userList" @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="50" align="center" />
-          <el-table-column label="User No." align="center" key="userId" prop="userId" v-if="columns[0].visible" />
+          <el-table-column label="ID" align="center" key="userId" prop="userId" v-if="columns[0].visible" />
           <el-table-column label="Name" align="center" key="userName" prop="userName" v-if="columns[1].visible" :show-overflow-tooltip="true" />
           <el-table-column label="Nickname" align="center" key="nickName" prop="nickName" v-if="columns[2].visible" :show-overflow-tooltip="true" />
           <el-table-column label="Department" align="center" key="deptName" prop="dept.deptName" v-if="columns[3].visible" :show-overflow-tooltip="true" />
@@ -186,7 +186,7 @@
                   <el-dropdown-item command="handleResetPwd" icon="el-icon-key"
                     v-hasPermi="['system:user:resetPwd']">ResetPassword</el-dropdown-item>
                   <el-dropdown-item command="handleAuthRole" icon="el-icon-circle-check"
-                    v-hasPermi="['system:user:edit']">分配Role</el-dropdown-item>
+                    v-hasPermi="['system:user:edit']"> DistributeRole</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </template>
@@ -204,8 +204,8 @@
     </el-row>
 
     <!-- Add或ModifyUser 配置对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="100px">
+    <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
           <el-col :span="12">
             <el-form-item label="Nickname" prop="nickName">
@@ -362,7 +362,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -372,7 +372,7 @@ export default {
       title: "",
       // Department树选项
       deptOptions: undefined,
-      // 显示弹出层
+      // Show弹出层
       open: false,
       // Department
       deptName: undefined,
@@ -384,15 +384,15 @@ export default {
       postOptions: [],
       // Role选项
       roleOptions: [],
-      // 表参数
+      // 表Params
       form: {},
       defaultProps: {
         children: "children",
         label: "label"
       },
-      // User Import参数
+      // User ImportParams
       upload: {
-        // 显示弹出层（User Import）
+        // Show弹出层（User Import）
         open: false,
         // 弹出层标题（User Import）
         title: "",
@@ -405,7 +405,7 @@ export default {
         // 上传的Address
         url: process.env.VUE_APP_BASE_API + "/system/user/importData"
       },
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -416,7 +416,7 @@ export default {
       },
       // 列信息
       columns: [
-        { key: 0, label: `User No.`, visible: true },
+        { key: 0, label: `ID`, visible: true },
         { key: 1, label: `Name`, visible: true },
         { key: 2, label: `Nickname`, visible: true },
         { key: 3, label: `Department`, visible: true },
@@ -566,7 +566,7 @@ export default {
         this.postOptions = response.posts;
         this.roleOptions = response.roles;
         this.open = true;
-        this.title = "AddUser ";
+        this.title = "New";
         this.form.password = this.initPassword;
       });
     },
@@ -582,7 +582,7 @@ export default {
         this.form.postIds = response.postIds;
         this.form.roleIds = response.roleIds;
         this.open = true;
-        this.title = "ModifyUser ";
+        this.title = "Modify";
         this.form.password = "";
       });
     },
@@ -600,7 +600,7 @@ export default {
           });
         }).catch(() => {});
     },
-    /** 分配RoleOperate */
+    /**  DistributeRoleOperate */
     handleAuthRole: function(row) {
       const userId = row.userId;
       this.$router.push("/system/user-auth/role/" + userId);
@@ -628,7 +628,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const userIds = row.userId || this.ids;
-      this.$modal.confirm(' Do you want delete User No."' + userIds + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete ID"' + userIds + '"？').then(function() {
         return delUser(userIds);
       }).then(() => {
         this.getList();

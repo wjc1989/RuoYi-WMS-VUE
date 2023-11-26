@@ -10,7 +10,7 @@ export function listWmsInventorySettlement(query, pageReq) {
   })
 }
 
-// SearchInventory结算详细
+// SearchInventory结算Detail
 export function getWmsInventorySettlement(id) {
   return request({
     url: '/wms/inventorySettlement/' + id,

@@ -2,7 +2,7 @@
   <div class="prod-sku-select-wrapper">
     <div class="search">
       <el-form inline="inline" label-width="64">
-        <el-form-item label="Goods Type">
+        <el-form-item label="Category">
           <div class="w200">
             <treeselect
               v-model="query.itemType"

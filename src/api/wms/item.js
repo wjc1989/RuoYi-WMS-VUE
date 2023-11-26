@@ -26,7 +26,7 @@ export function allWmsItem(query) {
   })
 }
 
-// SearchItem详细
+// SearchItemDetail
 export function getWmsItem(id) {
   return request({
     url: '/wms/item/' + id,

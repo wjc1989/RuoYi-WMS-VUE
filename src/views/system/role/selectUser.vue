@@ -61,7 +61,7 @@ import { unallocatedUserList, authUserSelectAll } from "@/api/system/role";
 export default {
   dicts: ['sys_normal_disable'],
   props: {
-    // RoleNo.
+    // ID
     roleId: {
       type: [Number, String]
     }
@@ -76,7 +76,7 @@ export default {
       total: 0,
       // 未授权User Data
       userList: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -87,7 +87,7 @@ export default {
     };
   },
   methods: {
-    // 显示弹框
+    // Show弹框
     show() {
       this.queryParams.roleId = this.roleId;
       this.getList();
@@ -122,7 +122,7 @@ export default {
       const roleId = this.queryParams.roleId;
       const userIds = this.userIds.join(",");
       if (userIds == "") {
-        this.$modal.msgError("Please select 要分配的User ");
+        this.$modal.msgError("Please select 要 Distribute的User ");
         return;
       }
       authUserSelectAll({ roleId: roleId, userIds: userIds }).then(res => {

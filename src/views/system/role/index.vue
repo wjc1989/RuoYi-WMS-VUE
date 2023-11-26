@@ -99,7 +99,7 @@
 
     <el-table v-loading="loading" :data="roleList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="RoleNo." prop="roleId" width="120" />
+      <el-table-column label="ID" prop="roleId" width="120" />
       <el-table-column label="Role Name" prop="roleName" :show-overflow-tooltip="true" width="150" />
       <el-table-column label="Prower Key" prop="roleKey" :show-overflow-tooltip="true" width="150" />
       <el-table-column label="Sort" prop="roleSort" width="100" />
@@ -142,7 +142,7 @@
               <el-dropdown-item command="handleDataScope" icon="el-icon-circle-check"
                 v-hasPermi="['system:role:edit']">Data Perm</el-dropdown-item>
               <el-dropdown-item command="handleAuthUser" icon="el-icon-user"
-                v-hasPermi="['system:role:edit']">分配User </el-dropdown-item>
+                v-hasPermi="['system:role:edit']"> DistributeUser </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </template>
@@ -158,14 +158,14 @@
     />
 
     <!-- Add或ModifyRole配置对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="100px">
+    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-form-item label="Role Name" prop="roleName">
           <el-input v-model="form.roleName" placeholder="Please Input Role Name" />
         </el-form-item>
         <el-form-item prop="roleKey">
           <span slot="label">
-            <el-tooltip content="控制器中定义的Prower Key，如：@PreAuthorize(`@ss.hasRole('admin')`)" placement="top">
+            <el-tooltip content="Prower Key，e.g.：@PreAuthorize(`@ss.hasRole('admin')`)" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
             Prower Key
@@ -184,10 +184,10 @@
             >{{dict.label}}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="Menu 权限">
+        <el-form-item label="Prower">
           <el-checkbox v-model="menuExpand" @change="handleCheckedTreeExpand($event, 'menu')">Expand/Collapse</el-checkbox>
-          <el-checkbox v-model="menuNodeAll" @change="handleCheckedTreeNodeAll($event, 'menu')">全选/全No 选</el-checkbox>
-          <el-checkbox v-model="form.menuCheckStrictly" @change="handleCheckedTreeConnect($event, 'menu')">父子联动</el-checkbox>
+          <el-checkbox v-model="menuNodeAll" @change="handleCheckedTreeNodeAll($event, 'menu')">Select All</el-checkbox>
+          <el-checkbox v-model="form.menuCheckStrictly" @change="handleCheckedTreeConnect($event, 'menu')">Cascade</el-checkbox>
           <el-tree
             class="tree-border"
             :data="menuOptions"
@@ -209,9 +209,9 @@
       </div>
     </el-dialog>
 
-    <!-- 分配RoleData Perm对话框 -->
-    <el-dialog :title="title" :visible.sync="openDataScope" width="500px" append-to-body>
-      <el-form :model="form" label-width="80px">
+    <!--  DistributeRoleData Perm对话框 -->
+    <el-dialog :title="title" :visible.sync="openDataScope" width="600px" append-to-body>
+      <el-form :model="form" label-width="120px">
         <el-form-item label="Role Name">
           <el-input v-model="form.roleName" :disabled="true" />
         </el-form-item>
@@ -271,7 +271,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -279,9 +279,9 @@ export default {
       roleList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // 显示弹出层（Data Perm）
+      // Show弹出层（Data Perm）
       openDataScope: false,
       menuExpand: false,
       menuNodeAll: false,
@@ -316,7 +316,7 @@ export default {
       menuOptions: [],
       // Department列表
       deptOptions: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -324,7 +324,7 @@ export default {
         roleKey: undefined,
         status: undefined
       },
-      // 表参数
+      // 表Params
       form: {},
       defaultProps: {
         children: "children",
@@ -476,7 +476,7 @@ export default {
           break;
       }
     },
-    // 树权限（Expand/Collapse）
+    // 树Prower（Expand/Collapse）
     handleCheckedTreeExpand(value, type) {
       if (type == 'menu') {
         let treeList = this.menuOptions;
@@ -490,7 +490,7 @@ export default {
         }
       }
     },
-    // 树权限（全选/全No 选）
+    // 树Prower（Select All）
     handleCheckedTreeNodeAll(value, type) {
       if (type == 'menu') {
         this.$refs.menu.setCheckedNodes(value ? this.menuOptions: []);
@@ -498,7 +498,7 @@ export default {
         this.$refs.dept.setCheckedNodes(value ? this.deptOptions: []);
       }
     },
-    // 树权限（父子联动）
+    // 树Prower（Cascade）
     handleCheckedTreeConnect(value, type) {
       if (type == 'menu') {
         this.form.menuCheckStrictly = value ? true: false;
@@ -511,7 +511,7 @@ export default {
       this.reset();
       this.getMenuTreeselect();
       this.open = true;
-      this.title = "AddRole";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -531,7 +531,7 @@ export default {
             })
           });
         });
-        this.title = "ModifyRole";
+        this.title = "Modify";
       });
     },
     /** Select RoleScope触发 */
@@ -540,7 +540,7 @@ export default {
         this.$refs.dept.setCheckedKeys([]);
       }
     },
-    /** 分配Data PermOperate */
+    /**  DistributeData PermOperate */
     handleDataScope(row) {
       this.reset();
       const roleDeptTreeselect = this.getRoleDeptTreeselect(row.roleId);
@@ -552,10 +552,10 @@ export default {
             this.$refs.dept.setCheckedKeys(res.checkedKeys);
           });
         });
-        this.title = "分配Data Perm";
+        this.title = " DistributeData Perm";
       });
     },
-    /** 分配User Operate */
+    /**  DistributeUser Operate */
     handleAuthUser: function(row) {
       const roleId = row.roleId;
       this.$router.push("/system/role-auth/user/" + roleId);
@@ -596,7 +596,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const roleIds = row.roleId || this.ids;
-      this.$modal.confirm(' Do you want delete RoleNo."' + roleIds + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete ID"' + roleIds + '"？').then(function() {
         return delRole(roleIds);
       }).then(() => {
         this.getList();

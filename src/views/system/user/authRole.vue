@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <h4 class="form-header h4">Basic Info</h4>
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" :model="form" label-width="120px">
       <el-row>
         <el-col :span="8" :offset="2">
           <el-form-item label="Nickname" prop="nickName">
@@ -24,7 +24,7 @@
         </template>
       </el-table-column>
       <el-table-column type="selection" :reserve-selection="true" width="55"></el-table-column>
-      <el-table-column label="RoleNo." align="center" prop="roleId" />
+      <el-table-column label="ID" align="center" prop="roleId" />
       <el-table-column label="Role Name" align="center" prop="roleName" />
       <el-table-column label="Prower Key" align="center" prop="roleKey" />
       <el-table-column label="Create Time" align="center" prop="createTime" width="180">
@@ -36,7 +36,7 @@
 
     <pagination v-show="total>0" :total="total" :page.sync="pageNum" :limit.sync="pageSize" />
 
-    <el-form label-width="100px">
+    <el-form label-width="120px">
       <el-form-item style="text-align: center;margin-left:-120px;margin-top:30px;">
         <el-button type="primary" @click="submitForm()">提交</el-button>
         <el-button @click="close()">返回</el-button>
@@ -58,7 +58,7 @@ export default {
       total: 0,
       pageNum: 1,
       pageSize: 10,
-      // 选中RoleNo.
+      // 选中ID
       roleIds:[],
       // Role信息
       roles: [],

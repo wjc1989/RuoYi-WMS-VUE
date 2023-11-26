@@ -10,7 +10,7 @@ export function listUser(query) {
   })
 }
 
-// SearchUser 详细
+// SearchUser Detail
 export function getUser(userId) {
   return request({
     url: '/system/user/' + parseStrEmpty(userId),
@@ -70,7 +70,7 @@ export function changeUserStatus(userId, status) {
   })
 }
 
-// SearchUser 个人信息
+// SearchUser Profile
 export function getUserProfile() {
   return request({
     url: '/system/user/profile',
@@ -78,7 +78,7 @@ export function getUserProfile() {
   })
 }
 
-// ModifyUser 个人信息
+// ModifyUser Profile
 export function updateUserProfile(data) {
   return request({
     url: '/system/user/profile',

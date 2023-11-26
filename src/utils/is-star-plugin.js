@@ -1,8 +1,8 @@
-// 用于检测User  star 了Warehouse，如果没有 star，将弹窗InfoUser  star 。
+// 用于检测User  star 了Warehouse，e.g.果没有 star，将弹窗InfoUser  star 。
 import { Message, MessageBox } from 'element-ui'
 // 使用axios代替$.ajax
 import axios from 'axios'
-// 应用参数
+// 应用Params
 const client_id = '9addfce3712d04898b5a3dbb223db38b8d6495d2e66d07e3c0af71a708ee3b54'
 const client_secret = '1f73096ce60406eba8fb297a16245eadf2777540abdf531266b406b2479e25fe'
 import store from '@/store'
@@ -12,7 +12,7 @@ const allowDisparity = 1000 * 60 * 60 * 24 * 7
 
 /**
  * 判断当前已 star
- * @param owner Warehouse所属空间Address(企业、组织或个人的Addresspath)
+ * @param owner Warehouse空间Address(企业、组织或个人的Addresspath)
  * @param repo  Warehouse路径(path)
  * @param userId
  * @param redirectUrl
@@ -33,7 +33,7 @@ export function isStarRepo(owner, repo, userId, redirectUrl,productName,productL
     if (typeof window !== 'undefined') {
       const isStarRepo = localStorage.getItem(key)
       if (isStarRepo) {
-        // 记录 star 的 Time，和当前 Time的差距
+        //  Record star 的 Time，和当前 Time的差距
         const disparity = new Date().getTime() - parseInt(isStarRepo)
 
         // 差距小于一月，No 再检测，大于一月，再检测一下
@@ -72,13 +72,13 @@ function confirmStar(redirectUrl,productName,productLink) {
 			<p><b>嗨，同学，来支持一下 ${productName} 吧，项目点个 star ！</b></p>
 			<div>仅需两步即可完成：<br>
 				<div>1、打开 ${productName} <a href=${productLink} target="_blank" style="color: red">${productName}</a>，在右上角点个 star 。</div>
-				<div>2、点击下方 [ 同意授权检测 ] Button，同意 ${productName}  获取 API 权限进行检测。</div>
+				<div>2、点击下方 [ 同意授权检测 ] Button，同意 ${productName}  获取 API Prower进行检测。</div>
 			</div>
 			<p><b>本页面将在 star 后正常开放展示</b></p>
 		</div>
 		`
     // 弹窗Info
-    MessageBox.alert(tipStr, '温馨Info', {
+    MessageBox.alert(tipStr, 'Info', {
       // if you want to disable its autofocus
       // autofocus: false,
       confirmButtonText: '同意授权检测',
@@ -99,11 +99,11 @@ function toStar(redirectUrl,productName,productLink,accessToken,owner,repo,key,c
   const tipStr = `
 		<div>
 			<p><b>嗨，同学，来支持一下 ${productName} 吧，项目点个 star ！</b></p>
-			<div>点击【去Star】Button。进入${productName} 开源项目主页，在右上角点个 star 。</div>
+			<div>Click【去Star】Button。进入${productName} 开源项目主页，在右上角点个 star 。</div>
 			<p><b>本页面将在 star 后正常开放展示</b></p>
 		</div>
 		`
-    MessageBox.confirm(tipStr, '温馨Info', {
+    MessageBox.confirm(tipStr, 'Info', {
       // if you want to disable its autofocus
       // autofocus: false,
       closeOnClickModal: false,
@@ -151,14 +151,14 @@ function getAccessToken(code, redirectUrl, owner, repo, key,productName,productL
     })
     .catch(e => {
       console.log('请求错误 ', e)
-      // 如果请求Address有错，可能Yes服务器宕机了，暂停一天检测
+      // e.g.果Request有错，可能Yes服务器宕机了，暂停一天检测
       if (e.response && (e.response.status === 0 || e.response.status === 502)) {
         // 一天内No 再检查
         const ygTime = allowDisparity - (1000 * 60 * 60 * 24)
         if (typeof window !== 'undefined') {
           localStorage.setItem(key, new Date().getTime() - ygTime)
         }
-        // Refresh url，去掉 code 参数
+        // Refresh url，去掉 code Params
         location.href = location.href.replace('?code=' + code, '')
       }
 
@@ -183,7 +183,7 @@ function judgeStar(accessToken,owner, repo, key,productName,productLink,redirect
     .then(res => {
       // success 回调即代表已经 star，gitee API 请求体No 返回任何Data
       console.log('-> stared ...')
-      // 记录本次检查 Time
+      //  Record本次检查 Time
       if (typeof window !== 'undefined') {
         localStorage.setItem(key, new Date().getTime())
       }
@@ -194,7 +194,7 @@ function judgeStar(accessToken,owner, repo, key,productName,productLink,redirect
     })
     .catch(e => {
       // console.log('ff请求错误 ', e);
-      // 如下返回，代表没有 star
+      // e.g.下返回，代表没有 star
       if (e.response && e.response.status === 404) {
         console.log('not star ...')
         toStar(redirectUrl,productName,productLink,accessToken,owner,repo,key,code);
@@ -202,14 +202,14 @@ function judgeStar(accessToken,owner, repo, key,productName,productLink,redirect
     })
 }
 
-// 获取 url 携带的参数
+// 获取 url 携带的Params
 function getParam(name) {
   const urls = window.location.href.split('?')
   if (urls.length < 2) {
     return null
   }
   let url = urls[1]
-  let obj = {} // 声明参数对象
+  let obj = {} // 声明Params对象
   let arr = url.split('&') // 以&符No.分割数组
   for (let i = 0; i < arr.length; i++) {
     let arrNew = arr[i].split('=') // 以"="分割数组

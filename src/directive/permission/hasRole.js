@@ -1,5 +1,5 @@
  /**
- * v-hasRole Role权限处理
+ * v-hasRole RolePrower处理
  * Copyright (c) 2019 ruoyi
  */
 
@@ -22,7 +22,7 @@ export default {
         el.parentNode && el.parentNode.removeChild(el)
       }
     } else {
-      throw new Error(`请设置Role权限 Label值"`)
+      throw new Error(`请设置RolePrower Label值"`)
     }
   }
 }

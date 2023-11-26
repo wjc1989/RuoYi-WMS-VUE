@@ -5,7 +5,7 @@
       ref="queryForm"
       :inline="true"
       v-show="showSearch"
-      label-width="100px"
+      label-width="120px"
       size="medium"
       class="ry_form"
     >
@@ -237,7 +237,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -245,9 +245,9 @@ export default {
       wmsAreaList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -255,7 +255,7 @@ export default {
         areaName: null,
         warehouseId: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -344,7 +344,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddArea";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -353,7 +353,7 @@ export default {
       getWmsArea(id).then((response) => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyArea";
+        this.title = "Modify";
       });
     },
     /** 提交Button */

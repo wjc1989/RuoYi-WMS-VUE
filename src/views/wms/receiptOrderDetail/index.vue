@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium" class="ry_form">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium" class="ry_form">
       <el-form-item label="Inbound No." prop="receiptOrderId">
         <el-input
           v-model="queryParams.receiptOrderId"
@@ -164,7 +164,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyInbound详情对话框 -->
+    <!-- Add或ModifyInbound Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="Inbound No." prop="receiptOrderId">
@@ -222,17 +222,17 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // Inbound详情表格Data
+      // Inbound Detail表格Data
       wmsReceiptOrderDetailList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -245,7 +245,7 @@ export default {
         areaId: null,
         receiptOrderStatus: null
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -268,7 +268,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** SearchInbound详情列表 */
+    /** SearchInbound Detail列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -326,7 +326,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddInbound详情";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -335,7 +335,7 @@ export default {
       getWmsReceiptOrderDetail(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyInbound详情";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -361,7 +361,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete Inbound详情No."' + ids + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete Inbound DetailNo."' + ids + '"？').then(function() {
         return delWmsReceiptOrderDetail(ids);
       }).then(() => {
         this.getList();
@@ -371,7 +371,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllInbound详情？').then(() => {
+      this.$modal.confirm('Export AllInbound Detail？').then(() => {
         this.exportLoading = true;
         return exportWmsReceiptOrderDetail(queryParams);
       }).then(response => {

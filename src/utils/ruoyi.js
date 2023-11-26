@@ -199,8 +199,8 @@ export function handleTree(data, id, parentId, children) {
 }
 
 /**
-* 参数处理
-* @param {*} params  参数
+* Params处理
+* @param {*} params  Params
 */
 export function tansParams(params) {
   let result = ''

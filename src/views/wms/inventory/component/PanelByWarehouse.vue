@@ -14,8 +14,8 @@
           title="Info"
           width="200"
           trigger="hover"
-          content="该Item未分配Warehouse。">
-          <a slot="reference" class="el-icon-question blue" @click="allocationItem(row)">分配</a>
+          content="该Item未 DistributeWarehouse。">
+          <a slot="reference" class="el-icon-question blue" @click="allocationItem(row)"> Distribute</a>
         </el-popover>
 
         <el-popconfirm
@@ -26,7 +26,7 @@
           width="200"
           trigger="hover"
           @confirm="deleteItem(row)"
-          title="该Warehouse已经被逻辑Delete,清除Inventory记录？">
+          title="该Warehouse已经被逻辑Delete,清除Inventory Record？">
           <a slot="reference" class="el-icon-question red">Delete</a>
         </el-popconfirm>
       </template>
@@ -36,7 +36,7 @@
 
     <el-table-column
       prop="itemTypeName"
-      label="Goods Type"
+      label="Category"
     >
     </el-table-column>
     <el-table-column
@@ -88,7 +88,7 @@ export default {
       })
     },
     allocationItem(row) {
-      console.log('该Item未分配Warehouse。', row)
+      console.log('该Item未 DistributeWarehouse。', row)
       this.$message({
         message: '该功能暂未开放',
         type: 'warning'

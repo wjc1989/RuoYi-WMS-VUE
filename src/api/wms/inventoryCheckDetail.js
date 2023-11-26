@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// SearchInventoryCount据详情列表
+// SearchInventoryCount据 Detail列表
 export function listWmsInventoryCheckDetail(query, pageReq) {
   return request({
     url: '/wms/inventoryCheckDetail/list',
@@ -10,7 +10,7 @@ export function listWmsInventoryCheckDetail(query, pageReq) {
   })
 }
 
-// SearchInventoryCount据详情详细
+// SearchInventoryCount据 DetailDetail
 export function getWmsInventoryCheckDetail(id) {
   return request({
     url: '/wms/inventoryCheckDetail/' + id,
@@ -18,7 +18,7 @@ export function getWmsInventoryCheckDetail(id) {
   })
 }
 
-// AddInventoryCount据详情
+// AddInventoryCount据 Detail
 export function addWmsInventoryCheckDetail(data) {
   return request({
     url: '/wms/inventoryCheckDetail',
@@ -27,7 +27,7 @@ export function addWmsInventoryCheckDetail(data) {
   })
 }
 
-// ModifyInventoryCount据详情
+// ModifyInventoryCount据 Detail
 export function updateWmsInventoryCheckDetail(data) {
   return request({
     url: '/wms/inventoryCheckDetail',
@@ -36,7 +36,7 @@ export function updateWmsInventoryCheckDetail(data) {
   })
 }
 
-// DeleteInventoryCount据详情
+// DeleteInventoryCount据 Detail
 export function delWmsInventoryCheckDetail(id) {
   return request({
     url: '/wms/inventoryCheckDetail/' + id,
@@ -44,7 +44,7 @@ export function delWmsInventoryCheckDetail(id) {
   })
 }
 
-// ExportInventoryCount据详情
+// ExportInventoryCount据 Detail
 export function exportWmsInventoryCheckDetail(query) {
   return request({
     url: '/wms/inventoryCheckDetail/export',

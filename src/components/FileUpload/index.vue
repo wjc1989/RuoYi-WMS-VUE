@@ -15,14 +15,7 @@
       ref="upload"
     >
       <!-- 上传Button -->
-      <el-button size="mini" type="primary">选取文件</el-button>
-      <!-- 上传Info -->
-      <div class="el-upload__tip" slot="tip" v-if="showTip">
-        请上传
-        <template v-if="fileSize"> 大小No 超过 <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
-        <template v-if="fileType"> 格式 <b style="color: #f56c6c">{{ fileType.join("/") }}</b> </template>
-        的文件
-      </div>
+      <el-button size="mini" type="primary">Upload</el-button>
     </el-upload>
 
     <!-- 文件列表 -->
@@ -57,12 +50,12 @@ export default {
       type: Number,
       default: 5,
     },
-    // 文件Type, 例如['png', 'jpg', 'jpeg']
+    // 文件Type, 例e.g.['png', 'jpg', 'jpeg']
     fileType: {
       type: Array,
       default: () => ["doc", "xls", "ppt", "txt", "pdf"],
     },
-    // 显示Info
+    // ShowInfo
     isShowTip: {
       type: Boolean,
       default: true
@@ -105,7 +98,7 @@ export default {
     }
   },
   computed: {
-    // 显示Info
+    // ShowInfo
     showTip() {
       return this.isShowTip && (this.fileType || this.fileSize);
     },

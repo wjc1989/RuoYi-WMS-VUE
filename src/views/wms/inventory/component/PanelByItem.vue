@@ -25,7 +25,7 @@
               width="200"
               trigger="hover"
               @confirm="deleteItem(row)"
-              title="该Item已经被逻辑Delete，清除Inventory记录？">
+              title="该Item已经被逻辑Delete，清除Inventory Record？">
               <a slot="reference" class="el-icon-question red" >Delete</a>
             </el-popconfirm>
           </el-col>

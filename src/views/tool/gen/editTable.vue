@@ -82,7 +82,7 @@
               <el-checkbox true-label="1" v-model="scope.row.isRequired"></el-checkbox>
             </template>
           </el-table-column>
-          <el-table-column label="显示Type" min-width="12%">
+          <el-table-column label="ShowType" min-width="12%">
             <template slot-scope="scope">
               <el-select v-model="scope.row.htmlType">
                 <el-option label="文本框" value="input" />
@@ -117,7 +117,7 @@
         <gen-info-form ref="genInfo" :info="info" :tables="tables" :menus="menus"/>
       </el-tab-pane>
     </el-tabs>
-    <el-form label-width="100px">
+    <el-form label-width="120px">
       <el-form-item style="text-align: center;margin-left:-100px;margin-top:10px;">
         <el-button type="primary" @click="submitForm()">提交</el-button>
         <el-button @click="close()">返回</el-button>
@@ -154,14 +154,14 @@ export default {
       dictOptions: [],
       // Menu 信息
       menus: [],
-      // 表详细信息
+      // 表Detail信息
       info: {}
     };
   },
   created() {
     const tableId = this.$route.params && this.$route.params.tableId;
     if (tableId) {
-      // 获取表详细信息
+      // 获取表Detail信息
       getGenTable(tableId).then(res => {
         this.columns = res.data.rows;
         this.info = res.data.info;

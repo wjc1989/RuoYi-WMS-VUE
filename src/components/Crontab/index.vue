@@ -302,7 +302,7 @@ export default {
       }
       return value;
     },
-    // 隐藏弹窗
+    // Hide弹窗
     hidePopup() {
       this.$emit("hide");
     },
@@ -360,7 +360,7 @@ export default {
   watch: {
     expression: "resolveExp",
     hideComponent(value) {
-      // 隐藏部分组件
+      // Hide部分组件
     },
   },
   mounted: function() {

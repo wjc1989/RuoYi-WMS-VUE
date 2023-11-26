@@ -5,17 +5,17 @@
         <el-form-item label="Count" prop="inventoryCheckNo">
           <el-input class="w200" v-model="form.inventoryCheckNo" placeholder="Count" disabled="disabled"></el-input>
         </el-form-item>
-        <el-form-item label="CountWarehouse" prop="supplierId">
+        <el-form-item label="Warehouse" prop="supplierId">
           <wms-warehouse-cascader v-model="form.place" size="small"></wms-warehouse-cascader>
         </el-form-item>
-        <el-form-item label="+-" prop="inventoryCheckTotal">
+        <el-form-item label="Change" prop="inventoryCheckTotal">
           <el-input-number v-model="inventoryCheckTotal" :precision="2" disabled></el-input-number>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
-          <el-input v-model="form.remark" placeholder="Remark...100个字符以内" rows="3" maxlength="100" type="textarea"
+          <el-input v-model="form.remark" placeholder="Remark...Maximum 100 characters" rows="3" maxlength="100" type="textarea"
             show-word-limit="show-word-limit"></el-input>
         </el-form-item>
-        <el-form-item label="附件" prop="attachment">
+        <el-form-item label="Attachment" prop="attachment">
           <file-upload v-model="form.attachment" :file-type="types"></file-upload>
         </el-form-item>
       </el-form>
@@ -32,9 +32,9 @@
             <th>Goods No.</th>
             <th>Goods Name</th>
             <th>Warehouse</th>
-            <th>账面Inventory</th>
-            <th>实际Inventory</th>
-            <th>变化量</th>
+            <th>Expected Inventory</th>
+            <th>Real Inventory</th>
+            <th>Change</th>
             <th>Operate</th>
           </tr>
           <tr v-for="(it, index) in form.details">
@@ -53,7 +53,7 @@
               {{ it.checkQuantity - it.quantity }}
             </td>
             <td align="center">
-              <a class="blue" @click="showRemarkItem(it)">说明</a>&nbsp;
+              <a class="blue" @click="showRemarkItem(it)">Remark</a>&nbsp;
               <a class="red" @click="form.details.splice(index, 1)">Delete</a>
             </td>
           </tr>
@@ -65,7 +65,7 @@
       </div>
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
-        <el-button @click="submitForm(11)" type="primary">暂存</el-button>
+        <el-button @click="submitForm(11)" type="primary">Save</el-button>
         <el-button @click="submitFinishForm" type="success">Count End</el-button>
       </div>
     </div>
@@ -80,7 +80,7 @@
     </el-dialog>
     <el-dialog :visible="remarkModalObj.show" :title="remarkModalObj.title" :width="remarkModalObj.width" @close="remarkModalObj.cancel">
       <template v-if="remarkModalObj.component === 'remark-item'">
-        <el-input v-model="remarkModalObj.content" placeholder="说明...100个字符以内" rows="4" maxlength="100" type="textarea"
+        <el-input v-model="remarkModalObj.content" placeholder="Remark...Maximum 100 characters" rows="4" maxlength="100" type="textarea"
             show-word-limit="show-word-limit"></el-input>
       </template>
       <template v-slot:footer>
@@ -105,7 +105,7 @@ export default {
   data() {
     return {
       types: ['png', 'jpg', 'jpeg'],
-      // 表参数
+      // 表Params
       form: {
         details: []
       },
@@ -122,7 +122,7 @@ export default {
         cancel: () => {
         }
       },
-      //Add说明对话框
+      //AddRemark对话框
       remarkModalObj: {
         show: false,
         title: '',
@@ -216,7 +216,7 @@ export default {
         })
       })
     },
-    /** 加载 Count详情 */
+    /** 加载 Count Detail */
     loadDetail(id) {
       getWmsInventoryCheck(id).then(response => {
         const { details, items } = response
@@ -364,7 +364,7 @@ export default {
       const cancel = () => this.closeModal()
       this.remarkModalObj = {
         show: true,
-        title: 'Add说明',
+        title: 'AddRemark',
         width: '40%',
         component: 'remark-item',
         content:it.remark,

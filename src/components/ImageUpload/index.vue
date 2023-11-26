@@ -58,12 +58,12 @@ export default {
        type: Number,
       default: 5,
     },
-    // 文件Type, 例如['png', 'jpg', 'jpeg']
+    // 文件Type, 例e.g.['png', 'jpg', 'jpeg']
     fileType: {
       type: Array,
       default: () => ["png", "jpg", "jpeg"],
     },
-    // 显示Info
+    // ShowInfo
     isShowTip: {
       type: Boolean,
       default: true
@@ -111,7 +111,7 @@ export default {
     }
   },
   computed: {
-    // 显示Info
+    // ShowInfo
     showTip() {
       return this.isShowTip && (this.fileType || this.fileSize);
     },

@@ -19,7 +19,7 @@ export function listWarnInventory(pageReq) {
   })
 }
 
-// SearchInventory详细
+// SearchInventoryDetail
 export function getWmsInventory(id) {
   return request({
     url: '/wms/inventory/' + id,

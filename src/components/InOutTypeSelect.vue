@@ -1,6 +1,6 @@
 <template>
   <div class="item-select-wrapper">
-    <el-cascader :options="options" :clearable="clearable" placeholder="Please select OperateType"
+    <el-cascader :options="options" :clearable="clearable" placeholder="Please select Type"
                  v-model="value1" :size="size" :show-all-levels="false">
     </el-cascader>
   </div>

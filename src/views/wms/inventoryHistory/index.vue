@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
-    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="100px" :model="queryParams" ref="queryForm"
+    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="120px" :model="queryParams" ref="queryForm"
              size="medium">
-      <el-form-item label="OperateType" prop="formType">
+      <el-form-item label="Type" prop="formType">
         <in-out-type-select v-model="queryParams.formType" size="small"></in-out-type-select>
       </el-form-item>
       <el-form-item label="Item" prop="itemId">
@@ -26,7 +26,7 @@
       <right-toolbar :columns="columns" :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
     <WmsTable v-loading="loading" :data="wmsInventoryHistoryList" @selection-change="handleSelectionChange">
-      <el-table-column v-if="columns[1].visible" align="center" label="OperateType" prop="formType">
+      <el-table-column v-if="columns[1].visible" align="center" label="Type" prop="formType">
         <template v-slot="{ row }"><span>{{ row.formType ? opTypeMap[row.formType] : row.formType }}</span></template>
       </el-table-column>
       <el-table-column v-if="columns[2].visible" align="center" label="Goods Name" prop="itemName"></el-table-column>
@@ -35,31 +35,31 @@
         <template v-slot="{ row }"><span>{{ row.warehouseName }}</span><span
           v-if="row.areaName">/{{ row.areaName }}</span></template>
       </el-table-column>
-      <el-table-column v-if="columns[4].visible" align="center" label="Inventory变化" prop="quantity"></el-table-column>
-      <el-table-column v-if="columns[4].visible" align="center" label="Operate Time" prop="createTime"></el-table-column>
+      <el-table-column v-if="columns[4].visible" align="center" label="Inventory Change" prop="quantity"></el-table-column>
+      <el-table-column v-if="columns[4].visible" align="center" label="Date" prop="createTime"></el-table-column>
       <el-table-column v-if="columns[5].visible" align="center" label="Remark" prop="remark"></el-table-column>
     </WmsTable>
     <pagination v-show="total&gt;0" :limit.sync="queryParams.pageSize" :page.sync="queryParams.pageNum" :total="total"
                 @pagination="getList"></pagination>
-    <!-- Add或ModifyInventory记录对话框-->
+    <!-- Add或ModifyInventory Record对话框-->
     <el-dialog append-to-body="append-to-body" :title="title" :visible.sync="open" width="50%">
       <el-form class="dialog-form-two" inline="inline" label-width="108px" :model="form" ref="form" :rules="rules">
         <el-form-item label="Operateid" prop="formId">
           <el-input v-model="form.formId" placeholder="Please Input Operateid"></el-input>
         </el-form-item>
-        <el-form-item label="OperateType" prop="formType">
-          <el-select v-model="form.formType" placeholder="Please select OperateType">
+        <el-form-item label="Type" prop="formType">
+          <el-select v-model="form.formType" placeholder="Please select Type">
             <el-option label="Please select Dict生成" value=""></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="ItemID" prop="itemId">
           <el-input v-model="form.itemId" placeholder="Please Input ItemID"></el-input>
         </el-form-item>
-        <el-form-item label="货架id" prop="rackId">
-          <el-input v-model="form.rackId" placeholder="Please Input 货架id"></el-input>
+        <el-form-item label=" Shelvesid" prop="rackId">
+          <el-input v-model="form.rackId" placeholder="Please Input  Shelvesid"></el-input>
         </el-form-item>
-        <el-form-item label="Inventory变化" prop="quantity">
-          <el-input v-model="form.quantity" placeholder="Please Input Inventory变化"></el-input>
+        <el-form-item label="InventoryChange" prop="quantity">
+          <el-input v-model="form.quantity" placeholder="Please Input InventoryChange"></el-input>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Please Input Remark"></el-input>
@@ -94,17 +94,17 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // Inventory记录表格Data
+      // Inventory Record表格Data
       wmsInventoryHistoryList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -114,17 +114,17 @@ export default {
         warehouseArr: null,
         quantity: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
       },
       columns: [
             { key: 1, label: "Operateid（Outbound 、Inbound、Inventory移动表id）", visible:  true  },
-            { key: 2, label: "OperateType", visible:  true  },
+            { key: 2, label: "Type", visible:  true  },
             { key: 3, label: "ItemID", visible:  true  },
-            { key: 4, label: "货架id", visible:  true  },
-            { key: 5, label: "Inventory变化", visible:  true  },
+            { key: 4, label: " Shelvesid", visible:  true  },
+            { key: 5, label: "InventoryChange", visible:  true  },
             { key: 6, label: "Remark", visible:  true  },
                              ],
     };
@@ -136,7 +136,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** SearchInventory记录列表 */
+    /** SearchInventory Record列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize, warehouseArr} = this.queryParams;
@@ -192,7 +192,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddInventory记录";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -201,7 +201,7 @@ export default {
       getWmsInventoryHistory(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyInventory记录";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -227,7 +227,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete Inventory记录No."' + ids + '"？').then(function() {
+      this.$modal.confirm(' Do you want delete Inventory RecordNo."' + ids + '"？').then(function() {
         return delWmsInventoryHistory(ids);
       }).then(() => {
         this.getList();
@@ -237,7 +237,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllInventory记录？').then(() => {
+      this.$modal.confirm('Export AllInventory Record？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryHistory(queryParams);
       }).then(response => {

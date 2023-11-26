@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="100px" :model="queryParams" ref="queryForm"
+    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="120px" :model="queryParams" ref="queryForm"
              size="medium">
       <el-form-item label="InboundStatus" prop="receiptOrderStatus">
         <DictRadio v-model="queryParams.receiptOrderStatus" :radioData="dict.type.wms_receipt_status" :showAll="'all'"
@@ -167,13 +167,13 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
       // Inbound表格Data
       wmsReceiptOrderList: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -369,7 +369,7 @@ export default {
       })
     },
     getOrderDetail(row) {
-      //Search详情
+      //Search Detail
       return getWmsReceiptOrder(row.id).then(response => {
         const {details, items} = response
         const map = {};

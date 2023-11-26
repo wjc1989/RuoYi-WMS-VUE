@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
              class="ry_form">
 
       <el-form-item label="Type" prop="typeName">
@@ -87,21 +87,21 @@
     </el-table>
 
     <!-- Add或ModifyItemType表对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px" class="dialog-form-two">
+    <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px" class="dialog-form-two">
 
         <el-row>
           <el-col :span="24" v-if="form.parentId !== 0">
-            <el-form-item label="Parent" prop="parentId">
+            <el-form-item label="Parent Category" prop="parentId">
               <treeselect v-model="form.parentId" :options="deptOptions" :normalizer="normalizer"
-                          placeholder="Select Parent"/>
+                          placeholder="Select Parent Category"/>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="Name" prop="typeName">
-              <el-input v-model="form.typeName" placeholder="Please Input Name"/>
+            <el-form-item label="Category" prop="typeName">
+              <el-input v-model="form.typeName" placeholder="Please Input Category"/>
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -161,7 +161,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -169,9 +169,9 @@ export default {
       wmsItemTypeList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -181,7 +181,7 @@ export default {
         orderNum: undefined,
         status: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -273,7 +273,7 @@ export default {
     handleAdd(row) {
       this.reset();
       this.open = true;
-      this.title = "Add Goods Type";
+      this.title = "New";
       if (row != undefined) {
         this.form.parentId = row.itemTypeId;
       }
@@ -289,7 +289,7 @@ export default {
       getWmsItemType(itemTypeId).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyItemType表";
+        this.title = "Modify";
       });
       listWmsItemTypeNoPage().then(response => {
         this.deptOptions = this.handleTree(response.data, "itemTypeId");

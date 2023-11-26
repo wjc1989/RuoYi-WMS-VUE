@@ -10,7 +10,7 @@ export function listWmsSupplier(query, pageReq) {
   })
 }
 
-// SearchSupplier详细
+// SearchSupplierDetail
 export function getWmsSupplier(id) {
   return request({
     url: '/wms/supplier/' + id,

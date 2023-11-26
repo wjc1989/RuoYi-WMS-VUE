@@ -37,7 +37,7 @@ router.beforeEach((to, from, next) => {
         store.dispatch('GetInfo').then(() => {
           isRelogin.show = false
           store.dispatch('GenerateRoutes').then(accessRoutes => {
-            // 根据roles权限生成可访问的Router表
+            // 根据rolesPrower生成可访问的Router表
             router.addRoutes(accessRoutes) // 动态Add可访问Router表
             next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
           })

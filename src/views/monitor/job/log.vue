@@ -130,7 +130,7 @@
             icon="el-icon-view"
             @click="handleView(scope.row)"
             v-hasPermi="['monitor:job:query']"
-          >详细</el-button>
+          >Detail</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -143,16 +143,16 @@
       @pagination="getList"
     />
 
-    <!-- 调度Logs详细 -->
-    <el-dialog title="调度Logs详细" :visible.sync="open" width="700px" append-to-body>
-      <el-form ref="form" :model="form" label-width="100px" size="mini">
+    <!-- 调度LogsDetail -->
+    <el-dialog title="调度LogsDetail" :visible.sync="open" width="700px" append-to-body>
+      <el-form ref="form" :model="form" label-width="120px" size="mini">
         <el-row>
           <el-col :span="12">
             <el-form-item label="LogsNo.：">{{ form.jobLogId }}</el-form-item>
             <el-form-item label="Job Name：">{{ form.jobName }}</el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="任务分组：">{{ form.jobGroup }}</el-form-item>
+            <el-form-item label=" Task分组：">{{ form.jobGroup }}</el-form-item>
             <el-form-item label="执行 Time：">{{ form.createTime }}</el-form-item>
           </el-col>
           <el-col :span="24">
@@ -173,7 +173,7 @@
         </el-row>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="open = false">关 闭</el-button>
+        <el-button @click="open = false">Close</el-button>
       </div>
     </el-dialog>
   </div>
@@ -194,19 +194,19 @@ export default {
       ids: [],
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
       // 调度Logs表格Data
       jobLogList: [],
-      // 显示弹出层
+      // Show弹出层
       open: false,
       // Date范围
       dateRange: [],
-      // 表参数
+      // 表Params
       form: {},
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -260,7 +260,7 @@ export default {
       this.ids = selection.map(item => item.jobLogId);
       this.multiple = !selection.length;
     },
-    /** 详细ButtonOperate */
+    /** DetailButtonOperate */
     handleView(row) {
       this.open = true;
       this.form = row;

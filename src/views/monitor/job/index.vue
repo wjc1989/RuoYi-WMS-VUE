@@ -136,7 +136,7 @@
               <el-dropdown-item command="handleRun" icon="el-icon-caret-right"
                 v-hasPermi="['monitor:job:changeStatus']">执行一次</el-dropdown-item>
               <el-dropdown-item command="handleView" icon="el-icon-view"
-                v-hasPermi="['monitor:job:query']">任务详细</el-dropdown-item>
+                v-hasPermi="['monitor:job:query']"> TaskDetail</el-dropdown-item>
               <el-dropdown-item command="handleJobLog" icon="el-icon-s-operation"
                 v-hasPermi="['monitor:job:query']">调度Logs</el-dropdown-item>
             </el-dropdown-menu>
@@ -153,7 +153,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或Modify定时任务对话框 -->
+    <!-- Add或Modify定时 Task对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
@@ -163,8 +163,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="任务分组" prop="jobGroup">
-              <el-select v-model="form.jobGroup" placeholder="Please select 任务分组">
+            <el-form-item label=" Task分组" prop="jobGroup">
+              <el-select v-model="form.jobGroup" placeholder="Please select  Task分组">
                 <el-option
                   v-for="dict in dict.type.sys_job_group"
                   :key="dict.value"
@@ -182,7 +182,7 @@
                   <div slot="content">
                     Bean调用示例：ryTask.ryParams('ry')
                     <br />Class类调用示例：com.ruoyi.quartz.task.RyTask.ryParams('ry')
-                    <br />参数说明：支持字符串，布尔Type，长整型，浮点型，整型
+                    <br />ParamsRemark：支持字符串，布尔Type，长整型，浮点型，整型
                   </div>
                   <i class="el-icon-question"></i>
                 </el-tooltip>
@@ -242,8 +242,8 @@
       <crontab @hide="openCron=false" @fill="crontabFill" :expression="expression"></crontab>
     </el-dialog>
 
-    <!-- 任务Logs详细 -->
-    <el-dialog title="任务详细" :visible.sync="openView" width="700px" append-to-body>
+    <!--  TaskLogsDetail -->
+    <el-dialog title=" TaskDetail" :visible.sync="openView" width="700px" append-to-body>
       <el-form ref="form" :model="form" label-width="120px" size="mini">
         <el-row>
           <el-col :span="12">
@@ -251,7 +251,7 @@
             <el-form-item label="Job Name：">{{ form.jobName }}</el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="任务分组：">{{ jobGroupFormat(form) }}</el-form-item>
+            <el-form-item label=" Task分组：">{{ jobGroupFormat(form) }}</el-form-item>
             <el-form-item label="Create Time：">{{ form.createTime }}</el-form-item>
           </el-col>
           <el-col :span="12">
@@ -286,7 +286,7 @@
         </el-row>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="openView = false">关 闭</el-button>
+        <el-button @click="openView = false">Close</el-button>
       </div>
     </el-dialog>
   </div>
@@ -310,23 +310,23 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 定时任务表格Data
+      // 定时 Task表格Data
       jobList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // 显示详细弹出层
+      // ShowDetail弹出层
       openView: false,
-      // 显示Cron表达式弹出层
+      // ShowCron表达式弹出层
       openCron: false,
       // 传入的表达式
       expression: "",
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -334,7 +334,7 @@ export default {
         jobGroup: undefined,
         status: undefined
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -354,7 +354,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** Search定时任务列表 */
+    /** Search定时 Task列表 */
     getList() {
       this.loading = true;
       listJob(this.queryParams).then(response => {
@@ -421,7 +421,7 @@ export default {
     // StatusModify
     handleStatusChange(row) {
       let text = row.status === "0" ? "启用" : "停用";
-      this.$modal.confirm('OK要"' + text + '""' + row.jobName + '"任务吗？').then(function() {
+      this.$modal.confirm('OK要"' + text + '""' + row.jobName + '" Task吗？').then(function() {
         return changeJobStatus(row.jobId, row.status);
       }).then(() => {
         this.$modal.msgSuccess(text + " Successful");
@@ -431,13 +431,13 @@ export default {
     },
     /* 立即执行一次 */
     handleRun(row) {
-      this.$modal.confirm('OK要立即执行一次"' + row.jobName + '"任务吗？').then(function() {
+      this.$modal.confirm('OK要立即执行一次"' + row.jobName + '" Task吗？').then(function() {
         return runJob(row.jobId, row.jobGroup);
       }).then(() => {
         this.$modal.msgSuccess("执行 Successful");
       }).catch(() => {});
     },
-    /** 任务详细信息 */
+    /**  TaskDetail信息 */
     handleView(row) {
       getJob(row.jobId).then(response => {
         this.form = response.data;
@@ -453,7 +453,7 @@ export default {
     crontabFill(value) {
       this.form.cronExpression = value;
     },
-    /** 任务Logs列表Search */
+    /**  TaskLogs列表Search */
     handleJobLog(row) {
       const jobId = row.jobId || 0;
       this.$router.push({ path: '/monitor/job-log/index', query: { jobId: jobId } })
@@ -462,7 +462,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "Add任务";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -471,7 +471,7 @@ export default {
       getJob(jobId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "Modify任务";
+        this.title = "Modify";
       });
     },
     /** 提交Button */

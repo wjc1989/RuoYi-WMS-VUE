@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="100px" :model="queryParams" ref="queryForm"
+    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="120px" :model="queryParams" ref="queryForm"
              size="medium">
       <el-form-item label="Outbound Status" prop="shipmentOrderStatus">
         <DictRadio v-model="queryParams.shipmentOrderStatus" :radioData="dict.type.wms_shipment_status" :showAll="'all'"
@@ -18,7 +18,7 @@
         <el-input v-model="queryParams.orderNo" clearable="clearable" placeholder="Please Input No." size="small"
                   @keyup.enter.native="handleQuery"></el-input>
       </el-form-item>
-      <el-form-item label="客户" prop="customerId">
+      <el-form-item label="Custom" prop="customerId">
         <WmsCustomerSelect v-model="queryParams.customerId" size="small"></WmsCustomerSelect>
       </el-form-item>
       <el-form-item class="flex_one tr">
@@ -34,7 +34,7 @@
       </el-col>
       <el-col :span="1.5">
         <el-button icon="el-icon-check" size="mini" type="warning" :disabled="!waveAble"
-                   @click="handleWave()">Wave 作业
+                   @click="handleWave()">Wave Task
         </el-button>
       </el-col>
       <right-toolbar :columns="columns" :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
@@ -50,7 +50,7 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column v-if="columns[2].visible" align="center" :formatter="getCustomer" label="客户"></el-table-column>
+      <el-table-column v-if="columns[2].visible" align="center" :formatter="getCustomer" label="Custom"></el-table-column>
       <el-table-column v-if="columns[3].visible" align="center" label="No." prop="orderNo"></el-table-column>
       <el-table-column v-if="columns[4].visible" align="center" label="Outbound Status">
         <template slot-scope="scope">
@@ -162,15 +162,15 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Wave 作业Button
+      // ShowWave 作业Button
       waveAble: false,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
       // Outbound 表格Data
       wmsShipmentOrderList: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -330,7 +330,7 @@ export default {
       })
     },
     getDetail(row) {
-      //Search详情
+      //Search Detail
       return getWmsShipmentOrder(row.id).then(response => {
         const {details, items} = response
         const map = {};

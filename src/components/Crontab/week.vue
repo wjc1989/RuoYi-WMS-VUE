@@ -115,7 +115,7 @@ export default {
 	name: 'crontab-week',
 	props: ['check', 'cron'],
 	methods: {
-		// 选Button值变化时
+		// 选Button值Change时
 		radioChange() {
 			if (this.radioValue !== 2 && this.cron.day !== '?') {
 				this.$emit('update', 'day', '?', 'week');
@@ -142,25 +142,25 @@ export default {
 			}
 		},
 
-		// 周期两个值变化时
+		// 周期两个值Change时
 		cycleChange() {
 			if (this.radioValue == '3') {
 				this.$emit('update', 'week', this.cycleTotal);
 			}
 		},
-		// 平均两个值变化时
+		// 平均两个值Change时
 		averageChange() {
 			if (this.radioValue == '4') {
 				this.$emit('update', 'week', this.averageTotal);
 			}
 		},
-		// 最近工作日值变化时
+		// 最近工作日值Change时
 		weekdayChange() {
 			if (this.radioValue == '5') {
 				this.$emit('update', 'week', this.weekday + 'L');
 			}
 		},
-		// checkbox值变化时
+		// checkbox值Change时
 		checkboxChange() {
 			if (this.radioValue == '6') {
 				this.$emit('update', 'week', this.checkboxString);

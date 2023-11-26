@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
              class="ry_form">
       <el-form-item label="移库Status" prop="status">
         <DictRadio v-model="queryParams.status" @change="handleQuery" size="small"
@@ -136,7 +136,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -144,16 +144,16 @@ export default {
       wmsInventoryMovementList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
         inventoryMovementNo: null,
         status: null
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {},

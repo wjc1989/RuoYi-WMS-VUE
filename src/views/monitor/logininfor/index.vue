@@ -99,7 +99,7 @@
           <dict-tag :options="dict.type.sys_common_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="Operate信息" align="center" prop="msg" />
+      <el-table-column label="Info" align="center" prop="msg" />
       <el-table-column label="LoginDate" align="center" prop="loginTime" sortable="custom" :sort-orders="['descending', 'ascending']" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.loginTime) }}</span>
@@ -131,7 +131,7 @@ export default {
       ids: [],
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -141,7 +141,7 @@ export default {
       dateRange: [],
       // 默认Sort
       defaultSort: {prop: 'loginTime', order: 'descending'},
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,

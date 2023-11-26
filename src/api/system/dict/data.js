@@ -9,7 +9,7 @@ export function listData(query) {
   })
 }
 
-// SearchDictData详细
+// SearchDictDataDetail
 export function getData(dictCode) {
   return request({
     url: '/system/dict/data/' + dictCode,

@@ -10,7 +10,7 @@ export function listWmsWarehouse(query, pageReq) {
   })
 }
 
-// SearchWarehouse详细
+// SearchWarehouseDetail
 export function getWmsWarehouse(id) {
   return request({
     url: '/wms/warehouse/' + id,

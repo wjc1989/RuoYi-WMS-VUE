@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :visible="visible" width="500px" title="Set Warehouse" @close="handleCancel">
+  <el-dialog :visible="visible" width="600px" title="Set Warehouse" @close="handleCancel">
     <el-form :model="form" ref="form">
       <el-form-item label="Warehouse" prop="place" :rules="rules">
         <WmsWarehouseCascader v-model="form.place" size="small"></WmsWarehouseCascader>

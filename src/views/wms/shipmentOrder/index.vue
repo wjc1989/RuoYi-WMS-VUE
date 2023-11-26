@@ -70,15 +70,15 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Wave 作业Button
+      // ShowWave 作业Button
       waveAble: false,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
       // Outbound 表格Data
       wmsShipmentOrderList: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -237,7 +237,7 @@ export default {
       })
     },
     getDetail(row) {
-      //Search详情
+      //Search Detail
       return getWmsShipmentOrder(row.id).then(response => {
         const {details, items} = response
         const map = {};

@@ -10,7 +10,7 @@ export function listWmsCustomer(query, pageReq) {
   })
 }
 
-// Search客户详细
+// Search客户Detail
 export function getWmsCustomer(id) {
   return request({
     url: '/wms/customer/' + id,

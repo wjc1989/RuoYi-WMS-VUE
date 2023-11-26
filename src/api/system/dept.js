@@ -17,7 +17,7 @@ export function listDeptExcludeChild(deptId) {
   })
 }
 
-// SearchDepartment详细
+// SearchDepartmentDetail
 export function getDept(deptId) {
   return request({
     url: '/system/dept/' + deptId,

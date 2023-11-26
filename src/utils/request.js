@@ -9,7 +9,7 @@ import {saveAs} from 'file-saver'
 import InsufficientStockAlert from "@/utils/wms";
 
 let downloadLoadingInstance;
-// 显示重新Login
+// Show重新Login
 export let isRelogin = {show: false};
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
@@ -28,9 +28,9 @@ service.interceptors.request.use(config => {
   // 需要防止Data重复提交
   const isRepeatSubmit = (config.headers || {}).repeatSubmit === false
   if (getToken() && !isToken) {
-    config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行Modify
+    config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据Real 情况自行Modify
   }
-  // get请求映射params参数
+  // get请求映射paramsParams
   if (config.method === 'get' && config.params) {
     let url = config.url + '?' + tansParams(config.params);
     url = url.slice(0, -1);
@@ -47,7 +47,7 @@ service.interceptors.request.use(config => {
     if (sessionObj === undefined || sessionObj === null || sessionObj === '') {
       cache.session.setJSON('sessionObj', requestObj)
     } else {
-      const s_url = sessionObj.url;                  // 请求Address
+      const s_url = sessionObj.url;                  // Request
       const s_data = sessionObj.data;                // 请求Data
       const s_time = sessionObj.time;                // 请求 Time
       const interval = 1000;                         // 间隔 Time(ms)，小于此 Time视重复提交

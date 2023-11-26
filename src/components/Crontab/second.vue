@@ -49,7 +49,7 @@ export default {
 	name: 'crontab-second',
 	props: ['check', 'radioParent'],
 	methods: {
-		// 选Button值变化时
+		// 选Button值Change时
 		radioChange() {
 			switch (this.radioValue) {
 				case 1:
@@ -66,19 +66,19 @@ export default {
 					break;
 			}
 		},
-		// 周期两个值变化时
+		// 周期两个值Change时
 		cycleChange() {
 			if (this.radioValue == '2') {
 				this.$emit('update', 'second', this.cycleTotal);
 			}
 		},
-		// 平均两个值变化时
+		// 平均两个值Change时
 		averageChange() {
 			if (this.radioValue == '3') {
 				this.$emit('update', 'second', this.averageTotal);
 			}
 		},
-		// checkbox值变化时
+		// checkbox值Change时
 		checkboxChange() {
 			if (this.radioValue == '4') {
 				this.$emit('update', 'second', this.checkboxString);

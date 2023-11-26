@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
       class="ry_form">
       <el-form-item label="交易No." prop="transactionCode">
         <el-input v-model="queryParams.transactionCode" placeholder="Please Input 交易No." clearable size="small"
@@ -133,7 +133,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -141,9 +141,9 @@ export default {
       wmsSupplierTransactionList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -155,7 +155,7 @@ export default {
         currentBalance: null,
         receiptOrderId: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -166,7 +166,7 @@ export default {
           { required: true, message: "SupplierNo. is required", trigger: "blur" }
         ],
         transactionType: [
-          { required: true, message: "交易Type  1：结款  2：应付  is required", trigger: "change" }
+          { required: true, message: "交易Type  1：Paid  2：Payment  is required", trigger: "change" }
         ],
         transactionAmount: [
           { required: true, message: "交易Amount is required", trigger: "blur" }
@@ -187,7 +187,7 @@ export default {
       columns: [
         { key: 1, label: "交易No.", visible: true },
         { key: 2, label: "SupplierNo.", visible: true },
-        { key: 3, label: "交易Type  1：结款  2：应付 ", visible: true },
+        { key: 3, label: "交易Type  1：Paid  2：Payment ", visible: true },
         { key: 4, label: "交易Amount", visible: true },
         { key: 5, label: "上期余额", visible: true },
         { key: 6, label: "当前余额", visible: true },
@@ -235,7 +235,7 @@ export default {
     }
   },
   methods: {
-    cellStyle(row,column,rowIndex,columnIndex){//根据报警Leave显示颜色
+    cellStyle(row,column,rowIndex,columnIndex){//根据报警LeaveShow颜色
       return 'color:red'
     },
     getSupplierName(row) {
@@ -300,7 +300,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddSupplier账户流水";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -309,7 +309,7 @@ export default {
       getWmsSupplierTransaction(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "ModifySupplier账户流水";
+        this.title = "Modify";
       });
     },
     /** 提交Button */

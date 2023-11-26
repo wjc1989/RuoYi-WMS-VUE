@@ -104,16 +104,16 @@
 
     <!-- Add或ModifyMenu 对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="680px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="100px">
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
           <el-col :span="24">
-            <el-form-item label="Parent">
+            <el-form-item label="Higher">
               <treeselect
                 v-model="form.parentId"
                 :options="menuOptions"
                 :normalizer="normalizer"
                 :show-count="true"
-                placeholder="Select Parent"
+                placeholder="Select Higher"
               />
             </el-form-item>
           </el-col>
@@ -175,7 +175,7 @@
           <el-col :span="12" v-if="form.menuType != 'F'">
             <el-form-item prop="path">
               <span slot="label">
-                <el-tooltip content="访问的Router，如：`user`，如外网Address需内链访问则以`http(s)://`开头" placement="top">
+                <el-tooltip content="访问的Router，e.g.：`user`，e.g.外网Address需内链访问则以`http(s)://`开头" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Router
@@ -186,7 +186,7 @@
           <el-col :span="12" v-if="form.menuType == 'C'">
             <el-form-item prop="component">
               <span slot="label">
-                <el-tooltip content="访问的Component，如：`system/user/index`，默认在`views`Directory下" placement="top">
+                <el-tooltip content="访问的Component，e.g.：`system/user/index`，默认在`views`Directory下" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Component
@@ -198,7 +198,7 @@
             <el-form-item>
               <el-input v-model="form.perms" placeholder="Please Input Perms" maxlength="100" />
               <span slot="label">
-                <el-tooltip content="控制器中定义的Prower Key，如：@PreAuthorize(`@ss.hasPermi('system:user:list')`)" placement="top">
+                <el-tooltip content="控制器中定义的Prower Key，e.g.：@PreAuthorize(`@ss.hasPermi('system:user:list')`)" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Prower Key
@@ -233,7 +233,7 @@
           <el-col :span="12" v-if="form.menuType != 'F'">
             <el-form-item>
               <span slot="label">
-                <el-tooltip content="Select 隐藏则Router将No 会出现在侧边栏，但仍然可以访问" placement="top">
+                <el-tooltip content="Select Hide则Router将No 会出现在侧边栏，但仍然可以访问" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Status
@@ -253,7 +253,7 @@
                 <el-tooltip content="Select 停用则Router将No 会出现在侧边栏，也No 能被访问" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
-                Menu Status
+               Status
               </span>
               <el-radio-group v-model="form.status">
                 <el-radio
@@ -288,7 +288,7 @@ export default {
     return {
       // 遮罩层
       loading: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // Menu 表格树Data
       menuList: [],
@@ -296,18 +296,18 @@ export default {
       menuOptions: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
       // Expand，默认AllCollapse
       isExpandAll: false,
       // 重新渲染表格Status
       refreshTable: true,
-      // Search参数
+      // SearchParams
       queryParams: {
         menuName: undefined,
         visible: undefined
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -399,7 +399,7 @@ export default {
         this.form.parentId = 0;
       }
       this.open = true;
-      this.title = "AddMenu ";
+      this.title = "New";
     },
     /** Expand/CollapseOperate */
     toggleExpandAll() {
@@ -416,7 +416,7 @@ export default {
       getMenu(row.menuId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "ModifyMenu ";
+        this.title = "Modify";
       });
     },
     /** 提交Button */

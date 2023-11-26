@@ -10,7 +10,7 @@ export function listWmsInventoryCheck(query, pageReq) {
   })
 }
 
-// SearchInventoryCount据详细
+// SearchInventoryCount据Detail
 export function getWmsInventoryCheck(id) {
   return request({
     url: '/wms/inventoryCheck/' + id,

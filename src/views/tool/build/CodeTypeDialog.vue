@@ -2,7 +2,7 @@
   <div>
     <el-dialog
       v-bind="$attrs"
-      width="500px"
+      width="600px"
       :close-on-click-modal="false"
       :modal-append-to-body="false"
       v-on="$listeners"
@@ -15,7 +15,7 @@
           :model="formData"
           :rules="rules"
           size="medium"
-          label-width="100px"
+          label-width="120px"
         >
           <el-col :span="24">
             <el-form-item label="生成Type" prop="type">

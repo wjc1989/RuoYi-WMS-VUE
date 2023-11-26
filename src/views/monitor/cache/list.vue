@@ -224,7 +224,7 @@ export default {
     keyFormatter(cacheKey) {
       return cacheKey.replace(this.nowCacheName, "");
     },
-    /** SearchCacheContent详细 */
+    /** SearchCacheContentDetail */
     handleCacheValue(cacheKey) {
       getCacheValue(this.nowCacheName, cacheKey).then(response => {
         this.cacheForm = response.data;

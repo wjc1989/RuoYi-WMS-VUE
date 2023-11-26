@@ -9,7 +9,7 @@ export function listMenu(query) {
   })
 }
 
-// SearchMenu 详细
+// SearchMenu Detail
 export function getMenu(menuId) {
   return request({
     url: '/system/menu/' + menuId,

@@ -34,13 +34,13 @@
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/user/profile">
-            <el-dropdown-item>个人中心</el-dropdown-item>
+            <el-dropdown-item>Profile</el-dropdown-item>
           </router-link>
           <!-- <el-dropdown-item @click.native="setting = true">
             <span>布局设置</span>
           </el-dropdown-item> -->
           <el-dropdown-item divided @click.native="logout">
-            <span>退出Login</span>
+            <span>Logout</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -98,7 +98,7 @@ export default {
       this.$store.dispatch('app/toggleSideBar')
     },
     async logout() {
-      this.$confirm('OK注销并退出系统吗？', 'Info', {
+      this.$confirm('Do you want logout？', 'Info', {
         confirmButtonText: 'OK',
         cancelButtonText: 'Cancel',
         type: 'warning'

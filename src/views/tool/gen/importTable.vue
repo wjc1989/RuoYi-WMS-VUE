@@ -59,7 +59,7 @@ export default {
       total: 0,
       // 表Data
       dbTableList: [],
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -69,7 +69,7 @@ export default {
     };
   },
   methods: {
-    // 显示弹框
+    // Show弹框
     show() {
       this.getList();
       this.visible = true;

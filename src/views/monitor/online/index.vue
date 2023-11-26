@@ -77,7 +77,7 @@ export default {
       list: [],
       pageNum: 1,
       pageSize: 10,
-      // Search参数
+      // SearchParams
       queryParams: {
         ipaddr: undefined,
         userName: undefined

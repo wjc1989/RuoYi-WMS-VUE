@@ -128,7 +128,7 @@ export default {
       // 遮罩层
       loading: true,
       ids: [],
-      // 表参数
+      // 表Params
       form: {
         details: []
       },

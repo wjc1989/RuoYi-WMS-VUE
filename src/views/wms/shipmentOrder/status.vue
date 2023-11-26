@@ -24,7 +24,7 @@
         </el-row>
         <el-row :gutter="20">
           <el-col :span="10">
-            <el-form-item label="客户" prop="customerId">{{ customerMap.get(form.customerId) }}</el-form-item>
+            <el-form-item label="Custom" prop="customerId">{{ customerMap.get(form.customerId) }}</el-form-item>
           </el-col>
           <el-col :span="10">
             <el-form-item label="Remark" prop="remark">{{ form.remark }}</el-form-item>
@@ -44,15 +44,15 @@
 
       <div class="table">
         <WmsTable v-loading="loading" :data="form.delivery" @selection-change="handleSelectionChange">
-          <el-table-column label="Outbound 主表Id" align="center" prop="shipmentOrderId" v-if="columns[0].visible"/>
+          <el-table-column label="Outbound No." align="center" prop="shipmentOrderId" v-if="columns[0].visible"/>
           <el-table-column label=" Carrier" align="center" :formatter="getCarrier" prop="carrierId"
                            v-if="columns[1].visible"/>
-          <el-table-column label="OutboundDate" align="center" prop="deliveryDate" width="180" v-if="columns[2].visible">
+          <el-table-column label="Outbound Date" align="center" prop="deliveryDate" width="180" v-if="columns[2].visible">
             <template slot-scope="scope">
               <span>{{ parseTime(scope.row.deliveryDate, '') }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="快递No." align="center" prop="trackingNo" v-if="columns[3].visible">
+          <el-table-column label="Tracking No." align="center" prop="trackingNo" v-if="columns[3].visible">
             <!--        https://www.kuaidi100.com/chaxun?com=[]&nu=[]-->
             <template slot-scope="scope">
               <a
@@ -84,7 +84,7 @@
 
         <el-col :span="1.5">
           <el-button size="small" icon="el-icon-check" type="warning" plain="plain" @click="dialogFormVisible = true">
-            分配Warehouse
+             DistributeWarehouse
           </el-button>
         </el-col>
 
@@ -136,7 +136,7 @@
         <el-button @click="cancel">Cancel</el-button>
         <el-button @click="submitForm" type="primary" :disabled="finish">Add</el-button>
       </div>
-      <!-- Add或ModifyOutbound记录对话框 -->
+      <!-- Add或ModifyOutbound Record对话框 -->
       <el-dialog :title="deliveryTitle" :visible.sync="deliveryOpen" width="50%" append-to-body>
         <el-form ref="deliveryForm" :model="deliveryForm" :rules="rules" label-width="108px" inline
                  class="dialog-form-two">
@@ -146,16 +146,16 @@
           <el-form-item label=" Carrier" prop="carrierId">
             <wms-carrier-select v-model="deliveryForm.carrierId"></wms-carrier-select>
           </el-form-item>
-          <el-form-item label="OutboundDate" prop="deliveryDate">
+          <el-form-item label="Outbound Date" prop="deliveryDate">
             <el-date-picker clearable size="small"
                             v-model="deliveryForm.deliveryDate"
                             type="datetime"
                             value-format="yyyy-MM-ddTHH:mm:ss"
-                            placeholder="Select OutboundDate">
+                            placeholder="Select Outbound Date">
             </el-date-picker>
           </el-form-item>
-          <el-form-item label="快递No." prop="trackingNo">
-            <el-input v-model="deliveryForm.trackingNo" placeholder="Please Input 快递No."/>
+          <el-form-item label="Tracking No." prop="trackingNo">
+            <el-input v-model="deliveryForm.trackingNo" placeholder="Please Input Tracking No."/>
           </el-form-item>
           <el-form-item label="Remark" prop="remark">
             <el-input v-model="deliveryForm.remark" placeholder="Please Input Remark"/>
@@ -171,10 +171,10 @@
         :form-data.sync="batchForm"
         @confirmed="onBatchDialogFinished"
       ></BatchWarehouseDialog>
-      <el-dialog title="自动分配Warehouse" :visible.sync="dialogFormVisible" width="400px">
+      <el-dialog title="自动 DistributeWarehouse" :visible.sync="dialogFormVisible" width="400px">
         <el-form :model="dialogForm">
-          <el-form-item label="分配策略" label-width="98px">
-            <el-select v-model="dialogForm.region" placeholder="Please select 分配策略">
+          <el-form-item label=" Distribute策略" label-width="98px">
+            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute策略">
               <el-option label="Inventory量小的库位优先" :value="1"></el-option>
               <el-option label="Inventory量大的库位优先" :value="2"></el-option>
               <el-option label="先入先出(FIFO)" :value="3" disabled></el-option>
@@ -228,7 +228,7 @@ export default {
   },
   data() {
     return {
-      // 分配Warehouse
+      //  DistributeWarehouse
       dialogFormVisible: false,
       dialogForm: {
         date1: '',
@@ -242,7 +242,7 @@ export default {
       // 遮罩层
       loading: true,
       ids: [],
-      // 表参数
+      // 表Params
       form: {
         details: []
       },
@@ -258,13 +258,13 @@ export default {
       shipmentOrderId: null,
       deliveryOpen: false,
       deliveryForm: {},
-      // Outbound记录表格Data
+      // Outbound Record表格Data
       wmsDeliveryList: [],
       columns: [
-        {key: 1, label: "Outbound 主表Id", visible: false},
+        {key: 1, label: "Outbound No.", visible: false},
         {key: 2, label: " CarrierId", visible: true},
-        {key: 3, label: "OutboundDate", visible: true},
-        {key: 4, label: "快递No.", visible: true},
+        {key: 3, label: "Outbound Date", visible: true},
+        {key: 4, label: "Tracking No.", visible: true},
         {key: 5, label: "Remark", visible: true},
       ],
     }
@@ -279,10 +279,10 @@ export default {
     }
   },
   methods: {
-    /** 自动分配 Warehouse */
+    /** 自动 Distribute Warehouse */
     allocated() {
       allocatedInventory({id:this.shipmentOrderId,type:this.dialogForm.region}).then(response => {
-        this.$modal.msgSuccess("分配 Successful");
+        this.$modal.msgSuccess(" Distribute Successful");
         this.dialogFormVisible = false;
         this.loadDetail(this.shipmentOrderId)
       });

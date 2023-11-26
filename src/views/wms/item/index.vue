@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
       class="ry_form">
       <el-form-item label="No." prop="itemNo">
         <el-input v-model="queryParams.itemNo" placeholder="Please Input No." clearable size="small"
@@ -73,7 +73,7 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="No." align="center" prop="itemNo" v-if="columns[0].visible" />
       <el-table-column label="Goods Name" align="center" prop="itemName" v-if="columns[1].visible" />
-      <el-table-column label="Goods Type" align="center" prop="itemTypeName" v-if="columns[2].visible" />
+      <el-table-column label="Category" align="center" prop="itemTypeName" v-if="columns[2].visible" />
       <el-table-column label="Unit" align="center" prop="unit" v-if="columns[3].visible" />
       <el-table-column label="Warehouse" align="center" prop="warehouseName" v-if="columns[6].visible" />
       <el-table-column label="Area" align="center" prop="areaName" v-if="columns[5].visible" />
@@ -127,7 +127,7 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="Goods Type" prop="itemType">
+            <el-form-item label="Category" prop="itemType">
               <treeselect v-model="form.itemType" :options="deptOptions" :show-count="true" placeholder="Please select Type" />
             </el-form-item>
           </el-col>
@@ -195,21 +195,21 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
       // Item表格Data
       wmsItemList: [],
-      // 货架表格Data
+      //  Shelves表格Data
       rackListByArea: [],
       // Area表格Data
       areaListByWarehouse: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -223,7 +223,7 @@ export default {
         quantity: null,
         expiryDate: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -236,7 +236,7 @@ export default {
       columns: [
         { key: 1, label: "No.", visible: true },
         { key: 2, label: "Name", visible: true },
-        { key: 3, label: "Goods Type", visible: true },
+        { key: 3, label: "Category", visible: true },
         { key: 4, label: "Unit", visible: true },
         { key: 5, label: "Rack Name", visible: false },
         { key: 6, label: "Area", visible: true },
@@ -327,7 +327,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "Add Goods";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     async handleUpdate(row) {
@@ -336,7 +336,7 @@ export default {
       await getWmsItem(id).then((response) => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyItem";
+        this.title = "Modify";
       });
     },
 

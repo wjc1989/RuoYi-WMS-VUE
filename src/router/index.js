@@ -9,21 +9,21 @@ import Layout from '@/layout'
 /**
  * Note: Router配置项
  *
- * hidden: true                     // 当设置 true 的时候该RouterNo 会再侧边栏出现 如401，login等页面，或者如一些编辑页面/edit/1
- * alwaysShow: true                 // 当你一个Router下面的 children 声明的Router大于1个时，自动会变成嵌套的模式--如组件页面
- *                                  // 只有一个时，会将那个子Router当做根Router显示在侧边栏--如引导页面
- *                                  // 若你想No 管Router下面的 children 声明的个数都显示你的根Router
- *                                  // 你可以设置 alwaysShow: true，这样它就会忽略之前定义的规则，一直显示根Router
+ * hidden: true                     // 当设置 true 的时候该RouterNo 会再侧边栏出现 e.g.401，login等页面，或者e.g.一些编辑页面/edit/1
+ * alwaysShow: true                 // 当你一个Router下面的 children 声明的Router大于1个时，自动会变成嵌套的模式--e.g.组件页面
+ *                                  // 只有一个时，会将那个子Router当做根RouterShow在侧边栏--e.g.引导页面
+ *                                  // 若你想No 管Router下面的 children 声明的个数都Show你的根Router
+ *                                  // 你可以设置 alwaysShow: true，这样它就会忽略之前定义的规则，一直Show根Router
  * redirect: noRedirect             // 当设置 noRedirect 的时候该Router在面包屑导航中No 可被点击
  * name:'router-name'               // 设定Router的名字，一定要填写No 然使用<keep-alive>时会出现各种问题
- * query: '{"id": 1, "name": "ry"}' // 访问Router的默认传递参数
- * roles: ['admin', 'common']       // 访问Router的Role权限
- * permissions: ['a:a:a', 'b:b:b']  // 访问Router的Menu 权限
+ * query: '{"id": 1, "name": "ry"}' // 访问Router的默认传递Params
+ * roles: ['admin', 'common']       // 访问Router的RolePrower
+ * permissions: ['a:a:a', 'b:b:b']  // 访问Router的Menu Prower
  * meta : {
-    noCache: true                   // 如果设置true，则No 会被 <keep-alive> Cache(默认 false)
+    noCache: true                   // e.g.果设置true，则No 会被 <keep-alive> Cache(默认 false)
     title: 'title'                  // 设置该Router在侧边栏和面包屑中展示的名字
     icon: 'svg-name'                // 设置该Router的Icon，对应路径src/assets/icons/svg
-    breadcrumb: false               // 如果设置false，则No 会在breadcrumb面包屑中显示
+    breadcrumb: false               // e.g.果设置false，则No 会在breadcrumb面包屑中Show
     activeMenu: '/system/user'      // 当Router设置了该属性，则会高亮相对应的侧边栏。
   }
  */
@@ -84,13 +84,13 @@ export const constantRoutes = [
         path: 'profile',
         component: () => import('@/views/system/user/profile/index'),
         name: 'Profile',
-        meta: { title: '个人中心', icon: 'user' }
+        meta: { title: 'Profile', icon: 'user' }
       }
     ]
   }
 ]
 
-// 动态Router，基于User 权限动态去加载
+// 动态Router，基于User Prower动态去加载
 export const dynamicRoutes = [
   {
     path: '/system/user-auth',
@@ -102,7 +102,7 @@ export const dynamicRoutes = [
         path: 'role/:userId(\\d+)',
         component: () => import('@/views/system/user/authRole'),
         name: 'AuthRole',
-        meta: { title: '分配Role', activeMenu: '/system/user' }
+        meta: { title: ' DistributeRole', activeMenu: '/system/user' }
       }
     ]
   },
@@ -116,7 +116,7 @@ export const dynamicRoutes = [
         path: 'user/:roleId(\\d+)',
         component: () => import('@/views/system/role/authUser'),
         name: 'AuthUser',
-        meta: { title: '分配User ', activeMenu: '/system/role' }
+        meta: { title: ' DistributeUser ', activeMenu: '/system/role' }
       }
     ]
   },

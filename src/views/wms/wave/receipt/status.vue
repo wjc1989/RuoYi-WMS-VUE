@@ -31,12 +31,12 @@
       <el-row class="mb8 mt20" :gutter="10">
         <el-col :span="1.5" v-if="form.status === '1'" >
           <el-button size="small" icon="el-icon-check" type="warning" plain="plain" @click="dialogFormVisible = true">
-            分配Warehouse
+             DistributeWarehouse
           </el-button>
         </el-col>
 <!--        <el-col :span="1.5">-->
 <!--          <el-button size="small" type="danger" plain="plain" @click="onCancelInventory">-->
-<!--            Cancel分配-->
+<!--            Cancel Distribute-->
 <!--          </el-button>-->
 <!--        </el-col>-->
         <el-col :span="1.5" >
@@ -86,11 +86,11 @@
         :form-data.sync="batchForm"
         @confirmed="onBatchDialogFinished"
       ></BatchWarehouseDialog>
-      <el-dialog title="自动分配Warehouse" :visible.sync="dialogFormVisible" width="400px">
+      <el-dialog title="自动 DistributeWarehouse" :visible.sync="dialogFormVisible" width="400px">
         <el-form :model="dialogForm">
-          <el-form-item label="分配策略" label-width="98px"
-                        :rules="[{ required: true, message: 'Please select 分配策略', trigger: 'change' }]">
-            <el-select v-model="dialogForm.region" placeholder="Please select 分配策略">
+          <el-form-item label=" Distribute策略" label-width="98px"
+                        :rules="[{ required: true, message: 'Please select  Distribute策略', trigger: 'change' }]">
+            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute策略">
               <el-option label="Inventory量小的库位优先" :value="1"></el-option>
               <el-option label="Inventory量大的库位优先" :value="2"></el-option>
             </el-select>
@@ -139,7 +139,7 @@ export default {
   },
   data() {
     return {
-      // 分配Warehouse
+      //  DistributeWarehouse
       dialogFormVisible: false,
       dialogForm: {
         region: 1,
@@ -153,7 +153,7 @@ export default {
       // 遮罩层
       loading: true,
       ids: [],
-      // 表参数
+      // 表Params
       form: {
         details: []
       },
@@ -168,10 +168,10 @@ export default {
       deliveryTitle: '',
       waveOrderId: null,
       columns: [
-        {key: 1, label: "Outbound 主表Id", visible: false},
+        {key: 1, label: "Outbound No.", visible: false},
         {key: 2, label: " CarrierId", visible: true},
-        {key: 3, label: "OutboundDate", visible: true},
-        {key: 4, label: "快递No.", visible: true},
+        {key: 3, label: "Outbound Date", visible: true},
+        {key: 4, label: "Tracking No.", visible: true},
         {key: 5, label: "Remark", visible: true},
       ],
     }
@@ -187,17 +187,17 @@ export default {
     }
   },
   methods: {
-    /** Cancel分配 */
+    /** Cancel Distribute */
     onCancelInventory(){
       cancelAllocatedInventoryForReceipt(this.waveOrderId).then(res=>{
         this.$modal.msgSuccess(res ? 'Modify Successful' : 'Modify失败')
         this.cancel()
       })
     },
-    /** 自动分配 Warehouse */
+    /** 自动 Distribute Warehouse */
     allocated() {
       waveAllocatedInventoryForReceipt({id:this.waveOrderId,type:this.dialogForm.region}).then(response => {
-        this.$modal.msgSuccess("分配 Successful");
+        this.$modal.msgSuccess(" Distribute Successful");
         this.dialogFormVisible = false;
         const {details, items, allocationDetails} = response
         const map = {};

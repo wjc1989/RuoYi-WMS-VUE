@@ -1,13 +1,13 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
       class="ry_form">
       <el-form-item label="No." prop="customerNo">
         <el-input v-model.trim="queryParams.customerNo" placeholder="Please Input No." clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="Item" prop="customerName">
-        <el-input v-model.trim="queryParams.customerName" placeholder="Please Input Item" clearable size="small"
+      <el-form-item label="Name" prop="customerName">
+        <el-input v-model.trim="queryParams.customerName" placeholder="Please Input Name" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
       <el-form-item label="Address" prop="address">
@@ -52,25 +52,25 @@
     <WmsTable v-loading="loading" :data="wmsCustomerList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="No." align="center" prop="customerNo" v-if="columns[0].visible" />
-      <el-table-column label="Item" align="center" prop="customerName" v-if="columns[1].visible" />
-      <el-table-column label="应收款" align="center" class-name="small-padding fixed-width" v-if="columns[2].visible">
+      <el-table-column label="Name" align="center" prop="customerName" v-if="columns[1].visible" />
+      <el-table-column label="Receivable" align="center" class-name="small-padding fixed-width" v-if="columns[2].visible">
         <template slot-scope="scope">
           <p> {{ scope.row.receivableAmount }}</p>
           <el-button size="mini" type="text" @click="handleEnter(scope.row)">+应收
           </el-button>
-          <el-button size="mini" type="text" @click="handleExit(scope.row)">-结款
+          <el-button size="mini" type="text" @click="handleExit(scope.row)">-Paid
           </el-button>
-          <el-button size="mini" type="text" @click="handleDetail(scope.row)">查看流水
+          <el-button size="mini" type="text" @click="handleDetail(scope.row)">Transcation
           </el-button>
         </template>
       </el-table-column>
       <el-table-column label="Address" align="center" prop="address" v-if="columns[3].visible" />
       <el-table-column label="Phone" align="center" prop="mobile" v-if="columns[4].visible" />
-       <el-table-column label="Contacts" align="center" prop="customerPerson" v-if="columns[6].visible" />
-      <el-table-column label="Leave" align="center" prop="customerLevel" v-if="columns[7].visible" />
-      <el-table-column label="Email" align="center" prop="email" v-if="columns[8].visible" />
-      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[9].visible" />
-      <el-table-column label="Operate" align="center" class-name="small-padding fixed-width" v-if="columns[10].visible">
+       <el-table-column label="Contacts" align="center" prop="customerPerson" v-if="columns[5].visible" />
+      <el-table-column label="Leave" align="center" prop="customerLevel" v-if="columns[6].visible" />
+      <el-table-column label="Email" align="center" prop="email" v-if="columns[7].visible" />
+      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[8].visible" />
+      <el-table-column label="Operate" align="center" class-name="small-padding fixed-width" v-if="columns[9].visible">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
             v-hasPermi="['wms:customer:edit']">Modify</el-button>
@@ -89,8 +89,8 @@
         <el-form-item label="No." prop="customerNo">
           <el-input v-model="form.customerNo" placeholder="Please Input No." />
         </el-form-item>
-        <el-form-item label="Item" prop="customerName">
-          <el-input v-model="form.customerName" placeholder="Please Input Item" />
+        <el-form-item label="Name" prop="customerName">
+          <el-input v-model="form.customerName" placeholder="Please Input Name" />
         </el-form-item>
         <el-form-item label="Address" prop="address">
           <el-input v-model="form.address" placeholder="Please Input Address" />
@@ -98,11 +98,11 @@
         <el-form-item label="Phone" prop="mobile">
           <el-input v-model="form.mobile" placeholder="Please Input Phone" />
         </el-form-item>
-        <el-form-item label="开户行" prop="bankName">
-          <el-input v-model="form.bankName" placeholder="Please Input 开户行" />
+        <el-form-item label="Bank Name." prop="bankName">
+          <el-input v-model="form.bankName" placeholder="Please Input Bank Name." />
         </el-form-item>
-        <el-form-item label="银行卡No." prop="bankAccount">
-          <el-input v-model="form.bankAccount" placeholder="Please Input 银行卡No." />
+        <el-form-item label="Bank No." prop="bankAccount">
+          <el-input v-model="form.bankAccount" placeholder="Please Input Bank No." />
         </el-form-item>
 
         <el-form-item label="Contacts" prop="customerPerson">
@@ -125,7 +125,7 @@
     </el-dialog>
 
     <!-- 应付款 Add/结账 对话框 -->
-    <el-dialog :title="duePayForm.title" :visible.sync="duePayForm.open" width="500px" append-to-body>
+    <el-dialog :title="duePayForm.title" :visible.sync="duePayForm.open" width="600px" append-to-body>
       <el-form ref="duePayForm" :model="duePayForm.form" :rules="duePayForm.rules" label-width="108px">
 
         <el-form-item label="Amount" prop="transactionAmount">
@@ -154,13 +154,13 @@ var isbankAccount = (rule, value, callback) => {
   const strBin =
     "10,18,30,35,37,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,60,62,65,68,69,84,87,88,94,95,98,99";
   if (!value) {
-    return callback(new Error("收款账户 is required"));
+    return callback(new Error("Accounts is required"));
   } else if (!Number.isInteger(+value)) {
-    callback(new Error("银行卡No.必须全数字"));
+    callback(new Error("Bank No.必须全数字"));
   } else if (value.trim().length < 12 || value.trim().length > 19) {
-    callback(new Error("银行卡No.长度必须在12到19之间"));
+    callback(new Error("Bank No.长度必须在12到19之间"));
   } else if (strBin.indexOf(value.substring(0, 2)) === -1) {
-    callback(new Error("银行卡No.开头6位No 符合规范"));
+    callback(new Error("Bank No.开头6位No 符合规范"));
   } else {
     callback();
   }
@@ -180,7 +180,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -188,9 +188,9 @@ export default {
       wmsCustomerList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -203,7 +203,7 @@ export default {
         customerLevel: null,
         email: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -211,14 +211,14 @@ export default {
           { required: true, message: "No. is required", trigger: "blur" }
         ],
         customerName: [
-          { required: true, message: "Item is required", trigger: "blur" }
+          { required: true, message: "Name is required", trigger: "blur" }
         ],
         bankAccount: [{ validator: isbankAccount, trigger: "blur" },]
       },
       columns: [
         { key: 1, label: "No.", visible: true },
-        { key: 2, label: "Item", visible: true },
-        { key: 3, label: "应收款", visible: true },
+        { key: 2, label: "Name", visible: true },
+        { key: 3, label: "Receivable", visible: true },
         { key: 4, label: "Address", visible: false },
         { key: 5, label: "Phone", visible: false },
          { key: 7, label: "Contacts", visible: true },
@@ -231,7 +231,7 @@ export default {
       duePayForm: {
         // 弹出层标题
         title: "",
-        // 显示弹出层
+        // Show弹出层
         open: false,
         form: {}
       }
@@ -319,7 +319,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "Add客户";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -328,7 +328,7 @@ export default {
       getWmsCustomer(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "Modify客户";
+        this.title = "Modify";
       });
     },
     /** 提交Button */
@@ -375,7 +375,7 @@ export default {
         this.exportLoading = false;
       }).catch(() => { });
     },
-    /** 查看流水 */
+    /** Transcation */
     handleDetail(row) {
       const id = row.id || this.ids
       this.$router.push({ path: '/relation/customerTransaction', query: { id } })
@@ -396,9 +396,9 @@ export default {
         remark: null
       }
     },
-    /* 结款 */
+    /* Paid */
     handleExit(row) {
-      this.duePayForm.title = '结款'
+      this.duePayForm.title = 'Paid'
       this.duePayForm.open = true
 
       this.resetDueForm();

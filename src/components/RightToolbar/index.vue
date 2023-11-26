@@ -1,19 +1,19 @@
 <template>
   <div class="top-right-btn">
     <el-row>
-      <el-tooltip class="item" effect="dark" :content="showSearch ? '隐藏Search' : '显示Search'" placement="top">
+      <el-tooltip class="item" effect="dark" :content="showSearch ? 'Hide Search' : 'Show Search'" placement="top">
         <el-button size="mini" circle icon="el-icon-search" @click="toggleSearch()" />
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="Refresh" placement="top">
         <el-button size="mini" circle icon="el-icon-refresh" @click="refresh()" />
       </el-tooltip>
-      <el-tooltip class="item" effect="dark" content="显隐列" placement="top" v-if="columns">
+      <el-tooltip class="item" effect="dark" content="Config" placement="top" v-if="columns">
         <el-button size="mini" circle icon="el-icon-menu" @click="showColumn()" />
       </el-tooltip>
     </el-row>
     <el-dialog :title="title" :visible.sync="open" append-to-body>
       <el-transfer
-        :titles="['显示', '隐藏']"
+        :titles="['Show', 'Hide']"
         v-model="value"
         :data="columns"
         @change="dataChange"
@@ -29,8 +29,8 @@ export default {
       // 显隐Data
       value: [],
       // 弹出层标题
-      title: "显示/隐藏",
-      // 显示弹出层
+      title: "Show/Hide",
+      // Show弹出层
       open: false,
     };
   },
@@ -44,7 +44,7 @@ export default {
     },
   },
   created() {
-    // 显隐列初始默认隐藏列
+    // 显隐列初始默认Hide列
     for (let item in this.columns) {
       if (this.columns[item].visible === false) {
         this.value.push(parseInt(item));
@@ -60,7 +60,7 @@ export default {
     refresh() {
       this.$emit("queryTable");
     },
-    // 右侧列表元素变化
+    // 右侧列表元素Change
     dataChange(data) {
       for (let item in this.columns) {
         const key = this.columns[item].key;

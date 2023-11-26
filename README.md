@@ -4,7 +4,7 @@
 # 安装依赖
 npm install
 
-# 建议No 要直接使用 cnpm 安装依赖，会有各种诡异的 bug。可以通过如下Operate解决 npm 下载速度慢的问题
+# 建议No 要直接使用 cnpm 安装依赖，会有各种诡异的 bug。可以通过e.g.下Operate解决 npm 下载速度慢的问题
 npm install --registry=https://registry.npmmirror.com
 
 # 启动服务
@@ -43,20 +43,20 @@ https://www.bilibili.com/video/BV1ys4y1q7uG
 若依wmsYes一套基于若依的WMS，支持lodop和网页PrintInbound、Outbound 。毫无保留给个人及企业免费使用。
 * 前端采用Vue、Element UI（ant design 正在开发中）。
 * 后端采用Spring Boot、Spring Security、Redis & Jwt。
-* 权限认证使用Jwt，支持多终端认证系统。
-* 支持加载动态权限Menu ，多方式轻松权限控制。
+* Prower认证使用Jwt，支持多终端认证系统。
+* 支持加载动态ProwerMenu ，多方式轻松Prower控制。
 * 高效率开发，使用代码生成器可以一键生成前后端代码。
 
 ## 若依wms功能
 1. Index：InventoryWarn与到期提醒、基础Data报表展示
-2. Warehouse/货架：管理维护Warehouse基础Data
+2. Warehouse/ Shelves：管理维护Warehouse基础Data
 3. Item：管理维护Item基础Data
-4. 客户/Supplier/ Carrier：管理维护Contacts基础Data
-5. Inbound：CreateInbound后包括如下几个Status：未Outbound、在途（已Outbound未Inbound）、部分Inbound、作废、Inbound完成，Type包括：采购Inbound、外协Inbound、退货Inbound，Inbound支持lodop和网页Print
-6. Outbound ：CreateOutbound 后包括如下几个Status：未Outbound、部分Outbound、已Outbound、作废，Type包括：销售Outbound 、外协Outbound 、调拨Outbound ，Outbound 支持lodop和网页Print
-7. 移库：Create移库后包括如下几个Status：未Operate、部分移动、Operate完毕、作废
+4. Custom/Supplier/ Carrier：管理维护Contacts基础Data
+5. Inbound：CreateInbound后包括e.g.下几个Status：未Outbound、在途（已Outbound未Inbound）、部分Inbound、作废、Inbound完成，Type包括：采购Inbound、外协Inbound、退货Inbound，Inbound支持lodop和网页Print
+6. Outbound ：CreateOutbound 后包括e.g.下几个Status：未Outbound、部分Outbound、已Outbound、作废，Type包括：销售Outbound 、外协Outbound 、调拨Outbound ，Outbound 支持lodop和网页Print
+7. 移库：Create移库后包括e.g.下几个Status：未Operate、部分移动、Operate完毕、作废
 8. Inventory看板：查看当前ItemInventoryCount
-9. Inventory记录：查看当前ItemInventoryOperate记录
+9. Inventory Record：查看当前ItemInventoryOperate Record
 ## Status流转
 #### InboundStatus流转
 ![InboundStatus流转](https://oscimg.oschina.net/oscnet/up-6bdb5ad6d8ab236f763300b71cf175d9a99.jpg)
@@ -78,16 +78,16 @@ https://www.bilibili.com/video/BV1ys4y1q7uG
 
 1.  User 管理：User Yes系统Operate者，该功能主要完成系统User 配置。
 2.  Department管理：配置系统组织机构（公司、Department、小组），树结构展现支持Data Perm。
-3.  Post管理：配置系统User 所属担任职务。
-4.  Menu 管理：配置系统Menu ，Operate权限，ButtonPerms等。
-5.  Role管理：RoleMenu 权限分配、设置Role按机构进行Data范围权限划分。
+3.  Post管理：配置系统User 担任职务。
+4.  Menu 管理：配置系统Menu ，OperatePrower，ButtonPerms等。
+5.  Role管理：RoleMenu Prower Distribute、设置Role按机构进行Data范围Prower划分。
 6.  Dict管理：对系统中经常使用的一些较固定的Data进行维护。
-7.  参数管理：对系统动态配置常用参数。
-8.  通知公告：系统通知公告信息发布维护。
-9.  OperateLogs：系统正常OperateLogs记录和Search；系统 Exception信息Logs记录和Search。
-10. LoginLogs：系统LoginLogs记录Search包含Login Exception。
+7.  Params管理：对系统动态配置常用Params。
+8.  通知Notice：系统通知Notice信息发布维护。
+9.  OperateLogs：系统正常OperateLogs Record和Search；系统 Exception信息Logs Record和Search。
+10. LoginLogs：系统LoginLogs RecordSearch包含Login Exception。
 11. 在线User ：当前系统中活跃User Status监控。
-12. 定时任务：在线（Add、Modify、Delete)任务调度包含执行结果Logs。
+12. 定时 Task：在线（Add、Modify、Delete) Task调度包含执行结果Logs。
 13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
 14. 系统接口：根据业务代码自动生成相关的api接口文档。
 15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
@@ -135,7 +135,7 @@ https://www.bilibili.com/video/BV1ys4y1q7uG
 * 这五年我主要做isv对接淘宝、拼多多、抖音、美团等平台的订处理应用，日处理订300w条，因要熟悉业务也开过淘宝和拼多多店铺运营了一个网易严选的品牌。我们的公众No.会陆续更新一些我一边撸代码一边做客服的经历。也会更新一些我的读书笔记以及编程、创业、生活中踩坑的文章。另外还会开放一些米哈游、博世、企查查、同程、阿里、京东、拼多多等大厂、中厂或外企的内推Post！
 
 ## 大厂、外企内推
-关注“编写美好前程”公众No.：记录编程、创业、生活中踩坑的文章，陆续会开放一些微软、阿里、京东、拼多多等大厂或外企的内推Post！
+关注“编写美好前程”公众No.： Record编程、创业、生活中踩坑的文章，陆续会开放一些微软、阿里、京东、拼多多等大厂或外企的内推Post！
 
 ## 加群/技术支持
 

@@ -1,5 +1,5 @@
  /**
- * v-hasPermi Operate权限处理
+ * v-hasPermi OperatePrower处理
  * Copyright (c) 2019 ruoyi
  */
 
@@ -22,7 +22,7 @@ export default {
         el.parentNode && el.parentNode.removeChild(el)
       }
     } else {
-      throw new Error(`请设置Operate权限 Label值`)
+      throw new Error(`请设置OperatePrower Label值`)
     }
   }
 }

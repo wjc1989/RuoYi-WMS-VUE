@@ -104,7 +104,7 @@ function filterChildren(childrenMap, lastRouter = false) {
   return children
 }
 
-// 动态Router遍历，验证具备权限
+// 动态Router遍历，验证具备Prower
 export function filterDynamicRoutes(routes) {
   const res = []
   routes.forEach(route => {

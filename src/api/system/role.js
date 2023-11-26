@@ -9,7 +9,7 @@ export function listRole(query) {
   })
 }
 
-// SearchRole详细
+// SearchRoleDetail
 export function getRole(roleId) {
   return request({
     url: '/system/role/' + roleId,

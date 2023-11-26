@@ -135,7 +135,7 @@ export default {
       // 遮罩层
       loading: true,
       ids: [],
-      // 表参数
+      // 表Params
       form: {
         details: []
       },
@@ -242,12 +242,12 @@ export default {
           }
         })
         if (details.filter(it => !it.sourceWarehouseId || !it.targetWarehouseId)?.length > 0) {
-          this.$message.warning('Please select Warehouse、Area或货架')
+          this.$message.warning('Please select Warehouse、Area或 Shelves')
           return;
         }
         const arr = details.filter(it => it.sourceRackId === it.targetRackId && it.sourceAreaId === it.targetAreaId && it.sourceWarehouseId === it.targetWarehouseId)
         if (arr?.length > 0) {
-          this.$message.warning('同一个ItemNo 能Select 相同的Warehouse、Area、货架')
+          this.$message.warning('同一个ItemNo 能Select 相同的Warehouse、Area、 Shelves')
           return;
         }
         const req = {...this.form, details}

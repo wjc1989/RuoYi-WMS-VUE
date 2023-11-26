@@ -4,7 +4,7 @@
       <el-col :span="6" :xs="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>个人信息</span>
+            <span>Profile</span>
           </div>
           <div>
             <div class="text-center">
@@ -24,11 +24,11 @@
                 <div class="pull-right">{{ user.email }}</div>
               </li>
               <li class="list-group-item">
-                <svg-icon icon-class="tree" />所属Department
+                <svg-icon icon-class="tree" />Department
                 <div class="pull-right" v-if="user.dept">{{ user.dept.deptName }} / {{ postGroup }}</div>
               </li>
               <li class="list-group-item">
-                <svg-icon icon-class="peoples" />所属Role
+                <svg-icon icon-class="peoples" />Role
                 <div class="pull-right">{{ roleGroup }}</div>
               </li>
               <li class="list-group-item">

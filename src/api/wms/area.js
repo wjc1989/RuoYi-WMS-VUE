@@ -10,7 +10,7 @@ export function listWmsArea(query, pageReq) {
     })
 }
 
-// SearchArea详细
+// SearchAreaDetail
 export function getWmsArea(id) {
     return request({
         url: '/wms/area/' + id,

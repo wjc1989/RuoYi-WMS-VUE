@@ -7,7 +7,7 @@
                     disabled="disabled"></el-input>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
-          <el-input v-model="form.remark" placeholder="Remark...100个字符以内" rows="3" maxlength="100" type="textarea"
+          <el-input v-model="form.remark" placeholder="Remark...Maximum 100 characters" rows="3" maxlength="100" type="textarea"
                     show-word-limit="show-word-limit"></el-input>
         </el-form-item>
       </el-form>
@@ -113,7 +113,7 @@ export default {
       batchForm: {
         place: []
       },
-      // 表参数
+      // 表Params
       form: {
         details: []
       },
@@ -197,12 +197,12 @@ export default {
           }
         })
         if (details.filter(it => !it.sourceWarehouseId || !it.targetWarehouseId)?.length > 0) {
-          this.$message.warning('Please select Warehouse、Area或货架')
+          this.$message.warning('Please select Warehouse、Area或 Shelves')
           return;
         }
         const arr = details.filter(it => it.sourceRackId === it.targetRackId && it.sourceAreaId === it.targetAreaId && it.sourceWarehouseId === it.targetWarehouseId)
         if (arr?.length > 0) {
-          this.$message.warning('同一个ItemNo 能Select 相同的Warehouse、Area、货架')
+          this.$message.warning('同一个ItemNo 能Select 相同的Warehouse、Area、 Shelves')
           return;
         }
         const req = {...this.form, details}

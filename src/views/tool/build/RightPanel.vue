@@ -376,10 +376,10 @@
           <el-form-item v-if="activeData['show-text'] !== undefined" label="辅助文字">
             <el-switch v-model="activeData['show-text']" @change="rateTextChange" />
           </el-form-item>
-          <el-form-item v-if="activeData['show-score'] !== undefined" label="显示分数">
+          <el-form-item v-if="activeData['show-score'] !== undefined" label="Show分数">
             <el-switch v-model="activeData['show-score']" @change="rateScoreChange" />
           </el-form-item>
-          <el-form-item v-if="activeData['show-stops'] !== undefined" label="显示间断点">
+          <el-form-item v-if="activeData['show-stops'] !== undefined" label="Show间断点">
             <el-switch v-model="activeData['show-stops']" />
           </el-form-item>
           <el-form-item v-if="activeData.range !== undefined" label="范围Select ">
@@ -443,7 +443,7 @@
           <el-form-item v-if="activeData.clearable !== undefined" label="能NoClear">
             <el-switch v-model="activeData.clearable" />
           </el-form-item>
-          <el-form-item v-if="activeData.showTip !== undefined" label="显示Info">
+          <el-form-item v-if="activeData.showTip !== undefined" label="ShowInfo">
             <el-switch v-model="activeData.showTip" />
           </el-form-item>
           <el-form-item v-if="activeData.multiple !== undefined" label="多选文件">
@@ -559,7 +559,7 @@
           <el-form-item label="表Button">
             <el-switch v-model="formConf.formBtns" />
           </el-form-item>
-          <el-form-item label="显示未选中组件边框">
+          <el-form-item label="Show未选中组件边框">
             <el-switch v-model="formConf.unFocusedComponentBorder" />
           </el-form-item>
         </el-form>

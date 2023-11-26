@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
              class="ry_form">
       <el-form-item label="结算id" prop="settlementId">
         <el-input
@@ -343,7 +343,7 @@ export default {
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示Search
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
@@ -351,9 +351,9 @@ export default {
       wmsInventorySettlementDetailList: [],
       // 弹出层标题
       title: "",
-      // 显示弹出层
+      // Show弹出层
       open: false,
-      // Search参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -374,7 +374,7 @@ export default {
         currentCheck: null,
         currentBalance: null,
       },
-      // 表参数
+      // 表Params
       form: {},
       // 表校验
       rules: {
@@ -501,7 +501,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "AddInventory结算明细";
+      this.title = "New";
     },
     /** ModifyButtonOperate */
     handleUpdate(row) {
@@ -510,7 +510,7 @@ export default {
       getWmsInventorySettlementDetail(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "ModifyInventory结算明细";
+        this.title = "Modify";
       });
     },
     /** 提交Button */

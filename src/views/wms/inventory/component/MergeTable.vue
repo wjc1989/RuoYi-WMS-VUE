@@ -19,12 +19,12 @@ export default {
   },
   data() {
     return {
-      mergeObj: {}, // 用来记录需要合并行的下标
+      mergeObj: {}, // 用来 Record需要合并行的下标
     }
   },
   computed: {
     processData() {
-      // 在data发生变化时执行的Operate
+      // 在data发生Change时执行的Operate
       this.getSpanArr(this.tableData)
       return this.tableData
     }
@@ -39,7 +39,7 @@ export default {
         if (this.mergeObj[column.property][rowIndex]) {
           return [this.mergeObj[column.property][rowIndex], 1]
         } else {
-          // 如果0则需要合并的行
+          // e.g.果0则需要合并的行
           return [0, 0];
         }
       }

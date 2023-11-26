@@ -10,7 +10,7 @@ export function listWmsCarrier(query, pageReq) {
   })
 }
 
-// Search Carrier详细
+// Search CarrierDetail
 export function getWmsCarrier(id) {
   return request({
     url: '/wms/carrier/' + id,

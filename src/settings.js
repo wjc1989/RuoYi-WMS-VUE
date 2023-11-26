@@ -10,12 +10,12 @@ module.exports = {
   showSettings: false,
 
   /**
-   * 显示顶部导航
+   * Show顶部导航
    */
   topNav: false,
 
   /**
-   * 显示 tagsView
+   * Show tagsView
    */
   tagsView: true,
 
@@ -25,12 +25,12 @@ module.exports = {
   fixedHeader: false,
 
   /**
-   * 显示logo
+   * Showlogo
    */
   sidebarLogo: true,
 
   /**
-   * 显示动态标题
+   * Show动态标题
    */
   dynamicTitle: false,
 

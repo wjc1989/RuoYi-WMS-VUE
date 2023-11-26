@@ -1,5 +1,5 @@
 <template>
-  <el-select placeholder="Please select 客户" clearable v-model="customer">
+  <el-select placeholder="Please select Custom" clearable v-model="customer">
     <el-option
       v-for="customer in customerList"
       :key="customer.id"
