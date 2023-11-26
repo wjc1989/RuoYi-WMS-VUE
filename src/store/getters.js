@@ -16,7 +16,7 @@ const getters = {
   defaultRoutes: state => state.permission.defaultRoutes,
   sidebarRouters: state => state.permission.sidebarRouters,
 
-  // 字典相关
+  // Dict相关
   items: state => state.dict.items,
   dictTypeMap: state => state.dict.dictTypeMap,
   opTypes: state => {

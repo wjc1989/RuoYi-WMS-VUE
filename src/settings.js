@@ -5,32 +5,32 @@ module.exports = {
   sideTheme: 'theme-dark',
 
   /**
-   * 是否系统布局配置
+   * 系统布局配置
    */
   showSettings: false,
 
   /**
-   * 是否显示顶部导航
+   * Show顶部导航
    */
   topNav: false,
 
   /**
-   * 是否显示 tagsView
+   * Show tagsView
    */
   tagsView: true,
 
   /**
-   * 是否固定头部
+   * 固定头部
    */
   fixedHeader: false,
 
   /**
-   * 是否显示logo
+   * Showlogo
    */
   sidebarLogo: true,
 
   /**
-   * 是否显示动态标题
+   * Show动态标题
    */
   dynamicTitle: false,
 

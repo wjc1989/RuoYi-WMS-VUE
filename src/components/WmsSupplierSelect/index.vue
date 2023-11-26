@@ -1,5 +1,5 @@
 <template>
-  <el-select placeholder="请选择供应商" clearable v-model="supplier">
+  <el-select placeholder="Please select Supplier" clearable v-model="supplier">
       <el-option
             v-for="supplier in supplierList"
             :key="supplier.id"
@@ -14,7 +14,7 @@ export default {
   props: ['value','size'],
   data() {
     return {
-      
+
     }
   },
   computed: {

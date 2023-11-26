@@ -1,6 +1,6 @@
 <template>
 <el-cascader
-  placeholder="请选择仓库信息"
+  placeholder="Please select Warehouse"
   :options="options"
   v-model="selections"
   :props="{ checkStrictly: true }"

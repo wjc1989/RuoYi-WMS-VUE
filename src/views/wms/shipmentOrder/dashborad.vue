@@ -1,85 +1,85 @@
 <template>
   <div class="">
-    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="100px" :model="queryParams" ref="queryForm"
+    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="120px" :model="queryParams" ref="queryForm"
              size="medium">
-      <el-form-item label="出库状态" prop="shipmentOrderStatus">
+      <el-form-item label="Outbound Status" prop="shipmentOrderStatus">
         <DictRadio v-model="queryParams.shipmentOrderStatus" :radioData="dict.type.wms_shipment_status" :showAll="'all'"
                    size="small" @change="handleQuery"></DictRadio>
       </el-form-item>
-      <el-form-item label="出库类型" prop="shipmentOrderType">
+      <el-form-item label="Outbound Type" prop="shipmentOrderType">
         <DictRadio v-model="queryParams.shipmentOrderType" :radioData="dict.type.wms_shipment_type" :showAll="'all'"
                    size="small" @change="handleQuery"></DictRadio>
       </el-form-item>
-      <el-form-item label="出库单号" prop="shipmentOrderNo">
-        <el-input v-model="queryParams.shipmentOrderNo" clearable="clearable" placeholder="请输入出库单号" size="small"
+      <el-form-item label="Outbound No." prop="shipmentOrderNo">
+        <el-input v-model="queryParams.shipmentOrderNo" clearable="clearable" placeholder="Please Input Outbound No." size="small"
                   @keyup.enter.native="handleQuery"></el-input>
       </el-form-item>
-      <el-form-item label="订单号" prop="orderNo">
-        <el-input v-model="queryParams.orderNo" clearable="clearable" placeholder="请输入订单号" size="small"
+      <el-form-item label="No." prop="orderNo">
+        <el-input v-model="queryParams.orderNo" clearable="clearable" placeholder="Please Input No." size="small"
                   @keyup.enter.native="handleQuery"></el-input>
       </el-form-item>
-      <el-form-item label="客户" prop="customerId">
+      <el-form-item label="Custom" prop="customerId">
         <WmsCustomerSelect v-model="queryParams.customerId" size="small"></WmsCustomerSelect>
       </el-form-item>
       <el-form-item class="flex_one tr">
-        <el-button icon="el-icon-search" size="mini" type="primary" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button icon="el-icon-search" size="mini" type="primary" @click="handleQuery">Search</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">Reset</el-button>
       </el-form-item>
     </el-form>
     <el-row class="mb8" :gutter="10">
       <el-col :span="1.5">
         <el-button v-hasPermi="['wms:shipmentOrder:add']" icon="el-icon-plus" plain="plain" size="mini" type="primary"
-                   @click="handleAdd()">创建出库单
+                   @click="handleAdd()">CreateOutbound
         </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button icon="el-icon-check" size="mini" type="warning" :disabled="!waveAble"
-                   @click="handleWave()">波次作业
+                   @click="handleWave()">Wave Task
         </el-button>
       </el-col>
       <right-toolbar :columns="columns" :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
     <WmsTable v-loading="loading" :data="wmsShipmentOrderList" @selection-change="handleSelectionChange">
       <el-table-column align="center" type="selection" width="55"></el-table-column>
-      <el-table-column v-if="columns[0].visible" align="center" label="出库单号"
+      <el-table-column v-if="columns[0].visible" align="center" label="Outbound No."
                        prop="shipmentOrderNo"></el-table-column>
-      <el-table-column v-if="columns[1].visible" align="center" label="出库类型">
+      <el-table-column v-if="columns[1].visible" align="center" label="Outbound Type">
         <template slot-scope="scope">
           <el-tag effect="plain" size="medium" :type="getShipmentOrderTypeTag(scope.row)">
             {{ getShipmentOrderType(scope.row) }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column v-if="columns[2].visible" align="center" :formatter="getCustomer" label="客户"></el-table-column>
-      <el-table-column v-if="columns[3].visible" align="center" label="订单号" prop="orderNo"></el-table-column>
-      <el-table-column v-if="columns[4].visible" align="center" label="出库状态">
+      <el-table-column v-if="columns[2].visible" align="center" :formatter="getCustomer" label="Custom"></el-table-column>
+      <el-table-column v-if="columns[3].visible" align="center" label="No." prop="orderNo"></el-table-column>
+      <el-table-column v-if="columns[4].visible" align="center" label="Outbound Status">
         <template slot-scope="scope">
           <el-tag effect="plain" size="medium" :type="getShipmentOrderStatusTag(scope.row)">
             {{ getShipmentOrderStatus(scope.row) }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column v-if="columns[5].visible" align="center" label="波次号" prop="waveNo"></el-table-column>
-      <el-table-column v-if="columns[5].visible" align="center" label="备注" prop="remark">
+      <el-table-column v-if="columns[5].visible" align="center" label="Wave No." prop="waveNo"></el-table-column>
+      <el-table-column v-if="columns[5].visible" align="center" label="Remark" prop="remark">
         <template v-slot="{ row }">
           <el-popover placement="left" width="300" trigger="hover" :content="row.remark" popper-class="popperOptions">
             <p class="showOverTooltip" slot="reference">{{ row.remark }}</p>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column align="center" class-name="small-padding fixed-width" label="操作">
+      <el-table-column align="center" class-name="small-padding fixed-width" label="Operate">
         <template v-slot="{ row }">
           <el-button v-hasPermi="['wms:shipmentOrder:edit']"
                      v-if="ShipmentOrderConstant.Status.NOT_IN === row.shipmentOrderStatus && !row.waveNo" icon="el-icon-edit"
-                     size="mini" type="text" @click.stop="handleUpdate(row)">修改
+                     size="mini" type="text" @click.stop="handleUpdate(row)">Modify
           </el-button>
           <el-button v-hasPermi="['wms:shipmentOrder:remove']" icon="el-icon-delete" size="mini" type="text"
-                     v-if="!row.waveNo && row.shipmentOrderStatus !== ShipmentOrderConstant.Status.ALL_IN" @click.stop="handleDelete(row)">删除
+                     v-if="!row.waveNo && row.shipmentOrderStatus !== ShipmentOrderConstant.Status.ALL_IN" @click.stop="handleDelete(row)">Delete
           </el-button>
           <el-button v-hasPermi="['wms:shipmentOrder:status']" v-if="row.detailCount && !row.waveNo && row.shipmentOrderStatus !== ShipmentOrderConstant.Status.ALL_IN" icon="el-icon-truck" size="mini"
-                     type="text" @click.stop="handleStatus(row)">发货/出库
+                     type="text" @click.stop="handleStatus(row)">Outbound
           </el-button>
-          <el-button icon="el-icon-print" size="mini" type="text" @click.stop="printOut(row,true)">打印</el-button>
+          <el-button icon="el-icon-printer" size="mini" type="text" @click.stop="printOut(row,true)">Print</el-button>
         </template>
       </el-table-column>
     </WmsTable>
@@ -88,16 +88,16 @@
     <el-dialog :visible.sync="modalObj.show" :title="modalObj.title" :width="modalObj.width">
       <template v-if="modalObj.component === 'print-type'">
         <el-radio-group v-model="modalObj.form.value">
-          <el-radio :label="1">lodop打印</el-radio>
-          <el-radio :label="2">浏览器打印</el-radio>
+         <!-- <el-radio :label="1">lodopPrint</el-radio>-->
+          <el-radio :label="2" >Browser Print</el-radio>
         </el-radio-group>
       </template>
       <template v-if="modalObj.form.value === 2 || modalObj.component === 'window-print-preview'">
         <shipment-order-print :row="modalObj.form.row" ref="receiptOrderPrintRef"></shipment-order-print>
       </template>
       <template slot="footer" class="dialog-footer">
-        <el-button @click="modalObj.cancel">取消</el-button>
-        <el-button @click="modalObj.ok" type="primary">确认</el-button>
+        <el-button @click="modalObj.cancel">Cancel</el-button>
+        <el-button @click="modalObj.ok" type="primary">OK</el-button>
       </template>
     </el-dialog>
   </div>
@@ -140,11 +140,11 @@ export default {
     return {
       modalObj: {
         show: false,
-        title: '选择打印方式',
+        title: 'Select Print',
         width: '520px',
         component: null,
         form: {
-          value: null,
+          value: 2,
           row: null
         },
         ok: () => {
@@ -154,23 +154,23 @@ export default {
       },
       // 遮罩层
       loading: true,
-      // 导出遮罩层
+      // Export遮罩层
       exportLoading: false,
       // 选中数组
       ids: [],
-      // 非单个禁用
+      // 非个禁用
       single: true,
       // 非多个禁用
       multiple: true,
-      // 是否显示波次作业按钮
+      // ShowWave 作业Button
       waveAble: false,
-      // 显示搜索条件
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 出库单表格数据
+      // Outbound 表格Data
       wmsShipmentOrderList: [],
-      // 查询参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -180,15 +180,15 @@ export default {
         orderNo: null,
         shipmentOrderStatus: null
       },
-      // 表单校验
+      // 表校验
       rules: {},
       columns: [
-        {key: 1, label: '出库单号', visible: true},
-        {key: 2, label: '出库类型', visible: true},
-        {key: 3, label: '供应商', visible: true},
-        {key: 4, label: '订单号', visible: true},
-        {key: 5, label: '出库状态', visible: true},
-        {key: 6, label: '备注', visible: true}
+        {key: 1, label: 'Outbound No.', visible: true},
+        {key: 2, label: 'Outbound Type', visible: true},
+        {key: 3, label: 'Supplier', visible: true},
+        {key: 4, label: 'No.', visible: true},
+        {key: 5, label: 'Outbound Status', visible: true},
+        {key: 6, label: 'Remark', visible: true}
       ]
     }
   },
@@ -233,7 +233,7 @@ export default {
     getCustomer(row, column) {
       return this.customerMap.get(row.customerId)
     },
-    /** 查询出库单列表 */
+    /** SearchOutbound 列表 */
     getList() {
       this.loading = true
       const {pageNum, pageSize} = this.queryParams
@@ -246,35 +246,35 @@ export default {
         this.loading = false
       })
     },
-    /** 搜索按钮操作 */
+    /** SearchButtonOperate */
     handleQuery() {
       this.queryParams.pageNum = 1
       this.getList()
     },
-    /** 重置按钮操作 */
+    /** ResetButtonOperate */
     resetQuery() {
       this.resetForm('queryForm')
       this.handleQuery()
     },
-    // 多选框选中数据
+    // 多选框选中Data
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.id)
       this.single = selection.length !== 1
       this.waveAble = selection.length > 1
       this.multiple = !selection.length
     },
-    /** 新增按钮操作 */
+    /** AddButtonOperate */
     handleAdd() {
       this.$router.push({path: '/wms/shipmentOrder/edit'})
     },
     printOut(row, print) {
       this.modalObj = {
         show: true,
-        title: '选择打印方式',
+        title: 'Select Print',
         width: '520px',
         component: 'print-type',
         form: {
-          value: 1,
+          value: 2,
           row
         },
         ok: () => {
@@ -311,7 +311,7 @@ export default {
         this.$nextTick(() => {
           this.modalObj = {
             show: true,
-            title: '浏览器打印预览',
+            title: 'Browser Printing Preview',
             width: '800px',
             component: 'window-print-preview',
             form: {
@@ -330,7 +330,7 @@ export default {
       })
     },
     getDetail(row) {
-      //查询详情
+      //Search Detail
       return getWmsShipmentOrder(row.id).then(response => {
         const {details, items} = response
         const map = {};
@@ -368,7 +368,7 @@ export default {
         }
       })
     },
-    /** 修改按钮操作 */
+    /** ModifyButtonOperate */
     handleUpdate(row) {
       const id = row.id || this.ids
       this.$router.push({path: '/wms/shipmentOrder/edit', query: {id}})
@@ -377,22 +377,22 @@ export default {
       const id = row.id || this.ids
       this.$router.push({path: '/wms/shipmentOrder/status', query: {id}})
     },
-    /** 删除按钮操作 */
+    /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids
       const shipmentOrderNo = row.shipmentOrderNo
-      this.$modal.confirm('是否确认删除出库单编号为"' + shipmentOrderNo + '"的数据项？').then(function () {
+      this.$modal.confirm(' Do you want delete Outbound No."' + shipmentOrderNo + '"？').then(function () {
         return delWmsShipmentOrder(ids)
       }).then(() => {
         this.getList()
-        this.$modal.msgSuccess('删除成功')
+        this.$modal.msgSuccess('Delete Successful')
       }).catch(() => {
       })
     },
-    /** 导出按钮操作 */
+    /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams
-      this.$modal.confirm('是否确认导出所有出库单数据项？').then(() => {
+      this.$modal.confirm('Export AllOutbound ？').then(() => {
         this.exportLoading = true
         return exportWmsShipmentOrder(queryParams)
       }).then(response => {

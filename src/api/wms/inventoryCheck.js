@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询库存盘点单据列表
+// SearchInventoryCount据列表
 export function listWmsInventoryCheck(query, pageReq) {
   return request({
     url: '/wms/inventoryCheck/list',
@@ -10,7 +10,7 @@ export function listWmsInventoryCheck(query, pageReq) {
   })
 }
 
-// 查询库存盘点单据详细
+// SearchInventoryCount据Detail
 export function getWmsInventoryCheck(id) {
   return request({
     url: '/wms/inventoryCheck/' + id,
@@ -18,7 +18,7 @@ export function getWmsInventoryCheck(id) {
   })
 }
 
-// 新增库存盘点单据
+// AddInventoryCount据
 export function addWmsInventoryCheck(data) {
   return request({
     url: '/wms/inventoryCheck',
@@ -35,7 +35,7 @@ export function addOrUpdateWmsInventoryCheck(data) {
   })
 }
 
-// 修改库存盘点单据
+// ModifyInventoryCount据
 export function updateWmsInventoryCheck(data) {
   return request({
     url: '/wms/inventoryCheck',
@@ -44,7 +44,7 @@ export function updateWmsInventoryCheck(data) {
   })
 }
 
-// 删除库存盘点单据
+// DeleteInventoryCount据
 export function delWmsInventoryCheck(id) {
   return request({
     url: '/wms/inventoryCheck/' + id,
@@ -52,7 +52,7 @@ export function delWmsInventoryCheck(id) {
   })
 }
 
-// 导出库存盘点单据
+// ExportInventoryCount据
 export function exportWmsInventoryCheck(query) {
   return request({
     url: '/wms/inventoryCheck/export',

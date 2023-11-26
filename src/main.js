@@ -31,19 +31,19 @@ import FileUpload from "@/components/FileUpload"
 import ImageUpload from "@/components/ImageUpload"
 // 图片预览组件
 import ImagePreview from "@/components/ImagePreview"
-// 字典标签组件
+// Dict Label组件
 import DictTag from '@/components/DictTag'
-// 头部标签组件
+// 头部 Label组件
 import VueMeta from 'vue-meta'
-// 字典数据组件
+// DictData组件
 import DictData from '@/components/DictData'
 //wms table组件
 import WmsTable from '@/components/WmsTable'
 
 import WmsSupplierSelect from '@/components/WmsSupplierSelect'
 import WmsCustomerSelect from '@/components/WmsCustomerSelect'
-import KrPrintDesigner from "kr-print-designer";
-import "kr-print-designer/lib/kr-print-designer.css";
+// import KrPrintDesigner from "kr-print-designer";
+// import "kr-print-designer/lib/kr-print-designer.css";
 
 import DictRadio from '@/components/DictRadio'
 
@@ -53,6 +53,7 @@ import WmsWarehouseCascader from '@/components/WmsWarehouseCascader'
 import vuePlugsPrint from '@/utils/vuePlugsPrint'
 import WmsCarrierSelect from "@/components/WmsCarrierSelect/index.vue";
 
+import locale from "element-ui/lib/locale/lang/en";
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
 Vue.prototype.getConfigKey = getConfigKey
@@ -80,7 +81,7 @@ Vue.component('DictRadio',DictRadio)
 Vue.component('DictSelect',DictSelect)
 Vue.component('WmsWarehouseCascader',WmsWarehouseCascader)
 
-Vue.use(KrPrintDesigner);
+// Vue.use(KrPrintDesigner);
 Vue.use(vuePlugsPrint);
 Vue.use(directive)
 Vue.use(plugins)
@@ -97,7 +98,8 @@ DictData.install()
  */
 
 Vue.use(Element, {
-  size: Cookies.get('size') || 'medium' // set element-ui default size
+  size: Cookies.get('size') || 'medium', // set element-ui default size
+  locale
 })
 
 Vue.config.productionTip = false
@@ -109,11 +111,11 @@ new Vue({
   render: h => h(App)
 })
 
-var _hmt = _hmt || [];
-window._hmt = _hmt;
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?8611b8753c9d6bb71fd882dc61e4adf2";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+// var _hmt = _hmt || [];
+// window._hmt = _hmt;
+// (function() {
+//   var hm = document.createElement("script");
+//   hm.src = "https://hm.baidu.com/hm.js?8611b8753c9d6bb71fd882dc61e4adf2";
+//   var s = document.getElementsByTagName("script")[0];
+//   s.parentNode.insertBefore(hm, s);
+// })();

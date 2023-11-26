@@ -1,45 +1,45 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium" class="ry_form">
-      <el-form-item label="库存移动Id" prop="inventoryMovementId">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium" class="ry_form">
+      <el-form-item label="Inventory移动Id" prop="inventoryMovementId">
         <el-input
           v-model="queryParams.inventoryMovementId"
-          placeholder="请输入库存移动Id"
+          placeholder="Please Input Inventory移动Id"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="物料" prop="itemId">
+      <el-form-item label="Item" prop="itemId">
         <el-input
           v-model="queryParams.itemId"
-          placeholder="请输入物料"
+          placeholder="Please Input Item"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="计划数量" prop="planQuantity">
+      <el-form-item label="Plan Count" prop="planQuantity">
         <el-input
           v-model="queryParams.planQuantity"
-          placeholder="请输入计划数量"
+          placeholder="Please Input Plan Count"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="实际数量" prop="realQuantity">
+      <el-form-item label="Real Count" prop="realQuantity">
         <el-input
           v-model="queryParams.realQuantity"
-          placeholder="请输入实际数量"
+          placeholder="Please Input Real Count"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item class="flex_one tr">
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">Search</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">Reset</el-button>
       </el-form-item>
     </el-form>
 
@@ -52,7 +52,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:inventoryMovementDetail:add']"
-        >新增</el-button>
+        >Add</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -63,7 +63,7 @@
           :disabled="single"
           @click="handleUpdate"
           v-hasPermi="['wms:inventoryMovementDetail:edit']"
-        >修改</el-button>
+        >Modify</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -74,7 +74,7 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['wms:inventoryMovementDetail:remove']"
-        >删除</el-button>
+        >Delete</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -85,19 +85,19 @@
           :loading="exportLoading"
           @click="handleExport"
           v-hasPermi="['wms:inventoryMovementDetail:export']"
-        >导出</el-button>
+        >Export</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>
     </el-row>
 
     <WmsTable v-loading="loading" :data="wmsInventoryMovementDetailList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="库存移动Id" align="center" prop="inventoryMovementId" v-if="columns[0].visible"/>
-      <el-table-column label="物料" align="center" prop="itemId" v-if="columns[1].visible"/>
-      <el-table-column label="计划数量" align="center" prop="planQuantity" v-if="columns[2].visible"/>
-      <el-table-column label="实际数量" align="center" prop="realQuantity" v-if="columns[3].visible"/>
-      <el-table-column label="备注" align="center" prop="remark" v-if="columns[4].visible"/>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+      <el-table-column label="Inventory移动Id" align="center" prop="inventoryMovementId" v-if="columns[0].visible"/>
+      <el-table-column label="Item" align="center" prop="itemId" v-if="columns[1].visible"/>
+      <el-table-column label="Plan Count" align="center" prop="planQuantity" v-if="columns[2].visible"/>
+      <el-table-column label="Real Count" align="center" prop="realQuantity" v-if="columns[3].visible"/>
+      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[4].visible"/>
+      <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -105,18 +105,18 @@
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['wms:inventoryMovementDetail:edit']"
-          >修改</el-button>
+          >Modify</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['wms:inventoryMovementDetail:remove']"
-          >删除</el-button>
+          >Delete</el-button>
         </template>
       </el-table-column>
     </WmsTable>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -125,28 +125,28 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改库存移动详情对话框 -->
+    <!-- Add或ModifyInventory移动 Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
-        <el-form-item label="库存移动Id" prop="inventoryMovementId">
-          <el-input v-model="form.inventoryMovementId" placeholder="请输入库存移动Id" />
+        <el-form-item label="Inventory移动Id" prop="inventoryMovementId">
+          <el-input v-model="form.inventoryMovementId" placeholder="Please Input Inventory移动Id" />
         </el-form-item>
-        <el-form-item label="物料" prop="itemId">
-          <el-input v-model="form.itemId" placeholder="请输入物料" />
+        <el-form-item label="Item" prop="itemId">
+          <el-input v-model="form.itemId" placeholder="Please Input Item" />
         </el-form-item>
-        <el-form-item label="计划数量" prop="planQuantity">
-          <el-input v-model="form.planQuantity" placeholder="请输入计划数量" />
+        <el-form-item label="Plan Count" prop="planQuantity">
+          <el-input v-model="form.planQuantity" placeholder="Please Input Plan Count" />
         </el-form-item>
-        <el-form-item label="实际数量" prop="realQuantity">
-          <el-input v-model="form.realQuantity" placeholder="请输入实际数量" />
+        <el-form-item label="Real Count" prop="realQuantity">
+          <el-input v-model="form.realQuantity" placeholder="Please Input Real Count" />
         </el-form-item>
-        <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" placeholder="请输入备注" />
+        <el-form-item label="Remark" prop="remark">
+          <el-input v-model="form.remark" placeholder="Please Input Remark" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
+        <el-button type="primary" @click="submitForm">OK</el-button>
+        <el-button @click="cancel">Cancel</el-button>
       </div>
     </el-dialog>
   </div>
@@ -161,25 +161,25 @@ export default {
     return {
       // 遮罩层
       loading: true,
-      // 导出遮罩层
+      // Export遮罩层
       exportLoading: false,
       // 选中数组
       ids: [],
-      // 非单个禁用
+      // 非个禁用
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示搜索条件
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 库存移动详情表格数据
+      // Inventory移动 Detail表格Data
       wmsInventoryMovementDetailList: [],
       // 弹出层标题
       title: "",
-      // 是否显示弹出层
+      // Show弹出层
       open: false,
-      // 查询参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -188,17 +188,17 @@ export default {
         planQuantity: null,
         realQuantity: null,
       },
-      // 表单参数
+      // 表Params
       form: {},
-      // 表单校验
+      // 表校验
       rules: {
       },
       columns: [
-            { key: 1, label: "库存移动Id", visible:  true  },
-            { key: 2, label: "物料", visible:  true  },
-            { key: 3, label: "计划数量", visible:  true  },
-            { key: 4, label: "实际数量", visible:  true  },
-                { key: 6, label: "备注", visible:  true  },
+            { key: 1, label: "Inventory移动Id", visible:  true  },
+            { key: 2, label: "Item", visible:  true  },
+            { key: 3, label: "Plan Count", visible:  true  },
+            { key: 4, label: "Real Count", visible:  true  },
+                { key: 6, label: "Remark", visible:  true  },
                          ],
     };
   },
@@ -206,7 +206,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询库存移动详情列表 */
+    /** SearchInventory移动 Detail列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -219,12 +219,12 @@ export default {
         this.loading = false;
       });
     },
-    // 取消按钮
+    // CancelButton
     cancel() {
       this.open = false;
       this.reset();
     },
-    // 表单重置
+    // 表Reset
     reset() {
       this.form = {
         id: null,
@@ -240,51 +240,51 @@ export default {
       };
       this.resetForm("form");
     },
-    /** 搜索按钮操作 */
+    /** SearchButtonOperate */
     handleQuery() {
       this.queryParams.pageNum = 1;
       this.getList();
     },
-    /** 重置按钮操作 */
+    /** ResetButtonOperate */
     resetQuery() {
       this.resetForm("queryForm");
       this.handleQuery();
     },
-    // 多选框选中数据
+    // 多选框选中Data
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.id)
       this.single = selection.length!==1
       this.multiple = !selection.length
     },
-    /** 新增按钮操作 */
+    /** AddButtonOperate */
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加库存移动详情";
+      this.title = "New";
     },
-    /** 修改按钮操作 */
+    /** ModifyButtonOperate */
     handleUpdate(row) {
       this.reset();
       const id = row.id || this.ids
       getWmsInventoryMovementDetail(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "修改库存移动详情";
+        this.title = "Modify";
       });
     },
-    /** 提交按钮 */
+    /** 提交Button */
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.id != null) {
             updateWmsInventoryMovementDetail(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
+              this.$modal.msgSuccess("Modify Successful");
               this.open = false;
               this.getList();
             });
           } else {
             addWmsInventoryMovementDetail(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
+              this.$modal.msgSuccess("Add Successful");
               this.open = false;
               this.getList();
             });
@@ -292,20 +292,20 @@ export default {
         }
       });
     },
-    /** 删除按钮操作 */
+    /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除库存移动详情编号为"' + ids + '"的数据项？').then(function() {
+      this.$modal.confirm(' Do you want delete Inventory移动 DetailNo."' + ids + '"？').then(function() {
         return delWmsInventoryMovementDetail(ids);
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("删除成功");
+        this.$modal.msgSuccess("Delete Successful");
       }).catch(() => {});
     },
-    /** 导出按钮操作 */
+    /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('是否确认导出所有库存移动详情数据项？').then(() => {
+      this.$modal.confirm('Export All？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryMovementDetail(queryParams);
       }).then(response => {

@@ -1,85 +1,81 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
       class="ry_form">
-      <el-form-item label="编号" prop="customerNo">
-        <el-input v-model.trim="queryParams.customerNo" placeholder="请输入编号" clearable size="small"
+      <el-form-item label="No." prop="customerNo">
+        <el-input v-model.trim="queryParams.customerNo" placeholder="Please Input No." clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="名称" prop="customerName">
-        <el-input v-model.trim="queryParams.customerName" placeholder="请输入名称" clearable size="small"
+      <el-form-item label="Name" prop="customerName">
+        <el-input v-model.trim="queryParams.customerName" placeholder="Please Input Name" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="地址" prop="address">
-        <el-input v-model.trim="queryParams.address" placeholder="请输入地址" clearable size="small"
+      <el-form-item label="Address" prop="address">
+        <el-input v-model.trim="queryParams.address" placeholder="Please Input Address" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="手机号" prop="mobile">
-        <el-input v-model.trim="queryParams.mobile" placeholder="请输入手机号" clearable size="small"
+      <el-form-item label="Phone" prop="mobile">
+        <el-input v-model.trim="queryParams.mobile" placeholder="Please Input Phone" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="座机号" prop="tel">
-        <el-input v-model.trim="queryParams.tel" placeholder="请输入座机号" clearable size="small"
+
+      <el-form-item label="Contacts" prop="customerPerson">
+        <el-input v-model.trim="queryParams.customerPerson" placeholder="Please Input Contacts" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="联系人" prop="customerPerson">
-        <el-input v-model.trim="queryParams.customerPerson" placeholder="请输入联系人" clearable size="small"
-          @keyup.enter.native="handleQuery" />
-      </el-form-item>
-      <el-form-item label="级别" prop="customerLevel">
-        <el-input v-model.trim="queryParams.customerLevel" placeholder="请输入级别" clearable size="small"
+      <el-form-item label="Leave" prop="customerLevel">
+        <el-input v-model.trim="queryParams.customerLevel" placeholder="Please Input Leave" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
       <template v-if="showMoreCondition">
         <el-form-item label="Email" prop="email">
-          <el-input v-model.trim="queryParams.email" placeholder="请输入Email" clearable size="small"
+          <el-input v-model.trim="queryParams.email" placeholder="Please Input Email" clearable size="small"
             @keyup.enter.native="handleQuery" />
         </el-form-item>
       </template>
       <el-form-item class="flex_one tr">
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">Search</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">Reset</el-button>
         <el-button :icon="showMoreCondition ? 'el-icon-arrow-up' : 'el-icon-arrow-down'" size="mini"
-          @click="showMoreCondition = !showMoreCondition">{{ showMoreCondition ? '收起条件' : '展开条件' }}</el-button>
+          @click="showMoreCondition = !showMoreCondition">{{ showMoreCondition ? 'Collapse' : 'Expand' }}</el-button>
       </el-form-item>
     </el-form>
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-          v-hasPermi="['wms:customer:add']">新增</el-button>
+          v-hasPermi="['wms:customer:add']">Add</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>
     </el-row>
 
     <WmsTable v-loading="loading" :data="wmsCustomerList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="编号" align="center" prop="customerNo" v-if="columns[0].visible" />
-      <el-table-column label="名称" align="center" prop="customerName" v-if="columns[1].visible" />
-      <el-table-column label="应收款" align="center" class-name="small-padding fixed-width" v-if="columns[2].visible">
+      <el-table-column label="No." align="center" prop="customerNo" v-if="columns[0].visible" />
+      <el-table-column label="Name" align="center" prop="customerName" v-if="columns[1].visible" />
+      <el-table-column label="Receivable" align="center" class-name="small-padding fixed-width" v-if="columns[2].visible">
         <template slot-scope="scope">
           <p> {{ scope.row.receivableAmount }}</p>
           <el-button size="mini" type="text" @click="handleEnter(scope.row)">+应收
           </el-button>
-          <el-button size="mini" type="text" @click="handleExit(scope.row)">-结款
+          <el-button size="mini" type="text" @click="handleExit(scope.row)">-Paid
           </el-button>
-          <el-button size="mini" type="text" @click="handleDetail(scope.row)">查看流水
+          <el-button size="mini" type="text" @click="handleDetail(scope.row)">Transcation
           </el-button>
         </template>
       </el-table-column>
-      <el-table-column label="地址" align="center" prop="address" v-if="columns[3].visible" />
-      <el-table-column label="手机号" align="center" prop="mobile" v-if="columns[4].visible" />
-      <el-table-column label="座机号" align="center" prop="tel" v-if="columns[5].visible" />
-      <el-table-column label="联系人" align="center" prop="customerPerson" v-if="columns[6].visible" />
-      <el-table-column label="级别" align="center" prop="customerLevel" v-if="columns[7].visible" />
-      <el-table-column label="Email" align="center" prop="email" v-if="columns[8].visible" />
-      <el-table-column label="备注" align="center" prop="remark" v-if="columns[9].visible" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" v-if="columns[10].visible">
+      <el-table-column label="Address" align="center" prop="address" v-if="columns[3].visible" />
+      <el-table-column label="Phone" align="center" prop="mobile" v-if="columns[4].visible" />
+       <el-table-column label="Contacts" align="center" prop="customerPerson" v-if="columns[5].visible" />
+      <el-table-column label="Leave" align="center" prop="customerLevel" v-if="columns[6].visible" />
+      <el-table-column label="Email" align="center" prop="email" v-if="columns[7].visible" />
+      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[8].visible" />
+      <el-table-column label="Operate" align="center" class-name="small-padding fixed-width" v-if="columns[9].visible">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-            v-hasPermi="['wms:customer:edit']">修改</el-button>
+            v-hasPermi="['wms:customer:edit']">Modify</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-            v-hasPermi="['wms:customer:remove']">删除</el-button>
+            v-hasPermi="['wms:customer:remove']">Delete</el-button>
         </template>
       </el-table-column>
     </WmsTable>
@@ -87,64 +83,62 @@
     <pagination v-show="total > 0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize"
       @pagination="getList" />
 
-    <!-- 添加或修改客户对话框 -->
+    <!-- Add或Modify客户对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
-        <el-form-item label="编号" prop="customerNo">
-          <el-input v-model="form.customerNo" placeholder="请输入编号" />
+        <el-form-item label="No." prop="customerNo">
+          <el-input v-model="form.customerNo" placeholder="Please Input No." />
         </el-form-item>
-        <el-form-item label="名称" prop="customerName">
-          <el-input v-model="form.customerName" placeholder="请输入名称" />
+        <el-form-item label="Name" prop="customerName">
+          <el-input v-model="form.customerName" placeholder="Please Input Name" />
         </el-form-item>
-        <el-form-item label="地址" prop="address">
-          <el-input v-model="form.address" placeholder="请输入地址" />
+        <el-form-item label="Address" prop="address">
+          <el-input v-model="form.address" placeholder="Please Input Address" />
         </el-form-item>
-        <el-form-item label="手机号" prop="mobile">
-          <el-input v-model="form.mobile" placeholder="请输入手机号" />
+        <el-form-item label="Phone" prop="mobile">
+          <el-input v-model="form.mobile" placeholder="Please Input Phone" />
         </el-form-item>
-        <el-form-item label="开户行" prop="bankName">
-          <el-input v-model="form.bankName" placeholder="请输入开户行" />
+        <el-form-item label="Bank Name." prop="bankName">
+          <el-input v-model="form.bankName" placeholder="Please Input Bank Name." />
         </el-form-item>
-        <el-form-item label="银行卡号" prop="bankAccount">
-          <el-input v-model="form.bankAccount" placeholder="请输入银行卡号" />
+        <el-form-item label="Bank No." prop="bankAccount">
+          <el-input v-model="form.bankAccount" placeholder="Please Input Bank No." />
         </el-form-item>
-        <el-form-item label="座机号" prop="tel">
-          <el-input v-model="form.tel" placeholder="请输入座机号" />
+
+        <el-form-item label="Contacts" prop="customerPerson">
+          <el-input v-model="form.customerPerson" placeholder="Please Input Contacts" />
         </el-form-item>
-        <el-form-item label="联系人" prop="customerPerson">
-          <el-input v-model="form.customerPerson" placeholder="请输入联系人" />
-        </el-form-item>
-        <el-form-item label="级别" prop="customerLevel">
-          <el-input v-model="form.customerLevel" placeholder="请输入级别" />
+        <el-form-item label="Leave" prop="customerLevel">
+          <el-input v-model="form.customerLevel" placeholder="Please Input Leave" />
         </el-form-item>
         <el-form-item label="Email" prop="email">
-          <el-input v-model="form.email" placeholder="请输入Email" />
+          <el-input v-model="form.email" placeholder="Please Input Email" />
         </el-form-item>
-        <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" placeholder="请输入备注" />
+        <el-form-item label="Remark" prop="remark">
+          <el-input v-model="form.remark" placeholder="Please Input Remark" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
+        <el-button type="primary" @click="submitForm">OK</el-button>
+        <el-button @click="cancel">Cancel</el-button>
       </div>
     </el-dialog>
 
-    <!-- 应付款 新增/结账 对话框 -->
-    <el-dialog :title="duePayForm.title" :visible.sync="duePayForm.open" width="500px" append-to-body>
+    <!-- 应付款 Add/结账 对话框 -->
+    <el-dialog :title="duePayForm.title" :visible.sync="duePayForm.open" width="600px" append-to-body>
       <el-form ref="duePayForm" :model="duePayForm.form" :rules="duePayForm.rules" label-width="108px">
 
-        <el-form-item label="金额" prop="transactionAmount">
+        <el-form-item label="Amount" prop="transactionAmount">
           <el-input-number v-model="duePayForm.form.transactionAmount" :precision="2" :min="0"
-            label="请输入金额"></el-input-number>
+            label="Please Input Amount"></el-input-number>
         </el-form-item>
-        <el-form-item label="备注" prop="remark">
-          <el-input v-model="duePayForm.form.remark" placeholder="请输入备注" />
+        <el-form-item label="Remark" prop="remark">
+          <el-input v-model="duePayForm.form.remark" placeholder="Please Input Remark" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitDuePayForm">确 定</el-button>
-        <el-button @click="cancelDuePayForm">取 消</el-button>
+        <el-button type="primary" @click="submitDuePayForm">OK</el-button>
+        <el-button @click="cancelDuePayForm">Cancel</el-button>
       </div>
     </el-dialog>
   </div>
@@ -160,13 +154,13 @@ var isbankAccount = (rule, value, callback) => {
   const strBin =
     "10,18,30,35,37,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,60,62,65,68,69,84,87,88,94,95,98,99";
   if (!value) {
-    return callback(new Error("收款账户不能为空"));
+    return callback(new Error("Accounts is required"));
   } else if (!Number.isInteger(+value)) {
-    callback(new Error("银行卡号必须全为数字"));
+    callback(new Error("Bank No.必须全数字"));
   } else if (value.trim().length < 12 || value.trim().length > 19) {
-    callback(new Error("银行卡号长度必须在12到19之间"));
+    callback(new Error("Bank No.长度必须在12到19之间"));
   } else if (strBin.indexOf(value.substring(0, 2)) === -1) {
-    callback(new Error("银行卡号开头6位不符合规范"));
+    callback(new Error("Bank No.开头6位No 符合规范"));
   } else {
     callback();
   }
@@ -178,25 +172,25 @@ export default {
     return {
       // 遮罩层
       loading: true,
-      // 导出遮罩层
+      // Export遮罩层
       exportLoading: false,
       // 选中数组
       ids: [],
-      // 非单个禁用
+      // 非个禁用
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示搜索条件
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 客户表格数据
+      // 客户表格Data
       wmsCustomerList: [],
       // 弹出层标题
       title: "",
-      // 是否显示弹出层
+      // Show弹出层
       open: false,
-      // 查询参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -209,36 +203,35 @@ export default {
         customerLevel: null,
         email: null,
       },
-      // 表单参数
+      // 表Params
       form: {},
-      // 表单校验
+      // 表校验
       rules: {
         customerNo: [
-          { required: true, message: "编号不能为空", trigger: "blur" }
+          { required: true, message: "No. is required", trigger: "blur" }
         ],
         customerName: [
-          { required: true, message: "名称不能为空", trigger: "blur" }
+          { required: true, message: "Name is required", trigger: "blur" }
         ],
         bankAccount: [{ validator: isbankAccount, trigger: "blur" },]
       },
       columns: [
-        { key: 1, label: "编号", visible: true },
-        { key: 2, label: "名称", visible: true },
-        { key: 3, label: "应收款", visible: true },
-        { key: 4, label: "地址", visible: false },
-        { key: 5, label: "手机号", visible: false },
-        { key: 6, label: "座机号", visible: false },
-        { key: 7, label: "联系人", visible: true },
-        { key: 8, label: "级别", visible: true },
+        { key: 1, label: "No.", visible: true },
+        { key: 2, label: "Name", visible: true },
+        { key: 3, label: "Receivable", visible: true },
+        { key: 4, label: "Address", visible: false },
+        { key: 5, label: "Phone", visible: false },
+         { key: 7, label: "Contacts", visible: true },
+        { key: 8, label: "Leave", visible: true },
         { key: 9, label: "Email", visible: false },
-        { key: 10, label: "备注", visible: true },
-        { key: 11, label: "操作", visible: true },
+        { key: 10, label: "Remark", visible: true },
+        { key: 11, label: "Operate", visible: true },
       ],
       showMoreCondition: false,
       duePayForm: {
         // 弹出层标题
         title: "",
-        // 是否显示弹出层
+        // Show弹出层
         open: false,
         form: {}
       }
@@ -248,7 +241,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询客户列表 */
+    /** Search客户列表 */
     getList() {
       this.loading = true;
       const { pageNum, pageSize } = this.queryParams;
@@ -261,18 +254,18 @@ export default {
         this.loading = false;
       });
     },
-    /** 应付款 取消按钮 */
+    /** 应付款 CancelButton */
     cancelDuePayForm() {
       this.duePayForm.open = false
     },
-    /** 应付款 提交按钮 */
+    /** 应付款 提交Button */
     submitDuePayForm() {
       this.$refs["duePayForm"].validate(valid => {
         if (valid) {
           addWmsCustomerTransaction(this.duePayForm.form).then(res => {
             this.duePayForm.open = false
             this.$store.dispatch('wms/getSuppliers')
-            this.$modal.msgSuccess("修改成功");
+            this.$modal.msgSuccess("Modify Successful");
             this.getList();
 
           })
@@ -281,12 +274,12 @@ export default {
       })
 
     },
-    // 取消按钮
+    // CancelButton
     cancel() {
       this.open = false;
       this.reset();
     },
-    // 表单重置
+    // 表Reset
     reset() {
       this.form = {
         id: null,
@@ -306,52 +299,52 @@ export default {
       };
       this.resetForm("form");
     },
-    /** 搜索按钮操作 */
+    /** SearchButtonOperate */
     handleQuery() {
       this.queryParams.pageNum = 1;
       this.getList();
     },
-    /** 重置按钮操作 */
+    /** ResetButtonOperate */
     resetQuery() {
       this.resetForm("queryForm");
       this.handleQuery();
     },
-    // 多选框选中数据
+    // 多选框选中Data
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.id)
       this.single = selection.length !== 1
       this.multiple = !selection.length
     },
-    /** 新增按钮操作 */
+    /** AddButtonOperate */
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加客户";
+      this.title = "New";
     },
-    /** 修改按钮操作 */
+    /** ModifyButtonOperate */
     handleUpdate(row) {
       this.reset();
       const id = row.id || this.ids
       getWmsCustomer(id).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "修改客户";
+        this.title = "Modify";
       });
     },
-    /** 提交按钮 */
+    /** 提交Button */
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.id != null) {
             updateWmsCustomer(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
+              this.$modal.msgSuccess("Modify Successful");
               this.open = false;
               this.getList();
               this.$store.dispatch('wms/getCustomer')
             });
           } else {
             addWmsCustomer(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
+              this.$modal.msgSuccess("Add Successful");
               this.open = false;
               this.getList();
               this.$store.dispatch('wms/getCustomer')
@@ -360,21 +353,21 @@ export default {
         }
       });
     },
-    /** 删除按钮操作 */
+    /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除客户编号为"' + ids + '"的数据项？').then(function () {
+      this.$modal.confirm(' Do you want delete 客户No."' + ids + '"？').then(function () {
         return delWmsCustomer(ids);
       }).then(() => {
         this.getList();
         this.$store.dispatch('wms/getCustomer')
-        this.$modal.msgSuccess("删除成功");
+        this.$modal.msgSuccess("Delete Successful");
       }).catch(() => { });
     },
-    /** 导出按钮操作 */
+    /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('是否确认导出所有客户数据项？').then(() => {
+      this.$modal.confirm('Export All客户？').then(() => {
         this.exportLoading = true;
         return exportWmsCustomer(queryParams);
       }).then(response => {
@@ -382,14 +375,14 @@ export default {
         this.exportLoading = false;
       }).catch(() => { });
     },
-    /** 查看流水 */
+    /** Transcation */
     handleDetail(row) {
       const id = row.id || this.ids
       this.$router.push({ path: '/relation/customerTransaction', query: { id } })
     },
-    /* 新增 应付款 */
+    /* Add 应付款 */
     handleEnter(row) {
-      this.duePayForm.title = '新增应收款'
+      this.duePayForm.title = 'Add应收款'
       this.duePayForm.open = true
 
       this.resetDueForm();
@@ -403,9 +396,9 @@ export default {
         remark: null
       }
     },
-    /* 结款 */
+    /* Paid */
     handleExit(row) {
-      this.duePayForm.title = '结款'
+      this.duePayForm.title = 'Paid'
       this.duePayForm.open = true
 
       this.resetDueForm();

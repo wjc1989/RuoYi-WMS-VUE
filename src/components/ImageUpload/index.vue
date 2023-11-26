@@ -19,12 +19,12 @@
     >
       <i class="el-icon-plus"></i>
     </el-upload>
-    
-    <!-- 上传提示 -->
+
+    <!-- 上传Info -->
     <div class="el-upload__tip" slot="tip" v-if="showTip">
       请上传
-      <template v-if="fileSize"> 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
-      <template v-if="fileType"> 格式为 <b style="color: #f56c6c">{{ fileType.join("/") }}</b> </template>
+      <template v-if="fileSize"> 大小No 超过 <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
+      <template v-if="fileType"> 格式 <b style="color: #f56c6c">{{ fileType.join("/") }}</b> </template>
       的文件
     </div>
 
@@ -48,7 +48,7 @@ import { getToken } from "@/utils/auth";
 export default {
   props: {
     value: [String, Object, Array],
-    // 图片数量限制
+    // 图片Count限制
     limit: {
       type: Number,
       default: 5,
@@ -58,12 +58,12 @@ export default {
        type: Number,
       default: 5,
     },
-    // 文件类型, 例如['png', 'jpg', 'jpeg']
+    // 文件Type, 例e.g.['png', 'jpg', 'jpeg']
     fileType: {
       type: Array,
       default: () => ["png", "jpg", "jpeg"],
     },
-    // 是否显示提示
+    // ShowInfo
     isShowTip: {
       type: Boolean,
       default: true
@@ -77,7 +77,7 @@ export default {
       dialogVisible: false,
       hideUpload: false,
       baseUrl: process.env.VUE_APP_BASE_API,
-      uploadImgUrl: process.env.VUE_APP_BASE_API + "/common/upload", // 上传的图片服务器地址
+      uploadImgUrl: process.env.VUE_APP_BASE_API + "/common/upload", // 上传的图片服务器Address
       headers: {
         Authorization: "Bearer " + getToken(),
       },
@@ -88,9 +88,9 @@ export default {
     value: {
       handler(val) {
         if (val) {
-          // 首先将值转为数组
+          // 首先将值转数组
           const list = Array.isArray(val) ? val : this.value.split(',');
-          // 然后将数组转为对象数组
+          // 然后将数组转对象数组
           this.fileList = list.map(item => {
             if (typeof item === "string") {
               if (item.indexOf(this.baseUrl) === -1) {
@@ -111,13 +111,13 @@ export default {
     }
   },
   computed: {
-    // 是否显示提示
+    // ShowInfo
     showTip() {
       return this.isShowTip && (this.fileType || this.fileSize);
     },
   },
   methods: {
-    // 删除图片
+    // Delete图片
     handleRemove(file, fileList) {
       const findex = this.fileList.map(f => f.name).indexOf(file.name);
       if(findex > -1) {
@@ -125,7 +125,7 @@ export default {
         this.$emit("input", this.listToString(this.fileList));
       }
     },
-    // 上传成功回调
+    // 上传 Successful回调
     handleUploadSuccess(res) {
       this.uploadList.push({ name: res.fileName, url: res.fileName });
       if (this.uploadList.length === this.number) {
@@ -154,13 +154,13 @@ export default {
       }
 
       if (!isImg) {
-        this.$modal.msgError(`文件格式不正确, 请上传${this.fileType.join("/")}图片格式文件!`);
+        this.$modal.msgError(`文件格式No 正确, 请上传${this.fileType.join("/")}图片格式文件!`);
         return false;
       }
       if (this.fileSize) {
         const isLt = file.size / 1024 / 1024 < this.fileSize;
         if (!isLt) {
-          this.$modal.msgError(`上传头像图片大小不能超过 ${this.fileSize} MB!`);
+          this.$modal.msgError(`上传头像图片大小No 能超过 ${this.fileSize} MB!`);
           return false;
         }
       }
@@ -169,7 +169,7 @@ export default {
     },
     // 文件个数超出
     handleExceed() {
-      this.$modal.msgError(`上传文件数量不能超过 ${this.limit} 个!`);
+      this.$modal.msgError(`上传文件CountNo 能超过 ${this.limit} 个!`);
     },
     // 上传失败
     handleUploadError() {
@@ -194,7 +194,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-// .el-upload--picture-card 控制加号部分
+// .el-upload--picture-card 控制加No.部分
 ::v-deep.hide .el-upload--picture-card {
     display: none;
 }

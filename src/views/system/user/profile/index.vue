@@ -4,7 +4,7 @@
       <el-col :span="6" :xs="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>个人信息</span>
+            <span>Profile</span>
           </div>
           <div>
             <div class="text-center">
@@ -12,27 +12,27 @@
             </div>
             <ul class="list-group list-group-striped">
               <li class="list-group-item">
-                <svg-icon icon-class="user" />用户名称
+                <svg-icon icon-class="user" />Name
                 <div class="pull-right">{{ user.userName }}</div>
               </li>
               <li class="list-group-item">
-                <svg-icon icon-class="phone" />手机号码
+                <svg-icon icon-class="phone" />Phone
                 <div class="pull-right">{{ user.phonenumber }}</div>
               </li>
               <li class="list-group-item">
-                <svg-icon icon-class="email" />用户邮箱
+                <svg-icon icon-class="email" />User Email
                 <div class="pull-right">{{ user.email }}</div>
               </li>
               <li class="list-group-item">
-                <svg-icon icon-class="tree" />所属部门
+                <svg-icon icon-class="tree" />Department
                 <div class="pull-right" v-if="user.dept">{{ user.dept.deptName }} / {{ postGroup }}</div>
               </li>
               <li class="list-group-item">
-                <svg-icon icon-class="peoples" />所属角色
+                <svg-icon icon-class="peoples" />Role
                 <div class="pull-right">{{ roleGroup }}</div>
               </li>
               <li class="list-group-item">
-                <svg-icon icon-class="date" />创建日期
+                <svg-icon icon-class="date" />CreateDate
                 <div class="pull-right">{{ user.createTime }}</div>
               </li>
             </ul>

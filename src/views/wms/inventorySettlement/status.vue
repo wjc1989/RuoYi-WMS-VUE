@@ -2,11 +2,11 @@
   <div class="receipt-order-edit-wrapper app-container">
     <div class="receipt-order-content">
       <el-form label-width="108px" :model="form" ref="form" :rules="rules">
-        <el-form-item label="结算单号" prop="inventorySettlementNo">
+        <el-form-item label="结算No." prop="inventorySettlementNo">
           <el-input
             class="w200"
             v-model="form.inventorySettlementNo"
-            placeholder="结算单号"
+            placeholder="结算No."
             disabled="disabled"
           ></el-input>
         </el-form-item>
@@ -17,15 +17,15 @@
             align="right"
             unlink-panels
             range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
+            start-placeholder="Start time"
+            end-placeholder="End time"
             :picker-options="pickerOptions">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="备注" prop="remark">
+        <el-form-item label="Remark" prop="remark">
           <el-input
             v-model="form.remark"
-            placeholder="备注...100个字符以内"
+            placeholder="Remark...Maximum 100 characters"
             rows="3"
             maxlength="100"
             type="textarea"
@@ -40,16 +40,16 @@
       <div class="table">
         <table class="common-table">
           <tr>
-            <th>物料信息</th>
-            <th>仓库信息</th>
+            <th>Item信息</th>
+            <th>Warehouse</th>
             <th>上期结存</th>
-            <th>本期入库</th>
-            <th>本期出库</th>
-            <th>本期盘点</th>
+            <th>本期Inbound</th>
+            <th>本期Outbound </th>
+            <th>本期Count</th>
             <th>本期结存</th>
           </tr>
           <tr v-for="(it, index) in form.details">
-            <td align="center">{{ it.itemName }} <br>编码：{{ it.itemNo }}</td>
+            <td align="center">{{ it.itemName }} <br>No.：{{ it.itemNo }}</td>
             <td align="center">{{ it.warehouseName }} {{ it.warehouseNo }}</td>
             <td align="center">
               {{it.previousBalance}}
@@ -90,7 +90,7 @@ export default {
   name: "WmsInventorySettle",
   data() {
     return {
-      // 预设时间选择日期范围
+      // 预设 TimeSelect Date范围
       pickerOptions: {
         shortcuts: [{
           text: '最近一周',
@@ -119,11 +119,11 @@ export default {
         }]
       },
       types: ["png", "jpg", "jpeg"],
-      // 表单参数
+      // 表Params
       form: {
         details: [],
       },
-      // 表单校验
+      // 表校验
       rules: {},
     };
   },
@@ -152,7 +152,7 @@ export default {
         };
       })
     },
-    /** 取消按钮 */
+    /** CancelButton */
     cancel() {
       const {settlementType} = this.form
       if (Number(settlementType) === 1) {
@@ -170,14 +170,14 @@ export default {
         };
       })
     },
-    /** 提交按钮 */
+    /** 提交Button */
     submitFinishForm() {
       //结算完成22
       this.submitForm(22);
     },
     submitForm(inventorySettlementStatus = 11) {
       if (inventorySettlementStatus === 22 && this.form.details.length === 0) {
-        //未添加物料
+        //未AddItem
         Message({
           message: "您还未开始结算！",
           type: "error",
@@ -198,12 +198,12 @@ export default {
         const req = {...this.form};
 
         addOrUpdateWmsInventorySettlement(req).then((response) => {
-          this.$modal.msgSuccess(this.form.id ? "修改成功" : "新增成功");
+          this.$modal.msgSuccess(this.form.id ? "Modify Successful" : "Add Successful");
           this.cancel();
         });
       });
     },
-    /** 加载 盘点单详情 */
+    /** 加载 Count Detail */
     loadDetail(id) {
       getWmsInventorySettlement(id).then((response) => {
         const {details, items, inventorySettlementStartTime, inventorySettlementEndTime} = response;
@@ -220,7 +220,7 @@ export default {
         };
       });
     },
-    // 表单重置
+    // 表Reset
     reset() {
       this.form = {
         id: null,

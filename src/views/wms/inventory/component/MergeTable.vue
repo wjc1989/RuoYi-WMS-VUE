@@ -19,12 +19,12 @@ export default {
   },
   data() {
     return {
-      mergeObj: {}, // 用来记录需要合并行的下标
+      mergeObj: {}, // 用来 Record需要合并行的下标
     }
   },
   computed: {
     processData() {
-      // 在data发生变化时执行的操作
+      // 在data发生Change时执行的Operate
       this.getSpanArr(this.tableData)
       return this.tableData
     }
@@ -35,11 +35,11 @@ export default {
     objectSpanMethod({row, column, rowIndex, columnIndex}) {
       // 判断列的属性
       if (this.mergeArr.indexOf(column.property) !== -1) {
-        // 判断其值是不是为0
+        // 判断其值 Yes0
         if (this.mergeObj[column.property][rowIndex]) {
           return [this.mergeObj[column.property][rowIndex], 1]
         } else {
-          // 如果为0则为需要合并的行
+          // e.g.果0则需要合并的行
           return [0, 0];
         }
       }
@@ -51,11 +51,11 @@ export default {
         this.mergeObj[key] = [];
         data.forEach((item, index) => {
           if (index === 0) {
-            // 第一行始终为新组
+            // 第一行始终新组
             this.mergeObj[key].push(1);
           } else {
             let valid = true;
-            // 逐步判断当前行的特定属性与前一行的对应属性是否相等
+            // 逐步判断当前行的特定属性与前一行的对应属性相等
             for (let i = 0; i <= index1; i++) {
               const mergeKey = this.mergeArr[i];
               if (item[mergeKey] !== data[index - 1][mergeKey]) {
@@ -64,11 +64,11 @@ export default {
               }
             }
             if (valid) {
-              // 所有属性值都相等，执行合并操作
+              // 所有属性值都相等，执行合并Operate
               this.mergeObj[key][count] += 1;
               this.mergeObj[key].push(0);
             } else {
-              // 任何一个属性不相等，不执行合并操作，创建新组
+              // 任何一个属性No 相等，No 执行合并Operate，Create新组
               count = index;
               this.mergeObj[key].push(1);
             }

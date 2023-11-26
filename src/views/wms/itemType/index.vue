@@ -1,12 +1,12 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
              class="ry_form">
 
-      <el-form-item label="物料类型名称" prop="typeName">
+      <el-form-item label="Type" prop="typeName">
         <el-input
           v-model="queryParams.typeName"
-          placeholder="请输入物料类型名称"
+          placeholder="Please Input Type"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -14,8 +14,8 @@
       </el-form-item>
 
       <el-form-item class="flex_one tr">
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">Search</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">Reset</el-button>
       </el-form-item>
     </el-form>
 
@@ -28,7 +28,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:itemType:add']"
-        >新增
+        >Add
         </el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>
@@ -42,21 +42,21 @@
       :default-expand-all="isExpandAll"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-      <el-table-column label="物料类型名称" align="center" prop="typeName" width="260" v-if="columns[2].visible"/>
-      <el-table-column label="排序" align="center" prop="orderNum" width="200"/>
+      <el-table-column label="Type" align="center" prop="typeName" width="260" v-if="columns[2].visible"/>
+      <el-table-column label="Sort" align="center" prop="orderNum" width="200"/>
 
-      <el-table-column prop="status" label="状态"  width="100" >
+      <el-table-column prop="status" label="Status"  width="100" >
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
+      <el-table-column label="Create Time" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+      <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -64,7 +64,7 @@
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['wms:itemType:edit']"
-          >修改
+          >Modify
           </el-button>
           <!-- <el-button
             size="mini"
@@ -72,7 +72,7 @@
             icon="el-icon-plus"
             @click="handleAdd(scope.row)"
             v-hasPermi="['system:wmsItemType:add']"
-          >新增
+          >Add
           </el-button>-->
           <el-button
             size="mini"
@@ -80,37 +80,37 @@
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['wms:itemType:remove']"
-          >删除
+          >Delete
           </el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <!-- 添加或修改物料类型表对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px" class="dialog-form-two">
+    <!-- Add或ModifyItemType表对话框 -->
+    <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px" class="dialog-form-two">
 
         <el-row>
           <el-col :span="24" v-if="form.parentId !== 0">
-            <el-form-item label="所属类别" prop="parentId">
+            <el-form-item label="Parent Category" prop="parentId">
               <treeselect v-model="form.parentId" :options="deptOptions" :normalizer="normalizer"
-                          placeholder="选择所属类别"/>
+                          placeholder="Select Parent Category"/>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="类型名称" prop="typeName">
-              <el-input v-model="form.typeName" placeholder="请输入类型名称"/>
+            <el-form-item label="Category" prop="typeName">
+              <el-input v-model="form.typeName" placeholder="Please Input Category"/>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="显示顺序" prop="orderNum">
+            <el-form-item label="Sort" prop="orderNum">
               <el-input-number v-model="form.orderNum" controls-position="right" :min="0"/>
             </el-form-item>
           </el-col>
         </el-row>
-        <el-form-item label="状态">
+        <el-form-item label="Status">
           <el-radio-group v-model="form.status">
             <el-radio
               v-for="dict in dict.type.sys_normal_disable"
@@ -122,8 +122,8 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
+        <el-button type="primary" @click="submitForm">OK</el-button>
+        <el-button @click="cancel">Cancel</el-button>
       </div>
     </el-dialog>
   </div>
@@ -147,31 +147,31 @@ export default {
   components: {Treeselect},
   data() {
     return {
-      // 是否展开，默认全部展开
+      // Expand，默认AllExpand
       isExpandAll: true,
-      // 部门树选项
+      // Department树选项
       deptOptions: [],
       // 遮罩层
       loading: true,
-      // 导出遮罩层
+      // Export遮罩层
       exportLoading: false,
       // 选中数组
       ids: [],
-      // 非单个禁用
+      // 非个禁用
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示搜索条件
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 物料类型表表格数据
+      // ItemType表表格Data
       wmsItemTypeList: [],
       // 弹出层标题
       title: "",
-      // 是否显示弹出层
+      // Show弹出层
       open: false,
-      // 查询参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -181,20 +181,20 @@ export default {
         orderNum: undefined,
         status: null,
       },
-      // 表单参数
+      // 表Params
       form: {},
-      // 表单校验
+      // 表校验
       rules: {
         typeName: [
-          {required: true, message: "请输入类型名称", trigger: "blur"},
+          {required: true, message: "Please Input TypeItem", trigger: "blur"},
         ]
       },
       columns: [
-        {key: 1, label: "父物料类型id", visible: true},
+        {key: 1, label: "父ItemTypeid", visible: true},
         {key: 2, label: "祖级列表", visible: true},
-        {key: 3, label: "物料类型名称", visible: true},
-        {key: 4, label: "显示顺序", visible: true},
-        {key: 5, label: "物料类型状态（0正常 1停用）", visible: true},
+        {key: 3, label: "ItemTypeItem", visible: true},
+        {key: 4, label: "Sort", visible: true},
+        {key: 5, label: "ItemTypeStatus（0正常 1停用）", visible: true},
       ],
     };
   },
@@ -202,7 +202,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 展开/折叠操作 */
+    /** Expand/CollapseOperate */
     toggleExpandAll() {
       this.refreshTable = false;
       this.isExpandAll = !this.isExpandAll;
@@ -210,7 +210,7 @@ export default {
         this.refreshTable = true;
       });
     },
-    /** 转换物料类型数据结构 */
+    /** 转换ItemTypeData结构 */
     normalizer(node) {
       if (node.children && !node.children.length) {
         delete node.children;
@@ -221,7 +221,7 @@ export default {
         children: node.children
       };
     },
-    /** 查询物料类型表列表 */
+    /** SearchItemType表列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -232,12 +232,12 @@ export default {
         this.loading = false;
       });
     },
-    // 取消按钮
+    // CancelButton
     cancel() {
       this.open = false;
       this.reset();
     },
-    // 表单重置
+    // 表Reset
     reset() {
       this.form = {
         itemTypeId: null,
@@ -253,27 +253,27 @@ export default {
       };
       this.resetForm("form");
     },
-    /** 搜索按钮操作 */
+    /** SearchButtonOperate */
     handleQuery() {
       this.queryParams.pageNum = 1;
       this.getList();
     },
-    /** 重置按钮操作 */
+    /** ResetButtonOperate */
     resetQuery() {
       this.resetForm("queryForm");
       this.handleQuery();
     },
-    // 多选框选中数据
+    // 多选框选中Data
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.itemTypeId)
       this.single = selection.length !== 1
       this.multiple = !selection.length
     },
-    /** 新增按钮操作 */
+    /** AddButtonOperate */
     handleAdd(row) {
       this.reset();
       this.open = true;
-      this.title = "添加物料类型表";
+      this.title = "New";
       if (row != undefined) {
         this.form.parentId = row.itemTypeId;
       }
@@ -282,32 +282,32 @@ export default {
       });
 
     },
-    /** 修改按钮操作 */
+    /** ModifyButtonOperate */
     handleUpdate(row) {
       this.reset();
       const itemTypeId = row.itemTypeId || this.ids
       getWmsItemType(itemTypeId).then(response => {
         this.form = response;
         this.open = true;
-        this.title = "修改物料类型表";
+        this.title = "Modify";
       });
       listWmsItemTypeNoPage().then(response => {
         this.deptOptions = this.handleTree(response.data, "itemTypeId");
       });
     },
-    /** 提交按钮 */
+    /** 提交Button */
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.itemTypeId != null) {
             updateWmsItemType(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
+              this.$modal.msgSuccess("Modify Successful");
               this.open = false;
               this.getList();
             });
           } else {
             addWmsItemType(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
+              this.$modal.msgSuccess("Add Successful");
               this.open = false;
               this.getList();
             });
@@ -315,21 +315,21 @@ export default {
         }
       });
     },
-    /** 删除按钮操作 */
+    /** DeleteButtonOperate */
     handleDelete(row) {
       const itemTypeIds = row.itemTypeId || this.ids;
-      this.$modal.confirm('是否确认删除物料类型表编号为"' + itemTypeIds + '"的数据项？').then(function () {
+      this.$modal.confirm(' Do you want delete ItemType表No."' + itemTypeIds + '"？').then(function () {
         return delWmsItemType(itemTypeIds);
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("删除成功");
+        this.$modal.msgSuccess("Delete Successful");
       }).catch(() => {
       });
     },
-    /** 导出按钮操作 */
+    /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('是否确认导出所有物料类型表数据项？').then(() => {
+      this.$modal.confirm('Export AllItemType表？').then(() => {
         this.exportLoading = true;
         return exportWmsItemType(queryParams);
       }).then(response => {

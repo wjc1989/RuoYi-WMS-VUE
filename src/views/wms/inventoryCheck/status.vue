@@ -2,38 +2,38 @@
   <div class="receipt-order-edit-wrapper app-container">
     <div class="receipt-order-content">
       <el-form label-width="108px" :model="form" ref="form" :rules="rules">
-        <el-form-item label="盘点单" prop="inventoryCheckNo">
-          <el-input class="w200" v-model="form.inventoryCheckNo" placeholder="盘点单" disabled="disabled"></el-input>
+        <el-form-item label="Count" prop="inventoryCheckNo">
+          <el-input class="w200" v-model="form.inventoryCheckNo" placeholder="Count" disabled="disabled"></el-input>
         </el-form-item>
-        <el-form-item label="盘点仓库" prop="supplierId">
+        <el-form-item label="Warehouse" prop="supplierId">
           <wms-warehouse-cascader disabled v-model="form.place" size="small"></wms-warehouse-cascader>
         </el-form-item>
-        <el-form-item label="盈亏数" prop="inventoryCheckTotal">
+        <el-form-item label="Change" prop="inventoryCheckTotal">
           <el-input-number v-model="inventoryCheckTotal" :precision="2" disabled></el-input-number>
         </el-form-item>
-        <el-form-item label="备注" prop="remark">
+        <el-form-item label="Remark" prop="remark">
           {{ form.remark }}
         </el-form-item>
-        <el-form-item label="附件" prop="attachment">
+        <el-form-item label="Attachment" prop="attachment">
           <file-upload v-model="form.attachment" :file-type="types"></file-upload>
         </el-form-item>
 
       </el-form>
       <el-divider></el-divider>
       <div class="flex-center mb8">
-        <div class="flex-one large-tip bolder-font">物料明细</div>
+        <div class="flex-one large-tip bolder-font">Goods Detail</div>
 
       </div>
       <div class="table">
         <table class="common-table">
           <tr>
-            <th>物料编号</th>
-            <th>物料名</th>
-            <th>仓库/库区</th>
-            <th>账面库存</th>
-            <th>实际库存</th>
-            <th>变化量</th>
-            <th>说明</th>
+            <th>Goods No.</th>
+            <th>Goods Name</th>
+            <th>Warehouse</th>
+            <th>Expected Inventory</th>
+            <th>Real Inventory</th>
+            <th>Change</th>
+            <th>Remark</th>
           </tr>
           <tr v-for="(it, index) in form.details">
             <td align="center">{{ it.prod.itemNo }}</td>
@@ -46,7 +46,7 @@
             </td>
             <td align="center">
               <el-input-number v-model="it.checkQuantity" :precision="2" :min="0" disabled
-                label="请输入实际库存"></el-input-number>
+                label="Please Input Real Inventory"></el-input-number>
             </td>
             <td align="center">
               {{ it.checkQuantity - it.quantity }}
@@ -81,11 +81,11 @@ export default {
   data() {
     return {
       types: ['png', 'jpg', 'jpeg'],
-      // 表单参数
+      // 表Params
       form: {
         details: []
       },
-      // 表单校验
+      // 表校验
       rules: {}
     }
   },
@@ -114,11 +114,11 @@ export default {
     }
   },
   methods: {
-    /** 取消按钮 */
+    /** CancelButton */
     cancel() {
       this.$tab.closeOpenPage({ path: '/inventoryCheck' })
     },
-    /** 加载 盘点单详情 */
+    /** 加载 Count Detail */
     loadDetail(id) {
       getWmsInventoryCheck(id).then(response => {
         const { details, items } = response
@@ -133,7 +133,7 @@ export default {
         }
       })
     },
-    // 表单重置
+    // 表Reset
     reset() {
       this.form = {
         id: null,

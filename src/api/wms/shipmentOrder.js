@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询出库单列表
+// SearchOutbound 列表
 export function listWmsShipmentOrder(query, pageReq) {
   return request({
     url: '/wms/shipmentOrder/list',
@@ -10,7 +10,7 @@ export function listWmsShipmentOrder(query, pageReq) {
   })
 }
 
-// 查询出库单详细
+// SearchOutbound Detail
 export function getWmsShipmentOrder(id) {
   return request({
     url: '/wms/shipmentOrder/' + id,
@@ -26,7 +26,7 @@ export function addOrUpdateWmsShipmentOrder(data) {
   })
 }
 
-// 新增出库单
+// AddOutbound
 export function addWmsShipmentOrder(data) {
   return request({
     url: '/wms/shipmentOrder',
@@ -35,7 +35,7 @@ export function addWmsShipmentOrder(data) {
   })
 }
 
-// 修改出库单
+// ModifyOutbound
 export function updateWmsShipmentOrder(data) {
   return request({
     url: '/wms/shipmentOrder',
@@ -44,7 +44,7 @@ export function updateWmsShipmentOrder(data) {
   })
 }
 
-// 删除出库单
+// DeleteOutbound
 export function delWmsShipmentOrder(id) {
   return request({
     url: '/wms/shipmentOrder/' + id,
@@ -52,7 +52,7 @@ export function delWmsShipmentOrder(id) {
   })
 }
 
-// 导出出库单
+// ExportOutbound
 export function exportWmsShipmentOrder(query) {
   return request({
     url: '/wms/shipmentOrder/export',
@@ -61,7 +61,7 @@ export function exportWmsShipmentOrder(query) {
   })
 }
 
-// 单个订单分配仓库
+// 个订 Distribute Warehouse
 export function allocatedInventory(params) {
   return request({
     url: '/wms/shipmentOrder/allocated',

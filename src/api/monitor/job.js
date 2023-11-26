@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询定时任务调度列表
+// Search定时 Task调度列表
 export function listJob(query) {
   return request({
     url: '/monitor/job/list',
@@ -9,7 +9,7 @@ export function listJob(query) {
   })
 }
 
-// 查询定时任务调度详细
+// Search定时 Task调度Detail
 export function getJob(jobId) {
   return request({
     url: '/monitor/job/' + jobId,
@@ -17,7 +17,7 @@ export function getJob(jobId) {
   })
 }
 
-// 新增定时任务调度
+// Add定时 Task调度
 export function addJob(data) {
   return request({
     url: '/monitor/job',
@@ -26,7 +26,7 @@ export function addJob(data) {
   })
 }
 
-// 修改定时任务调度
+// Modify定时 Task调度
 export function updateJob(data) {
   return request({
     url: '/monitor/job',
@@ -35,7 +35,7 @@ export function updateJob(data) {
   })
 }
 
-// 删除定时任务调度
+// Delete定时 Task调度
 export function delJob(jobId) {
   return request({
     url: '/monitor/job/' + jobId,
@@ -43,7 +43,7 @@ export function delJob(jobId) {
   })
 }
 
-// 任务状态修改
+// StatusModify
 export function changeJobStatus(jobId, status) {
   const data = {
     jobId,
@@ -57,7 +57,7 @@ export function changeJobStatus(jobId, status) {
 }
 
 
-// 定时任务立即执行一次
+// 定时 Task立即执行一次
 export function runJob(jobId, jobGroup) {
   const data = {
     jobId,

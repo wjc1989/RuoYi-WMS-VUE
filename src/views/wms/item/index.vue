@@ -1,96 +1,96 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px" size="medium"
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
       class="ry_form">
-      <el-form-item label="编号" prop="itemNo">
-        <el-input v-model="queryParams.itemNo" placeholder="请输入编号" clearable size="small"
+      <el-form-item label="No." prop="itemNo">
+        <el-input v-model="queryParams.itemNo" placeholder="Please Input No." clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="名称" prop="itemName">
-        <el-input v-model="queryParams.itemName" placeholder="请输入名称" clearable size="small"
+      <el-form-item label="Name" prop="itemName">
+        <el-input v-model="queryParams.itemName" placeholder="Please Input Item" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="分类" prop="itemType">
+      <el-form-item label="Type" prop="itemType">
         <treeselect v-model="queryParams.itemType" style="max-width: 180px" :options="deptOptions" :show-count="true"
-          placeholder="请选择分类" />
+          placeholder="Please select Type" />
       </el-form-item>
-      <el-form-item label="单位类别" prop="unit">
-        <el-input v-model="queryParams.unit" placeholder="请输入单位类别" clearable size="small"
+      <el-form-item label="Unit" prop="unit">
+        <el-input v-model="queryParams.unit" placeholder="Please Input Unit" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="所属货架" prop="rackId">
-        <el-input v-model="queryParams.rackId" placeholder="请输入所属货架" clearable size="small"
+      <el-form-item label="Rack Name" prop="rackId">
+        <el-input v-model="queryParams.rackId" placeholder="Please Input Rack Name" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="所属库区" prop="areaId">
-        <el-input v-model="queryParams.areaId" placeholder="请输入所属库区" clearable size="small"
+      <el-form-item label="Area" prop="areaId">
+        <el-input v-model="queryParams.areaId" placeholder="Please Input Area" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="所属仓库" prop="warehouseId">
-        <el-input v-model="queryParams.warehouseId" placeholder="请输入所属仓库" clearable size="small"
+      <el-form-item label="Warehouse" prop="warehouseId">
+        <el-input v-model="queryParams.warehouseId" placeholder="Please Input Warehouse" clearable size="small"
           @keyup.enter.native="handleQuery" />
       </el-form-item>
       <template v-if="showMoreCondition">
-        <el-form-item label="安全库存" prop="quantity">
-          <el-input v-model="queryParams.quantity" placeholder="请输入安全库存" clearable size="small"
+        <el-form-item label="Safty Count" prop="quantity">
+          <el-input v-model="queryParams.quantity" placeholder="Please Input Safty Count" clearable size="small"
             @keyup.enter.native="handleQuery" />
         </el-form-item>
-        <el-form-item label="有效期" prop="expiryDate">
+        <el-form-item label="Expiry Date" prop="expiryDate">
           <el-date-picker clearable size="small" v-model="queryParams.expiryDate" type="datetime"
-            value-format="yyyy-MM-ddTHH:mm:ss" placeholder="选择有效期">
+            value-format="yyyy-MM-ddTHH:mm:ss" placeholder="Select Expiry Date">
           </el-date-picker>
         </el-form-item>
       </template>
       <el-form-item class="flex_one tr">
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">Search</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">Reset</el-button>
         <el-button :icon="showMoreCondition ? 'el-icon-arrow-up' : 'el-icon-arrow-down'" size="mini"
-          @click="showMoreCondition = !showMoreCondition">{{ showMoreCondition ? "收起条件" : "展开条件" }}</el-button>
+          @click="showMoreCondition = !showMoreCondition">{{ showMoreCondition ? "Collapse" : "Expand" }}</el-button>
       </el-form-item>
     </el-form>
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-          v-hasPermi="['wms:item:add']">新增</el-button>
+          v-hasPermi="['wms:item:add']">Add</el-button>
       </el-col>
       <!-- <el-col :span="1.5">
         <el-button type="success" plain icon="el-icon-edit" size="mini" :disabled="single" @click="handleUpdate"
-          v-hasPermi="['wms:item:edit']">修改</el-button>
+          v-hasPermi="['wms:item:edit']">Modify</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="danger" plain icon="el-icon-delete" size="mini" :disabled="multiple" @click="handleDelete"
-          v-hasPermi="['wms:item:remove']">删除</el-button>
+          v-hasPermi="['wms:item:remove']">Delete</el-button>
       </el-col> -->
       <el-col :span="1.5">
         <el-button type="warning" plain icon="el-icon-download" size="mini" :loading="exportLoading" @click="handleExport"
-          v-hasPermi="['wms:item:export']">导出</el-button>
+          v-hasPermi="['wms:item:export']">Export</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>
     </el-row>
 
     <WmsTable v-loading="loading" :data="wmsItemList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="编号" align="center" prop="itemNo" v-if="columns[0].visible" />
-      <el-table-column label="名称" align="center" prop="itemName" v-if="columns[1].visible" />
-      <el-table-column label="分类" align="center" prop="itemTypeName" v-if="columns[2].visible" />
-      <el-table-column label="单位类别" align="center" prop="unit" v-if="columns[3].visible" />
-      <el-table-column label="所属仓库" align="center" prop="warehouseName" v-if="columns[6].visible" />
-      <el-table-column label="所属库区" align="center" prop="areaName" v-if="columns[5].visible" />
-      <el-table-column label="所属货架" align="center" prop="rackName" v-if="columns[4].visible" />
-      <el-table-column label="安全库存" align="center" prop="quantity" v-if="columns[7].visible" />
-      <el-table-column label="有效期" align="center" prop="expiryDate" width="180" v-if="columns[8].visible">
+      <el-table-column label="No." align="center" prop="itemNo" v-if="columns[0].visible" />
+      <el-table-column label="Goods Name" align="center" prop="itemName" v-if="columns[1].visible" />
+      <el-table-column label="Category" align="center" prop="itemTypeName" v-if="columns[2].visible" />
+      <el-table-column label="Unit" align="center" prop="unit" v-if="columns[3].visible" />
+      <el-table-column label="Warehouse" align="center" prop="warehouseName" v-if="columns[6].visible" />
+      <el-table-column label="Area" align="center" prop="areaName" v-if="columns[5].visible" />
+      <el-table-column label="Rack Name" align="center" prop="rackName" v-if="columns[4].visible" />
+      <el-table-column label="Safty Count" align="center" prop="quantity" v-if="columns[7].visible" />
+      <el-table-column label="Expiry Date" align="center" prop="expiryDate" width="180" v-if="columns[8].visible">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.expiryDate, "") }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="备注" align="center" prop="remark" v-if="columns[9].visible" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[9].visible" />
+      <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click.stop="handleUpdate(scope.row)"
-            v-hasPermi="['wms:item:edit']">修改</el-button>
+            v-hasPermi="['wms:item:edit']">Modify</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-            v-hasPermi="['wms:item:remove']">删除</el-button>
+            v-hasPermi="['wms:item:remove']">Delete</el-button>
         </template>
       </el-table-column>
     </WmsTable>
@@ -98,63 +98,63 @@
     <pagination v-show="total > 0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize"
       @pagination="getList" />
 
-    <!-- 添加或修改物料对话框 -->
+    <!-- Add或ModifyItem对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="98px" class="dialog-form-two">
+      <el-form ref="form" :model="form" :rules="rules" label-width="125px" class="dialog-form-two">
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="编号" prop="itemNo">
-              <el-input v-model="form.itemNo" placeholder="请输入编号" />
+            <el-form-item label="No." prop="itemNo">
+              <el-input v-model="form.itemNo" placeholder="Please Input No." />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="名称" prop="itemName">
-              <el-input v-model="form.itemName" placeholder="请输入名称" />
+            <el-form-item label="Goods Name" prop="itemName">
+              <el-input v-model="form.itemName" placeholder="Please Input Item" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="仓库/库区" prop="place">
-              <WmsWarehouseCascader v-model="form.place" size="small"></WmsWarehouseCascader>
+            <el-form-item label="Warehouse" prop="place">
+              <WmsWarehouseCascader v-model="form.place"  ></WmsWarehouseCascader>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="单位类别" prop="unit">
-              <el-input v-model="form.unit" placeholder="请输入单位类别" />
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row :gutter="24">
-          <el-col :span="12">
-            <el-form-item label="分类" prop="itemType">
-              <treeselect v-model="form.itemType" :options="deptOptions" :show-count="true" placeholder="请选择分类" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="安全库存" prop="quantity">
-              <el-input v-model="form.quantity" placeholder="请输入安全库存" />
+            <el-form-item label="Unit" prop="unit">
+              <el-input v-model="form.unit" placeholder="Please Input Unit" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="有效期" prop="expiryDate">
+            <el-form-item label="Category" prop="itemType">
+              <treeselect v-model="form.itemType" :options="deptOptions" :show-count="true" placeholder="Please select Type" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="Safty Count" prop="quantity">
+              <el-input v-model="form.quantity" placeholder="Please Input Safty Count" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <el-form-item label="Expiry Date" prop="expiryDate">
               <el-date-picker clearable size="small" v-model="form.expiryDate" type="datetime"
-                value-format="yyyy-MM-dd HH:mm:ss" placeholder="选择有效期">
+                value-format="yyyy-MM-dd HH:mm:ss" placeholder="Select Expiry Date">
               </el-date-picker>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="备注" prop="remark">
-              <el-input v-model="form.remark" placeholder="请输入备注" />
+            <el-form-item label="Remark" prop="remark">
+              <el-input v-model="form.remark" placeholder="Please Input Remark" />
             </el-form-item>
           </el-col>
         </el-row>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
+        <el-button type="primary" @click="submitForm">OK</el-button>
+        <el-button @click="cancel">Cancel</el-button>
       </div>
     </el-dialog>
   </div>
@@ -185,31 +185,31 @@ export default {
     return {
       // 遮罩层
       loading: true,
-      // 部门树选项
+      // Department树选项
       deptOptions: [],
-      // 导出遮罩层
+      // Export遮罩层
       exportLoading: false,
       // 选中数组
       ids: [],
-      // 非单个禁用
+      // 非个禁用
       single: true,
       // 非多个禁用
       multiple: true,
-      // 显示搜索条件
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 物料表格数据
+      // Item表格Data
       wmsItemList: [],
-      // 货架表格数据
+      //  Shelves表格Data
       rackListByArea: [],
-      // 库区表格数据
+      // Area表格Data
       areaListByWarehouse: [],
       // 弹出层标题
       title: "",
-      // 是否显示弹出层
+      // Show弹出层
       open: false,
-      // 查询参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -223,27 +223,27 @@ export default {
         quantity: null,
         expiryDate: null,
       },
-      // 表单参数
+      // 表Params
       form: {},
-      // 表单校验
+      // 表校验
       rules: {
-        itemNo: [{ required: true, message: "编号不能为空", trigger: "blur" }],
+        itemNo: [{ required: true, message: "No. is required", trigger: "blur" }],
         itemName: [
-          { required: true, message: "名称不能为空", trigger: "blur" },
+          { required: true, message: "Item is required", trigger: "blur" },
         ],
 
       },
       columns: [
-        { key: 1, label: "编号", visible: true },
-        { key: 2, label: "名称", visible: true },
-        { key: 3, label: "分类", visible: true },
-        { key: 4, label: "单位类别", visible: true },
-        { key: 5, label: "所属货架", visible: false },
-        { key: 6, label: "所属库区", visible: true },
-        { key: 7, label: "所属仓库", visible: true },
-        { key: 8, label: "安全库存", visible: true },
-        { key: 9, label: "有效期", visible: true },
-        { key: 11, label: "备注", visible: false },
+        { key: 1, label: "No.", visible: true },
+        { key: 2, label: "Name", visible: true },
+        { key: 3, label: "Category", visible: true },
+        { key: 4, label: "Unit", visible: true },
+        { key: 5, label: "Rack Name", visible: false },
+        { key: 6, label: "Area", visible: true },
+        { key: 7, label: "Warehouse", visible: true },
+        { key: 8, label: "Safty Count", visible: true },
+        { key: 9, label: "Expiry Date", visible: true },
+        { key: 11, label: "Remark", visible: false },
       ],
       showMoreCondition: false,
     };
@@ -255,7 +255,7 @@ export default {
     });
   },
   methods: {
-    /** 查询物料列表 */
+    /** SearchItem列表 */
     getList() {
       this.loading = true;
       const { pageNum, pageSize } = this.queryParams;
@@ -281,12 +281,12 @@ export default {
         this.loading = false;
       });
     },
-    // 取消按钮
+    // CancelButton
     cancel() {
       this.open = false;
       this.reset();
     },
-    // 表单重置
+    // 表Reset
     reset() {
       this.form = {
         id: null,
@@ -307,40 +307,40 @@ export default {
       };
       this.resetForm("form");
     },
-    /** 搜索按钮操作 */
+    /** SearchButtonOperate */
     handleQuery() {
       this.queryParams.pageNum = 1;
       this.getList();
     },
-    /** 重置按钮操作 */
+    /** ResetButtonOperate */
     resetQuery() {
       this.resetForm("queryForm");
       this.handleQuery();
     },
-    // 多选框选中数据
+    // 多选框选中Data
     handleSelectionChange(selection) {
       this.ids = selection.map((item) => item.id);
       this.single = selection.length !== 1;
       this.multiple = !selection.length;
     },
-    /** 新增按钮操作 */
+    /** AddButtonOperate */
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加物料";
+      this.title = "New";
     },
-    /** 修改按钮操作 */
+    /** ModifyButtonOperate */
     async handleUpdate(row) {
       this.reset();
       const id = row.id || this.ids;
       await getWmsItem(id).then((response) => {
         this.form = response;
         this.open = true;
-        this.title = "修改物料";
+        this.title = "Modify";
       });
     },
 
-    /** 提交按钮 */
+    /** 提交Button */
     submitForm() {
       this.$refs["form"].validate((valid) => {
         if (valid) {
@@ -352,13 +352,13 @@ export default {
           }
           if (this.form.id != null) {
             updateWmsItem(this.form).then((response) => {
-              this.$modal.msgSuccess("修改成功");
+              this.$modal.msgSuccess("Modify Successful");
               this.open = false;
               this.getList();
             });
           } else {
             addWmsItem(this.form).then((response) => {
-              this.$modal.msgSuccess("新增成功");
+              this.$modal.msgSuccess("Add Successful");
               this.open = false;
               this.getList();
             });
@@ -366,25 +366,25 @@ export default {
         }
       });
     },
-    /** 删除按钮操作 */
+    /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
       this.$modal
-        .confirm('是否确认删除物料编号为"' + ids + '"的数据项？')
+        .confirm(' Do you want delete Goods No."' + ids + '"？')
         .then(function () {
           return delWmsItem(ids);
         })
         .then(() => {
           this.getList();
-          this.$modal.msgSuccess("删除成功");
+          this.$modal.msgSuccess("Delete Successful");
         })
         .catch(() => { });
     },
-    /** 导出按钮操作 */
+    /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
       this.$modal
-        .confirm("是否确认导出所有物料数据项？")
+        .confirm("Export All？")
         .then(() => {
           this.exportLoading = true;
           return exportWmsItem(queryParams);

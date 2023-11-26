@@ -1,6 +1,6 @@
 <template>
   <div class="item-select-wrapper">
-    <el-cascader :options="options" :clearable="clearable" placeholder="请选择操作类型"
+    <el-cascader :options="options" :clearable="clearable" placeholder="Please select Type"
                  v-model="value1" :size="size" :show-all-levels="false">
     </el-cascader>
   </div>
@@ -9,11 +9,11 @@
 <script>
 
 const optionsMap = [{
-  name: "入库",
+  name: "Inbound",
   dictName: "wms_receipt_type",
 },
   {
-    name: "出库",
+    name: "Outbound ",
     dictName: "wms_shipment_type",
   },
   {
@@ -21,7 +21,7 @@ const optionsMap = [{
     dictName: "wms_movement_type",
   },
   {
-    name: "盘点",
+    name: "Count",
     dictName: "wms_check_type",
   }]
 const dictNames = optionsMap.map(item => item.dictName)

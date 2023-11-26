@@ -8,8 +8,8 @@ export function dialogWrapper(str) {
   return `<el-dialog v-bind="$attrs" v-on="$listeners" @open="onOpen" @close="onClose" title="Dialog Title">
     ${str}
     <div slot="footer">
-      <el-button @click="close">取消</el-button>
-      <el-button type="primary" @click="handleConfirm">确定</el-button>
+      <el-button @click="close">Cancel</el-button>
+      <el-button type="primary" @click="handleConfirm">OK</el-button>
     </div>
   </el-dialog>`
 }
@@ -57,7 +57,7 @@ function buildFromBtns(conf, type) {
   if (conf.formBtns && type === 'file') {
     str = `<el-form-item size="large">
           <el-button type="primary" @click="submitForm">提交</el-button>
-          <el-button @click="resetForm">重置</el-button>
+          <el-button @click="resetForm">Reset</el-button>
         </el-form-item>`
     if (someSpanIsNot24) {
       str = `<el-col :span="24">
@@ -68,7 +68,7 @@ function buildFromBtns(conf, type) {
   return str
 }
 
-// span不为24的用el-col包裹
+// spanNo 24的用el-col包裹
 function colWrapper(element, str) {
   if (someSpanIsNot24 || element.span !== 24) {
     return `<el-col :span="${element.span}">
@@ -337,7 +337,7 @@ function buildElUploadChild(conf) {
   const list = []
   if (conf['list-type'] === 'picture-card') list.push('<i class="el-icon-plus"></i>')
   else list.push(`<el-button size="small" type="primary" icon="el-icon-upload">${conf.buttonText}</el-button>`)
-  if (conf.showTip) list.push(`<div slot="tip" class="el-upload__tip">只能上传不超过 ${conf.fileSize}${conf.sizeUnit} 的${conf.accept}文件</div>`)
+  if (conf.showTip) list.push(`<div slot="tip" class="el-upload__tip">只能上传No 超过 ${conf.fileSize}${conf.sizeUnit} 的${conf.accept}文件</div>`)
   return list.join('\n')
 }
 

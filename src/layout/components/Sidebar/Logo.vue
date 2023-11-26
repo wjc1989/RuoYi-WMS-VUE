@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      title: 'WMS仓库管理系统',
+      title: 'WMS',
       logo: logoImg
     }
   }

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询波次列表
+// SearchWave 列表
 export function listWave(query, pageReq) {
   return request({
     url: '/wms/wave/list',
@@ -10,7 +10,7 @@ export function listWave(query, pageReq) {
   })
 }
 
-// 查询波次详细
+// SearchWave Detail
 export function getWave(id) {
   return request({
     url: '/wms/wave/shipment/' + id,
@@ -18,7 +18,7 @@ export function getWave(id) {
   })
 }
 
-// 新增波次
+// AddWave
 export function addWave(data) {
   return request({
     url: '/wms/wave/shipment/add',
@@ -27,7 +27,7 @@ export function addWave(data) {
   })
 }
 
-// 修改波次
+// ModifyWave
 export function updateWave(data) {
   return request({
     url: '/wms/wave',
@@ -36,7 +36,7 @@ export function updateWave(data) {
   })
 }
 
-// 删除波次
+// DeleteWave
 export function delWave(id) {
   return request({
     url: '/wms/wave/shipment/' + id,
@@ -44,7 +44,7 @@ export function delWave(id) {
   })
 }
 
-// 导出波次
+// ExportWave
 export function exportWave(query) {
   return request({
     url: '/wms/wave/export',
@@ -53,7 +53,7 @@ export function exportWave(query) {
   })
 }
 
-// 波次单分配仓库
+// Wave  Distribute Warehouse
 export function waveAllocatedInventory(params) {
   return request({
     url: '/wms/wave/shipment/allocated/',
@@ -61,7 +61,7 @@ export function waveAllocatedInventory(params) {
     params
   })
 }
-// 应用波次作业的仓库
+// 应用Wave 作业的Warehouse
 export function confirmWave(data) {
   return request({
     url: '/wms/wave/shipment/confirmWave' ,
@@ -69,7 +69,7 @@ export function confirmWave(data) {
     data: data
   })
 }
-// 取消波次作业
+// CancelWave Task
 export function cancelAllocatedInventory(id) {
   return request({
     url: '/wms/wave/shipment/cancelAllocatedInventory/'+ id ,
@@ -85,7 +85,7 @@ export function getReceiptWave(id) {
   })
 }
 
-// 新增波次
+// AddWave
 export function addWaveForReceipt(data) {
   return request({
     url: '/wms/wave/receipt/add',
@@ -94,7 +94,7 @@ export function addWaveForReceipt(data) {
   })
 }
 
-// 删除波次
+// DeleteWave
 export function delWaveForReceipt(id) {
   return request({
     url: '/wms/wave/receipt/' + id,
@@ -102,7 +102,7 @@ export function delWaveForReceipt(id) {
   })
 }
 
-// 波次单分配仓库
+// Wave  Distribute Warehouse
 export function waveAllocatedInventoryForReceipt(params) {
   return request({
     url: '/wms/wave/receipt/allocated/',
@@ -110,7 +110,7 @@ export function waveAllocatedInventoryForReceipt(params) {
     params
   })
 }
-// 应用波次作业的仓库
+// 应用Wave 作业的Warehouse
 export function confirmWaveForReceipt(data) {
   return request({
     url: '/wms/wave/receipt/confirmWave' ,
@@ -118,7 +118,7 @@ export function confirmWaveForReceipt(data) {
     data: data
   })
 }
-// 取消波次作业
+// CancelWave Task
 export function cancelAllocatedInventoryForReceipt(id) {
   return request({
     url: '/wms/wave/receipt/cancelAllocatedInventory/'+ id ,

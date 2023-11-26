@@ -67,7 +67,7 @@
 
     <div class="popup-main">
       <div class="popup-result">
-        <p class="title">时间表达式</p>
+        <p class="title"> Time表达式</p>
         <table>
           <thead>
             <th v-for="item of tabTitles" width="40" :key="item">{{item}}</th>
@@ -104,9 +104,9 @@
       <CrontabResult :ex="crontabValueString"></CrontabResult>
 
       <div class="pop_btn">
-        <el-button size="small" type="primary" @click="submitFill">确定</el-button>
-        <el-button size="small" type="warning" @click="clearCron">重置</el-button>
-        <el-button size="small" @click="hidePopup">取消</el-button>
+        <el-button size="small" type="primary" @click="submitFill">OK</el-button>
+        <el-button size="small" type="warning" @click="clearCron">Reset</el-button>
+        <el-button size="small" @click="hidePopup">Cancel</el-button>
       </div>
     </div>
   </div>
@@ -151,7 +151,7 @@ export default {
       if (this.expression) {
         let arr = this.expression.split(" ");
         if (arr.length >= 6) {
-          //6 位以上是合法表达式
+          //6 位以上Yes合法表达式
           let obj = {
             second: arr[0],
             min: arr[1],
@@ -291,9 +291,9 @@ export default {
       }
       this.$refs[refName].radioValue = insValue;
     },
-    // 表单选项的子组件校验数字格式（通过-props传递）
+    // 表选项的子组件校验数字格式（通过-props传递）
     checkNumber(value, minLimit, maxLimit) {
-      // 检查必须为整数
+      // 检查必须整数
       value = Math.floor(value);
       if (value < minLimit) {
         value = minLimit;
@@ -302,7 +302,7 @@ export default {
       }
       return value;
     },
-    // 隐藏弹窗
+    // Hide弹窗
     hidePopup() {
       this.$emit("hide");
     },
@@ -312,7 +312,7 @@ export default {
       this.hidePopup();
     },
     clearCron() {
-      // 还原选择项
+      // 还原Select 项
       ("准备还原");
       this.crontabValueObj = {
         second: "*",
@@ -360,7 +360,7 @@ export default {
   watch: {
     expression: "resolveExp",
     hideComponent(value) {
-      // 隐藏部分组件
+      // Hide部分组件
     },
   },
   mounted: function() {

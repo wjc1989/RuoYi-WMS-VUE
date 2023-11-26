@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询物料列表
+// SearchItem列表
 export function listWmsItem(query, pageReq) {
   return request({
     url: '/wms/item/list',
@@ -9,7 +9,7 @@ export function listWmsItem(query, pageReq) {
     params: pageReq
   })
 }
-// 查询过期物料列表
+// SearchExpiryItem列表
 export function listExpiryItem(pageReq) {
   return request({
     url: '/wms/item/expiryList',
@@ -17,7 +17,7 @@ export function listExpiryItem(pageReq) {
     params: pageReq
   })
 }
-// 查询物料列表
+// SearchItem列表
 export function allWmsItem(query) {
   return request({
     url: '/wms/item/all',
@@ -26,7 +26,7 @@ export function allWmsItem(query) {
   })
 }
 
-// 查询物料详细
+// SearchItemDetail
 export function getWmsItem(id) {
   return request({
     url: '/wms/item/' + id,
@@ -34,7 +34,7 @@ export function getWmsItem(id) {
   })
 }
 
-// 新增物料
+// AddItem
 export function addWmsItem(data) {
   return request({
     url: '/wms/item',
@@ -43,7 +43,7 @@ export function addWmsItem(data) {
   })
 }
 
-// 修改物料
+// ModifyItem
 export function updateWmsItem(data) {
   return request({
     url: '/wms/item',
@@ -52,7 +52,7 @@ export function updateWmsItem(data) {
   })
 }
 
-// 删除物料
+// DeleteItem
 export function delWmsItem(id) {
   return request({
     url: '/wms/item/' + id,
@@ -60,7 +60,7 @@ export function delWmsItem(id) {
   })
 }
 
-// 导出物料
+// ExportItem
 export function exportWmsItem(query) {
   return request({
     url: '/wms/item/export',

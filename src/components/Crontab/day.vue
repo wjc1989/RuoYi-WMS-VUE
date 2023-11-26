@@ -8,7 +8,7 @@
 
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="2">
-				不指定
+				No 指定
 			</el-radio>
 		</el-form-item>
 
@@ -23,7 +23,7 @@
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="4">
 				从
-				<el-input-number v-model='average01' :min="1" :max="30" /> 号开始，每
+				<el-input-number v-model='average01' :min="1" :max="30" /> No.开始，每
 				<el-input-number v-model='average02' :min="1" :max="31 - average01 || 1" /> 日执行一次
 			</el-radio>
 		</el-form-item>
@@ -31,7 +31,7 @@
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="5">
 				每月
-				<el-input-number v-model='workday' :min="1" :max="31" /> 号最近的那个工作日
+				<el-input-number v-model='workday' :min="1" :max="31" /> No.最近的那个工作日
 			</el-radio>
 		</el-form-item>
 
@@ -69,7 +69,7 @@ export default {
 	name: 'crontab-day',
 	props: ['check', 'cron'],
 	methods: {
-		// 单选按钮值变化时
+		// 选Button值Change时
 		radioChange() {
 			('day rachange');
 			if (this.radioValue !== 2 && this.cron.week !== '?') {
@@ -101,25 +101,25 @@ export default {
 			}
 			('day rachange end');
 		},
-		// 周期两个值变化时
+		// 周期两个值Change时
 		cycleChange() {
 			if (this.radioValue == '3') {
 				this.$emit('update', 'day', this.cycleTotal);
 			}
 		},
-		// 平均两个值变化时
+		// 平均两个值Change时
 		averageChange() {
 			if (this.radioValue == '4') {
 				this.$emit('update', 'day', this.averageTotal);
 			}
 		},
-		// 最近工作日值变化时
+		// 最近工作日值Change时
 		workdayChange() {
 			if (this.radioValue == '5') {
 				this.$emit('update', 'day', this.workdayCheck + 'W');
 			}
 		},
-		// checkbox值变化时
+		// checkbox值Change时
 		checkboxChange() {
 			if (this.radioValue == '7') {
 				this.$emit('update', 'day', this.checkboxString);

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询物料类型表列表
+// SearchItemType表列表
 export function listWmsItemType(query, pageReq) {
   return request({
     url: '/wms/itemType/list',
@@ -9,14 +9,14 @@ export function listWmsItemType(query, pageReq) {
     params: pageReq
   })
 }
-// 查询部门下拉树结构
+// SearchDepartment下拉树结构
 export function itemTypeTreeselect() {
   return request({
     url: '/wms/itemType/treeselect',
     method: 'get'
   })
 }
-// 查询物料类型表列表
+// SearchItemType表列表
 export function listWmsItemTypeNoPage(query, pageReq) {
   return request({
     url: '/wms/itemType/noPageList',
@@ -26,7 +26,7 @@ export function listWmsItemTypeNoPage(query, pageReq) {
   })
 }
 
-// 查询物料类型表详细
+// SearchItemType表Detail
 export function getWmsItemType(itemTypeId) {
   return request({
     url: '/wms/itemType/' + itemTypeId,
@@ -34,7 +34,7 @@ export function getWmsItemType(itemTypeId) {
   })
 }
 
-// 新增物料类型表
+// AddItemType表
 export function addWmsItemType(data) {
   return request({
     url: '/wms/itemType',
@@ -43,7 +43,7 @@ export function addWmsItemType(data) {
   })
 }
 
-// 修改物料类型表
+// ModifyItemType表
 export function updateWmsItemType(data) {
   return request({
     url: '/wms/itemType',
@@ -52,7 +52,7 @@ export function updateWmsItemType(data) {
   })
 }
 
-// 删除物料类型表
+// DeleteItemType表
 export function delWmsItemType(itemTypeId) {
   return request({
     url: '/wms/itemType/' + itemTypeId,
@@ -60,7 +60,7 @@ export function delWmsItemType(itemTypeId) {
   })
 }
 
-// 导出物料类型表
+// ExportItemType表
 export function exportWmsItemType(query) {
   return request({
     url: '/wms/itemType/export',

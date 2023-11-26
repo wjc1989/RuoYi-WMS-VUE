@@ -1,15 +1,15 @@
 <template>
 
-  <el-dialog :visible.sync="dialogVisible" title="库存一览" width="600px" @close="handleDialogClose">
+  <el-dialog :visible.sync="dialogVisible" title="Inventory一览" width="800px" @close="handleDialogClose">
     <div ref="reportHTML" v-html="msg" class="web-con"></div>
     <el-table :data="wmsInventoryList" v-loading="loading">
-      <el-table-column width="100" property="itemName" label="物料名称"></el-table-column>
-      <el-table-column width="150" property="itemTypeName" label="物料类别"></el-table-column>
-      <el-table-column property="warehouseName" label="仓库/库区"></el-table-column>
-      <el-table-column width="100" property="quantity" label="库存"></el-table-column>
+      <el-table-column width="100" property="itemName" label="Goods Name"></el-table-column>
+      <el-table-column width="150" property="itemTypeName" label="Item类别"></el-table-column>
+      <el-table-column property="warehouseName" label="Warehouse"></el-table-column>
+      <el-table-column width="100" property="quantity" label="Inventory"></el-table-column>
     </el-table>
     <span slot="footer" class="dialog-footer">
-      <el-button type="primary" @click="handleDialogConfirm">确 定</el-button>
+      <el-button type="primary" @click="handleDialogConfirm">OK</el-button>
     </span>
   </el-dialog>
 
@@ -73,7 +73,7 @@ export default {
 
         content.forEach(item => {
           if (!item.warehouseName) {
-            item.warehouseName = "暂未分配仓库"
+            item.warehouseName = "No Distribute Warehouse"
           }
           if (item.areaName) {
             if (item.areaName) {
@@ -92,11 +92,11 @@ export default {
       this.dialogVisible = true;
     },
     handleDialogConfirm() {
-      // 处理对话框确认按钮的逻辑
+      // 处理对话框OKButton的逻辑
       // 可以在这里获取选中的值并进行相应的处理
-      // 例如，将选中的值赋给输入框的绑定值
+      // 例e.g.，将选中的值赋给输入框的绑定值
       this.selectedValue = this.selections;
-      this.dialogVisible = false; // 关闭对话框
+      this.dialogVisible = false; // Close对话框
     }
   }
 }

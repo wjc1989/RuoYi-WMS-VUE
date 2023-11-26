@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询货架列表
+// Search Shelves列表
 export function listWmsRack(query, pageReq) {
   return request({
     url: '/wms/rack/list',
@@ -10,7 +10,7 @@ export function listWmsRack(query, pageReq) {
   })
 }
 
-// 查询货架详细
+// Search ShelvesDetail
 export function getWmsRack(id) {
   return request({
     url: '/wms/rack/' + id,
@@ -18,7 +18,7 @@ export function getWmsRack(id) {
   })
 }
 
-// 新增货架
+// Add Shelves
 export function addWmsRack(data) {
   return request({
     url: '/wms/rack',
@@ -27,7 +27,7 @@ export function addWmsRack(data) {
   })
 }
 
-// 修改货架
+// Modify Shelves
 export function updateWmsRack(data) {
   return request({
     url: '/wms/rack',
@@ -36,7 +36,7 @@ export function updateWmsRack(data) {
   })
 }
 
-// 删除货架
+// Delete Shelves
 export function delWmsRack(id) {
   return request({
     url: '/wms/rack/' + id,
@@ -44,7 +44,7 @@ export function delWmsRack(id) {
   })
 }
 
-// 导出货架
+// Export Shelves
 export function exportWmsRack(query) {
   return request({
     url: '/wms/rack/export',

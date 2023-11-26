@@ -2,7 +2,7 @@
 	<el-form size="small">
 		<el-form-item>
 			<el-radio :label="1" v-model='radioValue'>
-				不填，允许的通配符[, - * /]
+				No 填，允许的通配符[, - * /]
 			</el-radio>
 		</el-form-item>
 
@@ -57,7 +57,7 @@ export default {
 	name: 'crontab-year',
 	props: ['check', 'month', 'cron'],
 	methods: {
-		// 单选按钮值变化时
+		// 选Button值Change时
 		radioChange() {
 			switch (this.radioValue) {
 				case 1:
@@ -77,19 +77,19 @@ export default {
 					break;
 			}
 		},
-		// 周期两个值变化时
+		// 周期两个值Change时
 		cycleChange() {
 			if (this.radioValue == '3') {
 				this.$emit('update', 'year', this.cycleTotal);
 			}
 		},
-		// 平均两个值变化时
+		// 平均两个值Change时
 		averageChange() {
 			if (this.radioValue == '4') {
 				this.$emit('update', 'year', this.averageTotal);
 			}
 		},
-		// checkbox值变化时
+		// checkbox值Change时
 		checkboxChange() {
 			if (this.radioValue == '5') {
 				this.$emit('update', 'year', this.checkboxString);

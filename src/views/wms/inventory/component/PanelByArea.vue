@@ -2,30 +2,30 @@
   <merge-table :table-data="tableData" :merge-arr="mergeArr">
     <el-table-column
       prop="warehouseName"
-      label="仓库"
+      label="Warehouse"
     ></el-table-column>
     <el-table-column
       prop="areaName"
-      label="库区"
+      label="Area"
     ></el-table-column>
 
     <el-table-column
       prop="itemTypeName"
-      label="物料类型"
+      label="Type"
     >
     </el-table-column>
     <el-table-column
       prop="itemNo"
-      label="物料编码"
+      label="Goods No."
     ></el-table-column>
     <el-table-column
       prop="itemName"
-      label="物料名称"
+      label="Goods Name"
     ></el-table-column>
 
     <el-table-column
       prop="quantity"
-      label="库存"
+      label="Inventory"
     ></el-table-column>
   </merge-table>
 </template>

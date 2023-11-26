@@ -2,20 +2,20 @@
   <merge-table :table-data="tableData" :merge-arr="['itemNo']">
     <el-table-column
       prop="itemNo"
-      label="物料信息"
+      label="Item信息"
     >
       <template v-slot="{ row }">
         <el-row>
           <el-col :span="12">
-            <span>名称：{{ row.itemName }}</span>
+            <span>Item：{{ row.itemName }}</span>
           </el-col>
           <el-col :span="12">
-            <span>编码：{{ row.itemNo }}</span>
+            <span>No.：{{ row.itemNo }}</span>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-            <span>类型：{{ row.itemTypeName }}</span>
+            <span>Type：{{ row.itemTypeName }}</span>
           </el-col>
           <el-col :span="12" v-if="row.itemDelFlag">
             <el-popconfirm
@@ -25,8 +25,8 @@
               width="200"
               trigger="hover"
               @confirm="deleteItem(row)"
-              title="该物料已经被逻辑删除，是否清除库存记录？">
-              <a slot="reference" class="el-icon-question red" >删除</a>
+              title="该Item已经被逻辑Delete，清除Inventory Record？">
+              <a slot="reference" class="el-icon-question red" >Delete</a>
             </el-popconfirm>
           </el-col>
         </el-row>
@@ -35,11 +35,11 @@
     </el-table-column>
     <el-table-column
       prop="warehouseName"
-      label="仓库/库区"
+      label="Warehouse"
     ></el-table-column>
     <el-table-column
       prop="quantity"
-      label="库存"
+      label="Inventory"
     ></el-table-column>
   </merge-table>
 </template>
@@ -65,7 +65,7 @@ export default {
     deleteItem(row) {
       delWmsInventoryByItem(row.itemId).then(res => {
         this.$message({
-          message: '删除成功',
+          message: 'Delete Successful',
           type: 'success'
         });
         this.$emit('update', row)

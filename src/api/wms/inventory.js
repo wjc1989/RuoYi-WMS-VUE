@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询库存列表
+// SearchInventory列表
 export function listWmsInventory(query, pageReq) {
   return request({
     url: '/wms/inventory/list',
@@ -10,7 +10,7 @@ export function listWmsInventory(query, pageReq) {
   })
 }
 
-// 查询预警库存列表
+// SearchWarnInventory列表
 export function listWarnInventory(pageReq) {
   return request({
     url: '/wms/inventory/warnList',
@@ -19,7 +19,7 @@ export function listWarnInventory(pageReq) {
   })
 }
 
-// 查询库存详细
+// SearchInventoryDetail
 export function getWmsInventory(id) {
   return request({
     url: '/wms/inventory/' + id,
@@ -27,7 +27,7 @@ export function getWmsInventory(id) {
   })
 }
 
-// 新增库存
+// AddInventory
 export function addWmsInventory(data) {
   return request({
     url: '/wms/inventory',
@@ -36,7 +36,7 @@ export function addWmsInventory(data) {
   })
 }
 
-// 修改库存
+// ModifyInventory
 export function updateWmsInventory(data) {
   return request({
     url: '/wms/inventory',
@@ -45,14 +45,14 @@ export function updateWmsInventory(data) {
   })
 }
 
-// 删除库存
+// DeleteInventory
 export function delWmsInventory(id) {
   return request({
     url: '/wms/inventory/' + id,
     method: 'delete'
   })
 }
-// 删除库存
+// DeleteInventory
 export function delWmsInventoryByItem(id) {
   return request({
     url: '/wms/inventory/item/' + id,
@@ -60,7 +60,7 @@ export function delWmsInventoryByItem(id) {
   })
 }
 
-// 删除库存
+// DeleteInventory
 export function delWmsInventoryByWarehouse(id) {
   return request({
     url: '/wms/inventory/warehouse/' + id,
@@ -68,7 +68,7 @@ export function delWmsInventoryByWarehouse(id) {
   })
 }
 
-// 导出库存
+// ExportInventory
 export function exportWmsInventory(query) {
   return request({
     url: '/wms/inventory/export',

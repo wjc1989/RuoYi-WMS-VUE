@@ -1,28 +1,28 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="登录地址" prop="ipaddr">
+      <el-form-item label="IP" prop="ipaddr">
         <el-input
           v-model="queryParams.ipaddr"
-          placeholder="请输入登录地址"
+          placeholder="Please Input IP"
           clearable
           style="width: 240px;"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="用户名称" prop="userName">
+      <el-form-item label="Name" prop="userName">
         <el-input
           v-model="queryParams.userName"
-          placeholder="请输入用户名称"
+          placeholder="Please Input Name"
           clearable
           style="width: 240px;"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
+      <el-form-item label="Status" prop="status">
         <el-select
           v-model="queryParams.status"
-          placeholder="登录状态"
+          placeholder="LoginStatus"
           clearable
           style="width: 240px"
         >
@@ -34,20 +34,20 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="登录时间">
+      <el-form-item label="Login Time">
         <el-date-picker
           v-model="dateRange"
           style="width: 240px"
           value-format="yyyy-MM-dd"
           type="daterange"
           range-separator="-"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          start-placeholder="Start time"
+          end-placeholder="End time"
         ></el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">Search</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">Reset</el-button>
       </el-form-item>
     </el-form>
 
@@ -61,7 +61,7 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['monitor:logininfor:remove']"
-        >删除</el-button>
+        >Delete</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -71,7 +71,7 @@
           size="mini"
           @click="handleClean"
           v-hasPermi="['monitor:logininfor:remove']"
-        >清空</el-button>
+        >Clear</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -81,26 +81,26 @@
           size="mini"
           @click="handleExport"
           v-hasPermi="['monitor:logininfor:export']"
-        >导出</el-button>
+        >Export</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table ref="tables" v-loading="loading" :data="list" @selection-change="handleSelectionChange" :default-sort="defaultSort" @sort-change="handleSortChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="访问编号" align="center" prop="infoId" />
-      <el-table-column label="用户名称" align="center" prop="userName" :show-overflow-tooltip="true" sortable="custom" :sort-orders="['descending', 'ascending']" />
-      <el-table-column label="登录地址" align="center" prop="ipaddr" width="130" :show-overflow-tooltip="true" />
-      <el-table-column label="登录地点" align="center" prop="loginLocation" :show-overflow-tooltip="true" />
-      <el-table-column label="浏览器" align="center" prop="browser" :show-overflow-tooltip="true" />
-      <el-table-column label="操作系统" align="center" prop="os" />
-      <el-table-column label="登录状态" align="center" prop="status">
+      <el-table-column label="访问No." align="center" prop="infoId" />
+      <el-table-column label="Name" align="center" prop="userName" :show-overflow-tooltip="true" sortable="custom" :sort-orders="['descending', 'ascending']" />
+      <el-table-column label="IP" align="center" prop="ipaddr" width="130" :show-overflow-tooltip="true" />
+      <el-table-column label="Location" align="center" prop="loginLocation" :show-overflow-tooltip="true" />
+      <el-table-column label="Browser" align="center" prop="browser" :show-overflow-tooltip="true" />
+      <el-table-column label="System" align="center" prop="os" />
+      <el-table-column label="LoginStatus" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_common_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="操作信息" align="center" prop="msg" />
-      <el-table-column label="登录日期" align="center" prop="loginTime" sortable="custom" :sort-orders="['descending', 'ascending']" width="180">
+      <el-table-column label="Info" align="center" prop="msg" />
+      <el-table-column label="LoginDate" align="center" prop="loginTime" sortable="custom" :sort-orders="['descending', 'ascending']" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.loginTime) }}</span>
         </template>
@@ -131,17 +131,17 @@ export default {
       ids: [],
       // 非多个禁用
       multiple: true,
-      // 显示搜索条件
+      // ShowSearch
       showSearch: true,
       // 总条数
       total: 0,
-      // 表格数据
+      // 表格Data
       list: [],
-      // 日期范围
+      // Date范围
       dateRange: [],
-      // 默认排序
+      // 默认Sort
       defaultSort: {prop: 'loginTime', order: 'descending'},
-      // 查询参数
+      // SearchParams
       queryParams: {
         pageNum: 1,
         pageSize: 10,
@@ -155,7 +155,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询登录日志列表 */
+    /** SearchLoginLogs列表 */
     getList() {
       this.loading = true;
       list(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
@@ -165,49 +165,49 @@ export default {
         }
       );
     },
-    /** 搜索按钮操作 */
+    /** SearchButtonOperate */
     handleQuery() {
       this.queryParams.pageNum = 1;
       this.getList();
     },
-    /** 重置按钮操作 */
+    /** ResetButtonOperate */
     resetQuery() {
       this.dateRange = [];
       this.resetForm("queryForm");
       this.$refs.tables.sort(this.defaultSort.prop, this.defaultSort.order)
       this.handleQuery();
     },
-    /** 多选框选中数据 */
+    /** 多选框选中Data */
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.infoId)
       this.multiple = !selection.length
     },
-    /** 排序触发事件 */
+    /** Sort触发事件 */
     handleSortChange(column, prop, order) {
       this.queryParams.orderByColumn = column.prop;
       this.queryParams.isAsc = column.order;
       this.getList();
     },
-    /** 删除按钮操作 */
+    /** DeleteButtonOperate */
     handleDelete(row) {
       const infoIds = row.infoId || this.ids;
-      this.$modal.confirm('是否确认删除访问编号为"' + infoIds + '"的数据项？').then(function() {
+      this.$modal.confirm(' Do you want delete 访问No."' + infoIds + '"？').then(function() {
         return delLogininfor(infoIds);
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("删除成功");
+        this.$modal.msgSuccess("Delete Successful");
       }).catch(() => {});
     },
-    /** 清空按钮操作 */
+    /** ClearButtonOperate */
     handleClean() {
-      this.$modal.confirm('是否确认清空所有登录日志数据项？').then(function() {
+      this.$modal.confirm('OKClear所有LoginLogs？').then(function() {
         return cleanLogininfor();
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("清空成功");
+        this.$modal.msgSuccess("Clear Successful");
       }).catch(() => {});
     },
-    /** 导出按钮操作 */
+    /** ExportButtonOperate */
     handleExport() {
       this.download('monitor/logininfor/export', {
         ...this.queryParams

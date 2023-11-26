@@ -27,7 +27,7 @@
         <el-col :lg="2" :md="2">
           <el-upload action="#" :http-request="requestUpload" :show-file-list="false" :before-upload="beforeUpload">
             <el-button size="small">
-              选择
+              Select
               <i class="el-icon-upload el-icon--right"></i>
             </el-button>
           </el-upload>
@@ -66,18 +66,18 @@ export default {
   },
   data() {
     return {
-      // 是否显示弹出层
+      // Show弹出层
       open: false,
-      // 是否显示cropper
+      // Showcropper
       visible: false,
       // 弹出层标题
-      title: "修改头像",
+      title: "Modify头像",
       options: {
-        img: store.getters.avatar, //裁剪图片的地址
-        autoCrop: true, // 是否默认生成截图框
+        img: store.getters.avatar, //裁剪图片的Address
+        autoCrop: true, // 默认生成截图框
         autoCropWidth: 200, // 默认生成截图框宽度
         autoCropHeight: 200, // 默认生成截图框高度
-        fixedBox: true // 固定截图框大小 不允许改变
+        fixedBox: true // 固定截图框大小 No 允许改变
       },
       previews: {}
     };
@@ -87,11 +87,11 @@ export default {
     editCropper() {
       this.open = true;
     },
-    // 打开弹出层结束时的回调
+    // 打开弹出层End时的回调
     modalOpened() {
       this.visible = true;
     },
-    // 覆盖默认的上传行为
+    // 覆盖默认的上传行
     requestUpload() {
     },
     // 向左旋转
@@ -110,7 +110,7 @@ export default {
     // 上传预处理
     beforeUpload(file) {
       if (file.type.indexOf("image/") == -1) {
-        this.$modal.msgError("文件格式错误，请上传图片类型,如：JPG，PNG后缀的文件。");
+        this.$modal.msgError("文件格式错误，请上传图片Type,e.g.：JPG，PNG后缀的文件。");
       } else {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -128,7 +128,7 @@ export default {
           this.open = false;
           this.options.img = process.env.VUE_APP_BASE_API + response.imgUrl;
           store.commit('SET_AVATAR', this.options.img);
-          this.$modal.msgSuccess("修改成功");
+          this.$modal.msgSuccess("Modify Successful");
           this.visible = false;
         });
       });
@@ -137,7 +137,7 @@ export default {
     realTime(data) {
       this.previews = data;
     },
-    // 关闭窗口
+    // Close窗口
     closeDialog() {
       this.options.img = store.getters.avatar
       this.visible = false;

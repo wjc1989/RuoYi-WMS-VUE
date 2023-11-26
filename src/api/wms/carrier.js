@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询承运商列表
+// Search Carrier列表
 export function listWmsCarrier(query, pageReq) {
   return request({
     url: '/wms/carrier/list',
@@ -10,7 +10,7 @@ export function listWmsCarrier(query, pageReq) {
   })
 }
 
-// 查询承运商详细
+// Search CarrierDetail
 export function getWmsCarrier(id) {
   return request({
     url: '/wms/carrier/' + id,
@@ -18,7 +18,7 @@ export function getWmsCarrier(id) {
   })
 }
 
-// 新增承运商
+// Add Carrier
 export function addWmsCarrier(data) {
   return request({
     url: '/wms/carrier',
@@ -27,7 +27,7 @@ export function addWmsCarrier(data) {
   })
 }
 
-// 修改承运商
+// Modify Carrier
 export function updateWmsCarrier(data) {
   return request({
     url: '/wms/carrier',
@@ -36,7 +36,7 @@ export function updateWmsCarrier(data) {
   })
 }
 
-// 删除承运商
+// Delete Carrier
 export function delWmsCarrier(id) {
   return request({
     url: '/wms/carrier/' + id,
@@ -44,7 +44,7 @@ export function delWmsCarrier(id) {
   })
 }
 
-// 导出承运商
+// Export Carrier
 export function exportWmsCarrier(query) {
   return request({
     url: '/wms/carrier/export',

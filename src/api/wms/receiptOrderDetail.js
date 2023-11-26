@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询入库单详情列表
+// SearchInbound Detail列表
 export function listWmsReceiptOrderDetail(query, pageReq) {
   return request({
     url: '/wms/receiptOrderDetail/list',
@@ -10,7 +10,7 @@ export function listWmsReceiptOrderDetail(query, pageReq) {
   })
 }
 
-// 查询入库单详情详细
+// SearchInbound DetailDetail
 export function getWmsReceiptOrderDetail(id) {
   return request({
     url: '/wms/receiptOrderDetail/' + id,
@@ -18,7 +18,7 @@ export function getWmsReceiptOrderDetail(id) {
   })
 }
 
-// 新增入库单详情
+// AddInbound Detail
 export function addWmsReceiptOrderDetail(data) {
   return request({
     url: '/wms/receiptOrderDetail',
@@ -27,7 +27,7 @@ export function addWmsReceiptOrderDetail(data) {
   })
 }
 
-// 修改入库单详情
+// ModifyInbound Detail
 export function updateWmsReceiptOrderDetail(data) {
   return request({
     url: '/wms/receiptOrderDetail',
@@ -36,7 +36,7 @@ export function updateWmsReceiptOrderDetail(data) {
   })
 }
 
-// 删除入库单详情
+// DeleteInbound Detail
 export function delWmsReceiptOrderDetail(id) {
   return request({
     url: '/wms/receiptOrderDetail/' + id,
@@ -44,7 +44,7 @@ export function delWmsReceiptOrderDetail(id) {
   })
 }
 
-// 导出入库单详情
+// ExportInbound Detail
 export function exportWmsReceiptOrderDetail(query) {
   return request({
     url: '/wms/receiptOrderDetail/export',

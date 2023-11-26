@@ -31,7 +31,7 @@
             </div>
           </draggable>
           <div class="components-title">
-            <svg-icon icon-class="component" />选择型组件
+            <svg-icon icon-class="component" />Select 型组件
           </div>
           <draggable
             class="components-draggable"
@@ -79,13 +79,13 @@
     <div class="center-board">
       <div class="action-bar">
         <el-button icon="el-icon-download" type="text" @click="download">
-          导出vue文件
+          Exportvue文件
         </el-button>
         <el-button class="copy-btn-main" icon="el-icon-document-copy" type="text" @click="copy">
           复制代码
         </el-button>
         <el-button class="delete-btn" icon="el-icon-delete" type="text" @click="empty">
-          清空
+          Clear
         </el-button>
       </div>
       <el-scrollbar class="center-scrollbar">
@@ -111,7 +111,7 @@
               />
             </draggable>
             <div v-show="!drawingList.length" class="empty-info">
-              从左侧拖入或点选组件进行表单设计
+              从左侧拖入或点选组件进行表设计
             </div>
           </el-form>
         </el-row>
@@ -127,7 +127,7 @@
 
     <code-type-dialog
       :visible.sync="dialogVisible"
-      title="选择生成类型"
+      title="Select 生成Type"
       :show-file-name="showFileName"
       @confirm="generate"
     />
@@ -213,7 +213,7 @@ export default {
       text: trigger => {
         const codeStr = this.generateCode()
         this.$notify({
-          title: '成功',
+          title: ' Successful',
           message: '代码已复制到剪切板，可粘贴。',
           type: 'success'
         })
@@ -282,7 +282,7 @@ export default {
       document.getElementById('copyNode').click()
     },
     empty() {
-      this.$confirm('确定要清空所有组件吗？', '提示', { type: 'warning' }).then(
+      this.$confirm('OK要Clear所有组件吗？', 'Info', { type: 'warning' }).then(
         () => {
           this.drawingList = []
         }

@@ -18,24 +18,24 @@ export default {
     }
   },
   methods: {
-    // 向父组件共享数据
+    // 向父组件共享Data
     handleSelectionChange(val) {
       this.$emit('selection-change', val)
     },
 
     handleRowClick(row, column, event){
-      // selectionData -- 已选的数据
+      // selectionData -- 已选的Data
 				let index = this.selectionData.findIndex(item => {
-					// 判断已选数组中是否已存在该条数据
+					// 判断已选数组中已存在该条Data
 					return item.id == row.id
 				})
 				if (index == -1) {
-					// 如果未存在，设置已选状态，并在list中添加这条数据
-					this.$refs.multipleTable.toggleRowSelection(row, true); //设置复选框为选中状态
+					// e.g.果未存在，设置已选Status，并在list中Add这条Data
+					this.$refs.multipleTable.toggleRowSelection(row, true); //设置复选框选中Status
 					this.selectionData.push(row)
 				} else {
-					// 如果已存在，设置未选状态，并在list中删除这条数据
-					this.$refs.multipleTable.toggleRowSelection(row, false); //设置复选框为未选状态
+					// e.g.果已存在，设置未选Status，并在list中Delete这条Data
+					this.$refs.multipleTable.toggleRowSelection(row, false); //设置复选框未选Status
 					this.selectionData.splice(index, 1)
 				}
     }

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询供应商账户流水列表
+// SearchSupplier账户流水列表
 export function listWmsSupplierTransaction(query, pageReq) {
   return request({
     url: '/wms/supplierTransaction/list',
@@ -10,7 +10,7 @@ export function listWmsSupplierTransaction(query, pageReq) {
   })
 }
 
-// 查询供应商账户流水详细
+// SearchSupplier账户流水Detail
 export function getWmsSupplierTransaction(id) {
   return request({
     url: '/wms/supplierTransaction/' + id,
@@ -18,7 +18,7 @@ export function getWmsSupplierTransaction(id) {
   })
 }
 
-// 新增供应商账户流水
+// AddSupplier账户流水
 export function addWmsSupplierTransaction(data) {
   return request({
     url: '/wms/supplierTransaction',
@@ -27,7 +27,7 @@ export function addWmsSupplierTransaction(data) {
   })
 }
 
-// 修改供应商账户流水
+// ModifySupplier账户流水
 export function updateWmsSupplierTransaction(data) {
   return request({
     url: '/wms/supplierTransaction',
@@ -36,7 +36,7 @@ export function updateWmsSupplierTransaction(data) {
   })
 }
 
-// 删除供应商账户流水
+// DeleteSupplier账户流水
 export function delWmsSupplierTransaction(id) {
   return request({
     url: '/wms/supplierTransaction/' + id,
@@ -44,7 +44,7 @@ export function delWmsSupplierTransaction(id) {
   })
 }
 
-// 导出供应商账户流水
+// ExportSupplier账户流水
 export function exportWmsSupplierTransaction(query) {
   return request({
     url: '/wms/supplierTransaction/export',

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import MyCustomComponent from '@/components/WmsInsufficientStockDialog/index.vue';
 
-// 创建临时的 Vue 组件
+// Create临时的 Vue 组件
 const TempComponent = Vue.extend({
   components: {
     MyCustomComponent
@@ -17,7 +17,7 @@ const TempComponent = Vue.extend({
   }
 });
 
-// 库存不足弹窗
+// InventoryNo 足弹窗
 export default function InsufficientStockAlert(data) {
   const tempComponent = new TempComponent({
     data: {
@@ -29,5 +29,5 @@ export default function InsufficientStockAlert(data) {
   tempComponent.$mount(tempElement);
   const vnodeHtml = tempElement.innerHTML;
   tempComponent.$createElement(vnodeHtml)
-  document.body.appendChild(tempComponent.$el); // 将对话框组件的根元素添加到页面中
+  document.body.appendChild(tempComponent.$el); // 将对话框组件的根元素Add到页面中
 }

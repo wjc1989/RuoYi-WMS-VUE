@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询库存记录列表
+// SearchInventory Record列表
 export function listWmsInventoryHistory(query, pageReq) {
   return request({
     url: '/wms/inventoryHistory/list',
@@ -10,7 +10,7 @@ export function listWmsInventoryHistory(query, pageReq) {
   })
 }
 
-// 查询库存记录详细
+// SearchInventory RecordDetail
 export function getWmsInventoryHistory(id) {
   return request({
     url: '/wms/inventoryHistory/' + id,
@@ -18,7 +18,7 @@ export function getWmsInventoryHistory(id) {
   })
 }
 
-// 新增库存记录
+// AddInventory Record
 export function addWmsInventoryHistory(data) {
   return request({
     url: '/wms/inventoryHistory',
@@ -27,7 +27,7 @@ export function addWmsInventoryHistory(data) {
   })
 }
 
-// 修改库存记录
+// ModifyInventory Record
 export function updateWmsInventoryHistory(data) {
   return request({
     url: '/wms/inventoryHistory',
@@ -36,7 +36,7 @@ export function updateWmsInventoryHistory(data) {
   })
 }
 
-// 删除库存记录
+// DeleteInventory Record
 export function delWmsInventoryHistory(id) {
   return request({
     url: '/wms/inventoryHistory/' + id,
@@ -44,7 +44,7 @@ export function delWmsInventoryHistory(id) {
   })
 }
 
-// 导出库存记录
+// ExportInventory Record
 export function exportWmsInventoryHistory(query) {
   return request({
     url: '/wms/inventoryHistory/export',

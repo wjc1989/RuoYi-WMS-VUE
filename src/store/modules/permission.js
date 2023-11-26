@@ -29,10 +29,10 @@ const permission = {
     },
   },
   actions: {
-    // 生成路由
+    // 生成Router
     GenerateRoutes({ commit }) {
       return new Promise(resolve => {
-        // 向后端请求路由数据
+        // 向后端请求RouterData
         getRouters().then(res => {
           const sdata = JSON.parse(JSON.stringify(res.data))
           const rdata = JSON.parse(JSON.stringify(res.data))
@@ -52,7 +52,7 @@ const permission = {
   }
 }
 
-// 遍历后台传来的路由字符串，转换为组件对象
+// 遍历后台传来的Router字符串，转换组件对象
 function filterAsyncRouter(asyncRouterMap, lastRouter = false, type = false) {
   return asyncRouterMap.filter(route => {
     if (type && route.children) {
@@ -104,7 +104,7 @@ function filterChildren(childrenMap, lastRouter = false) {
   return children
 }
 
-// 动态路由遍历，验证是否具备权限
+// 动态Router遍历，验证具备Prower
 export function filterDynamicRoutes(routes) {
   const res = []
   routes.forEach(route => {
@@ -125,7 +125,7 @@ export const loadView = (view) => {
   if (process.env.NODE_ENV === 'development') {
     return (resolve) => require([`@/views/${view}`], resolve)
   } else {
-    // 使用 import 实现生产环境的路由懒加载
+    // 使用 import 实现生产环境的Router懒加载
     return () => import(`@/views/${view}`)
   }
 }

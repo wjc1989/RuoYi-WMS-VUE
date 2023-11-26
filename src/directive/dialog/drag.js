@@ -7,7 +7,7 @@ export default {
   bind(el, binding, vnode, oldVnode) {
     const value = binding.value
     if (value == false) return
-    // 获取拖拽内容头部
+    // 获取拖拽Content头部
     const dialogHeaderEl = el.querySelector('.el-dialog__header');
     const dragDom = el.querySelector('.el-dialog');
     dialogHeaderEl.style.cursor = 'move';
@@ -31,7 +31,7 @@ export default {
       // 获取到的值带px 正则匹配替换
       let styL, styT;
 
-      // 注意在ie中 第一次获取到的值为组件自带50% 移动之后赋值为px
+      // 注意在ie中 第一次获取到的值组件自带50% 移动之后赋值px
       if (sty.left.includes('%')) {
         styL = +document.body.clientWidth * (+sty.left.replace(/\%/g, '') / 100);
         styT = +document.body.clientHeight * (+sty.top.replace(/\%/g, '') / 100);
@@ -42,7 +42,7 @@ export default {
 
       // 鼠标拖拽事件
       document.onmousemove = function (e) {
-        // 通过事件委托，计算移动的距离 （开始拖拽至结束拖拽的距离）
+        // 通过事件委托，计算移动的距离 （开始拖拽至End拖拽的距离）
         const l = e.clientX - disX;
         const t = e.clientY - disY;
 

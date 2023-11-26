@@ -18,7 +18,7 @@
                   <td class="el-table__cell is-leaf"><div class="cell" v-if="server.cpu">{{ server.cpu.cpuNum }}</div></td>
                 </tr>
                 <tr>
-                  <td class="el-table__cell is-leaf"><div class="cell">用户使用率</div></td>
+                  <td class="el-table__cell is-leaf"><div class="cell">User 使用率</div></td>
                   <td class="el-table__cell is-leaf"><div class="cell" v-if="server.cpu">{{ server.cpu.used }}%</div></td>
                 </tr>
                 <tr>
@@ -83,9 +83,9 @@
             <table cellspacing="0" style="width: 100%;">
               <tbody>
                 <tr>
-                  <td class="el-table__cell is-leaf"><div class="cell">服务器名称</div></td>
+                  <td class="el-table__cell is-leaf"><div class="cell">服务器Item</div></td>
                   <td class="el-table__cell is-leaf"><div class="cell" v-if="server.sys">{{ server.sys.computerName }}</div></td>
-                  <td class="el-table__cell is-leaf"><div class="cell">操作系统</div></td>
+                  <td class="el-table__cell is-leaf"><div class="cell">System</div></td>
                   <td class="el-table__cell is-leaf"><div class="cell" v-if="server.sys">{{ server.sys.osName }}</div></td>
                 </tr>
                 <tr>
@@ -109,13 +109,13 @@
             <table cellspacing="0" style="width: 100%;table-layout:fixed;">
               <tbody>
                 <tr>
-                  <td class="el-table__cell is-leaf"><div class="cell">Java名称</div></td>
+                  <td class="el-table__cell is-leaf"><div class="cell">JavaItem</div></td>
                   <td class="el-table__cell is-leaf"><div class="cell" v-if="server.jvm">{{ server.jvm.name }}</div></td>
                   <td class="el-table__cell is-leaf"><div class="cell">Java版本</div></td>
                   <td class="el-table__cell is-leaf"><div class="cell" v-if="server.jvm">{{ server.jvm.version }}</div></td>
                 </tr>
                 <tr>
-                  <td class="el-table__cell is-leaf"><div class="cell">启动时间</div></td>
+                  <td class="el-table__cell is-leaf"><div class="cell">启动 Time</div></td>
                   <td class="el-table__cell is-leaf"><div class="cell" v-if="server.jvm">{{ server.jvm.startTime }}</div></td>
                   <td class="el-table__cell is-leaf"><div class="cell">运行时长</div></td>
                   <td class="el-table__cell is-leaf"><div class="cell" v-if="server.jvm">{{ server.jvm.runTime }}</div></td>
@@ -129,7 +129,7 @@
                   <td colspan="3" class="el-table__cell is-leaf"><div class="cell" v-if="server.sys">{{ server.sys.userDir }}</div></td>
                 </tr>
                 <tr>
-                  <td colspan="1" class="el-table__cell is-leaf"><div class="cell">运行参数</div></td>
+                  <td colspan="1" class="el-table__cell is-leaf"><div class="cell">运行Params</div></td>
                   <td colspan="3" class="el-table__cell is-leaf"><div class="cell" v-if="server.jvm">{{ server.jvm.inputArgs }}</div></td>
                 </tr>
               </tbody>
@@ -141,7 +141,7 @@
       <el-col :span="24" class="card-box">
         <el-card>
           <div slot="header">
-            <span>磁盘状态</span>
+            <span>磁盘Status</span>
           </div>
           <div class="el-table el-table--enable-row-hover el-table--medium">
             <table cellspacing="0" style="width: 100%;">
@@ -149,7 +149,7 @@
                 <tr>
                   <th class="el-table__cell el-table__cell is-leaf"><div class="cell">盘符路径</div></th>
                   <th class="el-table__cell is-leaf"><div class="cell">文件系统</div></th>
-                  <th class="el-table__cell is-leaf"><div class="cell">盘符类型</div></th>
+                  <th class="el-table__cell is-leaf"><div class="cell">盘符Type</div></th>
                   <th class="el-table__cell is-leaf"><div class="cell">总大小</div></th>
                   <th class="el-table__cell is-leaf"><div class="cell">可用大小</div></th>
                   <th class="el-table__cell is-leaf"><div class="cell">已用大小</div></th>
@@ -191,7 +191,7 @@ export default {
     this.openLoading();
   },
   methods: {
-    /** 查询服务器信息 */
+    /** Search服务器信息 */
     getList() {
       getServer().then(response => {
         this.server = response.data;
@@ -200,7 +200,7 @@ export default {
     },
     // 打开加载层
     openLoading() {
-      this.$modal.loading("正在加载服务监控数据，请稍候！");
+      this.$modal.loading("Loading...");
     }
   }
 };

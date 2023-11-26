@@ -2,7 +2,7 @@
   <merge-table :table-data="tableData" :merge-arr="mergeArr">
     <el-table-column
       prop="warehouseName"
-      label="仓库/库区"
+      label="Warehouse"
     >
       <template v-slot="{ row }">
 
@@ -11,11 +11,11 @@
         <el-popover
           v-if="!row.warehouseId"
           placement="top-start"
-          title="提示"
+          title="Info"
           width="200"
           trigger="hover"
-          content="该物料未分配仓库/库区。">
-          <a slot="reference" class="el-icon-question blue" @click="allocationItem(row)">分配</a>
+          content="该Item未 Distribute Warehouse。">
+          <a slot="reference" class="el-icon-question blue" @click="allocationItem(row)"> Distribute </a>
         </el-popover>
 
         <el-popconfirm
@@ -26,8 +26,8 @@
           width="200"
           trigger="hover"
           @confirm="deleteItem(row)"
-          title="该仓库已经被逻辑删除,是否清除库存记录？">
-          <a slot="reference" class="el-icon-question red">删除</a>
+          title="该Warehouse已经被逻辑Delete,清除Inventory Record？">
+          <a slot="reference" class="el-icon-question red">Delete</a>
         </el-popconfirm>
       </template>
 
@@ -36,21 +36,21 @@
 
     <el-table-column
       prop="itemTypeName"
-      label="物料类型"
+      label="Category"
     >
     </el-table-column>
     <el-table-column
       prop="itemNo"
-      label="物料编码"
+      label="Goods No."
     ></el-table-column>
     <el-table-column
       prop="itemName"
-      label="物料名称"
+      label="Goods Name"
     ></el-table-column>
 
     <el-table-column
       prop="quantity"
-      label="库存"
+      label="Inventory"
     ></el-table-column>
   </merge-table>
 </template>
@@ -81,16 +81,16 @@ export default {
     deleteItem(row) {
       delWmsInventoryByWarehouse(row.warehouseId).then(res => {
         this.$message({
-          message: '删除成功',
+          message: 'Delete Successful',
           type: 'success'
         });
         this.$emit('update', row)
       })
     },
     allocationItem(row) {
-      console.log('该物料未分配仓库/库区。', row)
+      console.log('该Item未 Distribute Warehouse。', row)
       this.$message({
-        message: '该功能暂未开放',
+        message: '该功能No开放',
         type: 'warning'
       });
     }
