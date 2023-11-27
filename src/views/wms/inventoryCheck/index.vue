@@ -95,7 +95,7 @@
             icon="el-icon-edit"
             @click="handleView(scope.row)"
             v-hasPermi="['wms:inventoryCheck:edit']"
-          >查看
+          >View
           </el-button>
           <el-button
             size="mini"
@@ -199,7 +199,7 @@ export default {
         {key: 7, label: "审核 Time", visible: true},
         {key: 8, label: "Warehouse", visible: true},
         {key: 9, label: "Area", visible: true},
-        {key: 10, label: " Shelves", visible: false},
+        {key: 10, label: " Shelf", visible: false},
         {key: 11, label: "附件文件", visible: false},
         {key: 12, label: "Remark", visible: false},
       ],
@@ -273,7 +273,7 @@ export default {
       const id = row.id || this.ids
       this.$router.push({path: '/check/edit', query: {id}})
     },
-    /** 查看ButtonOperate */
+    /** ViewButtonOperate */
     handleView(row) {
       const id = row.id || this.ids
       this.$router.push({path: '/check/status', query: {id}})
@@ -318,7 +318,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllInventoryCount据？').then(() => {
+      this.$modal.confirm('Export All？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryCheck(queryParams);
       }).then(response => {

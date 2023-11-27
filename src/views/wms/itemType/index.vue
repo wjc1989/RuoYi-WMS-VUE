@@ -86,7 +86,7 @@
       </el-table-column>
     </el-table>
 
-    <!-- Add或ModifyItemType表对话框 -->
+    <!-- Add OrModifyItemType表对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px" class="dialog-form-two">
 
@@ -190,11 +190,11 @@ export default {
         ]
       },
       columns: [
-        {key: 1, label: "父ItemTypeid", visible: true},
-        {key: 2, label: "祖级列表", visible: true},
-        {key: 3, label: "ItemTypeItem", visible: true},
+        {key: 1, label: "ParentId", visible: true},
+        {key: 2, label: "Root", visible: true},
+        {key: 3, label: "Category Name", visible: true},
         {key: 4, label: "Sort", visible: true},
-        {key: 5, label: "ItemTypeStatus（0正常 1停用）", visible: true},
+        {key: 5, label: "Status（0Normal 1Disable）", visible: true},
       ],
     };
   },
@@ -318,7 +318,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const itemTypeIds = row.itemTypeId || this.ids;
-      this.$modal.confirm(' Do you want delete ItemType表No."' + itemTypeIds + '"？').then(function () {
+      this.$modal.confirm(' Do you want delete "' + itemTypeIds + '"？').then(function () {
         return delWmsItemType(itemTypeIds);
       }).then(() => {
         this.getList();
@@ -329,7 +329,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllItemType表？').then(() => {
+      this.$modal.confirm('Export All？').then(() => {
         this.exportLoading = true;
         return exportWmsItemType(queryParams);
       }).then(response => {

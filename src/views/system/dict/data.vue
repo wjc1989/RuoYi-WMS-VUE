@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="Dict Name" prop="dictType">
+      <el-form-item label="Type" prop="dictType">
         <el-select v-model="queryParams.dictType">
           <el-option
             v-for="item in typeOptions"
@@ -11,7 +11,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="Dict Label" prop="dictLabel">
+      <el-form-item label="Label" prop="dictLabel">
         <el-input
           v-model="queryParams.dictLabel"
           placeholder="Please Input Dict Label"
@@ -92,15 +92,15 @@
 
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="DictNo." align="center" prop="dictCode" />
-      <el-table-column label="Dict Label" align="center" prop="dictLabel">
+      <el-table-column label="ID" align="center" prop="dictCode" />
+      <el-table-column label="Label" align="center" prop="dictLabel">
         <template slot-scope="scope">
           <span v-if="scope.row.listClass == '' || scope.row.listClass == 'default'">{{scope.row.dictLabel}}</span>
           <el-tag v-else :type="scope.row.listClass == 'primary' ? '' : scope.row.listClass">{{scope.row.dictLabel}}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="Dict键值" align="center" prop="dictValue" />
-      <el-table-column label="DictSort" align="center" prop="dictSort" />
+      <el-table-column label="Value" align="center" prop="dictValue" />
+      <el-table-column label="Sort" align="center" prop="dictSort" />
       <el-table-column label="Status" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
@@ -140,7 +140,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyParams配置对话框 -->
+    <!-- Add OrModifyParams配置对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="110px">
         <el-form-item label="Type Code">
@@ -149,7 +149,7 @@
         <el-form-item label="Label" prop="dictLabel">
           <el-input v-model="form.dictLabel" placeholder="Please Input Label" />
         </el-form-item>
-        <el-form-item label="Key" prop="dictValue">
+        <el-form-item label="Value" prop="dictValue">
           <el-input v-model="form.dictValue" placeholder="Please Input Key" />
         </el-form-item>
         <el-form-item label="Style" prop="cssClass">

@@ -18,7 +18,7 @@ export default {
     }
   },
   methods: {
-    // 向父组件共享Data
+    // 向父组件享Data
     handleSelectionChange(val) {
       this.$emit('selection-change', val)
     },

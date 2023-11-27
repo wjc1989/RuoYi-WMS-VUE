@@ -207,8 +207,8 @@ export const STOCK_OUT_TEMPLATE = {
     "height": 20,
     "left": 425,
     "top": 67,
-    "title": "下 Time",
-    "value": "{ 下 Time } ",
+    "title": "Create Time",
+    "value": "{ Create Time } ",
     "defaultValue": "2020-08-27 12: 00: 00",
     "name": "createTime",
     "style": {
@@ -597,8 +597,8 @@ export const STOCK_IN_TEMPLATE = {
     "height": 20,
     "left": 425,
     "top": 67,
-    "title": "下 Time",
-    "value": "{ 下 Time } ",
+    "title": "Create Time",
+    "value": "{ Create Time } ",
     "defaultValue": "2020-08-27 12: 00: 00",
     "name": "createTime",
     "style": {

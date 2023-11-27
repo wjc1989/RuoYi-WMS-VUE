@@ -12,9 +12,7 @@
             </el-radio-button>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="顾客" prop="customerId">
-          <WmsCustomerSelect v-model="form.customerId"></WmsCustomerSelect>
-        </el-form-item>
+
         <el-form-item label="Amount" prop="receivableAmount" v-show="hasCustomer">
           <el-input-number v-model="form.receivableAmount" :precision="2" :min="0" label="Please Input Amount"></el-input-number>
         </el-form-item>
@@ -81,7 +79,7 @@
       </div>
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
-        <el-button @click="submitForm" type="primary">Add</el-button>
+        <el-button @click="submitForm" type="primary">Save</el-button>
       </div>
     </div>
     <el-dialog :visible="modalObj.show" :title="modalObj.title" :width="modalObj.width" @close="modalObj.cancel">
@@ -203,7 +201,7 @@ export default {
       this.form.receivableAmount = sum
     },
     cancel() {
-      this.$tab.closeOpenPage({path: '/wms/shipmentOrder'})
+      this.$tab.closeOpenPage({path: '/shipmentOrder'})
     },
     /** 提交Button */
     submitForm() {

@@ -35,7 +35,7 @@
       </el-form>
       <el-divider></el-divider>
       <div class="flex-center mb8">
-        <div class="flex-one large-tip bolder-font">结算明细</div>
+        <div class="flex-one large-tip bolder-font">结算 Detail</div>
         <div class="ops">
           <el-button type="primary" plain="plain" size="small" @click="startSettle">开始结算</el-button>
         </div>

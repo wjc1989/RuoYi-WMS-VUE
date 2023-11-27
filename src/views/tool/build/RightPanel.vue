@@ -5,7 +5,7 @@
       <el-tab-pane label="表属性" name="form" />
     </el-tabs>
     <div class="field-box">
-      <a class="document-link" target="_blank" :href="documentLink" title="查看组件文档">
+      <a class="document-link" target="_blank" :href="documentLink" title="View组件文档">
         <i class="el-icon-link" />
       </a>
       <el-scrollbar class="right-scrollbar">
@@ -585,7 +585,7 @@ import {
 
 const dateTimeFormat = {
   date: 'yyyy-MM-dd',
-  week: 'yyyy 第 WW 周',
+  week: 'yyyy Page  WW 周',
   month: 'yyyy-MM',
   year: 'yyyy',
   datetime: 'yyyy-MM-dd HH:mm:ss',

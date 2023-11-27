@@ -11,7 +11,7 @@
       <tr>
         <th>Goods Name</th>
         <th>Goods No.</th>
-        <th>ItemType</th>
+        <th>Category</th>
         <th>Count</th>
         <th>Warehouse</th>
       </tr>

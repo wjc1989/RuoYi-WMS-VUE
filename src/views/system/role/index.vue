@@ -142,7 +142,7 @@
               <el-dropdown-item command="handleDataScope" icon="el-icon-circle-check"
                 v-hasPermi="['system:role:edit']">Data Perm</el-dropdown-item>
               <el-dropdown-item command="handleAuthUser" icon="el-icon-user"
-                v-hasPermi="['system:role:edit']"> DistributeUser </el-dropdown-item>
+                v-hasPermi="['system:role:edit']"> Distribute User </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </template>
@@ -157,7 +157,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyRole配置对话框 -->
+    <!-- Add OrModifyRole配置对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-form-item label="Role Name" prop="roleName">
@@ -209,7 +209,7 @@
       </div>
     </el-dialog>
 
-    <!--  DistributeRoleData Perm对话框 -->
+    <!--  Distribute RoleData Perm对话框 -->
     <el-dialog :title="title" :visible.sync="openDataScope" width="600px" append-to-body>
       <el-form :model="form" label-width="120px">
         <el-form-item label="Role Name">
@@ -540,7 +540,7 @@ export default {
         this.$refs.dept.setCheckedKeys([]);
       }
     },
-    /**  DistributeData PermOperate */
+    /**  Distribute Data PermOperate */
     handleDataScope(row) {
       this.reset();
       const roleDeptTreeselect = this.getRoleDeptTreeselect(row.roleId);
@@ -552,10 +552,10 @@ export default {
             this.$refs.dept.setCheckedKeys(res.checkedKeys);
           });
         });
-        this.title = " DistributeData Perm";
+        this.title = " Distribute Data Perm";
       });
     },
-    /**  DistributeUser Operate */
+    /**  Distribute User Operate */
     handleAuthUser: function(row) {
       const roleId = row.roleId;
       this.$router.push("/system/role-auth/user/" + roleId);

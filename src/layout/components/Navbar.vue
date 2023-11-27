@@ -11,7 +11,7 @@
 
         <!-- <search id="header-search" class="right-menu-item" />
 
-        <el-tooltip content="源码Address" effect="dark" placement="bottom">
+        <el-tooltip content="Source 码Address" effect="dark" placement="bottom">
           <ruo-yi-git id="ruoyi-git" class="right-menu-item hover-effect" />
         </el-tooltip>
 

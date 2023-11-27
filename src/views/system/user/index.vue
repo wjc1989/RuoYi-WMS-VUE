@@ -186,7 +186,7 @@
                   <el-dropdown-item command="handleResetPwd" icon="el-icon-key"
                     v-hasPermi="['system:user:resetPwd']">ResetPassword</el-dropdown-item>
                   <el-dropdown-item command="handleAuthRole" icon="el-icon-circle-check"
-                    v-hasPermi="['system:user:edit']"> DistributeRole</el-dropdown-item>
+                    v-hasPermi="['system:user:edit']"> Distribute Role</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </template>
@@ -203,7 +203,7 @@
       </el-col>
     </el-row>
 
-    <!-- Add或ModifyUser 配置对话框 -->
+    <!-- Add OrModifyUser 配置对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
@@ -324,7 +324,7 @@
         drag
       >
         <i class="el-icon-upload"></i>
-        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+        <div class="el-upload__text">将文件拖到此处， Or<em>点击上传</em></div>
         <div class="el-upload__tip text-center" slot="tip">
           <div class="el-upload__tip" slot="tip">
             <el-checkbox v-model="upload.updateSupport" /> 更新已经存在的User Data
@@ -600,7 +600,7 @@ export default {
           });
         }).catch(() => {});
     },
-    /**  DistributeRoleOperate */
+    /**  Distribute RoleOperate */
     handleAuthRole: function(row) {
       const userId = row.userId;
       this.$router.push("/system/user-auth/role/" + userId);

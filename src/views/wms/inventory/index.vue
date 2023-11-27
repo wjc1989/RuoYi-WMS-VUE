@@ -6,7 +6,7 @@
         <DictRadio v-model="queryParams.panelType" :radioData="dict.type.wms_inventory_panel_type" size="small"
                    @change="handleQuery"></DictRadio>
       </el-form-item>
-      <el-form-item label="Item" prop="itemId">
+      <el-form-item label="Goods" prop="itemId">
         <item-select v-model="queryParams.itemId"></item-select>
       </el-form-item>
       <el-form-item label="Warehouse" prop="rackId">
@@ -129,7 +129,7 @@ export default {
           // 10 Area需要考虑Area空
           content.forEach(item => {
             if (!item.warehouseName) {
-              item.warehouseName = "暂未 DistributeWarehouse"
+              item.warehouseName = "No Distribute Warehouse"
             }
             if (item.areaName) {
               item.warehouseName = item.warehouseName + '/' + item.areaName
@@ -139,10 +139,10 @@ export default {
           // Area
           content.forEach(item => {
             if (!item.warehouseName) {
-              item.warehouseName = "暂未 DistributeWarehouse"
+              item.warehouseName = "No Distribute Warehouse"
             }
             if (!item.areaName) {
-              item.areaName = "暂未 DistributeArea"
+              item.areaName = "No Distribute Area"
             }
           })
 
@@ -187,7 +187,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams
-      this.$modal.confirm('Export AllInventory？').then(() => {
+      this.$modal.confirm('Export All？').then(() => {
         this.exportLoading = true
         return exportWmsInventory(queryParams)
       }).then(response => {

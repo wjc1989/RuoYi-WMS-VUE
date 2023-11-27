@@ -50,7 +50,7 @@
         <template slot-scope="scope">
           <el-button size="mini"
                      type="text"
-                     @click.stop="handleView(scope.row)">{{ '查看Outbound ' }}
+                     @click.stop="handleView(scope.row)">{{ 'ViewOutbound ' }}
           </el-button>
         </template>
       </el-table-column>
@@ -83,7 +83,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyOutbound Record对话框 -->
+    <!-- Add OrModifyOutbound Record对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="Outbound No." prop="shipmentOrderId">
@@ -181,7 +181,7 @@ export default {
     // this.$message.warning('该功能正在开发中...')
   },
   methods: {
-    //查看Outbound
+    //ViewOutbound
     handleView(row) {
       const id = row.shipmentOrderId
       this.$router.push({path: '/wms/shipmentOrder/status', query: {id}})

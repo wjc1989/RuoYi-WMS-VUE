@@ -147,7 +147,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyParams配置对话框 -->
+    <!-- Add OrModifyParams配置对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-form-item label="Name" prop="configName">

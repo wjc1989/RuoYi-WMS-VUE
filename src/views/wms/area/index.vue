@@ -169,7 +169,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyArea对话框 -->
+    <!-- Add OrModifyArea对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form
         ref="form"

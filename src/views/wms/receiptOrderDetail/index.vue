@@ -164,7 +164,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyInbound Detail对话框 -->
+    <!-- Add OrModifyInbound Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="Inbound No." prop="receiptOrderId">

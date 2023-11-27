@@ -122,7 +122,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyNotice对话框 -->
+    <!-- Add OrModifyNotice对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="780px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>

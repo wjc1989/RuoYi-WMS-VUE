@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="120px" :model="queryParams" ref="queryForm"
+    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="130px" :model="queryParams" ref="queryForm"
              size="medium">
       <el-form-item label="Outbound Status" prop="shipmentOrderStatus">
         <DictRadio v-model="queryParams.shipmentOrderStatus" :radioData="dict.type.wms_shipment_status" :showAll="'all'"
@@ -29,7 +29,7 @@
     <el-row class="mb8" :gutter="10">
       <el-col :span="1.5">
         <el-button v-hasPermi="['wms:shipmentOrder:add']" icon="el-icon-plus" plain="plain" size="mini" type="primary"
-                   @click="handleAdd()">CreateOutbound
+                   @click="handleAdd()">Logistics
         </el-button>
       </el-col>
       <el-col :span="1.5">
@@ -79,7 +79,7 @@
           <el-button v-hasPermi="['wms:shipmentOrder:status']" v-if="row.detailCount && !row.waveNo && row.shipmentOrderStatus !== ShipmentOrderConstant.Status.ALL_IN" icon="el-icon-truck" size="mini"
                      type="text" @click.stop="handleStatus(row)">Outbound
           </el-button>
-          <el-button icon="el-icon-print" size="mini" type="text" @click.stop="printOut(row,true)">Print</el-button>
+          <el-button icon="el-icon-printer" size="mini" type="text" @click.stop="printOut(row,true)">Print</el-button>
         </template>
       </el-table-column>
     </WmsTable>

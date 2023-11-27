@@ -102,7 +102,7 @@
       </el-table-column>
     </el-table>
 
-    <!-- Add或ModifyMenu 对话框 -->
+    <!-- Add OrModifyMenu 对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="680px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>

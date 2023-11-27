@@ -12,12 +12,12 @@ const allowDisparity = 1000 * 60 * 60 * 24 * 7
 
 /**
  * 判断当前已 star
- * @param owner Warehouse空间Address(企业、组织或个人的Addresspath)
+ * @param owner Warehouse空间Address(企业、组织 Or个人的Addresspath)
  * @param repo  Warehouse路径(path)
  * @param userId
  * @param redirectUrl
- * @param productName 开源项目名
- * @param productLink 开源链接
+ * @param productName 开Source 项目名
+ * @param productLink 开Source 链接
  */
 export function isStarRepo(owner, repo, userId, redirectUrl,productName,productLink) {
   const judge = process.env.VUE_APP_JUDGE_STAR
@@ -99,7 +99,7 @@ function toStar(redirectUrl,productName,productLink,accessToken,owner,repo,key,c
   const tipStr = `
 		<div>
 			<p><b>嗨，同学，来支持一下 ${productName} 吧，项目点个 star ！</b></p>
-			<div>Click【去Star】Button。进入${productName} 开源项目主页，在右上角点个 star 。</div>
+			<div>Click【去Star】Button。进入${productName} 开Source 项目主页，在右上角点个 star 。</div>
 			<p><b>本页面将在 star 后正常开放展示</b></p>
 		</div>
 		`

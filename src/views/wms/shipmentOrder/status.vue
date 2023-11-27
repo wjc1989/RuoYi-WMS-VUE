@@ -34,10 +34,10 @@
       <el-divider/>
 
       <div class="flex-center mb8">
-        <div class="flex-one large-tip bolder-font">物流信息</div>
+        <div class="flex-one large-tip bolder-font">Logistics</div>
         <div class="ops">
           <el-button v-if="mergeDetailStatusArray.length === 1" type="primary" plain="plain" size="small"
-                     @click="deliveryAdd">Add快递No.
+                     @click="deliveryAdd">Add Tracking No.
           </el-button>
         </div>
       </div>
@@ -84,7 +84,7 @@
 
         <el-col :span="1.5">
           <el-button size="small" icon="el-icon-check" type="warning" plain="plain" @click="dialogFormVisible = true">
-             DistributeWarehouse
+             Distribute Warehouse
           </el-button>
         </el-col>
 
@@ -104,7 +104,7 @@
                              :selectable="(row)=>!row.finish"></el-table-column>
             <el-table-column label="Goods Name" align="center" prop="prod.itemName"></el-table-column>
             <el-table-column label="Goods No." align="center" prop="prod.itemNo"></el-table-column>
-            <el-table-column label="ItemType" align="center" prop="prod.itemType"></el-table-column>
+            <el-table-column label="Cagegory" align="center" prop="prod.itemType"></el-table-column>
             <el-table-column label="Plan Count" align="center" prop="planQuantity"></el-table-column>
             <el-table-column label="Real Count" align="center" width="150">
               <template slot-scope="scope">
@@ -136,7 +136,7 @@
         <el-button @click="cancel">Cancel</el-button>
         <el-button @click="submitForm" type="primary" :disabled="finish">Add</el-button>
       </div>
-      <!-- Add或ModifyOutbound Record对话框 -->
+      <!-- Add OrModifyOutbound Record对话框 -->
       <el-dialog :title="deliveryTitle" :visible.sync="deliveryOpen" width="50%" append-to-body>
         <el-form ref="deliveryForm" :model="deliveryForm" :rules="rules" label-width="108px" inline
                  class="dialog-form-two">
@@ -171,10 +171,10 @@
         :form-data.sync="batchForm"
         @confirmed="onBatchDialogFinished"
       ></BatchWarehouseDialog>
-      <el-dialog title="自动 DistributeWarehouse" :visible.sync="dialogFormVisible" width="400px">
+      <el-dialog title="自动 Distribute Warehouse" :visible.sync="dialogFormVisible" width="400px">
         <el-form :model="dialogForm">
-          <el-form-item label=" Distribute策略" label-width="98px">
-            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute策略">
+          <el-form-item label=" Distribute 策略" label-width="98px">
+            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute 策略">
               <el-option label="Inventory量小的库位优先" :value="1"></el-option>
               <el-option label="Inventory量大的库位优先" :value="2"></el-option>
               <el-option label="先入先出(FIFO)" :value="3" disabled></el-option>
@@ -228,7 +228,7 @@ export default {
   },
   data() {
     return {
-      //  DistributeWarehouse
+      //  Distribute Warehouse
       dialogFormVisible: false,
       dialogForm: {
         date1: '',
@@ -279,10 +279,10 @@ export default {
     }
   },
   methods: {
-    /** 自动 Distribute Warehouse */
+    /** 自动 Distribute  Warehouse */
     allocated() {
       allocatedInventory({id:this.shipmentOrderId,type:this.dialogForm.region}).then(response => {
-        this.$modal.msgSuccess(" Distribute Successful");
+        this.$modal.msgSuccess(" Distribute  Successful");
         this.dialogFormVisible = false;
         this.loadDetail(this.shipmentOrderId)
       });
@@ -339,9 +339,9 @@ export default {
     canceldeliveryForm() {
       this.deliveryOpen = false
     },
-    // Add物流信息
+    // AddLogistics
     deliveryAdd() {
-      this.deliveryTitle = "Add物流信息"
+      this.deliveryTitle = "New"
       this.deliveryOpen = true
       this.deliveryForm.shipmentOrderId = this.shipmentOrderId
     },
@@ -374,7 +374,7 @@ export default {
       }
     },
     cancel() {
-      this.$tab.closeOpenPage({path: '/wms/shipmentOrder'})
+      this.$tab.closeOpenPage({path: '/shipmentOrder'})
     },
     /** 提交Button */
     submitForm() {
@@ -382,7 +382,7 @@ export default {
         if (!valid) {
           this.$notify({
             title: 'Warning',
-            message: "请完善表信息",
+            message: "Verification failed",
             type: 'warning'
           });
           return
@@ -433,7 +433,8 @@ export default {
             it.place = it.prod.place;
           }
           it.range = this.getRange(it.shipmentOrderStatus)
-          it.finish = it.shipmentOrderStatus === 13
+          it.finish = it.shipmentOrderStatus === 13;
+          it.realQuantity=it.planQuantity;
         })
         this.sourceDetails = details.map(it => ({...it}))
         this.finish = details.filter(it => !it.finish)?.length === 0

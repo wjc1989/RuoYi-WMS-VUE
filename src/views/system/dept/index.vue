@@ -96,7 +96,7 @@
       </el-table-column>
     </el-table>
 
-    <!-- Add或ModifyDepartment对话框 -->
+    <!-- Add OrModifyDepartment对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>

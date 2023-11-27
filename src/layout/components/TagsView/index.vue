@@ -18,12 +18,12 @@
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
-      <li @click="refreshSelectedTag(selectedTag)"><i class="el-icon-refresh-right"></i> Refresh页面</li>
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)"><i class="el-icon-close"></i> Close当前</li>
-      <li @click="closeOthersTags"><i class="el-icon-circle-close"></i> Close其他</li>
-      <li v-if="!isFirstView()" @click="closeLeftTags"><i class="el-icon-back"></i> Close左侧</li>
-      <li v-if="!isLastView()" @click="closeRightTags"><i class="el-icon-right"></i> Close右侧</li>
-      <li @click="closeAllTags(selectedTag)"><i class="el-icon-circle-close"></i> AllClose</li>
+      <li @click="refreshSelectedTag(selectedTag)"><i class="el-icon-refresh-right"></i> Refresh</li>
+      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)"><i class="el-icon-close"></i> Close Current</li>
+      <li @click="closeOthersTags"><i class="el-icon-circle-close"></i> Close Other</li>
+      <li v-if="!isFirstView()" @click="closeLeftTags"><i class="el-icon-back"></i> Close Left</li>
+      <li v-if="!isLastView()" @click="closeRightTags"><i class="el-icon-right"></i> Close Right</li>
+      <li @click="closeAllTags(selectedTag)"><i class="el-icon-circle-close"></i> All Close</li>
     </ul>
   </div>
 </template>

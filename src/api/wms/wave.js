@@ -53,7 +53,7 @@ export function exportWave(query) {
   })
 }
 
-// Wave  DistributeWarehouse
+// Wave  Distribute Warehouse
 export function waveAllocatedInventory(params) {
   return request({
     url: '/wms/wave/shipment/allocated/',
@@ -102,7 +102,7 @@ export function delWaveForReceipt(id) {
   })
 }
 
-// Wave  DistributeWarehouse
+// Wave  Distribute Warehouse
 export function waveAllocatedInventoryForReceipt(params) {
   return request({
     url: '/wms/wave/receipt/allocated/',

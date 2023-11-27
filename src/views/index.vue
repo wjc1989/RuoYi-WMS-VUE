@@ -73,7 +73,7 @@
                   </div>
                   <div class="card-panel-description">
                     <div class="card-panel-text">
-                      Warn
+                      Stock Alert
                     </div>
                     <count-to :start-val="0" :end-val="totalWarn" :duration="3200" class="card-panel-num" />
                   </div>
@@ -98,12 +98,12 @@
         <el-card shadow="always" style="padding-bottom: 20px; font-size: 14px;margin-top: 20px;margin-bottom: 20px;">
           <div slot="header" ref="warn"><span>Warn</span></div>
           <WmsTable v-loading="loading" :data="warnList">
-            <el-table-column align="left" label="No." prop="id" width="72"></el-table-column>
-            <el-table-column align="left" label="Item" prop="itemName">
+            <el-table-column align="left" label="ID" prop="id" width="72"></el-table-column>
+            <el-table-column align="left" label="Goods" prop="itemName">
               <template v-slot="{ row }"><span style="color:red">{{ row.itemName }}</span></template>
             </el-table-column>
             <el-table-column align="left" label="No." prop="itemNo"></el-table-column>
-            <el-table-column align="left" label="Warehouse">
+            <el-table-column align="left" label="Warehouse" width="200">
               <template v-slot="{ row }"><span v-if="row.warehouseName">{{ row.warehouseName }}</span><span
                   v-if="row.areaName">/{{ row.areaName }}</span></template>
             </el-table-column>
@@ -120,20 +120,20 @@
       <el-col :span="12">
 
         <el-card style="padding-bottom: 20px; font-size: 14px;margin-top: 20px;">
-          <div slot="header" ref="expiry"><span>Expiry Item</span></div>
+          <div slot="header" ref="expiry"><span>Expiry Goods</span></div>
           <WmsTable v-loading="loading" :data="expiryList">
-            <el-table-column label="No." align="center" prop="itemNo" v-if="columns[0].visible" />
-            <el-table-column label="Item" align="center" prop="itemName" v-if="columns[1].visible">
+            <el-table-column label="ID" align="center" prop="itemNo" v-if="columns[0].visible" />
+            <el-table-column label="Goods" align="center" prop="itemName" v-if="columns[1].visible">
               <template slot-scope="scope">
                 <span style="color:red;">{{ scope.row.itemName }}</span>
               </template>
             </el-table-column>
             <el-table-column label="Type" align="center" prop="itemTypeName" v-if="columns[2].visible" />
             <el-table-column label="Unit" align="center" prop="unit" v-if="columns[3].visible" />
-            <el-table-column label="Warehouse" align="center" prop="warehouseName" v-if="columns[6].visible" />
+            <el-table-column label="Warehouse" align="center" prop="warehouseName"  width="100" v-if="columns[6].visible" />
             <el-table-column label="Area" align="center" prop="areaName" v-if="columns[5].visible" />
             <el-table-column label="Rack Name" align="center" prop="rackName" v-if="columns[4].visible" />
-            <el-table-column label="Safty Count" align="center" prop="quantity" v-if="columns[7].visible" />
+            <el-table-column label="Safty Count" align="center" prop="quantity"  width="100" v-if="columns[7].visible" />
             <el-table-column label="Expiry Date" align="center" prop="expiryDate" width="180" v-if="columns[8].visible">
               <template slot-scope="scope">
                 <span style="color:red;font-weight: bold;">{{ parseTime(scope.row.expiryDate, "{yyyy}-{mm}-{dd}")

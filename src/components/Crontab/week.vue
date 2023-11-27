@@ -39,7 +39,7 @@
 
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="4">
-				第
+				Page
 				<el-input-number v-model='average01' :min="1" :max="4" /> 周的
 				<el-select clearable v-model="average02">
 					<el-option v-for="(item,index) of weekList" :key="index" :label="item.value" :value="item.key">{{item.value}}</el-option>

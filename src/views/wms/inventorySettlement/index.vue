@@ -137,7 +137,7 @@
             icon="el-icon-edit"
             @click="handleView(scope.row)"
             v-hasPermi="['wms:wmsInventorySettlement:edit']"
-          >查看
+          >View
           </el-button>
           <el-button
             size="mini"
@@ -285,7 +285,7 @@ export default {
       this.single = selection.length !== 1;
       this.multiple = !selection.length;
     },
-    /** 查看ButtonOperate */
+    /** ViewButtonOperate */
     handleView(row) {
       const id = row.id || this.ids
       this.$router.push({path: 'inventorySettlement/status', query: {id}})
@@ -319,7 +319,7 @@ export default {
     handleExport() {
       const queryParams = this.queryParams;
       this.$modal
-        .confirm("Export AllInventory结算？")
+        .confirm("Export All？")
         .then(() => {
           this.exportLoading = true;
           return exportWmsInventorySettlement(queryParams);

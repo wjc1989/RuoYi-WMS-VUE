@@ -55,10 +55,10 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label=" Shelves" prop="rackId">
+      <el-form-item label=" Shelf" prop="rackId">
         <el-input
           v-model="queryParams.rackId"
-          placeholder="Please Input  Shelves"
+          placeholder="Please Input  Shelf"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -155,7 +155,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyInventoryCount据 Detail对话框 -->
+    <!-- Add OrModifyInventoryCount据 Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="InventoryCount" prop="inventoryCheckId">
@@ -176,8 +176,8 @@
         <el-form-item label="Area" prop="areaId">
           <el-input v-model="form.areaId" placeholder="Please Input Area" />
         </el-form-item>
-        <el-form-item label=" Shelves" prop="rackId">
-          <el-input v-model="form.rackId" placeholder="Please Input  Shelves" />
+        <el-form-item label=" Shelf" prop="rackId">
+          <el-input v-model="form.rackId" placeholder="Please Input  Shelf" />
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Please Input Remark" />
@@ -242,7 +242,7 @@ export default {
             { key: 4, label: "CountCount", visible:  true  },
             { key: 5, label: "Warehouse", visible:  true  },
             { key: 6, label: "Area", visible:  true  },
-            { key: 7, label: " Shelves", visible:  true  },
+            { key: 7, label: " Shelf", visible:  true  },
                 { key: 9, label: "Remark", visible:  true  },
                          ],
     };
@@ -353,7 +353,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllInventoryCount据 Detail？').then(() => {
+      this.$modal.confirm('Export All？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryCheckDetail(queryParams);
       }).then(response => {

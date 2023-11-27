@@ -3,7 +3,7 @@
     <div class="shipment-order-content">
       <el-row class="mb8 mt10" :gutter="10">
         <el-col :span="1.5">
-          <div class="flex-one large-tip bolder-font">Inbound明细</div>
+          <div class="flex-one large-tip bolder-font">Inbound Detail</div>
         </el-col>
       </el-row>
 
@@ -31,12 +31,12 @@
       <el-row class="mb8 mt20" :gutter="10">
         <el-col :span="1.5" v-if="form.status === '1'" >
           <el-button size="small" icon="el-icon-check" type="warning" plain="plain" @click="dialogFormVisible = true">
-             DistributeWarehouse
+             Distribute Warehouse
           </el-button>
         </el-col>
 <!--        <el-col :span="1.5">-->
 <!--          <el-button size="small" type="danger" plain="plain" @click="onCancelInventory">-->
-<!--            Cancel Distribute-->
+<!--            Cancel Distribute -->
 <!--          </el-button>-->
 <!--        </el-col>-->
         <el-col :span="1.5" >
@@ -86,11 +86,11 @@
         :form-data.sync="batchForm"
         @confirmed="onBatchDialogFinished"
       ></BatchWarehouseDialog>
-      <el-dialog title="自动 DistributeWarehouse" :visible.sync="dialogFormVisible" width="400px">
+      <el-dialog title="自动 Distribute Warehouse" :visible.sync="dialogFormVisible" width="400px">
         <el-form :model="dialogForm">
-          <el-form-item label=" Distribute策略" label-width="98px"
-                        :rules="[{ required: true, message: 'Please select  Distribute策略', trigger: 'change' }]">
-            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute策略">
+          <el-form-item label=" Distribute 策略" label-width="98px"
+                        :rules="[{ required: true, message: 'Please select  Distribute 策略', trigger: 'change' }]">
+            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute 策略">
               <el-option label="Inventory量小的库位优先" :value="1"></el-option>
               <el-option label="Inventory量大的库位优先" :value="2"></el-option>
             </el-select>
@@ -139,7 +139,7 @@ export default {
   },
   data() {
     return {
-      //  DistributeWarehouse
+      //  Distribute Warehouse
       dialogFormVisible: false,
       dialogForm: {
         region: 1,
@@ -187,17 +187,17 @@ export default {
     }
   },
   methods: {
-    /** Cancel Distribute */
+    /** Cancel Distribute  */
     onCancelInventory(){
       cancelAllocatedInventoryForReceipt(this.waveOrderId).then(res=>{
         this.$modal.msgSuccess(res ? 'Modify Successful' : 'Modify失败')
         this.cancel()
       })
     },
-    /** 自动 Distribute Warehouse */
+    /** 自动 Distribute  Warehouse */
     allocated() {
       waveAllocatedInventoryForReceipt({id:this.waveOrderId,type:this.dialogForm.region}).then(response => {
-        this.$modal.msgSuccess(" Distribute Successful");
+        this.$modal.msgSuccess(" Distribute  Successful");
         this.dialogFormVisible = false;
         const {details, items, allocationDetails} = response
         const map = {};

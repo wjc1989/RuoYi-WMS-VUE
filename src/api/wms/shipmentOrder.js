@@ -61,7 +61,7 @@ export function exportWmsShipmentOrder(query) {
   })
 }
 
-// 个订 DistributeWarehouse
+// 个订 Distribute Warehouse
 export function allocatedInventory(params) {
   return request({
     url: '/wms/shipmentOrder/allocated',

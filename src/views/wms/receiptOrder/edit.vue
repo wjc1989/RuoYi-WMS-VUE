@@ -82,7 +82,7 @@
       </div>
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
-        <el-button @click="submitForm" type="primary">Add</el-button>
+        <el-button @click="submitForm" type="primary">Save</el-button>
       </div>
     </div>
     <el-dialog :visible="modalObj.show" :title="modalObj.title" :width="modalObj.width" @close="modalObj.cancel">

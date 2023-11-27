@@ -41,7 +41,7 @@
     </WmsTable>
     <pagination v-show="total&gt;0" :limit.sync="queryParams.pageSize" :page.sync="queryParams.pageNum" :total="total"
                 @pagination="getList"></pagination>
-    <!-- Add或ModifyInventory Record对话框-->
+    <!-- Add OrModifyInventory Record对话框-->
     <el-dialog append-to-body="append-to-body" :title="title" :visible.sync="open" width="50%">
       <el-form class="dialog-form-two" inline="inline" label-width="108px" :model="form" ref="form" :rules="rules">
         <el-form-item label="Operateid" prop="formId">
@@ -55,8 +55,8 @@
         <el-form-item label="ItemID" prop="itemId">
           <el-input v-model="form.itemId" placeholder="Please Input ItemID"></el-input>
         </el-form-item>
-        <el-form-item label=" Shelvesid" prop="rackId">
-          <el-input v-model="form.rackId" placeholder="Please Input  Shelvesid"></el-input>
+        <el-form-item label=" Shelfid" prop="rackId">
+          <el-input v-model="form.rackId" placeholder="Please Input  Shelfid"></el-input>
         </el-form-item>
         <el-form-item label="InventoryChange" prop="quantity">
           <el-input v-model="form.quantity" placeholder="Please Input InventoryChange"></el-input>
@@ -123,7 +123,7 @@ export default {
             { key: 1, label: "Operateid（Outbound 、Inbound、Inventory移动表id）", visible:  true  },
             { key: 2, label: "Type", visible:  true  },
             { key: 3, label: "ItemID", visible:  true  },
-            { key: 4, label: " Shelvesid", visible:  true  },
+            { key: 4, label: " Shelfid", visible:  true  },
             { key: 5, label: "InventoryChange", visible:  true  },
             { key: 6, label: "Remark", visible:  true  },
                              ],
@@ -237,7 +237,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllInventory Record？').then(() => {
+      this.$modal.confirm('Export All？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryHistory(queryParams);
       }).then(response => {

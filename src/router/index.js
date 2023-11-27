@@ -9,7 +9,7 @@ import Layout from '@/layout'
 /**
  * Note: Router配置项
  *
- * hidden: true                     // 当设置 true 的时候该RouterNo 会再侧边栏出现 e.g.401，login等页面，或者e.g.一些编辑页面/edit/1
+ * hidden: true                     // 当设置 true 的时候该RouterNo 会再侧边栏出现 e.g.401，login等页面， Or者e.g.一些编辑页面/edit/1
  * alwaysShow: true                 // 当你一个Router下面的 children 声明的Router大于1个时，自动会变成嵌套的模式--e.g.组件页面
  *                                  // 只有一个时，会将那个子Router当做根RouterShow在侧边栏--e.g.引导页面
  *                                  // 若你想No 管Router下面的 children 声明的个数都Show你的根Router
@@ -102,7 +102,7 @@ export const dynamicRoutes = [
         path: 'role/:userId(\\d+)',
         component: () => import('@/views/system/user/authRole'),
         name: 'AuthRole',
-        meta: { title: ' DistributeRole', activeMenu: '/system/user' }
+        meta: { title: ' Distribute Role', activeMenu: '/system/user' }
       }
     ]
   },
@@ -116,7 +116,7 @@ export const dynamicRoutes = [
         path: 'user/:roleId(\\d+)',
         component: () => import('@/views/system/role/authUser'),
         name: 'AuthUser',
-        meta: { title: ' DistributeUser ', activeMenu: '/system/role' }
+        meta: { title: ' Distribute User ', activeMenu: '/system/role' }
       }
     ]
   },

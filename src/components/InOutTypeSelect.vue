@@ -17,7 +17,7 @@ const optionsMap = [{
     dictName: "wms_shipment_type",
   },
   {
-    name: "移库",
+    name: "Move",
     dictName: "wms_movement_type",
   },
   {
@@ -52,7 +52,7 @@ export default {
         return this.value
       },
       set(v) {
-        // 取数组的第二个元素
+        // 取数组的Page 二个元素
         let type = v[1] || v[0] || null
         this.$emit('input', type)
       }

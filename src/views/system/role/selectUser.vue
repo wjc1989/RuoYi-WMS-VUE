@@ -122,7 +122,7 @@ export default {
       const roleId = this.queryParams.roleId;
       const userIds = this.userIds.join(",");
       if (userIds == "") {
-        this.$modal.msgError("Please select 要 Distribute的User ");
+        this.$modal.msgError("Please select 要 Distribute 的User ");
         return;
       }
       authUserSelectAll({ roleId: roleId, userIds: userIds }).then(res => {

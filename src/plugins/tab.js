@@ -22,7 +22,7 @@ export default {
       })
     })
   },
-  // Close当前tab页签，打开新页签
+  // Close Currenttab页签，打开新页签
   closeOpenPage(obj) {
     console.log("close Open Page,",router.currentRoute)
     store.dispatch("tagsView/delView", router.currentRoute);

@@ -63,7 +63,7 @@
         <el-form-item>
           <span slot="label">
             Higher
-            <el-tooltip content=" Distribute到指定Menu 下，例e.g. 系统管理" placement="top">
+            <el-tooltip content=" Distribute 到指定Menu 下，例e.g. 系统管理" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>

@@ -14,8 +14,8 @@
           title="Info"
           width="200"
           trigger="hover"
-          content="该Item未 DistributeWarehouse。">
-          <a slot="reference" class="el-icon-question blue" @click="allocationItem(row)"> Distribute</a>
+          content="该Item未 Distribute Warehouse。">
+          <a slot="reference" class="el-icon-question blue" @click="allocationItem(row)"> Distribute </a>
         </el-popover>
 
         <el-popconfirm
@@ -88,9 +88,9 @@ export default {
       })
     },
     allocationItem(row) {
-      console.log('该Item未 DistributeWarehouse。', row)
+      console.log('该Item未 Distribute Warehouse。', row)
       this.$message({
-        message: '该功能暂未开放',
+        message: '该功能No开放',
         type: 'warning'
       });
     }

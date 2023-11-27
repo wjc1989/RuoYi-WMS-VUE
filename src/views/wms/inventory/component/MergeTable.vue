@@ -51,7 +51,7 @@ export default {
         this.mergeObj[key] = [];
         data.forEach((item, index) => {
           if (index === 0) {
-            // 第一行始终新组
+            // Page 一行始终新组
             this.mergeObj[key].push(1);
           } else {
             let valid = true;

@@ -1,10 +1,10 @@
 <template>
 
-  <el-dialog :visible.sync="dialogVisible" title="Inventory一览" width="800px" @close="handleDialogClose">
+  <el-dialog :visible.sync="dialogVisible" title="Inventory Info" width="800px" @close="handleDialogClose">
     <div ref="reportHTML" v-html="msg" class="web-con"></div>
     <el-table :data="wmsInventoryList" v-loading="loading">
       <el-table-column width="100" property="itemName" label="Goods Name"></el-table-column>
-      <el-table-column width="150" property="itemTypeName" label="Item类别"></el-table-column>
+      <el-table-column width="150" property="itemTypeName" label="Category"></el-table-column>
       <el-table-column property="warehouseName" label="Warehouse"></el-table-column>
       <el-table-column width="100" property="quantity" label="Inventory"></el-table-column>
     </el-table>
@@ -73,7 +73,7 @@ export default {
 
         content.forEach(item => {
           if (!item.warehouseName) {
-            item.warehouseName = "暂未 DistributeWarehouse"
+            item.warehouseName = "No Distribute Warehouse"
           }
           if (item.areaName) {
             if (item.areaName) {

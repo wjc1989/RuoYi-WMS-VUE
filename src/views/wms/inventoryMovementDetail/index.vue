@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium" class="ry_form">
-      <el-form-item label="Inventory移动Id" prop="inventoryMovementId">
+      <el-form-item label="Move No." prop="inventoryMovementId">
         <el-input
           v-model="queryParams.inventoryMovementId"
-          placeholder="Please Input Inventory移动Id"
+          placeholder="Please Input Move No."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -125,7 +125,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyInventory移动 Detail对话框 -->
+    <!-- Add OrModifyInventory移动 Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="Inventory移动Id" prop="inventoryMovementId">
@@ -305,7 +305,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllInventory移动 Detail？').then(() => {
+      this.$modal.confirm('Export All？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryMovementDetail(queryParams);
       }).then(response => {

@@ -25,7 +25,7 @@
         </el-col>
         <el-col :span="1.5">
           <el-button v-if="mergeDetailStatusArray.length === 1" type="primary" plain="plain" size="small"
-                     @click="batch">Set Outbound Status
+                     @click="batch">Set Inbound Status
           </el-button>
         </el-col>
 
@@ -44,7 +44,7 @@
             <el-table-column type="selection" width="55" align="center"></el-table-column>
             <el-table-column label="Goods Name" align="center" prop="prod.itemName"></el-table-column>
             <el-table-column label="Goods No." align="center" prop="prod.itemNo"></el-table-column>
-            <el-table-column label="ItemType" align="center" prop="prod.itemType" class="mb20"></el-table-column>
+            <el-table-column label="Category" align="center" prop="prod.itemType" class="mb20"></el-table-column>
             <el-table-column label="Plan Count" align="center" prop="planQuantity" class="mb20"></el-table-column>
             <el-table-column label="Real Count" align="center" width="150">
               <template slot-scope="scope" class="mb20">
@@ -213,7 +213,7 @@ export default {
         if (!valid) {
           this.$notify({
             title: 'Warning',
-            message: "请完善表信息",
+            message: "Verification failed",
             type: 'warning'
           });
           return
@@ -293,6 +293,7 @@ export default {
           }
           it.range = this.getRange(it.receiptOrderStatus)
           it.finish = it.receiptOrderStatus === 3
+          it.realQuantity=it.planQuantity;
         })
         this.finish = details.filter(it => !it.finish)?.length === 0
         this.sourceDetails = details.map(it => ({...it}))

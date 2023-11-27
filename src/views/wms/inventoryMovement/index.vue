@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
              class="ry_form">
-      <el-form-item label="移库Status" prop="status">
+      <el-form-item label="MoveStatus" prop="status">
         <DictRadio v-model="queryParams.status" @change="handleQuery" size="small"
                    :radioData="dict.type.wms_movement_status" :showAll="'all'"/>
       </el-form-item>
@@ -29,7 +29,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:inventoryMovement:add']"
-        >Create移库
+        >New
         </el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>
@@ -45,7 +45,7 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="下 Time" align="center" prop="createTime" width="180" v-if="columns[2].visible">
+      <el-table-column label="Create Time" align="center" prop="createTime" width="180" v-if="columns[2].visible">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime, '') }}</span>
         </template>
@@ -59,8 +59,8 @@
       </el-table-column>
       <el-table-column label="Item" align="center" prop="remark" v-if="columns[4].visible">
         <template slot-scope="scope">
-          <p>Item品种Count：{{ scope.row.detailCount }}</p>
-          <p>Item总Count：{{ scope.row.itemCount }}</p>
+          <p>Plan Count：{{ scope.row.detailCount }}</p>
+          <p>Real Count：{{ scope.row.itemCount }}</p>
         </template>
       </el-table-column>
       <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
@@ -89,7 +89,7 @@
             icon="el-icon-truck"
             @click.stop="handleStatus(row)"
             v-hasPermi="['wms:inventoryMovement:status']"
-          >移库
+          >Move
           </el-button>
         </template>
       </el-table-column>
@@ -160,7 +160,7 @@ export default {
       columns: [
         {key: 1, label: "No.", visible: true},
         {key: 2, label: "Status", visible: true},
-        {key: 3, label: "下 Time", visible: true},
+        {key: 3, label: "Create Time", visible: true},
         {key: 4, label: "Remark", visible: true},
         {key: 5, label: "Item", visible: true},
       ],
@@ -242,7 +242,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export AllInventory移动？').then(() => {
+      this.$modal.confirm('Export All？').then(() => {
         this.exportLoading = true;
         return exportWmsInventoryMovement(queryParams);
       }).then(response => {
