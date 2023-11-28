@@ -12,16 +12,16 @@
       <el-form-item label="No." prop="rackNo">
         <el-input
           v-model="queryParams.rackNo"
-          placeholder="Please Input Shelf No."
+          placeholder="Please Input Rack No."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="Shelf Name" prop="rackName">
+      <el-form-item label="Rack Name" prop="rackName">
         <el-input
           v-model="queryParams.rackName"
-          placeholder="Please Input Shelf Name"
+          placeholder="Please Input Rack Name"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -68,7 +68,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:rack:add']"
-          >Add</el-button
+          >New</el-button
         >
       </el-col>
       <el-col :span="1.5">
@@ -127,7 +127,7 @@
         v-if="columns[0].visible"
       />
       <el-table-column
-        label="Shelf Name"
+        label="Rack Name"
         align="center"
         prop="rackName"
         v-if="columns[1].visible"
@@ -184,7 +184,7 @@
       @pagination="getList"
     />
 
-    <!-- Add OrModify Shelf对话框 -->
+    <!-- Add OrModify Rack对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form
         ref="form"
@@ -198,8 +198,8 @@
           <el-input v-model="form.rackNo" placeholder="Please Input No." />
         </el-form-item>
 
-        <el-form-item label="Shelf Name" prop="rackName">
-          <el-input v-model="form.rackName" placeholder="Please Input Shelf Name" />
+        <el-form-item label="Rack Name" prop="rackName">
+          <el-input v-model="form.rackName" placeholder="Please Input Rack Name" />
         </el-form-item>
 
         <el-form-item label="Warehouse" prop="place">
@@ -251,7 +251,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      //  Shelf表格Data
+      //  Rack表格Data
       wmsRackList: [],
       // 弹出层标题
       title: "",
@@ -279,7 +279,7 @@ export default {
               if (v && v.length == 2) {
                 callback();
               } else {
-                callback(new Error("Please select Warehouse和Area"));
+                callback(new Error("Please select Warehouse And Area"));
               }
             },
             trigger: "change",
@@ -288,7 +288,7 @@ export default {
       },
       columns: [
         { key: 1, label: "No.", visible: true },
-        { key: 2, label: "Shelf Name", visible: true },
+        { key: 2, label: "Rack Name", visible: true },
         { key: 3, label: "Area", visible: true },
         { key: 4, label: "Warehouse", visible: true },
         { key: 5, label: "Remark", visible: true },
@@ -302,7 +302,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** Search Shelf列表 */
+    /** Search Rack列表 */
     getList() {
       this.loading = true;
       const { pageNum, pageSize } = this.queryParams;
@@ -411,7 +411,7 @@ export default {
     handleDelete(row) {
       const ids = row.id || this.ids;
       this.$modal
-        .confirm(' Do you want delete  ShelfNo."' + ids + '"？')
+        .confirm(' Do you want delete  RackNo."' + ids + '"？')
         .then(function () {
           return delWmsRack(ids);
         })
@@ -426,7 +426,7 @@ export default {
     handleExport() {
       const queryParams = this.queryParams;
       this.$modal
-        .confirm("Export All Shelf？")
+        .confirm("Export All Rack？")
         .then(() => {
           this.exportLoading = true;
           return exportWmsRack(queryParams);

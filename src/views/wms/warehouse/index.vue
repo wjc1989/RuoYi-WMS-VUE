@@ -9,7 +9,7 @@
         </div>
         <div class="left">
           <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAddWarehouse"
-            v-hasPermi="['wms:warehouse:add']" style="margin: 3px 10px;">Add Warehouse</el-button>
+            v-hasPermi="['wms:warehouse:add']" style="margin: 3px 10px;">New</el-button>
         </div>
       </div>
     </el-card>
@@ -59,7 +59,7 @@
                   </div>
                   <div class="left" style="margin: 3px 10px;">
                     <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAddArea()"
-                      v-hasPermi="['wms:area:add']">Add Area</el-button>
+                      v-hasPermi="['wms:area:add']">New</el-button>
                   </div>
                 </div>
 

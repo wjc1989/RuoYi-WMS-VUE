@@ -28,7 +28,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:itemType:add']"
-        >Add
+        >New
         </el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>

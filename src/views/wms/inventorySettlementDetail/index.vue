@@ -163,7 +163,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:wmsInventorySettlementDetail:add']"
-        >Add
+        >New
         </el-button>
       </el-col>
       <el-col :span="1.5">

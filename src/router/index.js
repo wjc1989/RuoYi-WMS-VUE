@@ -10,7 +10,7 @@ import Layout from '@/layout'
  * Note: Router配置项
  *
  * hidden: true                     // 当设置 true 的时候该RouterNo 会再侧边栏出现 e.g.401，login等页面， Or者e.g.一些编辑页面/edit/1
- * alwaysShow: true                 // 当你一个Router下面的 children 声明的Router大于1个时，自动会变成嵌套的模式--e.g.组件页面
+ * alwaysShow: true                 // 当你一个Router下面的 children 声明的Router大于1个时，Auto会变成嵌套的模式--e.g.组件页面
  *                                  // 只有一个时，会将那个子Router当做根RouterShow在侧边栏--e.g.引导页面
  *                                  // 若你想No 管Router下面的 children 声明的个数都Show你的根Router
  *                                  // 你可以设置 alwaysShow: true，这样它就会忽略之前定义的规则，一直Show根Router
@@ -21,7 +21,7 @@ import Layout from '@/layout'
  * permissions: ['a:a:a', 'b:b:b']  // 访问Router的Menu Prower
  * meta : {
     noCache: true                   // e.g.果设置true，则No 会被 <keep-alive> Cache(默认 false)
-    title: 'title'                  // 设置该Router在侧边栏和面包屑中展示的名字
+    title: 'title'                  // 设置该Router在侧边栏 And 面包屑中展示的名字
     icon: 'svg-name'                // 设置该Router的Icon，对应路径src/assets/icons/svg
     breadcrumb: false               // e.g.果设置false，则No 会在breadcrumb面包屑中Show
     activeMenu: '/system/user'      // 当Router设置了该属性，则会高亮相对应的侧边栏。

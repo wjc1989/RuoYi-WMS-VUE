@@ -2,8 +2,8 @@
   <div class="inventory-movement-edit-wrapper app-container">
     <div class="inventory-movement-content">
       <el-form label-width="108px" :model="form" ref="form" :rules="rules">
-        <el-form-item label="MoveNo." prop="inventoryMovementNo">
-          <el-input class="w200" v-model="form.inventoryMovementNo" placeholder="MoveNo."
+        <el-form-item label="No." prop="inventoryMovementNo">
+          <el-input class="w200" v-model="form.inventoryMovementNo" placeholder="No."
                     disabled="disabled"></el-input>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
@@ -197,7 +197,7 @@ export default {
           }
         })
         if (details.filter(it => !it.sourceWarehouseId || !it.targetWarehouseId)?.length > 0) {
-          this.$message.warning('Please select Warehouse、Area Or Shelf')
+          this.$message.warning('Please select Warehouse、Area Or Rack')
           return;
         }
         const arr = details.filter(it => it.sourceRackId === it.targetRackId && it.sourceAreaId === it.targetAreaId && it.sourceWarehouseId === it.targetWarehouseId)
@@ -284,7 +284,7 @@ export default {
 <style lang="stylus">
 .inventory-movement-edit-wrapper
   .inventory-movement-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>

@@ -313,7 +313,7 @@ export default {
 <style lang="stylus">
 .shipment-order-edit-wrapper
   .shipment-order-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>

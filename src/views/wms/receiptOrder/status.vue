@@ -3,7 +3,7 @@
     <div class="receipt-order-content">
       <el-form label-width="108px" :model="form" ref="form" :rules="rules">
         <el-form-item label="Inbound No." prop="receiptOrderNo">{{ form.receiptOrderNo }}</el-form-item>
-        <el-form-item label="InboundStatus" prop="receiptOrderNo">{{ receiptStatusMap.get(form.receiptOrderStatus + '') }}
+        <el-form-item label="Status" prop="receiptOrderNo">{{ receiptStatusMap.get(form.receiptOrderStatus + '') }}
         </el-form-item>
         <el-form-item label="Type" prop="receiptOrderType">
           {{ selectDictLabel(dict.type.wms_receipt_type, form.receiptOrderType) }}
@@ -31,7 +31,7 @@
 
       </el-row>
 
-      <el-dialog title="Please select InboundStatus" :visible.sync="open" width="50%" append-to-body="append-to-body">
+      <el-dialog title="Please select Status" :visible.sync="open" width="50%" append-to-body="append-to-body">
         <DictRadio v-model="dialogStatus" :radioData="dialogStatusRange"></DictRadio>
         <div class="dialog-footer" slot="footer">
           <el-button type="primary" @click="dialogConfirm">OK</el-button>
@@ -62,7 +62,7 @@
                 </el-form-item>
               </template>
             </el-table-column>
-            <el-table-column label="InboundStatus" width="150">
+            <el-table-column label="Status"  align="center" width="150">
               <template slot-scope="{ row }">
                 <DictSelect v-model="row.receiptOrderStatus" :options="row.range" size="small"
                             @change="setReceiptOrderStatus" :disabled="row.finish"></DictSelect>
@@ -177,7 +177,7 @@ export default {
     },
     dialogConfirm() {
       if (!this.dialogStatus) {
-        this.$modal.alert('Please select InboundStatus')
+        this.$modal.alert('Please select Status')
         return
       }
       this.form.details.forEach(detail => {
@@ -324,7 +324,7 @@ export default {
 <style lang="stylus">
 .receipt-order-status-wrapper
   .receipt-order-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>

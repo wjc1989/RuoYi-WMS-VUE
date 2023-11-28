@@ -65,8 +65,8 @@
         />
       </el-form-item>
       <template v-if="showMoreCondition">
-      <el-form-item label="InboundStatus" prop="receiptOrderStatus">
-        <el-select v-model="queryParams.receiptOrderStatus" placeholder="Please select InboundStatus" clearable size="small">
+      <el-form-item label="Status" prop="receiptOrderStatus">
+        <el-select v-model="queryParams.receiptOrderStatus" placeholder="Please select Status" clearable size="small">
               <el-option label="Please select Dict生成" value="" />
         </el-select>
       </el-form-item>
@@ -87,7 +87,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:receiptOrderDetail:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -135,7 +135,7 @@
       <el-table-column label="Remark" align="center" prop="remark" v-if="columns[5].visible"/>
       <el-table-column label="Warehouse" align="center" prop="warehouseId" v-if="columns[6].visible"/>
       <el-table-column label="Area" align="center" prop="areaId" v-if="columns[7].visible"/>
-      <el-table-column label="InboundStatus" align="center" prop="receiptOrderStatus" v-if="columns[8].visible"/>
+      <el-table-column label="Status" align="center" prop="receiptOrderStatus" v-if="columns[8].visible"/>
       <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -191,7 +191,7 @@
         <el-form-item label="Area" prop="areaId">
           <el-input v-model="form.areaId" placeholder="Please Input Area" />
         </el-form-item>
-        <el-form-item label="InboundStatus">
+        <el-form-item label="Status">
           <el-radio-group v-model="form.receiptOrderStatus">
             <el-radio label="1">Please select Dict生成</el-radio>
           </el-radio-group>
@@ -259,7 +259,7 @@ export default {
                 { key: 7, label: "Remark", visible:  true  },
                             { key: 12, label: "Warehouse", visible:  false  },
             { key: 13, label: "Area", visible:  false  },
-            { key: 14, label: "InboundStatus", visible:  false  },
+            { key: 14, label: "Status", visible:  false  },
          ],
       showMoreCondition: false
     };

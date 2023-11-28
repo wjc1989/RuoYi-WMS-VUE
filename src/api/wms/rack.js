@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// Search Shelf列表
+// Search Rack列表
 export function listWmsRack(query, pageReq) {
   return request({
     url: '/wms/rack/list',
@@ -10,7 +10,7 @@ export function listWmsRack(query, pageReq) {
   })
 }
 
-// Search ShelfDetail
+// Search RackDetail
 export function getWmsRack(id) {
   return request({
     url: '/wms/rack/' + id,
@@ -18,7 +18,7 @@ export function getWmsRack(id) {
   })
 }
 
-// Add Shelf
+// Add Rack
 export function addWmsRack(data) {
   return request({
     url: '/wms/rack',
@@ -27,7 +27,7 @@ export function addWmsRack(data) {
   })
 }
 
-// Modify Shelf
+// Modify Rack
 export function updateWmsRack(data) {
   return request({
     url: '/wms/rack',
@@ -36,7 +36,7 @@ export function updateWmsRack(data) {
   })
 }
 
-// Delete Shelf
+// Delete Rack
 export function delWmsRack(id) {
   return request({
     url: '/wms/rack/' + id,
@@ -44,7 +44,7 @@ export function delWmsRack(id) {
   })
 }
 
-// Export Shelf
+// Export Rack
 export function exportWmsRack(query) {
   return request({
     url: '/wms/rack/export',

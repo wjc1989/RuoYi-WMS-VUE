@@ -449,7 +449,7 @@
           <el-form-item v-if="activeData.multiple !== undefined" label="多选文件">
             <el-switch v-model="activeData.multiple" />
           </el-form-item>
-          <el-form-item v-if="activeData['auto-upload'] !== undefined" label="自动上传">
+          <el-form-item v-if="activeData['auto-upload'] !== undefined" label="Auto上传">
             <el-switch v-model="activeData['auto-upload']" />
           </el-form-item>
           <el-form-item v-if="activeData.readonly !== undefined" label="只读">
@@ -805,7 +805,7 @@ export default {
         // 布尔
         this.$set(this.activeData, 'defaultValue', JSON.parse(str))
       } else {
-        // 字符串和数字
+        // 字符串 And 数字
         this.$set(
           this.activeData,
           'defaultValue',

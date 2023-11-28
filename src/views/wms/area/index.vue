@@ -59,7 +59,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:area:add']"
-          >Add</el-button
+          >New</el-button
         >
       </el-col>
       <el-col :span="1.5">

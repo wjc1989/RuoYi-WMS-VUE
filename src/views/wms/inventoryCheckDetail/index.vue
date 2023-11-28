@@ -55,10 +55,10 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label=" Shelf" prop="rackId">
+      <el-form-item label=" Rack" prop="rackId">
         <el-input
           v-model="queryParams.rackId"
-          placeholder="Please Input  Shelf"
+          placeholder="Please Input  Rack"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -79,7 +79,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:wmsInventoryCheckDetail:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -176,8 +176,8 @@
         <el-form-item label="Area" prop="areaId">
           <el-input v-model="form.areaId" placeholder="Please Input Area" />
         </el-form-item>
-        <el-form-item label=" Shelf" prop="rackId">
-          <el-input v-model="form.rackId" placeholder="Please Input  Shelf" />
+        <el-form-item label=" Rack" prop="rackId">
+          <el-input v-model="form.rackId" placeholder="Please Input  Rack" />
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Please Input Remark" />
@@ -242,7 +242,7 @@ export default {
             { key: 4, label: "CountCount", visible:  true  },
             { key: 5, label: "Warehouse", visible:  true  },
             { key: 6, label: "Area", visible:  true  },
-            { key: 7, label: " Shelf", visible:  true  },
+            { key: 7, label: " Rack", visible:  true  },
                 { key: 9, label: "Remark", visible:  true  },
                          ],
     };

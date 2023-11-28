@@ -7,7 +7,7 @@
         </el-col>
       </el-row>
 
-      <el-dialog title="Please select InboundStatus" :visible.sync="open" width="50%" append-to-body="append-to-body">
+      <el-dialog title="Please select Status" :visible.sync="open" width="50%" append-to-body="append-to-body">
         <DictRadio v-model="dialogStatus" :radioData="dialogStatusRange"></DictRadio>
         <div class="dialog-footer" slot="footer">
           <el-button type="primary" @click="dialogConfirm">OK</el-button>
@@ -47,7 +47,7 @@
         </el-col>
         <el-col :span="1.5" >
           <el-button v-if="mergeDetailStatusArray.length === 1" type="primary" plain="plain" size="small"
-                     @click="batch">Set InboundStatus
+                     @click="batch">Set Status
           </el-button>
         </el-col>
       </el-row>
@@ -70,7 +70,7 @@
                                   :disabled="scope.row.finish"></WmsWarehouseCascader>
           </template>
         </el-table-column>
-        <el-table-column label="InboundStatus" width="150">
+        <el-table-column label="Status"  align="center" width="150">
           <template slot-scope="{ row }">
             <DictSelect v-model="row.receiptOrderStatus" :options="row.range" size="small"
                         :disabled="row.finish"></DictSelect>
@@ -86,13 +86,13 @@
         :form-data.sync="batchForm"
         @confirmed="onBatchDialogFinished"
       ></BatchWarehouseDialog>
-      <el-dialog title="自动 Distribute Warehouse" :visible.sync="dialogFormVisible" width="400px">
+      <el-dialog title="Auto Distribute Warehouse" :visible.sync="dialogFormVisible" width="400px">
         <el-form :model="dialogForm">
-          <el-form-item label=" Distribute 策略" label-width="98px"
-                        :rules="[{ required: true, message: 'Please select  Distribute 策略', trigger: 'change' }]">
-            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute 策略">
-              <el-option label="Inventory量小的库位优先" :value="1"></el-option>
-              <el-option label="Inventory量大的库位优先" :value="2"></el-option>
+          <el-form-item label=" Distribute Plan" label-width="98px"
+                        :rules="[{ required: true, message: 'Please select  Distribute Plan', trigger: 'change' }]">
+            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute Plan">
+              <el-option label="Smallest inventory is prioritized" :value="1"></el-option>
+              <el-option label="Largest inventory is prioritized" :value="2"></el-option>
             </el-select>
           </el-form-item>
         </el-form>
@@ -194,7 +194,7 @@ export default {
         this.cancel()
       })
     },
-    /** 自动 Distribute  Warehouse */
+    /** Auto Distribute  Warehouse */
     allocated() {
       waveAllocatedInventoryForReceipt({id:this.waveOrderId,type:this.dialogForm.region}).then(response => {
         this.$modal.msgSuccess(" Distribute  Successful");
@@ -363,7 +363,7 @@ export default {
 <style lang="stylus">
 .shipment-order-status-wrapper
   .shipment-order-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>

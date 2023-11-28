@@ -33,7 +33,7 @@ export function isStarRepo(owner, repo, userId, redirectUrl,productName,productL
     if (typeof window !== 'undefined') {
       const isStarRepo = localStorage.getItem(key)
       if (isStarRepo) {
-        //  Record star 的 Time，和当前 Time的差距
+        //  Record star 的 Time， And 当前 Time的差距
         const disparity = new Date().getTime() - parseInt(isStarRepo)
 
         // 差距小于一月，No 再检测，大于一月，再检测一下

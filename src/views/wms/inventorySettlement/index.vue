@@ -62,7 +62,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:wmsInventorySettlement:add']"
-        >Add结算
+        >New
         </el-button
         >
       </el-col>

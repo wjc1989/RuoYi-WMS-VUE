@@ -2,7 +2,7 @@
   <div>
     <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="120px" :model="queryParams" ref="queryForm"
              size="medium">
-      <el-form-item label="InboundStatus" prop="receiptOrderStatus">
+      <el-form-item label="Status" prop="receiptOrderStatus">
         <DictRadio v-model="queryParams.receiptOrderStatus" :radioData="dict.type.wms_receipt_status" :showAll="'all'"
                    size="small" @change="handleQuery"></DictRadio>
       </el-form-item>
@@ -55,7 +55,7 @@
       <el-table-column v-if="columns[2].visible" align="center" :formatter="getSupplier"
                        label="Supplier"></el-table-column>
       <el-table-column v-if="columns[3].visible" align="center" label="No." prop="orderNo"></el-table-column>
-      <el-table-column v-if="columns[4].visible" align="center" label="InboundStatus">
+      <el-table-column v-if="columns[4].visible" align="center" label="Status">
         <template slot-scope="scope">
           <el-tag effect="plain" size="medium" :type="getReceiptOrderStatusTag(scope.row)">{{
               getReceiptOrderStatus(scope.row)
@@ -190,7 +190,7 @@ export default {
         {key: 2, label: 'Type', visible: true},
         {key: 3, label: 'Supplier', visible: true},
         {key: 4, label: 'No.', visible: true},
-        {key: 5, label: 'InboundStatus', visible: true},
+        {key: 5, label: 'Status', visible: true},
         {key: 6, label: 'Batch No.', visible: true},
         {key: 7, label: 'Remark', visible: true}
       ]

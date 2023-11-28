@@ -29,7 +29,7 @@
     <el-row class="mb8" :gutter="10">
       <el-col :span="1.5">
         <el-button v-hasPermi="['wms:shipmentOrder:add']" icon="el-icon-plus" plain="plain" size="mini" type="primary"
-                   @click="handleAdd()">Logistics
+                   @click="handleAdd()">New
         </el-button>
       </el-col>
       <el-col :span="1.5">

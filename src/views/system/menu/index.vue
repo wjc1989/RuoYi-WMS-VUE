@@ -34,7 +34,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['system:menu:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -90,7 +90,7 @@
             icon="el-icon-plus"
             @click="handleAdd(scope.row)"
             v-hasPermi="['system:menu:add']"
-          >Add</el-button>
+          >New</el-button>
           <el-button
             size="mini"
             type="text"
@@ -219,7 +219,7 @@
           <el-col :span="12" v-if="form.menuType == 'C'">
             <el-form-item>
               <span slot="label">
-                <el-tooltip content="Select Yes则会被`keep-alive`Cache，需要匹配组件的`name`和Address保持一致" placement="top">
+                <el-tooltip content="Select Yes则会被`keep-alive`Cache，需要匹配组件的`name` And Address保持一致" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Cache

@@ -46,7 +46,7 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-          v-hasPermi="['wms:supplier:add']">Add</el-button>
+          v-hasPermi="['wms:supplier:add']">New</el-button>
       </el-col>
       <!-- <el-col :span="1.5">
         <el-button type="success" plain icon="el-icon-edit" size="mini" :disabled="single" @click="handleUpdate"

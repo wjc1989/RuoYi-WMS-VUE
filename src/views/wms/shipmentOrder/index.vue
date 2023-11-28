@@ -91,7 +91,7 @@ export default {
       // 表校验
       rules: {},
       columns: [
-        {key: 1, label: 'No.', visible: true},
+        {key: 1, label: 'ID', visible: true},
         {key: 2, label: 'Type', visible: true},
         {key: 3, label: 'Supplier', visible: true},
         {key: 4, label: 'No.', visible: true},

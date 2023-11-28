@@ -88,7 +88,7 @@
               size="mini"
               @click="handleAdd"
               v-hasPermi="['system:user:add']"
-            >Add</el-button>
+            >New</el-button>
           </el-col>
           <el-col :span="1.5">
             <el-button
@@ -428,14 +428,14 @@ export default {
       rules: {
         userName: [
           { required: true, message: "Name is required", trigger: "blur" },
-          { min: 2, max: 20, message: 'Name长度必须介于 2 和 20 之间', trigger: 'blur' }
+          { min: 2, max: 20, message: 'Name长度必须介于 2  And  20 之间', trigger: 'blur' }
         ],
         nickName: [
           { required: true, message: "Nickname is required", trigger: "blur" }
         ],
         password: [
           { required: true, message: "Password is required", trigger: "blur" },
-          { min: 5, max: 20, message: 'Password长度必须介于 5 和 20 之间', trigger: 'blur' }
+          { min: 5, max: 20, message: 'Password长度必须介于 5  And  20 之间', trigger: 'blur' }
         ],
         email: [
           {
@@ -593,7 +593,7 @@ export default {
         cancelButtonText: "Cancel",
         closeOnClickModal: false,
         inputPattern: /^.{5,20}$/,
-        inputErrorMessage: "Password长度必须介于 5 和 20 之间"
+        inputErrorMessage: "Password长度必须介于 5  And  20 之间"
       }).then(({ value }) => {
           resetUserPwd(row.userId, value).then(response => {
             this.$modal.msgSuccess("Modify Successful，新PasswordYes：" + value);

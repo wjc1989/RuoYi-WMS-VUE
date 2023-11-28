@@ -44,7 +44,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['monitor:job:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -203,7 +203,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="执行策略" prop="misfirePolicy">
+            <el-form-item label="执行Plan" prop="misfirePolicy">
               <el-radio-group v-model="form.misfirePolicy" size="small">
                 <el-radio-button label="1">立即执行</el-radio-button>
                 <el-radio-button label="2">执行一次</el-radio-button>
@@ -276,8 +276,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="执行策略：">
-              <div v-if="form.misfirePolicy == 0">默认策略</div>
+            <el-form-item label="执行Plan：">
+              <div v-if="form.misfirePolicy == 0">默认Plan</div>
               <div v-else-if="form.misfirePolicy == 1">立即执行</div>
               <div v-else-if="form.misfirePolicy == 2">执行一次</div>
               <div v-else-if="form.misfirePolicy == 3">放弃执行</div>

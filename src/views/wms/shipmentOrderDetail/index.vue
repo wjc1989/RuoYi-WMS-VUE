@@ -37,10 +37,10 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label=" Shelf" prop="rackId">
+      <el-form-item label=" Rack" prop="rackId">
         <el-input
           v-model="queryParams.rackId"
-          placeholder="Please Input  Shelf"
+          placeholder="Please Input  Rack"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -61,7 +61,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:shipmentOrderDetail:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -105,7 +105,7 @@
       <el-table-column label="Item" align="center" prop="itemId" v-if="columns[1].visible"/>
       <el-table-column label="Plan Count" align="center" prop="planQuantity" v-if="columns[2].visible"/>
       <el-table-column label="Real Count" align="center" prop="realQuantity" v-if="columns[3].visible"/>
-      <el-table-column label=" Shelf" align="center" prop="rackId" v-if="columns[4].visible"/>
+      <el-table-column label=" Rack" align="center" prop="rackId" v-if="columns[4].visible"/>
       <el-table-column label="Remark" align="center" prop="remark" v-if="columns[5].visible"/>
       <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -150,8 +150,8 @@
         <el-form-item label="Real Count" prop="realQuantity">
           <el-input v-model="form.realQuantity" placeholder="Please Input Real Count" />
         </el-form-item>
-        <el-form-item label=" Shelf" prop="rackId">
-          <el-input v-model="form.rackId" placeholder="Please Input  Shelf" />
+        <el-form-item label=" Rack" prop="rackId">
+          <el-input v-model="form.rackId" placeholder="Please Input  Rack" />
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Please Input Remark" />
@@ -212,7 +212,7 @@ export default {
             { key: 2, label: "Item", visible:  true  },
             { key: 3, label: "Plan Count", visible:  true  },
             { key: 4, label: "Real Count", visible:  true  },
-            { key: 5, label: " Shelf", visible:  true  },
+            { key: 5, label: " Rack", visible:  true  },
                 { key: 7, label: "Remark", visible:  true  },
                          ],
     };

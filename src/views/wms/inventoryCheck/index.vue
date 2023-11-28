@@ -190,7 +190,7 @@ export default {
       // 表校验
       rules: {},
       columns: [
-        {key: 1, label: "InventoryCountNo.，系统自动生成", visible: true},
+        {key: 1, label: "InventoryCountNo.，系统Auto生成", visible: true},
         {key: 2, label: "InventoryCountType", visible: true},
         {key: 3, label: "InventoryCountStatus", visible: true},
         {key: 4, label: "Change", visible: true},
@@ -199,7 +199,7 @@ export default {
         {key: 7, label: "审核 Time", visible: true},
         {key: 8, label: "Warehouse", visible: true},
         {key: 9, label: "Area", visible: true},
-        {key: 10, label: " Shelf", visible: false},
+        {key: 10, label: " Rack", visible: false},
         {key: 11, label: "附件文件", visible: false},
         {key: 12, label: "Remark", visible: false},
       ],

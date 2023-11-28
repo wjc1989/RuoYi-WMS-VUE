@@ -86,7 +86,7 @@
       </div>
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
-        <el-button @click="submitForm" type="primary" :disabled="finish">Add</el-button>
+        <el-button @click="submitForm" type="primary" :disabled="finish">Save</el-button>
       </div>
     </div>
     <BatchWarehouseDialog
@@ -242,12 +242,12 @@ export default {
           }
         })
         if (details.filter(it => !it.sourceWarehouseId || !it.targetWarehouseId)?.length > 0) {
-          this.$message.warning('Please select Warehouse、Area Or Shelf')
+          this.$message.warning('Please select Warehouse、Area Or Rack')
           return;
         }
         const arr = details.filter(it => it.sourceRackId === it.targetRackId && it.sourceAreaId === it.targetAreaId && it.sourceWarehouseId === it.targetWarehouseId)
         if (arr?.length > 0) {
-          this.$message.warning('同一个ItemNo 能Select 相同的Warehouse、Area、 Shelf')
+          this.$message.warning('同一个ItemNo 能Select 相同的Warehouse、Area、 Rack')
           return;
         }
         const req = {...this.form, details}
@@ -274,7 +274,8 @@ export default {
             it.targetPlace = it.prod.targetPlace;
           }
           it.range = this.getRange(it.moveStatus)
-          it.finish = it.moveStatus === 23
+          it.finish = it.moveStatus === 23;
+          it.realQuantity=it.planQuantity;
         })
         this.finish = details.filter(it => !it.finish)?.length === 0
         this.sourceDetails = details.map(it => ({...it}))
@@ -305,7 +306,7 @@ export default {
 <style lang="stylus">
 .inventory-movement-status-wrapper
   .inventory-movement-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>

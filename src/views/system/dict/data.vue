@@ -44,7 +44,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['system:dict:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button

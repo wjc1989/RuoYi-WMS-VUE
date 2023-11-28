@@ -55,8 +55,8 @@
         <el-form-item label="ItemID" prop="itemId">
           <el-input v-model="form.itemId" placeholder="Please Input ItemID"></el-input>
         </el-form-item>
-        <el-form-item label=" Shelfid" prop="rackId">
-          <el-input v-model="form.rackId" placeholder="Please Input  Shelfid"></el-input>
+        <el-form-item label=" Rackid" prop="rackId">
+          <el-input v-model="form.rackId" placeholder="Please Input  Rackid"></el-input>
         </el-form-item>
         <el-form-item label="InventoryChange" prop="quantity">
           <el-input v-model="form.quantity" placeholder="Please Input InventoryChange"></el-input>
@@ -123,7 +123,7 @@ export default {
             { key: 1, label: "Operateid（Outbound 、Inbound、Inventory移动表id）", visible:  true  },
             { key: 2, label: "Type", visible:  true  },
             { key: 3, label: "ItemID", visible:  true  },
-            { key: 4, label: " Shelfid", visible:  true  },
+            { key: 4, label: " Rackid", visible:  true  },
             { key: 5, label: "InventoryChange", visible:  true  },
             { key: 6, label: "Remark", visible:  true  },
                              ],

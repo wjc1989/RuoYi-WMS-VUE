@@ -42,7 +42,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['system:post:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button

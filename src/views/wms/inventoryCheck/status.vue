@@ -158,7 +158,7 @@ export default {
 <style lang="stylus">
 .receipt-order-edit-wrapper
   .receipt-order-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 .wrap

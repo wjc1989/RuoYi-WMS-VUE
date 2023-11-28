@@ -231,7 +231,7 @@ export default {
     handleDelete(row) {
       const ids = row.id || this.ids;
       const inventoryMovementNo = row.inventoryMovementNo
-      this.$modal.confirm(' Do you want delete Inventory移动No."' + inventoryMovementNo + '"？').then(function () {
+      this.$modal.confirm(' Do you want delete "' + inventoryMovementNo + '"？').then(function () {
         return delWmsInventoryMovement(ids);
       }).then(() => {
         this.getList();

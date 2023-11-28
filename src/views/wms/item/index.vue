@@ -52,7 +52,7 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-          v-hasPermi="['wms:item:add']">Add</el-button>
+          v-hasPermi="['wms:item:add']">New</el-button>
       </el-col>
       <!-- <el-col :span="1.5">
         <el-button type="success" plain icon="el-icon-edit" size="mini" :disabled="single" @click="handleUpdate"
@@ -201,7 +201,7 @@ export default {
       total: 0,
       // Item表格Data
       wmsItemList: [],
-      //  Shelf表格Data
+      //  Rack表格Data
       rackListByArea: [],
       // Area表格Data
       areaListByWarehouse: [],

@@ -90,14 +90,14 @@
         :form-data.sync="batchForm"
         @confirmed="onBatchDialogFinished"
       ></BatchWarehouseDialog>
-      <el-dialog title="自动 Distribute Warehouse" :visible.sync="dialogFormVisible" width="400px">
+      <el-dialog title="Auto Distribute Warehouse" :visible.sync="dialogFormVisible" width="400px">
         <el-form :model="dialogForm">
-          <el-form-item label=" Distribute 策略" label-width="98px"
-                        :rules="[{ required: true, message: 'Please select  Distribute 策略', trigger: 'change' }]">
-            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute 策略">
-              <el-option label="Inventory量小的库位优先" :value="1"></el-option>
-              <el-option label="Inventory量大的库位优先" :value="2"></el-option>
-              <el-option label="先入先出(FIFO)" :value="3" disabled></el-option>
+          <el-form-item label=" Distribute Plan" label-width="98px"
+                        :rules="[{ required: true, message: 'Please select  Distribute Plan', trigger: 'change' }]">
+            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute Plan">
+              <el-option label="Smallest inventory is prioritized" :value="1"></el-option>
+              <el-option label="Largest inventory is prioritized" :value="2"></el-option>
+              <el-option label="First in,first out(FIFO)" :value="3" disabled></el-option>
               <el-option label="先Expiry先出" :value="4" disabled></el-option>
               <el-option label="适量Inventory优先" :value="5" disabled></el-option>
             </el-select>
@@ -202,7 +202,7 @@ export default {
         this.cancel()
       })
     },
-    /** 自动 Distribute  Warehouse */
+    /** Auto Distribute  Warehouse */
     allocated() {
       waveAllocatedInventory({id:this.waveOrderId,type:this.dialogForm.region}).then(response => {
         this.$modal.msgSuccess(" Distribute  Successful");
@@ -370,7 +370,7 @@ export default {
 <style lang="stylus">
 .shipment-order-status-wrapper
   .shipment-order-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>
