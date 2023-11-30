@@ -18,10 +18,10 @@ export default  {
 }
 </script>
 <style lang="stylus">
-@import "base"
+@import "base";
   .listimage{
-    width 40px;
-    height 40px;
-    cursor pointer;
+    width:40px;
+    height:40px;
+    cursor:pointer;
   }
 </style>
