@@ -2,8 +2,7 @@
   <div class="receipt-order-print" ref="receiptOrderPrintRef" hidden="hidden">
     <div class="title">{{ row.shipmentOrderNo }}</div>
     <div class="summary">
-      <div class="col1">客戶: {{ row.customerName }}</div>
-      <div class="col1">No.: {{ row.orderNo }}</div>
+      <div class="col1">Project: {{ row.orderNo }}</div>
       <div class="col1">Outbound Type: {{ row.shipmentType }}</div>
       <div class="col1">Date: {{ row.createTime }}</div>
     </div>

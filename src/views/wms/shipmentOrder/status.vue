@@ -1,7 +1,7 @@
 <template>
   <div class="shipment-order-status-wrapper app-container" v-loading="loading">
     <div class="shipment-order-content">
-      <el-form label-width="108px" :model="form" ref="form" :rules="rules">
+      <el-form label-width="138px" :model="form" ref="form" :rules="rules">
         <el-row :gutter="20">
           <el-col :span="10">
             <el-form-item label="Outbound Status" prop="shipmentOrderNo">
@@ -19,7 +19,7 @@
             <el-form-item label="Outbound No." prop="shipmentOrderNo">{{ form.shipmentOrderNo }}</el-form-item>
           </el-col>
           <el-col :span="10">
-            <el-form-item label="No." prop="orderNo">{{ form.orderNo }}</el-form-item>
+            <el-form-item label="Project" prop="orderNo">{{ form.orderNo }}</el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
@@ -55,12 +55,13 @@
           <el-table-column label="Tracking No." align="center" prop="trackingNo" v-if="columns[3].visible">
             <!--        https://www.kuaidi100.com/chaxun?com=[]&nu=[]-->
             <template slot-scope="scope">
-              <a
+            <!--  <a
                 target="_blank"
-                :href=" 'https://www.kuaidi100.com/chaxun?com='+getCarrier(scope.row)+'&nu='+scope.row.trackingNo">{{
+                :href=" 'https://www.kuaidi100.com/chaxun?com='+getCarrier(scope.row)+'&nu='+scope.row.trackingNo">-->
+                {{
                   scope.row.trackingNo
                 }}
-              </a>
+              <!--</a>-->
             </template>
           </el-table-column>
           <el-table-column label="Remark" align="center" prop="remark" v-if="columns[4].visible"/>
@@ -134,7 +135,7 @@
       </div>
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
-        <el-button @click="submitForm" type="primary" :disabled="finish">Add</el-button>
+        <el-button @click="submitForm" type="primary" :disabled="finish">Save</el-button>
       </div>
       <!-- Add OrModifyOutbound Record对话框 -->
       <el-dialog :title="deliveryTitle" :visible.sync="deliveryOpen" width="50%" append-to-body>
@@ -171,10 +172,10 @@
         :form-data.sync="batchForm"
         @confirmed="onBatchDialogFinished"
       ></BatchWarehouseDialog>
-      <el-dialog title="Auto Distribute Warehouse" :visible.sync="dialogFormVisible" width="400px">
+      <el-dialog title="Auto Distribute Warehouse" :visible.sync="dialogFormVisible" width="500px">
         <el-form :model="dialogForm">
-          <el-form-item label=" Distribute Plan" label-width="98px">
-            <el-select v-model="dialogForm.region" placeholder="Please select  Distribute Plan">
+          <el-form-item label=" Distribute Plan" label-width="128px">
+            <el-select v-model="dialogForm.region" style="width: 280px" placeholder="Please select  Distribute Plan">
               <el-option label="Smallest inventory is prioritized" :value="1"></el-option>
               <el-option label="Largest inventory is prioritized" :value="2"></el-option>
               <el-option label="First in,first out(FIFO)" :value="3" disabled></el-option>
@@ -433,9 +434,16 @@ export default {
             it.place = it.prod.place;
           }
           it.range = this.getRange(it.shipmentOrderStatus)
+
+
+
           it.finish = it.shipmentOrderStatus === 13;
+          if(it.shipmentOrderStatus==11){
+            it.shipmentOrderStatus=13;
+          }
           it.realQuantity=it.planQuantity;
         })
+
         this.sourceDetails = details.map(it => ({...it}))
         this.finish = details.filter(it => !it.finish)?.length === 0
         this.form = {

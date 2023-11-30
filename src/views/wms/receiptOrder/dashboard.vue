@@ -15,8 +15,8 @@
                   size="small"
                   @keyup.enter.native="handleQuery"></el-input>
       </el-form-item>
-      <el-form-item label="No." prop="orderNo">
-        <el-input v-model.trim="queryParams.orderNo" clearable="clearable" placeholder="Please Input No." size="small"
+      <el-form-item label="Project" prop="orderNo">
+        <el-input v-model.trim="queryParams.orderNo" clearable="clearable" placeholder="Please Input Project" size="small"
                   @keyup.enter.native="handleQuery"></el-input>
       </el-form-item>
       <el-form-item label="Supplier" prop="supplierId">
@@ -42,9 +42,8 @@
     </el-row>
     <WmsTable v-loading="loading" :data="wmsReceiptOrderList" @selection-change="handleSelectionChange">
       <el-table-column align="center" type="selection" width="55"></el-table-column>
-      <el-table-column v-if="columns[0].visible" align="center" label="Inbound No."
-                       prop="receiptOrderNo"></el-table-column>
-      <el-table-column v-if="columns[1].visible" align="center" label="Type">
+      <el-table-column v-if="columns[0].visible" align="center" label="Inbound No."  prop="receiptOrderNo"></el-table-column>
+      <el-table-column v-if="columns[1].visible" align="center" label="Inbound Type">
         <template slot-scope="scope">
           <el-tag effect="plain" size="medium" :type="getReceiptOrderTypeTag(scope.row)">{{
               getReceiptOrderType(scope.row)
@@ -52,9 +51,8 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column v-if="columns[2].visible" align="center" :formatter="getSupplier"
-                       label="Supplier"></el-table-column>
-      <el-table-column v-if="columns[3].visible" align="center" label="No." prop="orderNo"></el-table-column>
+      <el-table-column v-if="columns[2].visible" align="center" :formatter="getSupplier"  label="Supplier"></el-table-column>
+      <el-table-column v-if="columns[3].visible" align="center" label="Project" prop="orderNo"></el-table-column>
       <el-table-column v-if="columns[4].visible" align="center" label="Status">
         <template slot-scope="scope">
           <el-tag effect="plain" size="medium" :type="getReceiptOrderStatusTag(scope.row)">{{
@@ -87,8 +85,7 @@
         </template>
       </el-table-column>
     </WmsTable>
-    <pagination v-show="total > 0" :limit.sync="queryParams.pageSize" :page.sync="queryParams.pageNum" :total="total"
-                @pagination=" getList "></pagination>
+    <pagination v-show="total > 0" :limit.sync="queryParams.pageSize" :page.sync="queryParams.pageNum" :total="total" @pagination="getList"></pagination>
     <el-dialog :visible.sync=" modalObj.show " :title=" modalObj.title " :width=" modalObj.width ">
       <template v-if=" modalObj.component === 'print-type' ">
         <el-radio-group v-model=" modalObj.form.value ">

@@ -17,20 +17,19 @@
       :on-preview="handlePictureCardPreview"
       :class="{hide: this.fileList.length >= this.limit}"
     >
+
       <i class="el-icon-plus"></i>
     </el-upload>
 
     <!-- 上传Info -->
     <div class="el-upload__tip" slot="tip" v-if="showTip">
-      请上传
-      <template v-if="fileSize"> 大小No 超过 <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
-      <template v-if="fileType"> 格式 <b style="color: #f56c6c">{{ fileType.join("/") }}</b> </template>
-      的文件
+
+      <template v-if="fileSize">Maximum upload allowed <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
     </div>
 
     <el-dialog
       :visible.sync="dialogVisible"
-      title="预览"
+      title="View"
       width="800"
       append-to-body
     >
@@ -56,7 +55,7 @@ export default {
     // 大小限制(MB)
     fileSize: {
        type: Number,
-      default: 5,
+      default: 100,
     },
     // 文件Type, 例e.g.['png', 'jpg', 'jpeg']
     fileType: {
@@ -127,7 +126,7 @@ export default {
     },
     // 上传 Successful回调
     handleUploadSuccess(res) {
-      this.uploadList.push({ name: res.fileName, url: res.fileName });
+      this.uploadList.push({ name: res.fileName, url: this.baseUrl+res.fileName });
       if (this.uploadList.length === this.number) {
         this.fileList = this.fileList.concat(this.uploadList);
         this.uploadList = [];
@@ -154,31 +153,31 @@ export default {
       }
 
       if (!isImg) {
-        this.$modal.msgError(`文件格式No 正确, 请上传${this.fileType.join("/")}图片格式文件!`);
+        this.$modal.msgError(`Allowed to be uploaded are ${this.fileType.join("/")}!`);
         return false;
       }
       if (this.fileSize) {
         const isLt = file.size / 1024 / 1024 < this.fileSize;
         if (!isLt) {
-          this.$modal.msgError(`上传头像图片大小No 能超过 ${this.fileSize} MB!`);
+          this.$modal.msgError(`Maximum upload allowed ${this.fileSize} MB!`);
           return false;
         }
       }
-      this.$modal.loading("正在上传图片，请稍候...");
+      this.$modal.loading("Uploading...");
       this.number++;
     },
     // 文件个数超出
     handleExceed() {
-      this.$modal.msgError(`上传文件CountNo 能超过 ${this.limit} 个!`);
+      this.$modal.msgError(`Maximum number of uploads are ${this.limit} !`);
     },
     // 上传失败
     handleUploadError() {
-      this.$modal.msgError("上传图片失败，请重试");
+      this.$modal.msgError("Upload failed");
       this.$modal.closeLoading();
     },
     // 预览
     handlePictureCardPreview(file) {
-      this.dialogImageUrl = file.url;
+      this.dialogImageUrl = this.baseUrl+file.url;
       this.dialogVisible = true;
     },
     // 对象转成指定字符串分隔

@@ -88,7 +88,7 @@
 
     <!-- Add OrModifyItemType表对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="120px" class="dialog-form-two">
+      <el-form ref="form" :model="form" :rules="rules" label-width="130px" class="dialog-form-two">
 
         <el-row>
           <el-col :span="24" v-if="form.parentId !== 0">

@@ -9,6 +9,15 @@ export function listWmsItem(query, pageReq) {
     params: pageReq
   })
 }
+//listWithCount
+export function listWmsItemWithCount(query, pageReq) {
+  return request({
+    url: '/wms/item/listCount',
+    method: 'post',
+    data: query,
+    params: pageReq
+  })
+}
 // SearchExpiryItem列表
 export function listExpiryItem(pageReq) {
   return request({

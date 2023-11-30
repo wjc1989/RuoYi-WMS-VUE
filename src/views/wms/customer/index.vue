@@ -83,7 +83,7 @@
     <pagination v-show="total > 0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize"
       @pagination="getList" />
 
-    <!-- Add OrModify客户对话框 -->
+    <!-- Add OrModifyCustom对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="No." prop="customerNo">
@@ -184,7 +184,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 客户表格Data
+      // Custom表格Data
       wmsCustomerList: [],
       // 弹出层标题
       title: "",
@@ -241,7 +241,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** Search客户列表 */
+    /** SearchCustom列表 */
     getList() {
       this.loading = true;
       const { pageNum, pageSize } = this.queryParams;
@@ -356,7 +356,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete 客户No."' + ids + '"？').then(function () {
+      this.$modal.confirm(' Do you want delete CustomNo."' + ids + '"？').then(function () {
         return delWmsCustomer(ids);
       }).then(() => {
         this.getList();
@@ -367,7 +367,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export All客户？').then(() => {
+      this.$modal.confirm('Export AllCustom？').then(() => {
         this.exportLoading = true;
         return exportWmsCustomer(queryParams);
       }).then(response => {

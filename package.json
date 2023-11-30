@@ -2,7 +2,7 @@
   "name": "ruoyi-ui-merge",
   "version": "3.8.3",
   "description": "WMS",
-  "author": "若依",
+  "author": "WMS",
   "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",

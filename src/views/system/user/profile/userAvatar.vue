@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="user-info-head"><img v-bind:src="options.img" title="点击上传头像" class="img-circle img-lg" /></div>
+    <div class="user-info-head" @click="editCropper()">
+      <img v-bind:src="options.img" title="Upload photo" class="img-circle img-lg" />
+    </div>
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body @opened="modalOpened"  @close="closeDialog">
       <el-row>
         <el-col :xs="24" :md="12" :style="{height: '350px'}">
@@ -45,7 +47,7 @@
           <el-button icon="el-icon-refresh-right" size="small" @click="rotateRight()"></el-button>
         </el-col>
         <el-col :lg="{span: 2, offset: 6}" :md="2">
-          <el-button type="primary" size="small" @click="uploadImg()">提 交</el-button>
+          <el-button type="primary" size="small" @click="uploadImg()">Submit</el-button>
         </el-col>
       </el-row>
     </el-dialog>
@@ -66,32 +68,32 @@ export default {
   },
   data() {
     return {
-      // Show弹出层
+      // 是否Show弹出层
       open: false,
-      // Showcropper
+      // 是否Showcropper
       visible: false,
       // 弹出层标题
-      title: "Modify头像",
+      title: "EditPhoto",
       options: {
-        img: store.getters.avatar, //裁剪图片的Address
-        autoCrop: true, // 默认生成截图框
-        autoCropWidth: 200, // 默认生成截图框宽度
-        autoCropHeight: 200, // 默认生成截图框高度
-        fixedBox: true // 固定截图框大小 No 允许改变
+        img: store.getters.avatar, //裁剪图片的地址
+        autoCrop: true, // 是否DefaultGen截图框
+        autoCropWidth: 200, // DefaultGen截图框宽度
+        autoCropHeight: 200, // DefaultGen截图框高度
+        fixedBox: true // 固定截图框大小 不Allow改变
       },
       previews: {}
     };
   },
   methods: {
-    // 编辑头像
+    // UpdatePhoto
     editCropper() {
       this.open = true;
     },
-    // 打开弹出层End时的回调
+    // 打开弹出层结束时的回调
     modalOpened() {
       this.visible = true;
     },
-    // 覆盖默认的上传行
+    // 覆盖Default的上传行为
     requestUpload() {
     },
     // 向左旋转
@@ -110,7 +112,7 @@ export default {
     // 上传预处理
     beforeUpload(file) {
       if (file.type.indexOf("image/") == -1) {
-        this.$modal.msgError("文件格式错误，请上传图片Type,e.g.：JPG，PNG后缀的文件。");
+        this.$modal.msgError("The file format is wrong, please upload an image");
       } else {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -128,16 +130,16 @@ export default {
           this.open = false;
           this.options.img = process.env.VUE_APP_BASE_API + response.imgUrl;
           store.commit('SET_AVATAR', this.options.img);
-          this.$modal.msgSuccess("Modify Successful");
+          this.$modal.msgSuccess("Edit Successful");
           this.visible = false;
         });
       });
     },
-    // 实时预览
+    // 实时Preview
     realTime(data) {
       this.previews = data;
     },
-    // Close窗口
+    // 关闭窗口
     closeDialog() {
       this.options.img = store.getters.avatar
       this.visible = false;

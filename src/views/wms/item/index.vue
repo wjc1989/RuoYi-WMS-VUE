@@ -73,18 +73,21 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="No." align="center" prop="itemNo" v-if="columns[0].visible" />
       <el-table-column label="Goods Name" align="center" prop="itemName" v-if="columns[1].visible" />
-      <el-table-column label="Category" align="center" prop="itemTypeName" v-if="columns[2].visible" />
-      <el-table-column label="Unit" align="center" prop="unit" v-if="columns[3].visible" />
-      <el-table-column label="Warehouse" align="center" prop="warehouseName" v-if="columns[6].visible" />
-      <el-table-column label="Area" align="center" prop="areaName" v-if="columns[5].visible" />
-      <el-table-column label="Rack Name" align="center" prop="rackName" v-if="columns[4].visible" />
-      <el-table-column label="Safty Count" align="center" prop="quantity" v-if="columns[7].visible" />
-      <el-table-column label="Expiry Date" align="center" prop="expiryDate" width="180" v-if="columns[8].visible">
+      <el-table-column label="Pic" align="center" prop="pics" v-if="columns[2].visible" >
+        <template slot-scope="scope">
+          <span><ImagePreview v-if="scope.row.pics!=null" :src="scope.row.pics" class="listimage" ></ImagePreview></span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="Category" align="center" prop="itemTypeName" v-if="columns[3].visible" />
+      <el-table-column label="Unit" align="center" prop="unit" v-if="columns[4].visible" />
+      <el-table-column label="Safty Count" align="center" prop="quantity" v-if="columns[5].visible" />
+      <el-table-column label="Expiry Date" align="center" prop="expiryDate" width="180" v-if="columns[6].visible">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.expiryDate, "") }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[9].visible" />
+      <el-table-column label="Remark" align="center" prop="remark" v-if="columns[7].visible" />
       <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click.stop="handleUpdate(scope.row)"
@@ -115,8 +118,8 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="Warehouse" prop="place">
-              <WmsWarehouseCascader v-model="form.place"  ></WmsWarehouseCascader>
+            <el-form-item label="Category" prop="itemType">
+              <treeselect v-model="form.itemType" :options="deptOptions" :show-count="true" placeholder="Please select Type" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -126,28 +129,32 @@
           </el-col>
         </el-row>
         <el-row :gutter="24">
-          <el-col :span="12">
-            <el-form-item label="Category" prop="itemType">
-              <treeselect v-model="form.itemType" :options="deptOptions" :show-count="true" placeholder="Please select Type" />
-            </el-form-item>
-          </el-col>
+
           <el-col :span="12">
             <el-form-item label="Safty Count" prop="quantity">
               <el-input v-model="form.quantity" placeholder="Please Input Safty Count" />
             </el-form-item>
           </el-col>
-        </el-row>
-        <el-row :gutter="24">
           <el-col :span="12">
             <el-form-item label="Expiry Date" prop="expiryDate">
               <el-date-picker clearable size="small" v-model="form.expiryDate" type="datetime"
-                value-format="yyyy-MM-dd HH:mm:ss" placeholder="Select Expiry Date">
+                              value-format="yyyy-MM-dd HH:mm:ss" placeholder="Select Expiry Date">
               </el-date-picker>
             </el-form-item>
           </el-col>
-          <el-col :span="12">
+        </el-row>
+        <el-row :gutter="24">
+
+          <el-col :span="24">
             <el-form-item label="Remark" prop="remark">
               <el-input v-model="form.remark" placeholder="Please Input Remark" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :span="24">
+          <el-col :span="24">
+            <el-form-item label="" prop="pics">
+              <ImageUpload v-model="form.pics"/>
             </el-form-item>
           </el-col>
         </el-row>
@@ -187,6 +194,7 @@ export default {
       loading: true,
       // Department树选项
       deptOptions: [],
+      baseUrl:process.env.VUE_APP_BASE_API,
       // Export遮罩层
       exportLoading: false,
       // 选中数组
@@ -236,14 +244,13 @@ export default {
       columns: [
         { key: 1, label: "No.", visible: true },
         { key: 2, label: "Name", visible: true },
-        { key: 3, label: "Category", visible: true },
-        { key: 4, label: "Unit", visible: true },
-        { key: 5, label: "Rack Name", visible: false },
-        { key: 6, label: "Area", visible: true },
-        { key: 7, label: "Warehouse", visible: true },
-        { key: 8, label: "Safty Count", visible: true },
-        { key: 9, label: "Expiry Date", visible: true },
-        { key: 11, label: "Remark", visible: false },
+        { key: 3, label: "Pic", visible: true },
+        { key: 4, label: "Category", visible: true },
+        { key: 5, label: "Unit", visible: true },
+
+        { key: 6, label: "Safty Count", visible: true },
+        { key: 7, label: "Expiry Date", visible: true },
+        { key: 8, label: "Remark", visible: false },
       ],
       showMoreCondition: false,
     };
@@ -255,6 +262,7 @@ export default {
     });
   },
   methods: {
+
     /** SearchItem列表 */
     getList() {
       this.loading = true;
@@ -276,6 +284,7 @@ export default {
         content.forEach((item) => {
           item.rackName = this.rackMap.get(item.rackId);
         });
+        console.log("listWmsItem:",content)
         this.wmsItemList = content;
         this.total = totalElements;
         this.loading = false;
@@ -304,6 +313,7 @@ export default {
         createTime: null,
         updateBy: null,
         updateTime: null,
+        pics:null
       };
       this.resetForm("form");
     },
@@ -348,7 +358,6 @@ export default {
             this.form.warehouseId = this.form.place[0]
             this.form.areaId = this.form.place[1]
             this.form.rackId = this.form.place[2]
-
           }
           if (this.form.id != null) {
             updateWmsItem(this.form).then((response) => {

@@ -1,23 +1,21 @@
 <template>
   <div class="shipment-order-edit-wrapper app-container">
     <div class="shipment-order-content">
-      <el-form label-width="108px" :model="form" ref="form" :rules="rules">
+      <el-form label-width="138px" :model="form" ref="form" :rules="rules">
         <el-form-item label="Outbound No." prop="shipmentOrderNo">
           <el-input class="w200" v-model="form.shipmentOrderNo" placeholder="Outbound No." disabled="disabled"></el-input>
         </el-form-item>
         <el-form-item label="Outbound Type" prop="shipmentOrderType">
           <el-radio-group v-model="form.shipmentOrderType">
-            <el-radio-button v-for="dict in dict.type.wms_shipment_type" :key="dict.value"
-                             :label="dict.value">{{ dict.label }}
-            </el-radio-button>
+            <el-radio-button v-for="dict in dict.type.wms_shipment_type" :key="dict.value" :label="dict.value">{{ dict.label }} </el-radio-button>
           </el-radio-group>
         </el-form-item>
 
         <el-form-item label="Amount" prop="receivableAmount" v-show="hasCustomer">
           <el-input-number v-model="form.receivableAmount" :precision="2" :min="0" label="Please Input Amount"></el-input-number>
         </el-form-item>
-        <el-form-item label="No." prop="orderNo">
-          <el-input v-model="form.orderNo" placeholder="Please Input No."></el-input>
+        <el-form-item label="Project" prop="orderNo">
+          <el-input v-model="form.orderNo" placeholder="Please Input Project"></el-input>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Remark...Maximum 100 characters" rows="3" maxlength="100" type="textarea"
@@ -258,7 +256,7 @@ export default {
       this.form = {
         id: null,
         shipmentOrderNo: 'E-' + randomId(),
-        shipmentOrderType: 11,
+        shipmentOrderType: 12,
         customerId: null,
         orderNo: null,
         shipmentOrderStatus: 11,

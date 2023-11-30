@@ -14,7 +14,7 @@
         <el-input v-model="queryParams.shipmentOrderNo" clearable="clearable" placeholder="Please Input Outbound No." size="small"
                   @keyup.enter.native="handleQuery"></el-input>
       </el-form-item>
-      <el-form-item label="No." prop="orderNo">
+      <el-form-item label="Project" prop="orderNo">
         <el-input v-model="queryParams.orderNo" clearable="clearable" placeholder="Please Input No." size="small"
                   @keyup.enter.native="handleQuery"></el-input>
       </el-form-item>
@@ -51,7 +51,7 @@
         </template>
       </el-table-column>
       <el-table-column v-if="columns[2].visible" align="center" :formatter="getCustomer" label="Custom"></el-table-column>
-      <el-table-column v-if="columns[3].visible" align="center" label="No." prop="orderNo"></el-table-column>
+      <el-table-column v-if="columns[3].visible" align="center" label="Project" prop="orderNo"></el-table-column>
       <el-table-column v-if="columns[4].visible" align="center" label="Outbound Status">
         <template slot-scope="scope">
           <el-tag effect="plain" size="medium" :type="getShipmentOrderStatusTag(scope.row)">

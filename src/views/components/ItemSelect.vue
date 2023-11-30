@@ -37,8 +37,10 @@
                   :disabled="editableList.length === 0"
                 ></el-checkbox>
               </th>
-              <th>Goods Name</th>
               <th>Goods No.</th>
+              <th>Goods Name</th>
+              <th>Pics</th>
+              <th>Quantity</th>
             </tr>
 
             <tr v-for="p in list" :key="p.id">
@@ -60,6 +62,16 @@
                   {{ p.itemNo }}
                 </div>
               </td>
+              <td>
+                <div class="text-center">
+                  <ImagePreview :src="p.pics" class="listimage" ></ImagePreview>
+                </div>
+              </td>
+              <td>
+                <div class="text-center">
+                  {{p.inventory}}
+                </div>
+              </td>
             </tr>
           </table>
           <el-empty v-else :image-size="64"></el-empty>
@@ -73,7 +85,7 @@
 </template>
 
 <script>
-import {listWmsItem} from "@/api/wms/item";
+import {listWmsItemWithCount} from "@/api/wms/item";
 import Treeselect from "@riophae/vue-treeselect";
 import {itemTypeTreeselect} from "@/api/wms/itemType";
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
@@ -132,6 +144,7 @@ export default {
     }
   },
   created() {
+    console.log("this.data:",this.data);
     if (this.data) {
       this.initDetailsList(this.data)
     }
@@ -149,8 +162,10 @@ export default {
     loadAll() {
       const pageReq = {...this.pageReq};
       pageReq.page -= 1;
-      listWmsItem(this.query, pageReq).then((res) => {
-        const {content, totalElements} = res;
+      listWmsItemWithCount(this.query, pageReq).then((res) => {
+        console.log("listWmsItemWithCount:",res)
+        let content=res.rows||[];
+        let totalElements=res.total;
         content.forEach((it) => (it.checked = false));
         this.list = content;
         this.total = totalElements;

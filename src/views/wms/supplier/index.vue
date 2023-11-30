@@ -100,7 +100,7 @@
 
     <!-- Add OrModifySupplier对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
+      <el-form ref="form" :model="form" :rules="rules" label-width="128px" inline class="dialog-form-two">
         <el-form-item label="No." prop="supplierNo">
           <el-input v-model="form.supplierNo" placeholder="Please Input No." />
         </el-form-item>

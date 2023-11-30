@@ -30,7 +30,7 @@ https://github.com/zccbbg/wms-ruoyi
 - 演示Address：
 - 陆陆续续收到一些打赏，了更好的体验已用于演示服务器升级。谢谢各位小伙伴。
 
-## CSDN若依技术专栏
+## CSDNWMS技术专栏
 - 常见问题：https://blog.csdn.net/qq_27575627/category_12336113.html
 - 后端技术：https://blog.csdn.net/qq_27575627/category_12331868.html
 - 前端技术：https://blog.csdn.net/qq_27575627/category_12331867.html
@@ -39,15 +39,15 @@ https://github.com/zccbbg/wms-ruoyi
 ## B站视频介绍
 https://www.bilibili.com/video/BV1ys4y1q7uG
 
-## 若依wms简介
-若依wmsYes一套基于若依的WMS，支持lodop And 网页PrintInbound、Outbound 。毫无保留给个人及企业免费使用。
+## WMSwms简介
+WMSwmsYes一套基于WMS的WMS，支持lodop And 网页PrintInbound、Outbound 。毫无保留给个人及企业免费使用。
 * 前端采用Vue、Element UI（ant design 正在开发中）。
 * 后端采用Spring Boot、Spring Security、Redis & Jwt。
 * Prower认证使用Jwt，支持多终端认证系统。
 * 支持加载动态ProwerMenu ，多方式轻松Prower控制。
 * 高效率开发，使用代码生成器可以一键生成前后端代码。
 
-## 若依wms功能
+## WMSwms功能
 1. Index：InventoryWarn与到期提醒、基础Data报表展示
 2. Warehouse/ Rack：管理维护Warehouse基础Data
 3. Item：管理维护Item基础Data
@@ -74,7 +74,7 @@ https://www.bilibili.com/video/BV1ys4y1q7uG
 ![Warehouse列表](https://oscimg.oschina.net/oscnet/up-a00eb79bee48e481249a12cb5e6c476aaa3.jpg)
 ![Inventory看板](https://oscimg.oschina.net/oscnet/up-78990915dfba902384ed4b09e3dc0f0fe05.jpg)
 
-## 若依内置功能
+## WMS内置功能
 
 1.  User 管理：User Yes系统Operate者，该功能主要完成系统User 配置。
 2.  Department管理：配置系统组织机构（公司、Department、小组），树结构展现支持Data Perm。
