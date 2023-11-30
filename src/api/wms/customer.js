@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// Search客户列表
+// SearchCustom列表
 export function listWmsCustomer(query, pageReq) {
   return request({
     url: '/wms/customer/list',
@@ -10,7 +10,7 @@ export function listWmsCustomer(query, pageReq) {
   })
 }
 
-// Search客户Detail
+// SearchCustomDetail
 export function getWmsCustomer(id) {
   return request({
     url: '/wms/customer/' + id,
@@ -18,7 +18,7 @@ export function getWmsCustomer(id) {
   })
 }
 
-// Add客户
+// AddCustom
 export function addWmsCustomer(data) {
   return request({
     url: '/wms/customer',
@@ -27,7 +27,7 @@ export function addWmsCustomer(data) {
   })
 }
 
-// Modify客户
+// ModifyCustom
 export function updateWmsCustomer(data) {
   return request({
     url: '/wms/customer',
@@ -36,7 +36,7 @@ export function updateWmsCustomer(data) {
   })
 }
 
-// Delete客户
+// DeleteCustom
 export function delWmsCustomer(id) {
   return request({
     url: '/wms/customer/' + id,
@@ -44,7 +44,7 @@ export function delWmsCustomer(id) {
   })
 }
 
-// Export客户
+// ExportCustom
 export function exportWmsCustomer(query) {
   return request({
     url: '/wms/customer/export',

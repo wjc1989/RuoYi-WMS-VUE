@@ -1,6 +1,6 @@
 export default {
-  '401': '认证失败，无法访问系统资源',
-  '403': '当前Operate没有Prower',
-  '404': '访问资源No 存在',
-  'default': '系统未知错误，请反馈给管理员'
+  '401': 'Authentication failed, unable to access System resources',
+  '403': 'Currently Operate does not have Permission',
+  '404': 'Access resource does not exist',
+  'default': 'System unknown error, please report it to the Manager'
 }

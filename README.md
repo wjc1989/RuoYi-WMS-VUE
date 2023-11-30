@@ -20,7 +20,7 @@ npm run build:stage
 # 构建生产环境
 npm run build:prod
 ```
-## 后端开源项目Address
+## 后端开Source 项目Address
 ### gitee
 https://gitee.com/zccbbg/wms-ruoyi
 ### github
@@ -30,7 +30,7 @@ https://github.com/zccbbg/wms-ruoyi
 - 演示Address：
 - 陆陆续续收到一些打赏，了更好的体验已用于演示服务器升级。谢谢各位小伙伴。
 
-## CSDN若依技术专栏
+## CSDNWMS技术专栏
 - 常见问题：https://blog.csdn.net/qq_27575627/category_12336113.html
 - 后端技术：https://blog.csdn.net/qq_27575627/category_12331868.html
 - 前端技术：https://blog.csdn.net/qq_27575627/category_12331867.html
@@ -39,32 +39,32 @@ https://github.com/zccbbg/wms-ruoyi
 ## B站视频介绍
 https://www.bilibili.com/video/BV1ys4y1q7uG
 
-## 若依wms简介
-若依wmsYes一套基于若依的WMS，支持lodop和网页PrintInbound、Outbound 。毫无保留给个人及企业免费使用。
+## WMSwms简介
+WMSwmsYes一套基于WMS的WMS，支持lodop And 网页PrintInbound、Outbound 。毫无保留给个人及企业免费使用。
 * 前端采用Vue、Element UI（ant design 正在开发中）。
 * 后端采用Spring Boot、Spring Security、Redis & Jwt。
 * Prower认证使用Jwt，支持多终端认证系统。
 * 支持加载动态ProwerMenu ，多方式轻松Prower控制。
 * 高效率开发，使用代码生成器可以一键生成前后端代码。
 
-## 若依wms功能
+## WMSwms功能
 1. Index：InventoryWarn与到期提醒、基础Data报表展示
-2. Warehouse/ Shelves：管理维护Warehouse基础Data
+2. Warehouse/ Rack：管理维护Warehouse基础Data
 3. Item：管理维护Item基础Data
 4. Custom/Supplier/ Carrier：管理维护Contacts基础Data
-5. Inbound：CreateInbound后包括e.g.下几个Status：未Outbound、在途（已Outbound未Inbound）、部分Inbound、作废、Inbound完成，Type包括：采购Inbound、外协Inbound、退货Inbound，Inbound支持lodop和网页Print
-6. Outbound ：CreateOutbound 后包括e.g.下几个Status：未Outbound、部分Outbound、已Outbound、作废，Type包括：销售Outbound 、外协Outbound 、调拨Outbound ，Outbound 支持lodop和网页Print
-7. 移库：Create移库后包括e.g.下几个Status：未Operate、部分移动、Operate完毕、作废
-8. Inventory看板：查看当前ItemInventoryCount
-9. Inventory Record：查看当前ItemInventoryOperate Record
+5. Inbound：CreateInbound后包括e.g.下几个Status：未Outbound、在途（已Outbound未Inbound）、部分Inbound、作废、Inbound完成，Type包括：采购Inbound、外协Inbound、退货Inbound，Inbound支持lodop And 网页Print
+6. Outbound ：CreateOutbound 后包括e.g.下几个Status：未Outbound、部分Outbound、已Outbound、作废，Type包括：销售Outbound 、外协Outbound 、调拨Outbound ，Outbound 支持lodop And 网页Print
+7. Move：CreateMove后包括e.g.下几个Status：未Operate、部分移动、Operate完毕、作废
+8. Inventory看板：View当前ItemInventoryCount
+9. Inventory Record：View当前ItemInventoryOperate Record
 ## Status流转
-#### InboundStatus流转
-![InboundStatus流转](https://oscimg.oschina.net/oscnet/up-6bdb5ad6d8ab236f763300b71cf175d9a99.jpg)
+#### Status流转
+![Status流转](https://oscimg.oschina.net/oscnet/up-6bdb5ad6d8ab236f763300b71cf175d9a99.jpg)
 #### Outbound Status流转
 ![Outbound Status流转](https://oscimg.oschina.net/oscnet/up-55cad3f077f914e357efeaae0b3feecf942.jpg)
 
 ## 关于我们
-开发团队成立于2017年，我们前端开发、后端架构，有一颗热爱开源的心，致力于打造企业级的通用产品设计UI体系让项目 或者更直观，更高效、更简，未来将持续关注UI交互，持续推出高质量的交互产品。
+开发团队成立于2017年，我们前端开发、后端架构，有一颗热爱开Source 的心，致力于打造企业级的通用产品设计UI体系让项目  Or者更直观，更高效、更简，未来将持续关注UI交互，持续推出高质量的交互产品。
 
 ## 演示图
 ![Index](https://oscimg.oschina.net/oscnet/up-89f751967b4145f7da92e23536bf231fbe8.jpg)
@@ -74,7 +74,7 @@ https://www.bilibili.com/video/BV1ys4y1q7uG
 ![Warehouse列表](https://oscimg.oschina.net/oscnet/up-a00eb79bee48e481249a12cb5e6c476aaa3.jpg)
 ![Inventory看板](https://oscimg.oschina.net/oscnet/up-78990915dfba902384ed4b09e3dc0f0fe05.jpg)
 
-## 若依内置功能
+## WMS内置功能
 
 1.  User 管理：User Yes系统Operate者，该功能主要完成系统User 配置。
 2.  Department管理：配置系统组织机构（公司、Department、小组），树结构展现支持Data Perm。
@@ -84,12 +84,12 @@ https://www.bilibili.com/video/BV1ys4y1q7uG
 6.  Dict管理：对系统中经常使用的一些较固定的Data进行维护。
 7.  Params管理：对系统动态配置常用Params。
 8.  通知Notice：系统通知Notice信息发布维护。
-9.  OperateLogs：系统正常OperateLogs Record和Search；系统 Exception信息Logs Record和Search。
+9.  OperateLogs：系统正常OperateLogs Record And Search；系统 Exception信息Logs Record And Search。
 10. LoginLogs：系统LoginLogs RecordSearch包含Login Exception。
 11. 在线User ：当前系统中活跃User Status监控。
 12. 定时 Task：在线（Add、Modify、Delete) Task调度包含执行结果Logs。
 13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
-14. 系统接口：根据业务代码自动生成相关的api接口文档。
+14. 系统接口：根据业务代码Auto生成相关的api接口文档。
 15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
 16. Cache监控：对系统的Cache信息Search，命令统计等。
 17. 在线构建器：拖动表元素生成相应的HTML代码。
@@ -131,15 +131,15 @@ https://www.bilibili.com/video/BV1ys4y1q7uG
 
 
 ## 关于我们
-* 开发团队成立5年，我们前端开发、后端架构，有一颗热爱开源的心，致力于打造企业级的通用产品设计UI体系让项目 或者更直观，更高效、更简，未来将持续关注UI交互，持续推出高质量的交互产品。
-* 这五年我主要做isv对接淘宝、拼多多、抖音、美团等平台的订处理应用，日处理订300w条，因要熟悉业务也开过淘宝和拼多多店铺运营了一个网易严选的品牌。我们的公众No.会陆续更新一些我一边撸代码一边做客服的经历。也会更新一些我的读书笔记以及编程、创业、生活中踩坑的文章。另外还会开放一些米哈游、博世、企查查、同程、阿里、京东、拼多多等大厂、中厂或外企的内推Post！
+* 开发团队成立5年，我们前端开发、后端架构，有一颗热爱开Source 的心，致力于打造企业级的通用产品设计UI体系让项目  Or者更直观，更高效、更简，未来将持续关注UI交互，持续推出高质量的交互产品。
+* 这五年我主要做isv对接淘宝、拼多多、抖音、美团等平台的订处理应用，日处理订300w条，因要熟悉业务也开过淘宝 And 拼多多店铺运营了一个网易严选的品牌。我们的公众No.会陆续更新一些我一边撸代码一边做客服的经历。也会更新一些我的读书笔记以及编程、创业、生活中踩坑的文章。另外还会开放一些米哈游、博世、企查查、同程、阿里、京东、拼多多等大厂、中厂 Or外企的内推Post！
 
 ## 大厂、外企内推
-关注“编写美好前程”公众No.： Record编程、创业、生活中踩坑的文章，陆续会开放一些微软、阿里、京东、拼多多等大厂或外企的内推Post！
+关注“编写美好前程”公众No.： Record编程、创业、生活中踩坑的文章，陆续会开放一些微软、阿里、京东、拼多多等大厂 Or外企的内推Post！
 
 ## 加群/技术支持
 
 |                    公众No.                     |
 |:------------------------------------------:|
 | <img src="doc/datacall.jpg" width="200px"> |
-扫公众No.二维码，关注后回复：“加群”或“支持”
+扫公众No.二维码，关注后回复：“加群” Or“支持”

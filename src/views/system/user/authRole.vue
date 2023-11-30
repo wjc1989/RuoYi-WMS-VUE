@@ -54,7 +54,7 @@ export default {
     return {
        // 遮罩层
       loading: true,
-      // 分页信息
+      // Page信息
       total: 0,
       pageNum: 1,
       pageSize: 10,

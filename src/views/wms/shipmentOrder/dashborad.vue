@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="120px" :model="queryParams" ref="queryForm"
+    <el-form class="ry_form" v-show="showSearch" :inline="true" label-width="130px" :model="queryParams" ref="queryForm"
              size="medium">
       <el-form-item label="Outbound Status" prop="shipmentOrderStatus">
         <DictRadio v-model="queryParams.shipmentOrderStatus" :radioData="dict.type.wms_shipment_status" :showAll="'all'"
@@ -14,7 +14,7 @@
         <el-input v-model="queryParams.shipmentOrderNo" clearable="clearable" placeholder="Please Input Outbound No." size="small"
                   @keyup.enter.native="handleQuery"></el-input>
       </el-form-item>
-      <el-form-item label="No." prop="orderNo">
+      <el-form-item label="Project" prop="orderNo">
         <el-input v-model="queryParams.orderNo" clearable="clearable" placeholder="Please Input No." size="small"
                   @keyup.enter.native="handleQuery"></el-input>
       </el-form-item>
@@ -29,7 +29,7 @@
     <el-row class="mb8" :gutter="10">
       <el-col :span="1.5">
         <el-button v-hasPermi="['wms:shipmentOrder:add']" icon="el-icon-plus" plain="plain" size="mini" type="primary"
-                   @click="handleAdd()">CreateOutbound
+                   @click="handleAdd()">New
         </el-button>
       </el-col>
       <el-col :span="1.5">
@@ -51,7 +51,7 @@
         </template>
       </el-table-column>
       <el-table-column v-if="columns[2].visible" align="center" :formatter="getCustomer" label="Custom"></el-table-column>
-      <el-table-column v-if="columns[3].visible" align="center" label="No." prop="orderNo"></el-table-column>
+      <el-table-column v-if="columns[3].visible" align="center" label="Project" prop="orderNo"></el-table-column>
       <el-table-column v-if="columns[4].visible" align="center" label="Outbound Status">
         <template slot-scope="scope">
           <el-tag effect="plain" size="medium" :type="getShipmentOrderStatusTag(scope.row)">

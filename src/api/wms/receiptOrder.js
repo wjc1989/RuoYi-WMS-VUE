@@ -26,7 +26,7 @@ export function addWmsReceiptOrder(data) {
     data: data
   })
 }
-// Add或编辑Inbound
+// Add Or编辑Inbound
 export function addOrUpdateWmsReceiptOrder(data) {
   return request({
     url: '/wms/receiptOrder/add-or-update',

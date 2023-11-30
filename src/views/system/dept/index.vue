@@ -34,7 +34,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['system:dept:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -83,7 +83,7 @@
             icon="el-icon-plus"
             @click="handleAdd(scope.row)"
             v-hasPermi="['system:dept:add']"
-          >Add</el-button>
+          >New</el-button>
           <el-button
             v-if="scope.row.parentId != 0"
             size="mini"
@@ -96,7 +96,7 @@
       </el-table-column>
     </el-table>
 
-    <!-- Add或ModifyDepartment对话框 -->
+    <!-- Add OrModifyDepartment对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>

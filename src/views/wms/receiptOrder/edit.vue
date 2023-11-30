@@ -19,8 +19,8 @@
  <!--       <el-form-item label="Amount" prop="payableAmount" v-show="hasSupplier">
           <el-input-number v-model="form.payableAmount" :precision="2" :min="0" label="Please Input Amount"></el-input-number>
         </el-form-item>-->
-        <el-form-item label="No." prop="orderNo">
-          <el-input v-model="form.orderNo" placeholder="Please Input No."></el-input>
+        <el-form-item label="Project" prop="orderNo">
+          <el-input v-model="form.orderNo" placeholder="Please Input Project"></el-input>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Remark...Maximum 100 characters" rows="3" maxlength="100" type="textarea"
@@ -82,7 +82,7 @@
       </div>
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
-        <el-button @click="submitForm" type="primary">Add</el-button>
+        <el-button @click="submitForm" type="primary">Save</el-button>
       </div>
     </div>
     <el-dialog :visible="modalObj.show" :title="modalObj.title" :width="modalObj.width" @close="modalObj.cancel">
@@ -318,7 +318,7 @@ export default {
 <style lang="stylus">
 .receipt-order-edit-wrapper
   .receipt-order-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>

@@ -84,7 +84,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:carrier:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <!-- <el-col :span="1.5">
         <el-button
@@ -160,7 +160,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或Modify Carrier对话框 -->
+    <!-- Add OrModify Carrier对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="No." prop="carrierNo">

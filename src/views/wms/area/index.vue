@@ -59,7 +59,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:area:add']"
-          >Add</el-button
+          >New</el-button
         >
       </el-col>
       <el-col :span="1.5">
@@ -169,7 +169,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyArea对话框 -->
+    <!-- Add OrModifyArea对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form
         ref="form"

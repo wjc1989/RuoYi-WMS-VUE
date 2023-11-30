@@ -71,7 +71,7 @@ export default {
         }]
       },
       typeOptions: [{
-        label: '页面',
+        label: '面',
         value: 'file'
       }, {
         label: '弹窗',

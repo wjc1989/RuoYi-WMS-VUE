@@ -89,11 +89,11 @@ export default {
       registerRules: {
         username: [
           { required: true, trigger: "blur", message: "Please Input Account" },
-          { min: 2, max: 20, message: 'User Account长度必须介于 2 和 20 之间', trigger: 'blur' }
+          { min: 2, max: 20, message: 'User Account长度必须介于 2  And  20 之间', trigger: 'blur' }
         ],
         password: [
           { required: true, trigger: "blur", message: "Please Input Password" },
-          { min: 5, max: 20, message: 'Password长度必须介于 5 和 20 之间', trigger: 'blur' }
+          { min: 5, max: 20, message: 'Password长度必须介于 5  And  20 之间', trigger: 'blur' }
         ],
         confirmPassword: [
           { required: true, trigger: "blur", message: "请再次输入您的Password" },

@@ -60,7 +60,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['system:dict:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -157,7 +157,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyParams配置对话框 -->
+    <!-- Add OrModifyParams配置对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="110px">
         <el-form-item label="Type Name" prop="dictName">

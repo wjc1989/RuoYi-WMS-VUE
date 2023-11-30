@@ -149,7 +149,7 @@ export function mergeRecursive(source, target) {
 
 /**
  * 构造树型结构Data
- * @param {*} data Data源
+ * @param {*} data DataSource
  * @param {*} id id字段 默认 'id'
  * @param {*} parentId 父节点字段 默认 'parentId'
  * @param {*} children 孩子节点字段 默认 'children'

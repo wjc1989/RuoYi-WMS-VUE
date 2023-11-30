@@ -1,6 +1,6 @@
 /**
- * @file Outbound Type和Status的常量
- * @description Outbound Type和Status的常量
+ * @file Outbound Type And Status的常量
+ * @description Outbound Type And Status的常量
  * @createdBy Zhang Cheng
  * @createdAt 2023/08/10
  */

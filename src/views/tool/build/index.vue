@@ -111,7 +111,7 @@
               />
             </draggable>
             <div v-show="!drawingList.length" class="empty-info">
-              从左侧拖入或点选组件进行表设计
+              从左侧拖入 Or点选组件进行表设计
             </div>
           </el-form>
         </el-row>

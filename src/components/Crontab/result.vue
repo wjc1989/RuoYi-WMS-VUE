@@ -213,7 +213,7 @@ export default {
 								continue;
 							}
 						} else if (this.dayRule == 'assWeek') {
-							// e.g.果指定了Yes第几周的几
+							// e.g.果指定了YesPage 几周的几
 							// 获取每月1No.Yes属于几
 							let thisWeek = this.formatDate(new Date(YY + '-' + MM + '-' + DD + ' 00:00:00'), 'week');
 							if (this.dayRuleSup[1] >= thisWeek) {

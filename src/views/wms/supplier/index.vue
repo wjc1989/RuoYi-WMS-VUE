@@ -46,7 +46,7 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-          v-hasPermi="['wms:supplier:add']">Add</el-button>
+          v-hasPermi="['wms:supplier:add']">New</el-button>
       </el-col>
       <!-- <el-col :span="1.5">
         <el-button type="success" plain icon="el-icon-edit" size="mini" :disabled="single" @click="handleUpdate"
@@ -98,9 +98,9 @@
     <pagination v-show="total > 0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize"
       @pagination="getList" />
 
-    <!-- Add或ModifySupplier对话框 -->
+    <!-- Add OrModifySupplier对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
+      <el-form ref="form" :model="form" :rules="rules" label-width="128px" inline class="dialog-form-two">
         <el-form-item label="No." prop="supplierNo">
           <el-input v-model="form.supplierNo" placeholder="Please Input No." />
         </el-form-item>

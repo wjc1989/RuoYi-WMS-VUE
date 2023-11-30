@@ -2,8 +2,8 @@
   <div class="inventory-movement-status-wrapper app-container" v-loading="loading">
     <div class="inventory-movement-content">
       <el-form label-width="108px" :model="form" ref="form" :rules="rules">
-        <el-form-item label="移库No." prop="inventoryMovementNo">{{ form.inventoryMovementNo }}</el-form-item>
-        <el-form-item label="移库Status" prop="status">{{ statusMap.get(form.status + '') }}</el-form-item>
+        <el-form-item label="MoveNo." prop="inventoryMovementNo">{{ form.inventoryMovementNo }}</el-form-item>
+        <el-form-item label="MoveStatus" prop="status">{{ statusMap.get(form.status + '') }}</el-form-item>
         <el-form-item label="Remark" prop="remark">{{ form.remark }}</el-form-item>
       </el-form>
       <el-divider></el-divider>
@@ -14,7 +14,7 @@
         <el-col :span="1.5">
           <el-button size="small" type="success" plain="plain" icon="el-icon-delete-location"
                      @click="onBatchSetInventory('sourcePlace')">
-            设置源Warehouse
+            Source Warehouse
           </el-button>
         </el-col>
         <el-col :span="1.5">
@@ -26,12 +26,12 @@
         <el-col :span="1.5">
           <el-button size="small" icon="el-icon-aim" type="warning" plain="plain"
                      @click="onBatchSetInventory('targetPlace')">
-            设置目标Warehouse
+            Target Warehouse
           </el-button>
         </el-col>
 
       </el-row>
-      <el-dialog title="Please select 移库Status" :visible.sync="open" width="50%" append-to-body="append-to-body">
+      <el-dialog title="Please select MoveStatus" :visible.sync="open" width="50%" append-to-body="append-to-body">
         <DictRadio v-model="dialogStatus" :radioData="dialogStatusRange"></DictRadio>
         <div class="dialog-footer" slot="footer">
           <el-button type="primary" @click="dialogConfirm">OK</el-button>
@@ -44,7 +44,7 @@
             <el-table-column type="selection" width="55" align="center"></el-table-column>
             <el-table-column label="Goods Name" align="center" prop="prod.itemName"></el-table-column>
             <el-table-column label="Goods No." align="center" prop="prod.itemNo"></el-table-column>
-            <el-table-column label="ItemType" align="center" prop="prod.itemType"></el-table-column>
+            <el-table-column label="Category" align="center" prop="prod.itemType"></el-table-column>
             <el-table-column label="Plan Count" align="center" prop="planQuantity"></el-table-column>
             <el-table-column label="Real Count" align="center" width="150">
               <template slot-scope="scope">
@@ -52,29 +52,29 @@
                                  :disabled="scope.row.finish"></el-input-number>
               </template>
             </el-table-column>
-            <el-table-column label="源 Warehouse" align="center" width="200">
+            <el-table-column label="Source  Warehouse" align="center" width="200">
 
               <template slot-scope="scope">
                 <el-form-item :prop=" 'details.' + scope.$index + '.sourcePlace' "
-                              :rules="[{ required: true, message: 'Please select 源 Warehouse', trigger: 'change' }]"
+                              :rules="[{ required: true, message: 'Please select Source  Warehouse', trigger: 'change' }]"
                               style="margin-bottom: 0!important;">
                   <WmsWarehouseCascader v-model="scope.row.sourcePlace" size="small"
                                         :disabled="scope.row.finish"></WmsWarehouseCascader>
                 </el-form-item>
               </template>
             </el-table-column>
-            <el-table-column label="目标 Warehouse" align="center" width="200">
+            <el-table-column label="Target  Warehouse" align="center" width="200">
 
               <template slot-scope="scope">
                 <el-form-item :prop=" 'details.' + scope.$index + '.targetPlace' "
-                              :rules="[{ required: true, message: 'Please select 目标 Warehouse', trigger: 'change' }]"
+                              :rules="[{ required: true, message: 'Please select Target  Warehouse', trigger: 'change' }]"
                               style="margin-bottom: 0!important;">
                   <WmsWarehouseCascader v-model="scope.row.targetPlace" size="small"
                                         :disabled="scope.row.finish"></WmsWarehouseCascader>
                 </el-form-item>
               </template>
             </el-table-column>
-            <el-table-column label="移库Status" width="150">
+            <el-table-column label="MoveStatus" width="150">
               <template slot-scope="{ row }">
                 <DictSelect v-model="row.moveStatus" :options="row.range" size="small"
                             :disabled="row.finish"></DictSelect>
@@ -86,7 +86,7 @@
       </div>
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
-        <el-button @click="submitForm" type="primary" :disabled="finish">Add</el-button>
+        <el-button @click="submitForm" type="primary" :disabled="finish">Save</el-button>
       </div>
     </div>
     <BatchWarehouseDialog
@@ -184,7 +184,7 @@ export default {
     },
     dialogConfirm() {
       if (!this.dialogStatus) {
-        this.$modal.alert('Please select 移库Status')
+        this.$modal.alert('Please select MoveStatus')
         return
       }
       this.form.details.forEach(detail => {
@@ -211,7 +211,7 @@ export default {
       }
     },
     cancel() {
-      this.$tab.closeOpenPage({path: '/wms/inventoryMovement'})
+      this.$tab.closeOpenPage({path: '/inventoryMovement'})
     },
     /** 提交Button */
     submitForm() {
@@ -219,7 +219,7 @@ export default {
         if (!valid) {
           this.$notify({
             title: 'Warning',
-            message: "请完善表信息",
+            message: "Verification failed",
             type: 'warning'
           });
           return
@@ -242,12 +242,12 @@ export default {
           }
         })
         if (details.filter(it => !it.sourceWarehouseId || !it.targetWarehouseId)?.length > 0) {
-          this.$message.warning('Please select Warehouse、Area或 Shelves')
+          this.$message.warning('Please select Warehouse、Area Or Rack')
           return;
         }
         const arr = details.filter(it => it.sourceRackId === it.targetRackId && it.sourceAreaId === it.targetAreaId && it.sourceWarehouseId === it.targetWarehouseId)
         if (arr?.length > 0) {
-          this.$message.warning('同一个ItemNo 能Select 相同的Warehouse、Area、 Shelves')
+          this.$message.warning('同一个ItemNo 能Select 相同的Warehouse、Area、 Rack')
           return;
         }
         const req = {...this.form, details}
@@ -274,7 +274,8 @@ export default {
             it.targetPlace = it.prod.targetPlace;
           }
           it.range = this.getRange(it.moveStatus)
-          it.finish = it.moveStatus === 23
+          it.finish = it.moveStatus === 23;
+          it.realQuantity=it.planQuantity;
         })
         this.finish = details.filter(it => !it.finish)?.length === 0
         this.sourceDetails = details.map(it => ({...it}))
@@ -305,7 +306,7 @@ export default {
 <style lang="stylus">
 .inventory-movement-status-wrapper
   .inventory-movement-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>

@@ -44,7 +44,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['monitor:job:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -100,7 +100,7 @@
           <dict-tag :options="dict.type.sys_job_group" :value="scope.row.jobGroup"/>
         </template>
       </el-table-column>
-      <el-table-column label="调用目标字符串" align="center" prop="invokeTarget" :show-overflow-tooltip="true" />
+      <el-table-column label="调用Target 字符串" align="center" prop="invokeTarget" :show-overflow-tooltip="true" />
       <el-table-column label="cron执行表达式" align="center" prop="cronExpression" :show-overflow-tooltip="true" />
       <el-table-column label="Status" align="center">
         <template slot-scope="scope">
@@ -153,7 +153,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或Modify定时 Task对话框 -->
+    <!-- Add OrModify定时 Task对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
@@ -187,7 +187,7 @@
                   <i class="el-icon-question"></i>
                 </el-tooltip>
               </span>
-              <el-input v-model="form.invokeTarget" placeholder="Please Input 调用目标字符串" />
+              <el-input v-model="form.invokeTarget" placeholder="Please Input 调用Target 字符串" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
@@ -203,7 +203,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="执行策略" prop="misfirePolicy">
+            <el-form-item label="执行Plan" prop="misfirePolicy">
               <el-radio-group v-model="form.misfirePolicy" size="small">
                 <el-radio-button label="1">立即执行</el-radio-button>
                 <el-radio-button label="2">执行一次</el-radio-button>
@@ -261,7 +261,7 @@
             <el-form-item label="下次执行 Time：">{{ parseTime(form.nextValidTime) }}</el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="调用目标方法：">{{ form.invokeTarget }}</el-form-item>
+            <el-form-item label="调用Target 方法：">{{ form.invokeTarget }}</el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="Status：">
@@ -276,8 +276,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="执行策略：">
-              <div v-if="form.misfirePolicy == 0">默认策略</div>
+            <el-form-item label="执行Plan：">
+              <div v-if="form.misfirePolicy == 0">默认Plan</div>
               <div v-else-if="form.misfirePolicy == 1">立即执行</div>
               <div v-else-if="form.misfirePolicy == 2">执行一次</div>
               <div v-else-if="form.misfirePolicy == 3">放弃执行</div>
@@ -342,7 +342,7 @@ export default {
           { required: true, message: "Job Name is required", trigger: "blur" }
         ],
         invokeTarget: [
-          { required: true, message: "调用目标字符串 is required", trigger: "blur" }
+          { required: true, message: "调用Target 字符串 is required", trigger: "blur" }
         ],
         cronExpression: [
           { required: true, message: "cron执行表达式 is required", trigger: "blur" }

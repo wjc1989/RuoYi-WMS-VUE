@@ -2,8 +2,8 @@
   <div class="inventory-movement-edit-wrapper app-container">
     <div class="inventory-movement-content">
       <el-form label-width="108px" :model="form" ref="form" :rules="rules">
-        <el-form-item label="移库No." prop="inventoryMovementNo">
-          <el-input class="w200" v-model="form.inventoryMovementNo" placeholder="移库No."
+        <el-form-item label="No." prop="inventoryMovementNo">
+          <el-input class="w200" v-model="form.inventoryMovementNo" placeholder="No."
                     disabled="disabled"></el-input>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
@@ -21,14 +21,14 @@
             <el-col :span="1.5">
               <el-button size="small" type="success" plain="plain" icon="el-icon-delete-location"
                          @click="onBatchSetInventory('sourcePlace')">
-                设置源Warehouse
+                Source Warehouse
               </el-button>
             </el-col>
 
             <el-col :span="1.5">
               <el-button size="small" icon="el-icon-aim" type="warning" plain="plain"
                          @click="onBatchSetInventory('targetPlace')">
-                设置目标Warehouse
+                Target Warehouse
               </el-button>
             </el-col>
 
@@ -43,19 +43,19 @@
           <el-table-column type="selection" width="55" align="center"></el-table-column>
           <el-table-column label="Goods Name" align="center" prop="prod.itemName"></el-table-column>
           <el-table-column label="Goods No." align="center" prop="prod.itemNo"></el-table-column>
-          <el-table-column label="ItemType" align="center" prop="prod.itemType"></el-table-column>
+          <el-table-column label="Category" align="center" prop="prod.itemTypeName"></el-table-column>
           <el-table-column label="Plan Count" align="center" prop="planQuantity" width="150">
             <template slot-scope="scope">
               <el-input-number v-model="scope.row.planQuantity" placeholder="Plan Count" size="small" :min="1"
                                :max="2147483647"></el-input-number>
             </template>
           </el-table-column>
-          <el-table-column label="源 Warehouse" align="center" width="200">
+          <el-table-column label="Source  Warehouse" align="center" width="200">
             <template slot-scope="scope">
               <WmsWarehouseCascader v-model="scope.row.sourcePlace" size="small"></WmsWarehouseCascader>
             </template>
           </el-table-column>
-          <el-table-column label="目标 Warehouse" align="center" width="200">
+          <el-table-column label="Target  Warehouse" align="center" width="200">
             <template slot-scope="scope">
               <WmsWarehouseCascader v-model="scope.row.targetPlace" size="small"></WmsWarehouseCascader>
             </template>
@@ -73,7 +73,7 @@
       </div>
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
-        <el-button @click="submitForm" type="primary">Add</el-button>
+        <el-button @click="submitForm" type="primary">Save</el-button>
       </div>
     </div>
     <el-dialog :visible="modalObj.show" :title="modalObj.title" :width="modalObj.width" @close="modalObj.cancel">
@@ -172,7 +172,7 @@ export default {
       })
     },
     cancel() {
-      this.$tab.closeOpenPage({path: '/wms/inventoryMovement'})
+      this.$tab.closeOpenPage({path: '/inventoryMovement'})
     },
     /** 提交Button */
     submitForm() {
@@ -197,12 +197,12 @@ export default {
           }
         })
         if (details.filter(it => !it.sourceWarehouseId || !it.targetWarehouseId)?.length > 0) {
-          this.$message.warning('Please select Warehouse、Area或 Shelves')
+          this.$message.warning('Please select Warehouse、Area Or Rack')
           return;
         }
         const arr = details.filter(it => it.sourceRackId === it.targetRackId && it.sourceAreaId === it.targetAreaId && it.sourceWarehouseId === it.targetWarehouseId)
         if (arr?.length > 0) {
-          this.$message.warning('同一个ItemNo 能Select 相同的Warehouse、Area、 Shelves')
+          this.$message.warning('Location Not Changed')
           return;
         }
         const req = {...this.form, details}
@@ -270,7 +270,7 @@ export default {
       const cancel = () => this.closeModal()
       this.modalObj = {
         show: true,
-        title: 'AddItem',
+        title: 'Add Item',
         width: '50%',
         component: 'add-item',
         model: {},
@@ -284,7 +284,7 @@ export default {
 <style lang="stylus">
 .inventory-movement-edit-wrapper
   .inventory-movement-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>

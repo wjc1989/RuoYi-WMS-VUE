@@ -42,7 +42,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['system:post:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -123,7 +123,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyPost对话框 -->
+    <!-- Add OrModifyPost对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-form-item label="Name" prop="postName">

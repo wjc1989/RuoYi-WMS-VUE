@@ -88,7 +88,7 @@
               size="mini"
               @click="handleAdd"
               v-hasPermi="['system:user:add']"
-            >Add</el-button>
+            >New</el-button>
           </el-col>
           <el-col :span="1.5">
             <el-button
@@ -203,7 +203,7 @@
       </el-col>
     </el-row>
 
-    <!-- Add或ModifyUser 配置对话框 -->
+    <!-- Add OrModifyUser 配置对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
@@ -324,7 +324,7 @@
         drag
       >
         <i class="el-icon-upload"></i>
-        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+        <div class="el-upload__text">将文件拖到此处， Or<em>点击上传</em></div>
         <div class="el-upload__tip text-center" slot="tip">
           <div class="el-upload__tip" slot="tip">
             <el-checkbox v-model="upload.updateSupport" /> 更新已经存在的User Data
@@ -428,14 +428,14 @@ export default {
       rules: {
         userName: [
           { required: true, message: "Name is required", trigger: "blur" },
-          { min: 2, max: 20, message: 'Name长度必须介于 2 和 20 之间', trigger: 'blur' }
+          { min: 2, max: 20, message: 'Name长度必须介于 2  And  20 之间', trigger: 'blur' }
         ],
         nickName: [
           { required: true, message: "Nickname is required", trigger: "blur" }
         ],
         password: [
           { required: true, message: "Password is required", trigger: "blur" },
-          { min: 5, max: 20, message: 'Password长度必须介于 5 和 20 之间', trigger: 'blur' }
+          { min: 5, max: 20, message: 'Password长度必须介于 5  And  20 之间', trigger: 'blur' }
         ],
         email: [
           {
@@ -593,7 +593,7 @@ export default {
         cancelButtonText: "Cancel",
         closeOnClickModal: false,
         inputPattern: /^.{5,20}$/,
-        inputErrorMessage: "Password长度必须介于 5 和 20 之间"
+        inputErrorMessage: "Password长度必须介于 5  And  20 之间"
       }).then(({ value }) => {
           resetUserPwd(row.userId, value).then(response => {
             this.$modal.msgSuccess("Modify Successful，新PasswordYes：" + value);

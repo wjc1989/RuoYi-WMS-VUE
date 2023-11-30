@@ -5,7 +5,7 @@
       <el-tab-pane label="表属性" name="form" />
     </el-tabs>
     <div class="field-box">
-      <a class="document-link" target="_blank" :href="documentLink" title="查看组件文档">
+      <a class="document-link" target="_blank" :href="documentLink" title="View组件文档">
         <i class="el-icon-link" />
       </a>
       <el-scrollbar class="right-scrollbar">
@@ -449,7 +449,7 @@
           <el-form-item v-if="activeData.multiple !== undefined" label="多选文件">
             <el-switch v-model="activeData.multiple" />
           </el-form-item>
-          <el-form-item v-if="activeData['auto-upload'] !== undefined" label="自动上传">
+          <el-form-item v-if="activeData['auto-upload'] !== undefined" label="Auto上传">
             <el-switch v-model="activeData['auto-upload']" />
           </el-form-item>
           <el-form-item v-if="activeData.readonly !== undefined" label="只读">
@@ -585,7 +585,7 @@ import {
 
 const dateTimeFormat = {
   date: 'yyyy-MM-dd',
-  week: 'yyyy 第 WW 周',
+  week: 'yyyy Page  WW 周',
   month: 'yyyy-MM',
   year: 'yyyy',
   datetime: 'yyyy-MM-dd HH:mm:ss',
@@ -805,7 +805,7 @@ export default {
         // 布尔
         this.$set(this.activeData, 'defaultValue', JSON.parse(str))
       } else {
-        // 字符串和数字
+        // 字符串 And 数字
         this.$set(
           this.activeData,
           'defaultValue',

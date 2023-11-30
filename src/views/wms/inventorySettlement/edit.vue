@@ -35,7 +35,7 @@
       </el-form>
       <el-divider></el-divider>
       <div class="flex-center mb8">
-        <div class="flex-one large-tip bolder-font">结算明细</div>
+        <div class="flex-one large-tip bolder-font">结算 Detail</div>
         <div class="ops">
           <el-button type="primary" plain="plain" size="small" @click="startSettle">开始结算</el-button>
         </div>
@@ -269,7 +269,7 @@ export default {
 <style lang="stylus">
 .receipt-order-edit-wrapper
   .receipt-order-content
-    width 70%
+    width 80%
     min-width 900px
     margin 0 auto
 </style>

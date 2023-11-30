@@ -163,7 +163,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:wmsInventorySettlementDetail:add']"
-        >Add
+        >New
         </el-button>
       </el-col>
       <el-col :span="1.5">
@@ -254,7 +254,7 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyInventory结算明细对话框 -->
+    <!-- Add OrModifyInventory结算 Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="结算id" prop="settlementId">
@@ -347,7 +347,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // Inventory结算明细表格Data
+      // Inventory结算 Detail表格Data
       wmsInventorySettlementDetailList: [],
       // 弹出层标题
       title: "",
@@ -435,7 +435,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** SearchInventory结算明细列表 */
+    /** SearchInventory结算 Detail列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -536,7 +536,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete Inventory结算明细No."' + ids + '"？').then(function () {
+      this.$modal.confirm(' Do you want delete Inventory结算 DetailNo."' + ids + '"？').then(function () {
         return delWmsInventorySettlementDetail(ids);
       }).then(() => {
         this.getList();

@@ -59,7 +59,7 @@
     <pagination v-show="total > 0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize"
       @pagination="getList" />
 
-    <!-- Add或Modify客户账户流水对话框 -->
+    <!-- Add OrModifyCustom账户流水对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="交易No." prop="transactionCode">
@@ -123,7 +123,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 客户账户流水表格Data
+      // Custom账户流水表格Data
       wmsCustomerTransactionList: [],
       // 弹出层标题
       title: "",
@@ -223,7 +223,7 @@ export default {
     getCustomerName(row) {
       return this.customerMap.get(Number(row.customerId))
     },
-    /** Search客户账户流水列表 */
+    /** SearchCustom账户流水列表 */
     getList() {
       if (this.queryParams.Time){
         this.queryParams.startTime = this.queryParams.Time[0]
@@ -317,7 +317,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete 客户账户流水No."' + ids + '"？').then(function () {
+      this.$modal.confirm(' Do you want delete Custom账户流水No."' + ids + '"？').then(function () {
         return delWmsCustomerTransaction(ids);
       }).then(() => {
         this.getList();
@@ -327,7 +327,7 @@ export default {
     /** ExportButtonOperate */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$modal.confirm('Export All客户账户流水？').then(() => {
+      this.$modal.confirm('Export AllCustom账户流水？').then(() => {
         this.exportLoading = true;
         return exportWmsCustomerTransaction(queryParams);
       }).then(response => {

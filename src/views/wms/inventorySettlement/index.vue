@@ -62,7 +62,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:wmsInventorySettlement:add']"
-        >Add结算
+        >New
         </el-button
         >
       </el-col>
@@ -137,7 +137,7 @@
             icon="el-icon-edit"
             @click="handleView(scope.row)"
             v-hasPermi="['wms:wmsInventorySettlement:edit']"
-          >查看
+          >View
           </el-button>
           <el-button
             size="mini"
@@ -285,7 +285,7 @@ export default {
       this.single = selection.length !== 1;
       this.multiple = !selection.length;
     },
-    /** 查看ButtonOperate */
+    /** ViewButtonOperate */
     handleView(row) {
       const id = row.id || this.ids
       this.$router.push({path: 'inventorySettlement/status', query: {id}})

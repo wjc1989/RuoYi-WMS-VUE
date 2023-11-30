@@ -9,7 +9,7 @@
         </div>
         <div class="left">
           <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAddWarehouse"
-            v-hasPermi="['wms:warehouse:add']" style="margin: 3px 10px;">Add Warehouse</el-button>
+            v-hasPermi="['wms:warehouse:add']" style="margin: 3px 10px;">New</el-button>
         </div>
       </div>
     </el-card>
@@ -59,7 +59,7 @@
                   </div>
                   <div class="left" style="margin: 3px 10px;">
                     <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAddArea()"
-                      v-hasPermi="['wms:area:add']">Add Area</el-button>
+                      v-hasPermi="['wms:area:add']">New</el-button>
                   </div>
                 </div>
 
@@ -83,7 +83,7 @@
         </el-tab-pane>
       </el-tabs>
     </el-card>
-    <!-- Add或ModifyWarehouse对话框 -->
+    <!-- Add OrModifyWarehouse对话框 -->
     <el-dialog :title="title" :visible.sync="openWarehouse" width="50%" append-to-body>
       <el-form ref="warehouseForm" :model="warehouseForm" :rules="rules" label-width="108px" inline
         class="dialog-form-two">
@@ -102,7 +102,7 @@
         <el-button @click="cancel">Cancel</el-button>
       </div>
     </el-dialog>
-    <!-- Add或ModifyArea对话框 -->
+    <!-- Add OrModifyArea对话框 -->
     <el-dialog :title="title" :visible.sync="openArea" width="50%" append-to-body>
       <el-form ref="areaForm" :model="areaForm" :rules="rulesArea" label-width="108px" inline class="dialog-form-two">
         <el-form-item label="Area No." prop="areaNo">
@@ -215,7 +215,7 @@
         { key: 3, label: "Warehouse", visible: false },
         { key: 4, label: "Remark", visible: true },
       ],
-      // tab页位置
+      // tab位置
       tabPosition: 'left',
       selectedWarehouseId: null,
       // 右侧横向tab默认选中
@@ -451,7 +451,7 @@
         })
         .catch(() => { });
     },
-    /** 左侧Warehouse Label页选中Operate */
+    /** 左侧Warehouse Label选中Operate */
     handleTabClick(tab, event) {
       this.queryAreaParam = null
       this.selectedWarehouseId = this.wmsWarehouseList[tab.index].id

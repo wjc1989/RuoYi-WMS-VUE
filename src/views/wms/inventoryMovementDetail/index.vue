@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium" class="ry_form">
-      <el-form-item label="Inventory移动Id" prop="inventoryMovementId">
+      <el-form-item label="No." prop="inventoryMovementId">
         <el-input
           v-model="queryParams.inventoryMovementId"
-          placeholder="Please Input Inventory移动Id"
+          placeholder="Please Input No."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -52,7 +52,7 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['wms:inventoryMovementDetail:add']"
-        >Add</el-button>
+        >New</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -92,7 +92,7 @@
 
     <WmsTable v-loading="loading" :data="wmsInventoryMovementDetailList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="Inventory移动Id" align="center" prop="inventoryMovementId" v-if="columns[0].visible"/>
+      <el-table-column label="No." align="center" prop="inventoryMovementId" v-if="columns[0].visible"/>
       <el-table-column label="Item" align="center" prop="itemId" v-if="columns[1].visible"/>
       <el-table-column label="Plan Count" align="center" prop="planQuantity" v-if="columns[2].visible"/>
       <el-table-column label="Real Count" align="center" prop="realQuantity" v-if="columns[3].visible"/>
@@ -125,11 +125,11 @@
       @pagination="getList"
     />
 
-    <!-- Add或ModifyInventory移动 Detail对话框 -->
+    <!-- Add OrModifyInventory移动 Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
-        <el-form-item label="Inventory移动Id" prop="inventoryMovementId">
-          <el-input v-model="form.inventoryMovementId" placeholder="Please Input Inventory移动Id" />
+        <el-form-item label="No." prop="inventoryMovementId">
+          <el-input v-model="form.inventoryMovementId" placeholder="Please Input No." />
         </el-form-item>
         <el-form-item label="Item" prop="itemId">
           <el-input v-model="form.itemId" placeholder="Please Input Item" />

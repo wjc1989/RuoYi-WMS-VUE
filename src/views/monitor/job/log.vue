@@ -110,7 +110,7 @@
           <dict-tag :options="dict.type.sys_job_group" :value="scope.row.jobGroup"/>
         </template>
       </el-table-column>
-      <el-table-column label="调用目标字符串" align="center" prop="invokeTarget" :show-overflow-tooltip="true" />
+      <el-table-column label="调用Target 字符串" align="center" prop="invokeTarget" :show-overflow-tooltip="true" />
       <el-table-column label="Logs信息" align="center" prop="jobMessage" :show-overflow-tooltip="true" />
       <el-table-column label="执行Status" align="center" prop="status">
         <template slot-scope="scope">

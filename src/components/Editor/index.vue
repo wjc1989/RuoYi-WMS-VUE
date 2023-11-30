@@ -156,7 +156,7 @@ export default {
         this.$emit("on-editor-change", eventName, ...args);
       });
     },
-    // 上传前校检格式和大小
+    // 上传前校检格式 And 大小
     handleBeforeUpload(file) {
       // 校检文件大小
       if (this.fileSize) {
