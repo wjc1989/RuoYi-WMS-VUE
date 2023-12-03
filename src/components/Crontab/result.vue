@@ -23,10 +23,10 @@ export default {
 	},
 	name: 'crontab-result',
 	methods: {
-		// 表达式值Change时，开始去计算结果
+		// 表达式值Change时， Start 去计算结果
 		expressionChange() {
 
-			// 计算开始-Hide结果
+			// 计算 Start -Hide结果
 			this.isShow = false;
 			// 获取规则数组[0秒、1分、2时、3日、4月、5、6年]
 			let ruleArr = this.$options.propsData.ex.split(' ');
@@ -34,7 +34,7 @@ export default {
 			let nums = 0;
 			// 用于暂时存符No. Time规则结果的数组
 			let resultArr = [];
-			// 获取当前 Time精确至[年、月、日、时、分、秒]
+			// 获取当前 Time精确 To [年、月、日、时、分、秒]
 			let nTime = new Date();
 			let nYear = nTime.getFullYear();
 			let nMonth = nTime.getMonth() + 1;
@@ -169,7 +169,7 @@ export default {
 								}
 							}
 						} else if (this.dayRule == 'workDay') {
-							// 校验并调整e.g.果Yes2月30No.这种Date传进来时需调整至正常月底
+							// 校验并调整e.g.果Yes2月30No.这种Date传进来时需调整 To 正常月底
 							if (this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
 								while (DD > 0 && this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
 									DD--;
@@ -223,7 +223,7 @@ export default {
 							}
 						} else if (this.dayRule == 'lastWeek') {
 							// e.g.果指定了每月最后一个几
-							// 校验并调整e.g.果Yes2月30No.这种Date传进来时需调整至正常月底
+							// 校验并调整e.g.果Yes2月30No.这种Date传进来时需调整 To 正常月底
 							if (this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
 								while (DD > 0 && this.checkDate(YY + '-' + MM + '-' + thisDD + ' 00:00:00') !== true) {
 									DD--;
@@ -492,9 +492,9 @@ export default {
 			}
 			return arr;
 		},
-		// 根据规则返回一个具有周期性的数组
+		// 根据规则返回一个具有 Cycle性的数组
 		getCycleArr(rule, limit, status) {
-			// status--表示从0开始（则从1开始）
+			// status--表示从0 Start （则从1 Start ）
 			let arr = [];
 			let cycleArr = rule.split('-');
 			let min = Number(cycleArr[0]);

@@ -16,7 +16,7 @@
       </el-row>
     </el-form>
 
-    <h4 class="form-header h4">Role信息</h4>
+    <h4 class="form-header h4">Role Info</h4>
     <el-table v-loading="loading" :row-key="getRowKey" @row-click="clickRow" ref="table" @selection-change="handleSelectionChange" :data="roles.slice((pageNum-1)*pageSize,pageNum*pageSize)">
       <el-table-column label="No." type="index" align="center">
         <template slot-scope="scope">
@@ -54,15 +54,15 @@ export default {
     return {
        // 遮罩层
       loading: true,
-      // Page信息
+      // Page Info
       total: 0,
       pageNum: 1,
       pageSize: 10,
       // 选中ID
       roleIds:[],
-      // Role信息
+      // Role Info
       roles: [],
-      // User 信息
+      // User  Info
       form: {}
     };
   },
@@ -103,7 +103,7 @@ export default {
       const userId = this.form.userId;
       const roleIds = this.roleIds.join(",");
       updateAuthRole({ userId: userId, roleIds: roleIds }).then((response) => {
-        this.$modal.msgSuccess("授权 Successful");
+        this.$modal.msgSuccess("Authorize Successful");
         this.close();
       });
     },

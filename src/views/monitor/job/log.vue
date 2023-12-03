@@ -111,7 +111,7 @@
         </template>
       </el-table-column>
       <el-table-column label="调用Target 字符串" align="center" prop="invokeTarget" :show-overflow-tooltip="true" />
-      <el-table-column label="Logs信息" align="center" prop="jobMessage" :show-overflow-tooltip="true" />
+      <el-table-column label="Logs Info" align="center" prop="jobMessage" :show-overflow-tooltip="true" />
       <el-table-column label="执行Status" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_common_status" :value="scope.row.status"/>
@@ -159,7 +159,7 @@
             <el-form-item label="调用方法：">{{ form.invokeTarget }}</el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="Logs信息：">{{ form.jobMessage }}</el-form-item>
+            <el-form-item label="Logs Info：">{{ form.jobMessage }}</el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="执行Status：">
@@ -168,7 +168,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label=" Exception信息：" v-if="form.status == 1">{{ form.exceptionInfo }}</el-form-item>
+            <el-form-item label=" Exception Info：" v-if="form.status == 1">{{ form.exceptionInfo }}</el-form-item>
           </el-col>
         </el-row>
       </el-form>

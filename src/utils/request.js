@@ -28,7 +28,7 @@ service.interceptors.request.use(config => {
   // 需要防止Data重复提交
   const isRepeatSubmit = (config.headers || {}).repeatSubmit === false
   if (getToken() && !isToken) {
-    config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据Real 情况自行Modify
+    config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带Custom 义token 请根据Real 情况自行Modify
   }
   // get请求映射paramsParams
   if (config.method === 'get' && config.params) {
@@ -70,7 +70,7 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(res => {
     // 未设置Status码则默认 SuccessfulStatus
     const code = res.data.code || 200;
-    // 获取错误信息
+    // 获取错误 Info
     const msg = errorCode[code] || res.data.msg || errorCode['default']
     // 二进制Data则直接返回
     if (res.request.responseType === 'blob' || res.request.responseType === 'arraybuffer') {

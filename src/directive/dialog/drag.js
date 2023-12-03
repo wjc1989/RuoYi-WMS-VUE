@@ -42,7 +42,7 @@ export default {
 
       // 鼠标拖拽事件
       document.onmousemove = function (e) {
-        // 通过事件委托，计算移动的距离 （开始拖拽至End拖拽的距离）
+        // 通过事件委托，计算移动的距离 （ Start 拖拽 To End拖拽的距离）
         const l = e.clientX - disX;
         const t = e.clientY - disY;
 

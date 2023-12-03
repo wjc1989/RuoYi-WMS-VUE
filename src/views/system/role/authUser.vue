@@ -45,7 +45,7 @@
           :disabled="multiple"
           @click="cancelAuthUserAll"
           v-hasPermi="['system:role:remove']"
-        >Batch Cancel授权</el-button>
+        >Batch CancelAuthorize</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -64,7 +64,7 @@
       <el-table-column label="Name" prop="userName" :show-overflow-tooltip="true" />
       <el-table-column label="Nickname" prop="nickName" :show-overflow-tooltip="true" />
       <el-table-column label="Email" prop="email" :show-overflow-tooltip="true" />
-      <el-table-column label="手机" prop="phonenumber" :show-overflow-tooltip="true" />
+      <el-table-column label="Phone" prop="phonenumber" :show-overflow-tooltip="true" />
       <el-table-column label="Status" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
@@ -83,7 +83,7 @@
             icon="el-icon-circle-close"
             @click="cancelAuthUser(scope.row)"
             v-hasPermi="['system:role:remove']"
-          >Cancel授权</el-button>
+          >CancelAuthorize</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -139,7 +139,7 @@ export default {
     }
   },
   methods: {
-    /** Search授权User 列表 */
+    /** SearchAuthorizeUser 列表 */
     getList() {
       this.loading = true;
       allocatedUserList(this.queryParams).then(response => {
@@ -169,29 +169,29 @@ export default {
       this.userIds = selection.map(item => item.userId)
       this.multiple = !selection.length
     },
-    /** 打开授权User 表弹窗 */
+    /** 打开AuthorizeUser 表弹窗 */
     openSelectUser() {
       this.$refs.select.show();
     },
-    /** Cancel授权ButtonOperate */
+    /** CancelAuthorizeButtonOperate */
     cancelAuthUser(row) {
       const roleId = this.queryParams.roleId;
-      this.$modal.confirm('OK要Cancel该User "' + row.userName + '"Role吗？').then(function() {
+      this.$modal.confirm('Confirm to Cancel该User "' + row.userName + '"Role？').then(function() {
         return authUserCancel({ userId: row.userId, roleId: roleId });
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("Cancel授权 Successful");
+        this.$modal.msgSuccess("CancelAuthorize Successful");
       }).catch(() => {});
     },
-    /** Batch Cancel授权ButtonOperate */
+    /** Batch CancelAuthorizeButtonOperate */
     cancelAuthUserAll(row) {
       const roleId = this.queryParams.roleId;
       const userIds = this.userIds.join(",");
-      this.$modal.confirm('Cancel选中User 授权？').then(function() {
+      this.$modal.confirm('Cancel选中User Authorize？').then(function() {
         return authUserCancelAll({ roleId: roleId, userIds: userIds });
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("Cancel授权 Successful");
+        this.$modal.msgSuccess("CancelAuthorize Successful");
       }).catch(() => {});
     }
   }

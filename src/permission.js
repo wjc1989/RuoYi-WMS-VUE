@@ -33,11 +33,11 @@ router.beforeEach((to, from, next) => {
         store.dispatch('wms/getSuppliers')
         store.dispatch('wms/getCustomer')
         store.dispatch('wms/getCarrier')
-        // 判断当前User 已拉取完user_info信息
+        // 判断当前User 已拉取完user_info Info
         store.dispatch('GetInfo').then(() => {
           isRelogin.show = false
           store.dispatch('GenerateRoutes').then(accessRoutes => {
-            // 根据rolesPrower生成可访问的Router表
+            // 根据rolesPrower生成可Router表
             router.addRoutes(accessRoutes) // 动态Add可访问Router表
             next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
           })

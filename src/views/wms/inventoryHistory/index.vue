@@ -49,7 +49,7 @@
         </el-form-item>
         <el-form-item label="Type" prop="formType">
           <el-select v-model="form.formType" placeholder="Please select Type">
-            <el-option label="Please select Dict生成" value=""></el-option>
+            <el-option label="Please select Type " value=""></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="ItemID" prop="itemId">

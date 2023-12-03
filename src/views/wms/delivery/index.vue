@@ -169,7 +169,7 @@ export default {
       rules: {},
       columns: [
         {key: 1, label: "Outbound No.", visible: true},
-        {key: 2, label: " CarrierId", visible: true},
+        {key: 2, label: "CarrierId", visible: true},
         {key: 3, label: "Outbound Date", visible: true},
         {key: 4, label: "Tracking No.", visible: true},
         {key: 5, label: "Remark", visible: true},

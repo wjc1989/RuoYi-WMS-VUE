@@ -173,7 +173,7 @@ export default {
       if (inventoryCheckStatus === 22 && this.form.details.length === 0) {
         //未AddItem
         Message({
-          message: "您还未开始Count ！",
+          message: "Please Start Count ！",
           type: 'error'
         })
         return false;

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// SearchInventory结算列表
+// SearchInventorySettlement列表
 export function listWmsInventorySettlement(query, pageReq) {
   return request({
     url: '/wms/inventorySettlement/list',
@@ -10,7 +10,7 @@ export function listWmsInventorySettlement(query, pageReq) {
   })
 }
 
-// SearchInventory结算Detail
+// SearchInventorySettlementDetail
 export function getWmsInventorySettlement(id) {
   return request({
     url: '/wms/inventorySettlement/' + id,
@@ -18,7 +18,7 @@ export function getWmsInventorySettlement(id) {
   })
 }
 
-// AddInventory结算
+// AddInventorySettlement
 export function addWmsInventorySettlement(data) {
   return request({
     url: '/wms/inventorySettlement',
@@ -33,7 +33,7 @@ export function addOrUpdateWmsInventorySettlement(data) {
     data: data
   })
 }
-// ModifyInventory结算
+// ModifyInventorySettlement
 export function updateWmsInventorySettlement(data) {
   return request({
     url: '/wms/inventorySettlement',
@@ -42,7 +42,7 @@ export function updateWmsInventorySettlement(data) {
   })
 }
 
-// DeleteInventory结算
+// DeleteInventorySettlement
 export function delWmsInventorySettlement(id) {
   return request({
     url: '/wms/inventorySettlement/' + id,
@@ -50,7 +50,7 @@ export function delWmsInventorySettlement(id) {
   })
 }
 
-// ExportInventory结算
+// ExportInventorySettlement
 export function exportWmsInventorySettlement(query) {
   return request({
     url: '/wms/inventorySettlement/export',

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// SearchCustom账户流水列表
+// SearchCustom flow列表
 export function listWmsCustomerTransaction(query, pageReq) {
   return request({
     url: '/wms/customerTransaction/list',
@@ -10,7 +10,7 @@ export function listWmsCustomerTransaction(query, pageReq) {
   })
 }
 
-// SearchCustom账户流水Detail
+// SearchCustom flowDetail
 export function getWmsCustomerTransaction(id) {
   return request({
     url: '/wms/customerTransaction/' + id,
@@ -18,7 +18,7 @@ export function getWmsCustomerTransaction(id) {
   })
 }
 
-// AddCustom账户流水
+// AddCustom flow
 export function addWmsCustomerTransaction(data) {
   return request({
     url: '/wms/customerTransaction',
@@ -27,7 +27,7 @@ export function addWmsCustomerTransaction(data) {
   })
 }
 
-// ModifyCustom账户流水
+// ModifyCustom flow
 export function updateWmsCustomerTransaction(data) {
   return request({
     url: '/wms/customerTransaction',
@@ -36,7 +36,7 @@ export function updateWmsCustomerTransaction(data) {
   })
 }
 
-// DeleteCustom账户流水
+// DeleteCustom flow
 export function delWmsCustomerTransaction(id) {
   return request({
     url: '/wms/customerTransaction/' + id,
@@ -44,7 +44,7 @@ export function delWmsCustomerTransaction(id) {
   })
 }
 
-// ExportCustom账户流水
+// ExportCustom flow
 export function exportWmsCustomerTransaction(query) {
   return request({
     url: '/wms/customerTransaction/export',

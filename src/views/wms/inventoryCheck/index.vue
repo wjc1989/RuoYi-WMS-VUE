@@ -66,9 +66,9 @@
       <!--      <el-table-column label="InventoryCountType" align="center" prop="inventoryCheckType" v-if="columns[1].visible"/>-->
 
       <el-table-column label="Change" align="center" prop="inventoryCheckTotal" v-if="columns[3].visible"/>
-      <!--      <el-table-column label="审核Status" align="center" prop="checkStatus" v-if="columns[4].visible"/>
-            <el-table-column label="审核人" align="center" prop="checkUserId" v-if="columns[5].visible"/>
-            <el-table-column label="审核 Time" align="center" prop="checkTime" width="180" v-if="columns[6].visible">
+      <!--      <el-table-column label=" Review Status" align="center" prop="checkStatus" v-if="columns[4].visible"/>
+            <el-table-column label=" Review 人" align="center" prop="checkUserId" v-if="columns[5].visible"/>
+            <el-table-column label=" Review  Time" align="center" prop="checkTime" width="180" v-if="columns[6].visible">
               <template slot-scope="scope">
                 <span>{{ parseTime(scope.row.checkTime, '') }}</span>
               </template>
@@ -190,17 +190,17 @@ export default {
       // 表校验
       rules: {},
       columns: [
-        {key: 1, label: "InventoryCountNo.，系统Auto生成", visible: true},
+        {key: 1, label: "InventoryCount No.", visible: true},
         {key: 2, label: "InventoryCountType", visible: true},
         {key: 3, label: "InventoryCountStatus", visible: true},
         {key: 4, label: "Change", visible: true},
-        {key: 5, label: "审核Status", visible: true},
-        {key: 6, label: "审核人", visible: true},
-        {key: 7, label: "审核 Time", visible: true},
+        {key: 5, label: "Review Status", visible: true},
+        {key: 6, label: "Reviewer", visible: true},
+        {key: 7, label: "Review Time", visible: true},
         {key: 8, label: "Warehouse", visible: true},
         {key: 9, label: "Area", visible: true},
-        {key: 10, label: " Rack", visible: false},
-        {key: 11, label: "附件文件", visible: false},
+        {key: 10, label: "Rack", visible: false},
+        {key: 11, label: "Attachment", visible: false},
         {key: 12, label: "Remark", visible: false},
       ],
       showMoreCondition: false

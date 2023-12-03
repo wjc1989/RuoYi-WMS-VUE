@@ -459,7 +459,7 @@
       // this.queryAreaParams.warehouseId = tab.warehouseId;
       // this.loadAreas()
     },
-    /** 加载选中Warehouse的Area信息 */
+    /** 加载选中Warehouse的Area Info */
     loadAreas() {
       this.loading = true;
       if (this.selectedWarehouseId == null) {

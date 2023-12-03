@@ -178,7 +178,7 @@
             <el-form-item label="Date：">{{ parseTime(form.operTime) }}</el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label=" Exception信息：" v-if="form.status === 1">{{ form.errorMsg }}</el-form-item>
+            <el-form-item label=" Exception Info：" v-if="form.status === 1">{{ form.errorMsg }}</el-form-item>
           </el-col>
         </el-row>
       </el-form>

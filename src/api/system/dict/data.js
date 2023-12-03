@@ -17,7 +17,7 @@ export function getData(dictCode) {
   })
 }
 
-// 根据DictTypeSearchDictData信息
+// 根据DictTypeSearchDictData Info
 export function getDicts(dictType) {
   return request({
     url: '/system/dict/data/type/' + dictType,

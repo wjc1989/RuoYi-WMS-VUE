@@ -264,7 +264,7 @@ export default {
       }
       if(row.genType === "1") {
         genCode(row.tableName).then(response => {
-          this.$modal.msgSuccess(" Successful生成到自定义路径：" + row.genPath);
+          this.$modal.msgSuccess(" Successful生成到Custom 义路径：" + row.genPath);
         });
       } else {
         this.$download.zip("/tool/gen/batchGenCode?tables=" + tableNames, "ruoyi");
@@ -273,7 +273,7 @@ export default {
     /** 同步Data库Operate */
     handleSynchDb(row) {
       const tableName = row.tableName;
-      this.$modal.confirm('OK要强制同步"' + tableName + '"表结构吗？').then(function() {
+      this.$modal.confirm('Confirm to 强制同步"' + tableName + '"表结构？').then(function() {
         return synchDb(tableName);
       }).then(() => {
         this.$modal.msgSuccess("同步 Successful");

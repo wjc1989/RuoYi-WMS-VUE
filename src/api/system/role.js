@@ -35,7 +35,7 @@ export function updateRole(data) {
   })
 }
 
-// RoleData Perm
+// Role
 export function dataScope(data) {
   return request({
     url: '/system/role/dataScope',
@@ -65,7 +65,7 @@ export function delRole(roleId) {
   })
 }
 
-// SearchRole已授权User 列表
+// SearchRole已AuthorizeUser 列表
 export function allocatedUserList(query) {
   return request({
     url: '/system/role/authUser/allocatedList',
@@ -74,7 +74,7 @@ export function allocatedUserList(query) {
   })
 }
 
-// SearchRole未授权User 列表
+// SearchRole未AuthorizeUser 列表
 export function unallocatedUserList(query) {
   return request({
     url: '/system/role/authUser/unallocatedList',
@@ -83,7 +83,7 @@ export function unallocatedUserList(query) {
   })
 }
 
-// CancelUser 授权Role
+// CancelUser AuthorizeRole
 export function authUserCancel(data) {
   return request({
     url: '/system/role/authUser/cancel',
@@ -92,7 +92,7 @@ export function authUserCancel(data) {
   })
 }
 
-// Batch CancelUser 授权Role
+// Batch CancelUser AuthorizeRole
 export function authUserCancelAll(data) {
   return request({
     url: '/system/role/authUser/cancelAll',
@@ -101,7 +101,7 @@ export function authUserCancelAll(data) {
   })
 }
 
-// 授权User Select
+// AuthorizeUser Select
 export function authUserSelectAll(data) {
   return request({
     url: '/system/role/authUser/selectAll',

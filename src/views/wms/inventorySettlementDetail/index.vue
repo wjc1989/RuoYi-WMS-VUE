@@ -2,19 +2,19 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="120px" size="medium"
              class="ry_form">
-      <el-form-item label="结算id" prop="settlementId">
+      <el-form-item label="Settlementid" prop="settlementId">
         <el-input
           v-model="queryParams.settlementId"
-          placeholder="Please Input 结算id"
+          placeholder="Please Input Settlementid"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="结算Type,1:月结，2:年结" prop="settlementType">
-        <el-select v-model="queryParams.settlementType" placeholder="Please select 结算Type,1:月结，2:年结" clearable
+      <el-form-item label="SettlementType,1:Monthly，2:Year-end" prop="settlementType">
+        <el-select v-model="queryParams.settlementType" placeholder="Please select SettlementType,1:Monthly，2:Year-end" clearable
                    size="small">
-          <el-option label="Please select Dict生成" value=""/>
+          <el-option label="Please select Type" value=""/>
         </el-select>
       </el-form-item>
       <el-form-item label="Itemid" prop="itemId">
@@ -99,46 +99,46 @@
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="上期结存" prop="previousBalance">
+        <el-form-item label=" Last inventory" prop="previousBalance">
           <el-input
             v-model="queryParams.previousBalance"
-            placeholder="Please Input 上期结存"
+            placeholder="Please Input  Last inventory"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="本期Inbound" prop="currentEnter">
+        <el-form-item label="Current Inbound" prop="currentEnter">
           <el-input
             v-model="queryParams.currentEnter"
-            placeholder="Please Input 本期Inbound"
+            placeholder="Please Input Current Inbound"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="本期Outbound " prop="currentOut">
+        <el-form-item label="Current Outbound " prop="currentOut">
           <el-input
             v-model="queryParams.currentOut"
-            placeholder="Please Input 本期Outbound "
+            placeholder="Please Input Current Outbound "
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="本期Count" prop="currentCheck">
+        <el-form-item label="Current Count" prop="currentCheck">
           <el-input
             v-model="queryParams.currentCheck"
-            placeholder="Please Input 本期Count"
+            placeholder="Please Input Current Count"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="本期结存" prop="currentBalance">
+        <el-form-item label="Current Inventory" prop="currentBalance">
           <el-input
             v-model="queryParams.currentBalance"
-            placeholder="Please Input 本期结存"
+            placeholder="Please Input Current Inventory"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
@@ -207,8 +207,8 @@
 
     <WmsTable v-loading="loading" :data="wmsInventorySettlementDetailList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="结算id" align="center" prop="settlementId" v-if="columns[0].visible"/>
-      <el-table-column label="结算Type,1:月结，2:年结" align="center" prop="settlementType" v-if="columns[1].visible"/>
+      <el-table-column label="Settlementid" align="center" prop="settlementId" v-if="columns[0].visible"/>
+      <el-table-column label="SettlementType,1:Monthly，2:Year-end" align="center" prop="settlementType" v-if="columns[1].visible"/>
       <el-table-column label="Itemid" align="center" prop="itemId" v-if="columns[2].visible"/>
       <el-table-column label="No." align="center" prop="itemNo" v-if="columns[3].visible"/>
       <el-table-column label="Item" align="center" prop="itemName" v-if="columns[4].visible"/>
@@ -218,11 +218,11 @@
       <el-table-column label="Areaid" align="center" prop="areaId" v-if="columns[8].visible"/>
       <el-table-column label="AreaNo." align="center" prop="areaNo" v-if="columns[9].visible"/>
       <el-table-column label="AreaItem" align="center" prop="areaName" v-if="columns[10].visible"/>
-      <el-table-column label="上期结存" align="center" prop="previousBalance" v-if="columns[11].visible"/>
-      <el-table-column label="本期Inbound" align="center" prop="currentEnter" v-if="columns[12].visible"/>
-      <el-table-column label="本期Outbound " align="center" prop="currentOut" v-if="columns[13].visible"/>
-      <el-table-column label="本期Count" align="center" prop="currentCheck" v-if="columns[14].visible"/>
-      <el-table-column label="本期结存" align="center" prop="currentBalance" v-if="columns[15].visible"/>
+      <el-table-column label=" Last inventory" align="center" prop="previousBalance" v-if="columns[11].visible"/>
+      <el-table-column label="Current Inbound" align="center" prop="currentEnter" v-if="columns[12].visible"/>
+      <el-table-column label="Current Outbound " align="center" prop="currentOut" v-if="columns[13].visible"/>
+      <el-table-column label="Current Count" align="center" prop="currentCheck" v-if="columns[14].visible"/>
+      <el-table-column label="Current Inventory" align="center" prop="currentBalance" v-if="columns[15].visible"/>
       <el-table-column label="Remark" align="center" prop="remark" v-if="columns[16].visible"/>
       <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -254,15 +254,15 @@
       @pagination="getList"
     />
 
-    <!-- Add OrModifyInventory结算 Detail对话框 -->
+    <!-- Add OrModifyInventorySettlement Detail对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="50%" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="108px" inline class="dialog-form-two">
-        <el-form-item label="结算id" prop="settlementId">
-          <el-input v-model="form.settlementId" placeholder="Please Input 结算id"/>
+        <el-form-item label="Settlementid" prop="settlementId">
+          <el-input v-model="form.settlementId" placeholder="Please Input Settlementid"/>
         </el-form-item>
-        <el-form-item label="结算Type,1:月结，2:年结" prop="settlementType">
-          <el-select v-model="form.settlementType" placeholder="Please select 结算Type,1:月结，2:年结">
-            <el-option label="Please select Dict生成" value=""/>
+        <el-form-item label="SettlementType,1:Monthly，2:Year-end" prop="settlementType">
+          <el-select v-model="form.settlementType" placeholder="Please select SettlementType,1:Monthly，2:Year-end">
+            <el-option label="Please select Type" value=""/>
           </el-select>
         </el-form-item>
         <el-form-item label="Itemid" prop="itemId">
@@ -292,20 +292,20 @@
         <el-form-item label="AreaItem" prop="areaName">
           <el-input v-model="form.areaName" placeholder="Please Input AreaItem"/>
         </el-form-item>
-        <el-form-item label="上期结存" prop="previousBalance">
-          <el-input v-model="form.previousBalance" placeholder="Please Input 上期结存"/>
+        <el-form-item label=" Last inventory" prop="previousBalance">
+          <el-input v-model="form.previousBalance" placeholder="Please Input  Last inventory"/>
         </el-form-item>
-        <el-form-item label="本期Inbound" prop="currentEnter">
-          <el-input v-model="form.currentEnter" placeholder="Please Input 本期Inbound"/>
+        <el-form-item label="Current Inbound" prop="currentEnter">
+          <el-input v-model="form.currentEnter" placeholder="Please Input Current Inbound"/>
         </el-form-item>
-        <el-form-item label="本期Outbound " prop="currentOut">
-          <el-input v-model="form.currentOut" placeholder="Please Input 本期Outbound "/>
+        <el-form-item label="Current Outbound " prop="currentOut">
+          <el-input v-model="form.currentOut" placeholder="Please Input Current Outbound "/>
         </el-form-item>
-        <el-form-item label="本期Count" prop="currentCheck">
-          <el-input v-model="form.currentCheck" placeholder="Please Input 本期Count"/>
+        <el-form-item label="Current Count" prop="currentCheck">
+          <el-input v-model="form.currentCheck" placeholder="Please Input Current Count"/>
         </el-form-item>
-        <el-form-item label="本期结存" prop="currentBalance">
-          <el-input v-model="form.currentBalance" placeholder="Please Input 本期结存"/>
+        <el-form-item label="Current Inventory" prop="currentBalance">
+          <el-input v-model="form.currentBalance" placeholder="Please Input Current Inventory"/>
         </el-form-item>
         <el-form-item label="Remark" prop="remark">
           <el-input v-model="form.remark" placeholder="Please Input Remark"/>
@@ -347,7 +347,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // Inventory结算 Detail表格Data
+      // InventorySettlement Detail表格Data
       wmsInventorySettlementDetailList: [],
       // 弹出层标题
       title: "",
@@ -379,7 +379,7 @@ export default {
       // 表校验
       rules: {
         settlementId: [
-          {required: true, message: "结算id is required", trigger: "blur"}
+          {required: true, message: "Settlementid is required", trigger: "blur"}
         ],
         itemId: [
           {required: true, message: "Itemid is required", trigger: "blur"}
@@ -410,8 +410,8 @@ export default {
         ],
       },
       columns: [
-        {key: 1, label: "结算id", visible: true},
-        {key: 2, label: "结算Type,1:月结，2:年结", visible: true},
+        {key: 1, label: "Settlementid", visible: true},
+        {key: 2, label: "SettlementType,1:Monthly，2:Year-end", visible: true},
         {key: 3, label: "Itemid", visible: true},
         {key: 4, label: "No.", visible: true},
         {key: 5, label: "Item", visible: true},
@@ -421,11 +421,11 @@ export default {
         {key: 9, label: "Areaid", visible: true},
         {key: 10, label: "AreaNo.", visible: false},
         {key: 11, label: "AreaItem", visible: false},
-        {key: 12, label: "上期结存", visible: false},
-        {key: 13, label: "本期Inbound", visible: false},
-        {key: 14, label: "本期Outbound ", visible: false},
-        {key: 15, label: "本期Count", visible: false},
-        {key: 16, label: "本期结存", visible: false},
+        {key: 12, label: " Last inventory", visible: false},
+        {key: 13, label: "Current Inbound", visible: false},
+        {key: 14, label: "Current Outbound ", visible: false},
+        {key: 15, label: "Current Count", visible: false},
+        {key: 16, label: "Current Inventory", visible: false},
         {key: 18, label: "Remark", visible: false},
       ],
       showMoreCondition: false
@@ -435,7 +435,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** SearchInventory结算 Detail列表 */
+    /** SearchInventorySettlement Detail列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -536,7 +536,7 @@ export default {
     /** DeleteButtonOperate */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm(' Do you want delete Inventory结算 DetailNo."' + ids + '"？').then(function () {
+      this.$modal.confirm(' Do you want delete InventorySettlement DetailNo."' + ids + '"？').then(function () {
         return delWmsInventorySettlementDetail(ids);
       }).then(() => {
         this.getList();

@@ -118,7 +118,7 @@ export default {
           return false;
         });
         if (!isTypeOk) {
-          this.$modal.msgError(`文件格式No 正确, 请上传${this.fileType.join("/")}格式文件!`);
+          this.$modal.msgError(`文件格式No 正确, 请上传${this.fileType.join("/")}!`);
           return false;
         }
       }

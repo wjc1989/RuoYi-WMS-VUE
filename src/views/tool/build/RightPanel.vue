@@ -43,7 +43,7 @@
           <el-form-item v-if="activeData.placeholder!==undefined" label="占位Info">
             <el-input v-model="activeData.placeholder" placeholder="Please Input 占位Info" />
           </el-form-item>
-          <el-form-item v-if="activeData['start-placeholder']!==undefined" label="开始占位">
+          <el-form-item v-if="activeData['start-placeholder']!==undefined" label=" Start 占位">
             <el-input v-model="activeData['start-placeholder']" placeholder="Please Input 占位Info" />
           </el-form-item>
           <el-form-item v-if="activeData['end-placeholder']!==undefined" label="End占位">
@@ -91,11 +91,11 @@
               @input="onDefaultValueInput"
             />
           </el-form-item>
-          <el-form-item v-if="activeData.tag==='el-checkbox-group'" label="至少应选">
+          <el-form-item v-if="activeData.tag==='el-checkbox-group'" label=" To 少应选">
             <el-input-number
               :value="activeData.min"
               :min="0"
-              placeholder="至少应选"
+              placeholder=" To 少应选"
               @input="$set(activeData, 'min', $event?$event:undefined)"
             />
           </el-form-item>

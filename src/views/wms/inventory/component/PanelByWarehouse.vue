@@ -88,11 +88,11 @@ export default {
       })
     },
     allocationItem(row) {
-      console.log('该Item未 Distribute Warehouse。', row)
-      this.$message({
-        message: '该功能No开放',
-        type: 'warning'
-      });
+      console.log('该项目未 Distribute Warehouse。', row)
+      // this.$message({
+      //   message: '该功能No开放',
+      //   type: 'warning'
+      // });
     }
   }
 }

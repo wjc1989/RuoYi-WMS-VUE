@@ -205,14 +205,14 @@ export default {
         email: [
           {
             type: "email",
-            message: "Please Input 正确的EmailAddress",
+            message: "Please Input Right Email",
             trigger: ["blur", "change"]
           }
         ],
         phone: [
           {
             pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
-            message: "Please Input 正确的Phone",
+            message: "Please Input Right Phone",
             trigger: "blur"
           }
         ]

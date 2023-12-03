@@ -140,7 +140,7 @@
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="handleDataScope" icon="el-icon-circle-check"
-                v-hasPermi="['system:role:edit']">Data Perm</el-dropdown-item>
+                v-hasPermi="['system:role:edit']"></el-dropdown-item>
               <el-dropdown-item command="handleAuthUser" icon="el-icon-user"
                 v-hasPermi="['system:role:edit']"> Distribute User </el-dropdown-item>
             </el-dropdown-menu>
@@ -209,7 +209,7 @@
       </div>
     </el-dialog>
 
-    <!--  Distribute RoleData Perm对话框 -->
+    <!--  Distribute Role对话框 -->
     <el-dialog :title="title" :visible.sync="openDataScope" width="600px" append-to-body>
       <el-form :model="form" label-width="120px">
         <el-form-item label="Role Name">
@@ -228,7 +228,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="Data Perm" v-show="form.dataScope == 2">
+        <el-form-item label="" v-show="form.dataScope == 2">
           <el-checkbox v-model="deptExpand" @change="handleCheckedTreeExpand($event, 'dept')">Expand/Collapse</el-checkbox>
           <el-checkbox v-model="deptNodeAll" @change="handleCheckedTreeNodeAll($event, 'dept')">All/All No</el-checkbox>
           <el-checkbox v-model="form.deptCheckStrictly" @change="handleCheckedTreeConnect($event, 'dept')">Cascade</el-checkbox>
@@ -281,7 +281,7 @@ export default {
       title: "",
       // Show弹出层
       open: false,
-      // Show弹出层（Data Perm）
+      // Show弹出层（）
       openDataScope: false,
       menuExpand: false,
       menuNodeAll: false,
@@ -293,23 +293,23 @@ export default {
       dataScopeOptions: [
         {
           value: "1",
-          label: "AllData Perm"
+          label: "All"
         },
         {
           value: "2",
-          label: "自定Data Perm"
+          label: "Custom"
         },
         {
           value: "3",
-          label: "本DepartmentData Perm"
+          label: "Current Department"
         },
         {
           value: "4",
-          label: "本Department及以下Data Perm"
+          label: "Current Department and child"
         },
         {
           value: "5",
-          label: "仅本人Data Perm"
+          label: "Only Self"
         }
       ],
       // Menu 列表
@@ -404,8 +404,8 @@ export default {
     },
     // RoleStatusModify
     handleStatusChange(row) {
-      let text = row.status === "0" ? "启用" : "停用";
-      this.$modal.confirm('OK要"' + text + '""' + row.roleName + '"Role吗？').then(function() {
+      let text = row.status === "0" ? "Enable" : "Disable";
+      this.$modal.confirm('Confirm to "' + text + '""' + row.roleName + '"Role？').then(function() {
         return changeRoleStatus(row.roleId, row.status);
       }).then(() => {
         this.$modal.msgSuccess(text + " Successful");
@@ -418,7 +418,7 @@ export default {
       this.open = false;
       this.reset();
     },
-    // CancelButton（Data Perm）
+    // CancelButton（）
     cancelDataScope() {
       this.openDataScope = false;
       this.reset();
@@ -540,7 +540,7 @@ export default {
         this.$refs.dept.setCheckedKeys([]);
       }
     },
-    /**  Distribute Data PermOperate */
+    /**  Distribute Operate */
     handleDataScope(row) {
       this.reset();
       const roleDeptTreeselect = this.getRoleDeptTreeselect(row.roleId);
@@ -552,7 +552,7 @@ export default {
             this.$refs.dept.setCheckedKeys(res.checkedKeys);
           });
         });
-        this.title = " Distribute Data Perm";
+        this.title = " Distribute ";
       });
     },
     /**  Distribute User Operate */
@@ -582,7 +582,7 @@ export default {
         }
       });
     },
-    /** 提交Button（Data Perm） */
+    /** 提交Button（） */
     submitDataScope: function() {
       if (this.form.roleId != undefined) {
         this.form.deptIds = this.getDeptAllCheckedKeys();

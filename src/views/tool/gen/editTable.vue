@@ -4,7 +4,7 @@
       <el-tab-pane label="Basic Info" name="basic">
         <basic-info-form ref="basicInfo" :info="info" />
       </el-tab-pane>
-      <el-tab-pane label="字段信息" name="columnInfo">
+      <el-tab-pane label="字段 Info" name="columnInfo">
         <el-table ref="dragTable" :data="columns" row-key="columnId" :max-height="tableHeight">
           <el-table-column label="No." type="index" min-width="5%" class-name="allowDrag" />
           <el-table-column
@@ -113,7 +113,7 @@
           </el-table-column>
         </el-table>
       </el-tab-pane>
-      <el-tab-pane label="生成信息" name="genInfo">
+      <el-tab-pane label="生成 Info" name="genInfo">
         <gen-info-form ref="genInfo" :info="info" :tables="tables" :menus="menus"/>
       </el-tab-pane>
     </el-tabs>
@@ -146,22 +146,22 @@ export default {
       activeName: "columnInfo",
       // 表格的高度
       tableHeight: document.documentElement.scrollHeight - 245 + "px",
-      // 表信息
+      // 表 Info
       tables: [],
-      // 表列信息
+      // 表列 Info
       columns: [],
-      // Dict信息
+      // Dict Info
       dictOptions: [],
-      // Menu 信息
+      // Menu  Info
       menus: [],
-      // 表Detail信息
+      // 表Detail Info
       info: {}
     };
   },
   created() {
     const tableId = this.$route.params && this.$route.params.tableId;
     if (tableId) {
-      // 获取表Detail信息
+      // 获取表Detail Info
       getGenTable(tableId).then(res => {
         this.columns = res.data.rows;
         this.info = res.data.info;

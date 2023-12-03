@@ -14,7 +14,7 @@
 
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="3">
-				周期从
+				 Cycle从
 				<el-select clearable v-model="cycle01">
 					<el-option
 						v-for="(item,index) of weekList"
@@ -142,7 +142,7 @@ export default {
 			}
 		},
 
-		// 周期两个值Change时
+		//  Cycle两个值Change时
 		cycleChange() {
 			if (this.radioValue == '3') {
 				this.$emit('update', 'week', this.cycleTotal);
@@ -175,7 +175,7 @@ export default {
 		'checkboxString': 'checkboxChange',
 	},
 	computed: {
-		// 计算两个周期值
+		// 计算两个 Cycle值
 		cycleTotal: function () {
 			this.cycle01 = this.checkNum(this.cycle01, 1, 7)
 			this.cycle02 = this.checkNum(this.cycle02, 1, 7)

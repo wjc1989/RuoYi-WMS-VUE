@@ -49,7 +49,7 @@ export function isStarRepo(owner, repo, userId, redirectUrl,productName,productL
   return getCode(owner, repo, key, redirectUrl,productName,productLink)
 }
 
-// 去请求授权
+// 去请求Authorize
 function getCode(owner, repo, key, redirectUrl,productName,productLink) {
   // 检查url中有code
   const code = getParam('code')
@@ -72,7 +72,7 @@ function confirmStar(redirectUrl,productName,productLink) {
 			<p><b>嗨，同学，来支持一下 ${productName} 吧，项目点个 star ！</b></p>
 			<div>仅需两步即可完成：<br>
 				<div>1、打开 ${productName} <a href=${productLink} target="_blank" style="color: red">${productName}</a>，在右上角点个 star 。</div>
-				<div>2、点击下方 [ 同意授权检测 ] Button，同意 ${productName}  获取 API Prower进行检测。</div>
+				<div>2、点击下方 [ 同意Authorize检测 ] Button，同意 ${productName}  获取 API Prower进行检测。</div>
 			</div>
 			<p><b>本页面将在 star 后正常开放展示</b></p>
 		</div>
@@ -81,12 +81,12 @@ function confirmStar(redirectUrl,productName,productLink) {
     MessageBox.alert(tipStr, 'Info', {
       // if you want to disable its autofocus
       // autofocus: false,
-      confirmButtonText: '同意授权检测',
+      confirmButtonText: '同意Authorize检测',
       showClose: false,
       dangerouslyUseHTMLString: true,
       callback: (action) => {
         if (action === 'confirm') {
-          // User 点了OK，去 gitee 官方请求授权获取
+          // User 点了OK，去 gitee 官方请求Authorize获取
           goAuth(redirectUrl)
         }
       }
@@ -113,7 +113,7 @@ function toStar(redirectUrl,productName,productLink,accessToken,owner,repo,key,c
       dangerouslyUseHTMLString: true,
       callback: (action) => {
         if (action === 'confirm') {
-          // User 点了OK，去 gitee 官方请求授权获取
+          // User 点了OK，去 gitee 官方请求Authorize获取
           window.open(productLink)
           toStar(redirectUrl,productName,productLink,accessToken,owner,repo,key,code)
         }
@@ -125,7 +125,7 @@ function toStar(redirectUrl,productName,productLink,accessToken,owner,repo,key,c
     })
 }
 
-// 跳转到 gitee 授权界面
+// 跳转到 gitee Authorize界面
 function goAuth(redirectUrl) {
   location.href = 'https://gitee.com/oauth/authorize' +
     '?client_id=' + client_id +
@@ -162,7 +162,7 @@ function getAccessToken(code, redirectUrl, owner, repo, key,productName,productL
         location.href = location.href.replace('?code=' + code, '')
       }
 
-      // 无效授权，可能Yes code 无效
+      // 无效Authorize，可能Yes code 无效
       const errorMsg = (e.response && e.response.data.error) || JSON.stringify(e)
       if (errorMsg === 'invalid_grant') {
         console.log('无效code', code)

@@ -98,8 +98,8 @@
               <el-option label="Smallest inventory is prioritized" :value="1"></el-option>
               <el-option label="Largest inventory is prioritized" :value="2"></el-option>
               <el-option label="First in,first out(FIFO)" :value="3" disabled></el-option>
-              <el-option label="先Expiry先出" :value="4" disabled></el-option>
-              <el-option label="适量Inventory优先" :value="5" disabled></el-option>
+              <el-option label="First to expire,first out" :value="4" disabled></el-option>
+              <el-option label="Appropriate inventory priority" :value="5" disabled></el-option>
             </el-select>
           </el-form-item>
         </el-form>

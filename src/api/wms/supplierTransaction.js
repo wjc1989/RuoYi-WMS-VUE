@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// SearchSupplier账户流水列表
+// SearchSupplier flow列表
 export function listWmsSupplierTransaction(query, pageReq) {
   return request({
     url: '/wms/supplierTransaction/list',
@@ -10,7 +10,7 @@ export function listWmsSupplierTransaction(query, pageReq) {
   })
 }
 
-// SearchSupplier账户流水Detail
+// SearchSupplier flowDetail
 export function getWmsSupplierTransaction(id) {
   return request({
     url: '/wms/supplierTransaction/' + id,
@@ -18,7 +18,7 @@ export function getWmsSupplierTransaction(id) {
   })
 }
 
-// AddSupplier账户流水
+// AddSupplier flow
 export function addWmsSupplierTransaction(data) {
   return request({
     url: '/wms/supplierTransaction',
@@ -27,7 +27,7 @@ export function addWmsSupplierTransaction(data) {
   })
 }
 
-// ModifySupplier账户流水
+// ModifySupplier flow
 export function updateWmsSupplierTransaction(data) {
   return request({
     url: '/wms/supplierTransaction',
@@ -36,7 +36,7 @@ export function updateWmsSupplierTransaction(data) {
   })
 }
 
-// DeleteSupplier账户流水
+// DeleteSupplier flow
 export function delWmsSupplierTransaction(id) {
   return request({
     url: '/wms/supplierTransaction/' + id,
@@ -44,7 +44,7 @@ export function delWmsSupplierTransaction(id) {
   })
 }
 
-// ExportSupplier账户流水
+// ExportSupplier flow
 export function exportWmsSupplierTransaction(query) {
   return request({
     url: '/wms/supplierTransaction/export',

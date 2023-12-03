@@ -324,13 +324,13 @@
         drag
       >
         <i class="el-icon-upload"></i>
-        <div class="el-upload__text">将文件拖到此处， Or<em>点击上传</em></div>
+        <div class="el-upload__text">Drag， Or<em>Click</em></div>
         <div class="el-upload__tip text-center" slot="tip">
           <div class="el-upload__tip" slot="tip">
-            <el-checkbox v-model="upload.updateSupport" /> 更新已经存在的User Data
+            <el-checkbox v-model="upload.updateSupport" />Update Exists User Data
           </div>
-          <span>仅允许Importxls、xlsx格式文件。</span>
-          <el-link type="primary" :underline="false" style="font-size:12px;vertical-align: baseline;" @click="importTemplate">下载模板</el-link>
+          <span>Only support import xls、xlsx。</span>
+          <el-link type="primary" :underline="false" style="font-size:12px;vertical-align: baseline;" @click="importTemplate">Download Template</el-link>
         </div>
       </el-upload>
       <div slot="footer" class="dialog-footer">
@@ -414,7 +414,7 @@ export default {
         status: undefined,
         deptId: undefined
       },
-      // 列信息
+      // 列 Info
       columns: [
         { key: 0, label: `ID`, visible: true },
         { key: 1, label: `Name`, visible: true },
@@ -428,26 +428,26 @@ export default {
       rules: {
         userName: [
           { required: true, message: "Name is required", trigger: "blur" },
-          { min: 2, max: 20, message: 'Name长度必须介于 2  And  20 之间', trigger: 'blur' }
+          { min: 2, max: 20, message: 'Name Length must be between 2 and 20', trigger: 'blur' }
         ],
         nickName: [
           { required: true, message: "Nickname is required", trigger: "blur" }
         ],
         password: [
           { required: true, message: "Password is required", trigger: "blur" },
-          { min: 5, max: 20, message: 'Password长度必须介于 5  And  20 之间', trigger: 'blur' }
+          { min: 5, max: 20, message: 'Password Length must be between 5 and 20', trigger: 'blur' }
         ],
         email: [
           {
             type: "email",
-            message: "Please Input 正确的EmailAddress",
+            message: "Please Input Right Email",
             trigger: ["blur", "change"]
           }
         ],
         phonenumber: [
           {
             pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
-            message: "Please Input 正确的Phone",
+            message: "Please Input Right Phone",
             trigger: "blur"
           }
         ]
@@ -496,8 +496,8 @@ export default {
     },
     // User StatusModify
     handleStatusChange(row) {
-      let text = row.status === "0" ? "启用" : "停用";
-      this.$modal.confirm('OK要"' + text + '""' + row.userName + '"User 吗？').then(function() {
+      let text = row.status === "0" ? "Enable" : "Disable";
+      this.$modal.confirm('Confirm to "' + text + '""' + row.userName + '"User ？').then(function() {
         return changeUserStatus(row.userId, row.status);
       }).then(() => {
         this.$modal.msgSuccess(text + " Successful");
@@ -588,12 +588,12 @@ export default {
     },
     /** ResetPasswordButtonOperate */
     handleResetPwd(row) {
-      this.$prompt('Please Input "' + row.userName + '"的新Password', "Info", {
+      this.$prompt('Please Input New Password', "Info", {
         confirmButtonText: "OK",
         cancelButtonText: "Cancel",
         closeOnClickModal: false,
         inputPattern: /^.{5,20}$/,
-        inputErrorMessage: "Password长度必须介于 5  And  20 之间"
+        inputErrorMessage: "Password Length must be between 5 and 20"
       }).then(({ value }) => {
           resetUserPwd(row.userId, value).then(response => {
             this.$modal.msgSuccess("Modify Successful，新PasswordYes：" + value);
@@ -646,7 +646,7 @@ export default {
       this.upload.title = "User Import";
       this.upload.open = true;
     },
-    /** 下载模板Operate */
+    /** Download TemplateOperate */
     importTemplate() {
       this.download('system/user/importTemplate', {
       }, `user_template_${new Date().getTime()}.xlsx`)

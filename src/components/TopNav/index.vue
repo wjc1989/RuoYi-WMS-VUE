@@ -61,7 +61,7 @@ export default {
       });
       return topMenus;
     },
-    // 所有的Router信息
+    // 所有的Router Info
     routers() {
       return this.$store.state.permission.topbarRouters;
     },

@@ -55,7 +55,7 @@
       <el-col :span="12" class="card-box">
         <el-card>
           <div slot="header">
-            <span>内存信息</span>
+            <span>内存 Info</span>
           </div>
           <div class="el-table el-table--enable-row-hover el-table--medium">
             <div ref="usedmemory" style="height: 420px" />
@@ -74,11 +74,11 @@ export default {
   name: "Cache",
   data() {
     return {
-      // 统计命令信息
+      // 统计命令 Info
       commandstats: null,
       // 使用内存
       usedmemory: null,
-      // cache信息
+      // cache Info
       cache: []
     }
   },
@@ -87,7 +87,7 @@ export default {
     this.openLoading();
   },
   methods: {
-    /** 查Cache询信息 */
+    /** 查Cache询 Info */
     getList() {
       getCache().then((response) => {
         this.cache = response.data;

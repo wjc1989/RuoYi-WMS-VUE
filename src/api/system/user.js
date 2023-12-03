@@ -109,7 +109,7 @@ export function uploadAvatar(data) {
   })
 }
 
-// Search授权Role
+// SearchAuthorizeRole
 export function getAuthRole(userId) {
   return request({
     url: '/system/user/authRole/' + userId,
@@ -117,7 +117,7 @@ export function getAuthRole(userId) {
   })
 }
 
-// Add授权Role
+// AddAuthorizeRole
 export function updateAuthRole(data) {
   return request({
     url: '/system/user/authRole',

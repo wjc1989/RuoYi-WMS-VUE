@@ -9,16 +9,16 @@
       size="medium"
       class="ry_form"
     >
-      <el-form-item label="结算No." prop="inventorySettlementNo">
+      <el-form-item label="SettlementNo." prop="inventorySettlementNo">
         <el-input
           v-model="queryParams.inventorySettlementNo"
-          placeholder="Please Input 结算No."
+          placeholder="Please Input SettlementNo."
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="结算Status" prop="inventorySettlementStatus">
+      <el-form-item label="SettlementStatus" prop="inventorySettlementStatus">
         <DictRadio
           v-model="queryParams.inventorySettlementStatus"
           @change="handleQuery"
@@ -27,7 +27,7 @@
           :showAll="'all'"
         />
       </el-form-item>
-      <!--      <el-form-item label="结算Type" prop="settlementType">
+      <!--      <el-form-item label="SettlementType" prop="settlementType">
               <DictRadio
                 v-model="queryParams.settlementType"
                 @change="handleQuery"
@@ -93,13 +93,13 @@
     >
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column
-        label="结算No."
+        label="SettlementNo."
         align="center"
         prop="inventorySettlementNo"
         v-if="columns[3].visible"
       />
       <el-table-column
-        label="结算周期"
+        label="Settlement Cycle"
         align="center"
         v-if="columns[0].visible"
       >
@@ -108,13 +108,13 @@
         </template>
 
       </el-table-column>
-      <el-table-column label="结算Status" align="center" prop="inventorySettlementStatus" v-if="columns[0].visible">
+      <el-table-column label="SettlementStatus" align="center" prop="inventorySettlementStatus" v-if="columns[0].visible">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.wms_settlement_status" :value="scope.row.inventorySettlementStatus"/>
         </template>
       </el-table-column>
       <!--      <el-table-column
-              label="结算Type"
+              label="SettlementType"
               align="center"
               prop="settlementType"
               v-if="columns[1].visible"
@@ -146,7 +146,7 @@
             @click="handleUpdate(scope.row)"
             v-if="11 === scope.row.inventorySettlementStatus"
             v-hasPermi="['wms:wmsInventorySettlement:edit']"
-          >继续结算
+          >继续Settlement
           </el-button>
           <el-button
             size="mini"
@@ -199,7 +199,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // Inventory结算表格Data
+      // InventorySettlement表格Data
       wmsInventorySettlementList: [],
       // SearchParams
       queryParams: {
@@ -212,9 +212,9 @@ export default {
       // 表Params
       form: {},
       columns: [
-        {key: 9, label: "结算No.", visible: true},
-        {key: 1, label: "结算Status", visible: true},
-        {key: 2, label: "结算Type", visible: true},
+        {key: 9, label: "SettlementNo.", visible: true},
+        {key: 1, label: "SettlementStatus", visible: true},
+        {key: 2, label: "SettlementType", visible: true},
         {key: 4, label: "Remark", visible: true},
       ],
     };
@@ -237,7 +237,7 @@ export default {
       }
       return ''
     },
-    /** SearchInventory结算列表 */
+    /** SearchInventorySettlement列表 */
     getList() {
       this.loading = true;
       const {pageNum, pageSize} = this.queryParams;
@@ -304,7 +304,7 @@ export default {
     handleDelete(row) {
       const ids = row.id || this.ids;
       this.$modal
-        .confirm(' Do you want delete Inventory结算No."' + ids + '"？')
+        .confirm(' Do you want delete InventorySettlementNo."' + ids + '"？')
         .then(function () {
           return delWmsInventorySettlement(ids);
         })

@@ -21,7 +21,7 @@ import { getConfigKey } from "@/api/system/config";
 import { parseTime, resetForm, addDateRange, selectDictLabel, selectDictLabels, handleTree } from "@/utils/ruoyi";
 // 分页组件
 import Pagination from "@/components/Pagination";
-// 自定义表格工具组件
+// Custom 义表格工具组件
 import RightToolbar from "@/components/RightToolbar"
 // 富文本组件
 import Editor from "@/components/Editor"

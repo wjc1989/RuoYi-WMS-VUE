@@ -227,7 +227,7 @@ export function debounce(func, wait, immediate) {
       timeout = setTimeout(later, wait - last)
     } else {
       timeout = null
-      // e.g.果设定immediate===true，因开始边界已经调用过了此处无需调用
+      // e.g.果设定immediate===true，因 Start 边界已经调用过了此处无需调用
       if (!immediate) {
         result = func.apply(context, args)
         if (!timeout) context = args = null

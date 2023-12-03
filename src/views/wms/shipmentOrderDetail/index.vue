@@ -37,7 +37,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label=" Rack" prop="rackId">
+      <el-form-item label="Rack" prop="rackId">
         <el-input
           v-model="queryParams.rackId"
           placeholder="Please Input  Rack"
@@ -105,7 +105,7 @@
       <el-table-column label="Item" align="center" prop="itemId" v-if="columns[1].visible"/>
       <el-table-column label="Plan Count" align="center" prop="planQuantity" v-if="columns[2].visible"/>
       <el-table-column label="Real Count" align="center" prop="realQuantity" v-if="columns[3].visible"/>
-      <el-table-column label=" Rack" align="center" prop="rackId" v-if="columns[4].visible"/>
+      <el-table-column label="Rack" align="center" prop="rackId" v-if="columns[4].visible"/>
       <el-table-column label="Remark" align="center" prop="remark" v-if="columns[5].visible"/>
       <el-table-column label="Operate" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -212,7 +212,7 @@ export default {
             { key: 2, label: "Item", visible:  true  },
             { key: 3, label: "Plan Count", visible:  true  },
             { key: 4, label: "Real Count", visible:  true  },
-            { key: 5, label: " Rack", visible:  true  },
+            { key: 5, label: "Rack", visible:  true  },
                 { key: 7, label: "Remark", visible:  true  },
                          ],
     };

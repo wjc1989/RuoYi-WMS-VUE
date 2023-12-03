@@ -125,7 +125,7 @@ export default {
     init() {
       const editor = this.$refs.editor;
       this.Quill = new Quill(editor, this.options);
-      // e.g.果设置了上传Address则自定义图片上传事件
+      // e.g.果设置了上传Address则Custom 义图片上传事件
       if (this.type == 'url') {
         let toolbar = this.Quill.getModule("toolbar");
         toolbar.addHandler("image", (value) => {

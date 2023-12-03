@@ -77,21 +77,21 @@ WMSwmsYes一套基于WMS的WMS，支持lodop And 网页PrintInbound、Outbound �
 ## WMS内置功能
 
 1.  User 管理：User Yes系统Operate者，该功能主要完成系统User 配置。
-2.  Department管理：配置系统组织机构（公司、Department、小组），树结构展现支持Data Perm。
+2.  Department管理：配置系统组织机构（公司、Department、小组），树结构展现支持。
 3.  Post管理：配置系统User 担任职务。
 4.  Menu 管理：配置系统Menu ，OperatePrower，ButtonPerms等。
 5.  Role管理：RoleMenu Prower Distribute 、设置Role按机构进行Data范围Prower划分。
 6.  Dict管理：对系统中经常使用的一些较固定的Data进行维护。
 7.  Params管理：对系统动态配置常用Params。
-8.  通知Notice：系统通知Notice信息发布维护。
-9.  OperateLogs：系统正常OperateLogs Record And Search；系统 Exception信息Logs Record And Search。
+8.  通知Notice：系统通知Notice Info发布维护。
+9.  OperateLogs：系统正常OperateLogs Record And Search；系统 Exception InfoLogs Record And Search。
 10. LoginLogs：系统LoginLogs RecordSearch包含Login Exception。
 11. 在线User ：当前系统中活跃User Status监控。
 12. 定时 Task：在线（Add、Modify、Delete) Task调度包含执行结果Logs。
 13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
 14. 系统接口：根据业务代码Auto生成相关的api接口文档。
-15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
-16. Cache监控：对系统的Cache信息Search，命令统计等。
+15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关 Info。
+16. Cache监控：对系统的Cache InfoSearch，命令统计等。
 17. 在线构建器：拖动表元素生成相应的HTML代码。
 18. 连接池监视：监视当前系统Data库连接池Status，可进行分析SQL找出系统性能瓶颈。
 <table>

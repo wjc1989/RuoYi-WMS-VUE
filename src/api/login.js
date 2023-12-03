@@ -30,7 +30,7 @@ export function register(data) {
   })
 }
 
-// 获取User Detail信息
+// 获取User Detail Info
 export function getInfo() {
   return request({
     url: '/getInfo',

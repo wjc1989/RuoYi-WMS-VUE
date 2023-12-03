@@ -67,7 +67,7 @@
       <template v-if="showMoreCondition">
       <el-form-item label="Status" prop="receiptOrderStatus">
         <el-select v-model="queryParams.receiptOrderStatus" placeholder="Please select Status" clearable size="small">
-              <el-option label="Please select Dict生成" value="" />
+              <el-option label="Please select Status" value="" />
         </el-select>
       </el-form-item>
     </template>
@@ -193,7 +193,7 @@
         </el-form-item>
         <el-form-item label="Status">
           <el-radio-group v-model="form.receiptOrderStatus">
-            <el-radio label="1">Please select Dict生成</el-radio>
+            <el-radio label="1">Please select Status</el-radio>
           </el-radio-group>
         </el-form-item>
       </el-form>

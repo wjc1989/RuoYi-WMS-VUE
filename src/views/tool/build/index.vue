@@ -282,7 +282,7 @@ export default {
       document.getElementById('copyNode').click()
     },
     empty() {
-      this.$confirm('OK要Clear所有组件吗？', 'Info', { type: 'warning' }).then(
+      this.$confirm('Confirm to Clear所有组件？', 'Info', { type: 'warning' }).then(
         () => {
           this.drawingList = []
         }

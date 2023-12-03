@@ -1,5 +1,5 @@
 <template>
-  <!-- 授权User  -->
+  <!-- AuthorizeUser  -->
   <el-dialog title="Select User " :visible.sync="visible" width="800px" top="5vh" append-to-body>
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true">
       <el-form-item label="Name" prop="userName">
@@ -29,7 +29,7 @@
         <el-table-column label="Name" prop="userName" :show-overflow-tooltip="true" />
         <el-table-column label="Nickname" prop="nickName" :show-overflow-tooltip="true" />
         <el-table-column label="Email" prop="email" :show-overflow-tooltip="true" />
-        <el-table-column label="手机" prop="phonenumber" :show-overflow-tooltip="true" />
+        <el-table-column label="Phone" prop="phonenumber" :show-overflow-tooltip="true" />
         <el-table-column label="Status" align="center" prop="status">
           <template slot-scope="scope">
             <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
@@ -74,7 +74,7 @@ export default {
       userIds: [],
       // 总条数
       total: 0,
-      // 未授权User Data
+      // 未AuthorizeUser Data
       userList: [],
       // SearchParams
       queryParams: {
@@ -117,7 +117,7 @@ export default {
       this.resetForm("queryForm");
       this.handleQuery();
     },
-    /** Select 授权User Operate */
+    /** Select AuthorizeUser Operate */
     handleSelectUser() {
       const roleId = this.queryParams.roleId;
       const userIds = this.userIds.join(",");

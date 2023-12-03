@@ -420,8 +420,8 @@ export default {
     },
     // StatusModify
     handleStatusChange(row) {
-      let text = row.status === "0" ? "启用" : "停用";
-      this.$modal.confirm('OK要"' + text + '""' + row.jobName + '" Task吗？').then(function() {
+      let text = row.status === "0" ? "Enable" : "Disable";
+      this.$modal.confirm('Confirm to "' + text + '""' + row.jobName + '" Task？').then(function() {
         return changeJobStatus(row.jobId, row.status);
       }).then(() => {
         this.$modal.msgSuccess(text + " Successful");
@@ -431,13 +431,13 @@ export default {
     },
     /* 立即执行一次 */
     handleRun(row) {
-      this.$modal.confirm('OK要立即执行一次"' + row.jobName + '" Task吗？').then(function() {
+      this.$modal.confirm('Confirm to 立即执行一次"' + row.jobName + '" Task？').then(function() {
         return runJob(row.jobId, row.jobGroup);
       }).then(() => {
         this.$modal.msgSuccess("执行 Successful");
       }).catch(() => {});
     },
-    /**  TaskDetail信息 */
+    /**  TaskDetail Info */
     handleView(row) {
       getJob(row.jobId).then(response => {
         this.form = response.data;

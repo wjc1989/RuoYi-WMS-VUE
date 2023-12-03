@@ -8,7 +8,7 @@
 
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="2">
-				周期从
+				 Cycle从
 				<el-input-number v-model='cycle01' :min="0" :max="58" /> -
 				<el-input-number v-model='cycle02' :min="cycle01 ? cycle01 + 1 : 1" :max="59" /> 秒
 			</el-radio>
@@ -17,7 +17,7 @@
 		<el-form-item>
 			<el-radio v-model='radioValue' :label="3">
 				从
-				<el-input-number v-model='average01' :min="0" :max="58" /> 秒开始，每
+				<el-input-number v-model='average01' :min="0" :max="58" /> 秒 Start ，每
 				<el-input-number v-model='average02' :min="1" :max="59 - average01 || 0" /> 秒执行一次
 			</el-radio>
 		</el-form-item>
@@ -66,7 +66,7 @@ export default {
 					break;
 			}
 		},
-		// 周期两个值Change时
+		//  Cycle两个值Change时
 		cycleChange() {
 			if (this.radioValue == '2') {
 				this.$emit('update', 'second', this.cycleTotal);
@@ -95,7 +95,7 @@ export default {
 		}
 	},
 	computed: {
-		// 计算两个周期值
+		// 计算两个 Cycle值
 		cycleTotal: function () {
 			const cycle01 = this.checkNum(this.cycle01, 0, 58)
 			const cycle02 = this.checkNum(this.cycle02, cycle01 ? cycle01 + 1 : 1, 59)

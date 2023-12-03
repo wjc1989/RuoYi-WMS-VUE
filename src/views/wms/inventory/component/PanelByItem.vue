@@ -2,7 +2,7 @@
   <merge-table :table-data="tableData" :merge-arr="['itemNo']">
     <el-table-column
       prop="itemNo"
-      label="Item信息"
+      label="Item Info"
     >
       <template v-slot="{ row }">
         <el-row>

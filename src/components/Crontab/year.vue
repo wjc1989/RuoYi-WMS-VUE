@@ -14,7 +14,7 @@
 
 		<el-form-item>
 			<el-radio :label="3" v-model='radioValue'>
-				周期从
+				 Cycle从
 				<el-input-number v-model='cycle01' :min='fullYear' :max="2098" /> -
 				<el-input-number v-model='cycle02' :min="cycle01 ? cycle01 + 1 : fullYear + 1" :max="2099" />
 			</el-radio>
@@ -23,7 +23,7 @@
 		<el-form-item>
 			<el-radio :label="4" v-model='radioValue'>
 				从
-				<el-input-number v-model='average01' :min='fullYear' :max="2098"/> 年开始，每
+				<el-input-number v-model='average01' :min='fullYear' :max="2098"/> 年 Start ，每
 				<el-input-number v-model='average02' :min="1" :max="2099 - average01 || fullYear" /> 年执行一次
 			</el-radio>
 
@@ -77,7 +77,7 @@ export default {
 					break;
 			}
 		},
-		// 周期两个值Change时
+		//  Cycle两个值Change时
 		cycleChange() {
 			if (this.radioValue == '3') {
 				this.$emit('update', 'year', this.cycleTotal);
@@ -103,7 +103,7 @@ export default {
 		'checkboxString': 'checkboxChange'
 	},
 	computed: {
-		// 计算两个周期值
+		// 计算两个 Cycle值
 		cycleTotal: function () {
 			const cycle01 = this.checkNum(this.cycle01, this.fullYear, 2098)
 			const cycle02 = this.checkNum(this.cycle02, cycle01 ? cycle01 + 1 : this.fullYear + 1, 2099)

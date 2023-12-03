@@ -17,7 +17,7 @@ export function listDbTable(query) {
   })
 }
 
-// Search表Detail信息
+// Search表Detail Info
 export function getGenTable(tableId) {
   return request({
     url: '/tool/gen/' + tableId,
@@ -25,7 +25,7 @@ export function getGenTable(tableId) {
   })
 }
 
-// Modify代码生成信息
+// Modify代码生成 Info
 export function updateGenTable(data) {
   return request({
     url: '/tool/gen',
@@ -59,7 +59,7 @@ export function delTable(tableId) {
   })
 }
 
-// 生成代码（自定义路径）
+// 生成代码（Custom 义路径）
 export function genCode(tableName) {
   return request({
     url: '/tool/gen/genCode/' + tableName,

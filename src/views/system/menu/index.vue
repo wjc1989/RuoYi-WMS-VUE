@@ -175,7 +175,7 @@
           <el-col :span="12" v-if="form.menuType != 'F'">
             <el-form-item prop="path">
               <span slot="label">
-                <el-tooltip content="访问的Router，e.g.：`user`，e.g.外网Address需内链访问则以`http(s)://`开头" placement="top">
+                <el-tooltip content="Router，e.g.：`user`，e.g.`http(s)://`开头" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Router
@@ -186,7 +186,7 @@
           <el-col :span="12" v-if="form.menuType == 'C'">
             <el-form-item prop="component">
               <span slot="label">
-                <el-tooltip content="访问的Component，e.g.：`system/user/index`，默认在`views`Directory下" placement="top">
+                <el-tooltip content="Component，e.g.：`system/user/index`，默认在`views`Directory下" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Component
@@ -198,7 +198,7 @@
             <el-form-item>
               <el-input v-model="form.perms" placeholder="Please Input Perms" maxlength="100" />
               <span slot="label">
-                <el-tooltip content="控制器中定义的Prower Key，e.g.：@PreAuthorize(`@ss.hasPermi('system:user:list')`)" placement="top">
+                <el-tooltip content="Prower Key，e.g.：@PreAuthorize(`@ss.hasPermi('system:user:list')`)" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Prower Key
@@ -219,7 +219,7 @@
           <el-col :span="12" v-if="form.menuType == 'C'">
             <el-form-item>
               <span slot="label">
-                <el-tooltip content="Select Yes则会被`keep-alive`Cache，需要匹配组件的`name` And Address保持一致" placement="top">
+                <el-tooltip content="Select Yes `keep-alive`Cache，neew `name` And Address same" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Cache
@@ -233,7 +233,7 @@
           <el-col :span="12" v-if="form.menuType != 'F'">
             <el-form-item>
               <span slot="label">
-                <el-tooltip content="Select Hide则Router将No 会出现在侧边栏，但仍然可以访问" placement="top">
+                <el-tooltip content="Select Hide then not show in menu" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                 Status
@@ -250,7 +250,7 @@
           <el-col :span="12" v-if="form.menuType != 'F'">
             <el-form-item>
               <span slot="label">
-                <el-tooltip content="Select 停用则Router将No 会出现在侧边栏，也No 能被访问" placement="top">
+                <el-tooltip content="Select Disable then can not be vist" placement="top">
                 <i class="el-icon-question"></i>
                 </el-tooltip>
                Status

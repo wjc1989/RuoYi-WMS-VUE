@@ -156,11 +156,9 @@ var isbankAccount = (rule, value, callback) => {
   if (!value) {
     return callback(new Error("Accounts is required"));
   } else if (!Number.isInteger(+value)) {
-    callback(new Error("Bank No.必须全数字"));
+    callback(new Error("Bank No. Incorrect format"));
   } else if (value.trim().length < 12 || value.trim().length > 19) {
-    callback(new Error("Bank No.长度必须在12到19之间"));
-  } else if (strBin.indexOf(value.substring(0, 2)) === -1) {
-    callback(new Error("Bank No.开头6位No 符合规范"));
+    callback(new Error("Bank No. Length must be between 12-19."));
   } else {
     callback();
   }

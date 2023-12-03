@@ -2,21 +2,21 @@
   <div class="receipt-order-edit-wrapper app-container">
     <div class="receipt-order-content">
       <el-form label-width="108px" :model="form" ref="form" :rules="rules">
-        <el-form-item label="结算No." prop="inventorySettlementNo">
+        <el-form-item label="SettlementNo." prop="inventorySettlementNo">
           <el-input
             class="w200"
             v-model="form.inventorySettlementNo"
-            placeholder="结算No."
+            placeholder="SettlementNo."
             disabled="disabled"
           ></el-input>
         </el-form-item>
-        <el-form-item label="结算周期" prop="inventorySettlementPeriod">
+        <el-form-item label="Settlement Cycle" prop="inventorySettlementPeriod">
           <el-date-picker
             v-model="form.inventorySettlementPeriod"
             type="daterange"
             align="right"
             unlink-panels
-            range-separator="至"
+            range-separator=" To "
             start-placeholder="Start time"
             end-placeholder="End time"
             :picker-options="pickerOptions">
@@ -35,21 +35,21 @@
       </el-form>
       <el-divider></el-divider>
       <div class="flex-center mb8">
-        <div class="flex-one large-tip bolder-font">结算 Detail</div>
+        <div class="flex-one large-tip bolder-font">Settlement Detail</div>
         <div class="ops">
-          <el-button type="primary" plain="plain" size="small" @click="startSettle">开始结算</el-button>
+          <el-button type="primary" plain="plain" size="small" @click="startSettle"> Start Settlement</el-button>
         </div>
       </div>
       <div class="table">
         <table class="common-table">
           <tr>
-            <th>Item信息</th>
+            <th>Item Info</th>
             <th>Warehouse</th>
-            <th>上期结存</th>
-            <th>本期Inbound</th>
-            <th>本期Outbound </th>
-            <th>本期Count</th>
-            <th>本期结存</th>
+            <th>Last Inventory</th>
+            <th>Current Inbound</th>
+            <th>Current Outbound </th>
+            <th>Current Count</th>
+            <th>Current Inventory</th>
           </tr>
           <tr v-for="(it, index) in form.details">
             <td align="center">{{ it.itemName }} <br>No.：{{ it.itemNo }}</td>
@@ -99,7 +99,7 @@
       <div class="tc mt16">
         <el-button @click="cancel">Cancel</el-button>
         <el-button @click="submitForm(11)" type="primary">Save</el-button>
-        <el-button @click="submitFinishForm" type="success">结算完成</el-button>
+        <el-button @click="submitFinishForm" type="success">Settlement完成</el-button>
       </div>
     </div>
   </div>
@@ -119,7 +119,7 @@ export default {
       // 预设 TimeSelect Date范围
       pickerOptions: {
         shortcuts: [{
-          text: '最近一周',
+          text: 'Last week',
           onClick(picker) {
             const end = new Date();
             const start = new Date();
@@ -127,7 +127,7 @@ export default {
             picker.$emit('pick', [start, end]);
           }
         }, {
-          text: '最近一个月',
+          text: 'Last month',
           onClick(picker) {
             const end = new Date();
             const start = new Date();
@@ -135,7 +135,7 @@ export default {
             picker.$emit('pick', [start, end]);
           }
         }, {
-          text: '最近三个月',
+          text: 'Last three month',
           onClick(picker) {
             const end = new Date();
             const start = new Date();
@@ -164,7 +164,7 @@ export default {
     }
   },
   methods: {
-    // 获取当期的结算初始列表
+    // 获取当期的Settlement初始列表
     startSettle() {
       let [startTime, endTime] = this.form.inventorySettlementPeriod || [];
       if (startTime){
@@ -201,14 +201,14 @@ export default {
     },
     /** 提交Button */
     submitFinishForm() {
-      //结算完成22
+      //Settlement完成22
       this.submitForm(22);
     },
     submitForm(inventorySettlementStatus = 11) {
       if (inventorySettlementStatus === 22 && this.form.details.length === 0) {
         //未AddItem
         Message({
-          message: "您还未开始结算！",
+          message: "Please Start Settlement！",
           type: "error",
         });
         return false;
